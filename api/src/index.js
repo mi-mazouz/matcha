@@ -10,6 +10,7 @@ const decodetoken = require('./middlewares/token').decodetoken
 const corsBrowser = require('./middlewares/cors').corsBrowser
 const corsRouter = require('./middlewares/cors').corsRouter
 const errorsHandling = require('./middlewares/errors-handling').errorsHandling
+const requestInfos = require('./middlewares/request-infos').requestInfos
 
 const app = express()
 
@@ -21,6 +22,7 @@ mongoDb.connect(config.DATABASE_URI)
   app.use(corsRouter)
   app.use(decodetoken)
 
+  app.use(requestInfos)
   app.use('/', authenticationRouter)
   app.use('/picture', pictureRoute)
   app.use(errorsHandling)
