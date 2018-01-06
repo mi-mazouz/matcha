@@ -1,6 +1,7 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
+import Dropzone from 'react-dropzone'
 
 const Button = muiThemeable()(({ muiTheme, ...props }) => (
   <RaisedButton
@@ -15,6 +16,16 @@ const Button = muiThemeable()(({ muiTheme, ...props }) => (
   />
 ))
 
+const UploadFileButton = ({ children, ...props }) => (
+  <Dropzone
+    accept='image/jpeg,image/png,image/jpg,image/gif'
+    {...props}
+  >
+    { children }
+  </Dropzone>
+)
+
 export {
-  Button
+  Button,
+  UploadFileButton
 }

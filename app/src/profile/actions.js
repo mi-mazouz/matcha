@@ -3,7 +3,7 @@ import axios from 'axios'
 import * as constants from './constants'
 import config from '../config'
 
-const saveProfilePicture = (photo) => dispatch => {
+const saveProfilePicture = (picture) => dispatch => {
   dispatch({
     type: constants.SAVE_PROFILE_PICTURE_REQUEST
   })
@@ -11,7 +11,7 @@ const saveProfilePicture = (photo) => dispatch => {
   axios({
     method: 'post',
     url: config.API_BASE_URI + '/photo/save-profile',
-    data: { photo }
+    data: { picture }
   })
   .then((json) => {
     dispatch({

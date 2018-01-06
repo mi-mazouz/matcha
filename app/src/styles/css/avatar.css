@@ -1,0 +1,16 @@
+.avatar {
+  border-style: solid;
+  position: relative;
+}
+
+.circle {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.avatar__upload_file_button {
+  position: absolute;
+  left: 44%;
+  top: 84%;
+}

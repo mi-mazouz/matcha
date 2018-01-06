@@ -5,7 +5,7 @@ import { isAuthenticated } from './utils/authentication'
 import Signin from './authentication/containers/signin'
 import Signup from './authentication/containers/signup'
 import ResetPassword from './authentication/containers/reset-password'
-import Profile from './profile/components/profile'
+import Profile from './profile/containers/profile'
 
 const Routes = (
   <Switch>

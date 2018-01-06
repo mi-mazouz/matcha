@@ -5,7 +5,7 @@ import Layout from '../components/profile'
 
 export default connect(
   (state) => ({
-    profilePicture: state.avatar.profilePicture
+    profilePicture: state.profile.profilePicture
   }),
   { saveProfilePicture }
 )(Layout)
