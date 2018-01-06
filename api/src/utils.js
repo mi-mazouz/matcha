@@ -7,7 +7,7 @@ const cryptoRandomString = require('crypto-random-string')
 const buildToken = (userId) => {
   return jwt.sign(
     {userId: userId.toString()},
-    fs.readFileSync(path.join(__dirname, '../config/secret.key'))
+    fs.readFileSync(path.join(__dirname, './config/secret.key'))
   )
 }
 
