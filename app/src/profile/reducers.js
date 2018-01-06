@@ -9,11 +9,11 @@ const initialProfileState = {
 const ProfileReducer = (state = initialProfileState, { type, payload }) => {
   switch (type) {
     case constants.SAVE_PROFILE_PICTURE_REQUEST:
-      return { ...state, isAuthenticating: true }
+      return { ...state, isFetching: true }
     case constants.SAVE_PROFILE_PICTURE_FAILURE:
-      return { ...state, isAuthenticating: false, error: payload }
+      return { ...state, isFetching: false, error: payload }
     case constants.SAVE_PROFILE_PICTURE_SUCCESS:
-      return { ...state, isAuthenticating: false, error: null }
+      return { ...state, isFetching: false, error: null, profilePicture: payload }
     default:
       return state
   }

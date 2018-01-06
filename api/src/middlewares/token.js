@@ -9,6 +9,7 @@ const userService = require('../services/user')
 
 const userJwt = (req, res, next) => {
   if (!_.has(req, 'user')) return next(createError.BadRequest(errors.TOKEN_INVALID))
+
   return next()
 }
 

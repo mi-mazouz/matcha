@@ -25,7 +25,7 @@ class Profile extends React.Component {
         <Avatar
           onDrop={this.handleProfilePicture.bind(this)}
           size={200}
-          photo={profilePicture}
+          picture={profilePicture}
           />
       </Container>
     )
