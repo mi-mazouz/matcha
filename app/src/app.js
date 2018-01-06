@@ -8,8 +8,13 @@ import { stringify, parse } from 'qs'
 
 import Routes from './routes'
 import muiTheme from './config/mui-theme'
+import { initInterceptorRequest } from './config/axios'
 
 class App extends React.Component {
+  componentWillMount () {
+    initInterceptorRequest()
+  }
+
   render () {
     const history = qhistory(
       createHistory(),
