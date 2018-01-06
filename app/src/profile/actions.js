@@ -5,7 +5,7 @@ import config from '../config'
 
 const saveProfilePicture = (picture) => dispatch => {
   dispatch({
-    type: constants.SAVE_PROFILE_PICTURE_REQUEST
+    type: constants.PROFILE_PICTURE_REQUEST
   })
 
   axios({
@@ -15,18 +15,42 @@ const saveProfilePicture = (picture) => dispatch => {
   })
   .then((json) => {
     dispatch({
-      type: constants.SAVE_PROFILE_PICTURE_SUCCESS,
+      type: constants.PROFILE_PICTURE_SUCCESS,
       payload: json.data.profilePicture
     })
   })
   .catch((error) => {
     dispatch({
-      type: constants.SAVE_PROFILE_PICTURE_FAILURE,
+      type: constants.PROFILE_PICTURE_FAILURE,
+      payload: error.response.data.message
+    })
+  })
+}
+
+const getProfilePicture = () => dispatch => {
+  dispatch({
+    type: constants.PROFILE_PICTURE_REQUEST
+  })
+
+  axios({
+    method: 'post',
+    url: config.API_BASE_URI + '/picture/get-profile'
+  })
+  .then((json) => {
+    dispatch({
+      type: constants.PROFILE_PICTURE_SUCCESS,
+      payload: json.data.profilePicture
+    })
+  })
+  .catch((error) => {
+    dispatch({
+      type: constants.PROFILE_PICTURE_FAILURE,
       payload: error.response.data.message
     })
   })
 }
 
 export {
- saveProfilePicture
+ saveProfilePicture,
+ getProfilePicture
 }
