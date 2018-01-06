@@ -10,12 +10,13 @@ const saveProfilePicture = (picture) => dispatch => {
 
   axios({
     method: 'post',
-    url: config.API_BASE_URI + '/photo/save-profile',
+    url: config.API_BASE_URI + '/picture/save-profile',
     data: { picture }
   })
   .then((json) => {
     dispatch({
-      type: constants.SAVE_PROFILE_PICTURE_SUCCESS
+      type: constants.SAVE_PROFILE_PICTURE_SUCCESS,
+      payload: json.data.profilePicture
     })
   })
   .catch((error) => {

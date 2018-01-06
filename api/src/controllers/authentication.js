@@ -17,11 +17,11 @@ const signup = (req, res, next) => {
     req.body.firstName,
     req.body.lastName,
     req.body.userName,
-    req.body.mail,
+    req.body.mail.toLowerCase(),
     req.body.password
   )
   .then((token) => {
-    res.send({token})
+    res.send({ token })
   })
   .catch(next)
 }
