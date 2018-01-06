@@ -19,6 +19,17 @@ const saveProfile = (req, res, next) => {
   .catch(next)
 }
 
+const getProfile = (req, res, next) => {
+  return pictureService.getProfile(req.user.id)
+  .then((pictureProfile) => {
+    if (!pictureProfile) return res.send({ profilePicture: null })
+
+    res.send({ profilePicture: pictureProfile.data })
+  })
+  .catch(next)
+}
+
 module.exports = {
-  saveProfile
+  saveProfile,
+  getProfile
 }

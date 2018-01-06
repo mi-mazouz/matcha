@@ -4,6 +4,10 @@ import { Avatar } from '../../styles/components/avatar'
 import { Container } from '../../styles/components/containers'
 
 class Profile extends React.Component {
+  componentDidMount () {
+    this.props.getProfilePicture()
+  }
+
   handleProfilePicture (acceptedFiles, rejectedFiles) {
     if (acceptedFiles.length !== 1) return
     const reader = new FileReader()
