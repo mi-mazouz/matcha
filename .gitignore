@@ -1,0 +1,9 @@
+mongodb
+node_modules
+.DS_Store
+npm-debug.log
+package-lock.json
+api/config/secret.key
+app/src/styles/icomoon/demo-files
+app/src/styles/icomoon/demo.html
+app/src/styles/icomoon/Read Me.txt

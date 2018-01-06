@@ -1,0 +1,17 @@
+{
+  "restartable": "rs",
+  "runOnChangeOnly": false,
+  "verbose": false,
+  "colours": true,
+  "stdin": true,
+  "events": {
+    "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
+  },
+  "ignoreRoot": "ignoreRoot",
+  "watch":
+    "./src/",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json html"
+}

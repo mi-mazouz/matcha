@@ -1,0 +1,34 @@
+{
+  "name": "matcha_api",
+  "version": "1.0.0",
+  "description": "Dating site",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npm run server:watch",
+    "server:watch": "nodemon --config nodemon.json --inspect ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mi-mazouz/Matcha.git"
+  },
+  "author": "mi-mazouz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mi-mazouz/Matcha/issues"
+  },
+  "homepage": "https://github.com/mi-mazouz/Matcha#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.17.2",
+    "crypto-random-string": "^1.0.0",
+    "express": "^4.15.3",
+    "http-errors": "^1.6.2",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.10.6",
+    "nodemailer": "^4.2.0",
+    "nodemon": "^1.14.7",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {}
+}
