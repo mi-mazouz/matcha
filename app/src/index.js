@@ -17,7 +17,7 @@ const enhancers = []
 
 const store = createStore(
   combineReducers({
-    Profile: ProfileReducer,
+    profile: ProfileReducer,
     resetPassword: ResetPasswordReducer,
     signup: SignupReducer,
     signin: SigninReducer
