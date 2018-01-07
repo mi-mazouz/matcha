@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 const User = require('../models/user')
 
 const create = (firstName, lastName, username, mail, encryptedPassword) => {
@@ -11,6 +13,14 @@ const create = (firstName, lastName, username, mail, encryptedPassword) => {
   }).save()
 }
 
+const patchUser = (user, body) => {
+  _.forEach(body, (value, key) => {
+    user[key] = value
+  })
+
+  return user.save()
+}
+
 const getByMail = (mail) => {
   return User.findOne({ mail })
 }
@@ -22,5 +32,6 @@ const getById = (id) => {
 module.exports = {
   create,
   getByMail,
-  getById
+  getById,
+  patchUser
 }

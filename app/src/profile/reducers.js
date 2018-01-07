@@ -1,24 +1,50 @@
 import * as constants from './constants'
 
-const initialProfileState = {
+const initialUserState = {
   profilePicture: null,
+  pictures: Array(4).fill(null),
+  mail: null,
+  firstName: null,
+  lastName: null,
   isFetching: false,
   error: null
 }
 
-const ProfileReducer = (state = initialProfileState, { type, payload }) => {
+const UserReducer = (state = initialUserState, { type, payload }) => {
   switch (type) {
     case constants.PROFILE_PICTURE_REQUEST:
+    case constants.GET_USER_REQUEST:
+    case constants.UPDATE_USER_REQUEST:
       return { ...state, isFetching: true }
     case constants.PROFILE_PICTURE_FAILURE:
+    case constants.GET_USER_FAILURE:
+    case constants.UPDATE_USER_FAILURE:
       return { ...state, isFetching: false, error: payload }
     case constants.PROFILE_PICTURE_SUCCESS:
-      return { ...state, isFetching: false, error: null, profilePicture: payload }
+    case constants.GET_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        profilePicture: payload.profilePicture,
+        mail: payload.mail,
+        firstName: payload.firstName,
+        lastName: payload.lastName
+      }
+    case constants.UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        mail: payload.mail,
+        firstName: payload.firstName,
+        lastName: payload.lastName
+      }
     default:
       return state
   }
 }
 
 export {
- ProfileReducer
+ UserReducer
 }

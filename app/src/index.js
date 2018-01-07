@@ -5,7 +5,7 @@ import { applyMiddleware, createStore, combineReducers, compose } from 'redux'
 
 import App from './app'
 import { ResetPasswordReducer, SignupReducer, SigninReducer } from './authentication/reducers'
-import { ProfileReducer } from './profile/reducers'
+import { UserReducer } from './profile/reducers'
 
 import './styles/icomoon/style.css'
 import './styles/css/main.css'
@@ -17,7 +17,7 @@ const enhancers = []
 
 const store = createStore(
   combineReducers({
-    profile: ProfileReducer,
+    user: UserReducer,
     resetPassword: ResetPasswordReducer,
     signup: SignupReducer,
     signin: SigninReducer

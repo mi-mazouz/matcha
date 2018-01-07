@@ -13,23 +13,12 @@ const saveProfile = (req, res, next) => {
 
     return pictureService.update(pictureProfile, req.body.picture)
   })
-  .then((pictureProfile) => {
-    res.send({ profilePicture: pictureProfile.data })
-  })
-  .catch(next)
-}
-
-const getProfile = (req, res, next) => {
-  return pictureService.getProfile(req.user.id)
-  .then((pictureProfile) => {
-    if (!pictureProfile) return res.send({ profilePicture: null })
-
-    res.send({ profilePicture: pictureProfile.data })
+  .then((updatedPictureProfile) => {
+    res.send({ profilePicture: updatedPictureProfile.data })
   })
   .catch(next)
 }
 
 module.exports = {
-  saveProfile,
-  getProfile
+  saveProfile
 }
