@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
 
 import { saveProfilePicture, getProfilePicture } from '../actions'
-import Layout from '../components/profile'
+import LayoutComponent from '../components/profile'
+import Menu from '../../hocs/components/menu'
 
-export default connect(
+const Layout = connect(
   (state) => ({
     profilePicture: state.profile.profilePicture
   }),
@@ -11,4 +12,6 @@ export default connect(
     saveProfilePicture,
     getProfilePicture
   }
-)(Layout)
+)(LayoutComponent)
+
+export default Menu(Layout)
