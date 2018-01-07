@@ -29,7 +29,6 @@ const MenuBar = muiThemeable()(({ muiTheme, onLogoutClick, ...props }) => (
         onClick={onLogoutClick}
         primaryText='Logout'
       />
-      <MenuItem primaryText='Reset password' />
     </IconMenu>
   </Container>
 ))

@@ -2,6 +2,9 @@ import React from 'react'
 
 import { Avatar } from '../../styles/components/avatar'
 import { Container } from '../../styles/components/containers'
+import { Label } from '../../styles/components/label'
+
+import '../../styles/css/profile.css'
 
 class Profile extends React.Component {
   componentDidMount () {
@@ -25,12 +28,15 @@ class Profile extends React.Component {
     const { profilePicture } = this.props
 
     return (
-      <Container>
+      <Container
+        className='profile_container'
+      >
         <Avatar
           onDrop={this.handleProfilePicture.bind(this)}
           size={200}
           picture={profilePicture}
-          />
+        />
+        <Label fontSize='30px'>MICKA</Label>
       </Container>
     )
   }

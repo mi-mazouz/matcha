@@ -1,17 +1,17 @@
 import React from 'react'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
-import '../css/label.css'
-
-const TertiaryLabel = muiThemeable()(({ muiTheme, children, ...props }) => (
+const Label = muiThemeable()(({ muiTheme, children, fontSize, ...props }) => (
   <label
-    style={{fontFamily: muiTheme.fontFamily}}
-    className='tertiary_label'
+    style={{
+      fontFamily: muiTheme.fontFamily,
+      fontSize: fontSize
+    }}
   >
     {children}
   </label>
 ))
 
 export {
-  TertiaryLabel
+  Label
 }
