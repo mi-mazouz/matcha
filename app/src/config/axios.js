@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 import { getToken, logout } from '../utils'
-import history from './history'
 
 const initInterceptorRequest = () => {
   axios.interceptors.request.use((config) => {
@@ -17,7 +16,6 @@ const initInterceptorRequest = () => {
   axios.interceptors.response.use(null, (error) => {
     if (error.response && error.response.status === 401 && error.response.data.message === 'TOKEN_INVALID') {
       logout()
-      history.push('/signin')
     }
 
     return Promise.reject(error)
