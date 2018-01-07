@@ -1,16 +1,17 @@
 import { connect } from 'react-redux'
 
-import { saveProfilePicture, getProfilePicture } from '../actions'
+import { saveProfilePicture, getUser, updateUser } from '../actions'
 import LayoutComponent from '../components/profile'
 import BasicPage from '../../hocs/components/basic-page'
 
 const Layout = connect(
   (state) => ({
-    profilePicture: state.profile.profilePicture
+    user: state.user
   }),
   {
     saveProfilePicture,
-    getProfilePicture
+    updateUser,
+    getUser
   }
 )(LayoutComponent)
 

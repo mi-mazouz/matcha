@@ -2,13 +2,13 @@ import React from 'react'
 
 import { Avatar } from '../../styles/components/avatar'
 import { Container } from '../../styles/components/containers'
-import { Label } from '../../styles/components/label'
+import { LabelInput } from '../../styles/components/label'
 
 import '../../styles/css/profile.css'
 
 class Profile extends React.Component {
   componentDidMount () {
-    this.props.getProfilePicture()
+    this.props.getUser()
   }
 
   handleProfilePicture (acceptedFiles, rejectedFiles) {
@@ -24,8 +24,10 @@ class Profile extends React.Component {
     reader.readAsBinaryString(acceptedFiles[0])
   }
 
+  change (dataToUpdate) { this.props.updateUser(dataToUpdate) }
+
   render () {
-    const { profilePicture } = this.props
+    const { user } = this.props
 
     return (
       <Container
@@ -34,9 +36,28 @@ class Profile extends React.Component {
         <Avatar
           onDrop={this.handleProfilePicture.bind(this)}
           size={200}
-          picture={profilePicture}
+          picture={user.profilePicture}
         />
-        <Label fontSize='30px'>MICKA</Label>
+        <Container>
+          <LabelInput
+            text={user.firstName}
+            onChange={this.change.bind(this)}
+            paramName='firstName'
+            style={{ fontSize: '30px' }}
+          />
+          <LabelInput
+            text={user.lastName}
+            onChange={this.change.bind(this)}
+            paramName='lastName'
+            style={{ fontSize: '30px' }}
+          />
+          <LabelInput
+            text={user.mail}
+            onChange={this.change.bind(this)}
+            paramName='mail'
+            style={{ fontSize: '15px' }}
+          />
+        </Container>
       </Container>
     )
   }

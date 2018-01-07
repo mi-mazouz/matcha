@@ -6,6 +6,7 @@ const logger = require('./services/logger')
 const config = require('../config')
 const authenticationRouter = require('./routes/authentication')
 const pictureRoute = require('./routes/picture')
+const userRoute = require('./routes/user')
 const decodetoken = require('./middlewares/token').decodetoken
 const corsBrowser = require('./middlewares/cors').corsBrowser
 const corsRouter = require('./middlewares/cors').corsRouter
@@ -25,6 +26,7 @@ mongoDb.connect(config.DATABASE_URI)
   app.use(requestInfos)
   app.use('/', authenticationRouter)
   app.use('/picture', pictureRoute)
+  app.use('/user', userRoute)
   app.use(errorsHandling)
 
   app.listen(config.PORT, function () {
