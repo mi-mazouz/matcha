@@ -3,6 +3,7 @@ import axios from 'axios'
 import * as constants from './constants'
 import config from '../config'
 import history from '../config/history'
+import { setToken } from '../utils'
 
 const signup = (firstName, lastName, userName, mail, password) => dispatch => {
   dispatch({
@@ -15,7 +16,7 @@ const signup = (firstName, lastName, userName, mail, password) => dispatch => {
     data: { firstName, lastName, userName, mail, password }
   })
   .then((json) => {
-    window.localStorage.token = json.data.token
+    setToken(json.data.token)
 
     dispatch({
       type: constants.SIGNUP_SUCCESS
@@ -42,7 +43,7 @@ const signin = (mail, password) => dispatch => {
     data: { mail, password }
   })
   .then((json) => {
-    window.localStorage.token = json.data.token
+    setToken(json.data.token)
 
     dispatch({
       type: constants.SIGNIN_SUCCESS
