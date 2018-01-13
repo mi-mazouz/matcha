@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Avatar } from '../../styles/components/picture'
 import { Container } from '../../styles/components/containers'
-import { LabelInput } from '../../styles/components/label'
+import { LabelInput, Label } from '../../styles/components/label'
 import { CheckBox } from '../../styles/components/buttons'
 
 import '../../styles/css/profile.css'
@@ -43,21 +43,23 @@ class Profile extends React.Component {
           picture={user.profilePicture}
         />
         <Container>
-          <Container>
+          <Container style={{display: 'flex'}}>
             <LabelInput
-              text={user.firstName}
+              text={'Hi ' + user.firstName}
               maxLength={16}
               onChange={this.change.bind(this)}
               paramName='firstName'
-              style={{ fontSize: '30px' }}
+              style={{ fontSize: '25px' }}
             />
             <LabelInput
-              text={user.lastName}
+              text={user.lastName + '!'}
               maxLength={16}
               onChange={this.change.bind(this)}
               paramName='lastName'
-              style={{ fontSize: '30px' }}
+              style={{ fontSize: '25px' }}
             />
+          </Container>
+          <Container>
             <LabelInput
               text={user.mail}
               maxLength={30}
@@ -65,6 +67,7 @@ class Profile extends React.Component {
               paramName='mail'
               style={{ fontSize: '15px' }}
             />
+            <Label stylle={{ fontSize: '10px' }} >{`I'm a:`}</Label>
             <CheckBox
               label='male'
               value='male'
@@ -76,6 +79,21 @@ class Profile extends React.Component {
               value='female'
               onCheck={this.change.bind(this)}
               checked={user.gender === 'female'}
+            />
+          </Container>
+          <Container>
+            <Label stylle={{ fontSize: '10px' }} >{`I'm interesting in:`}</Label>
+            <CheckBox
+              label='male'
+              value='male'
+              onCheck={this.change.bind(this)}
+              checked={user.interestingIn === 'male'}
+            />
+            <CheckBox
+              label='female'
+              value='female'
+              onCheck={this.change.bind(this)}
+              checked={user.interestingIn === 'female'}
             />
           </Container>
           <Container>
