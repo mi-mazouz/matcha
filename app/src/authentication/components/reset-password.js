@@ -42,6 +42,7 @@ class ForgotPassword extends React.Component {
             style={{width: '80%'}}
           >
             <TextField
+              maxLength='30'
               name='mail'
               validations='isEmail'
               validationError='Wrong email'

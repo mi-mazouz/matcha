@@ -10,7 +10,7 @@ const errors = require('../errors')
 const signup = (firstName, lastName, username, mail, password) => {
   return userService.getByMail(mail)
   .then((user) => {
-    if (user) throw createError.BadRequest(errors.EMAIL_EXISTS)
+    if (user) throw createError.BadRequest(errors.MAIL_EXISTS)
 
     return bcrypt.hash(password, 10)
   })
