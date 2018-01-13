@@ -9,7 +9,7 @@ const TertiaryLink = muiThemeable()(({ muiTheme, ...props }) => (
     {...props}
     style={{
       ...props.style,
-      color: muiTheme.palette.grey
+      color: muiTheme.palette.beige
     }}
     className='tertiary-link'
   >
@@ -23,7 +23,7 @@ const SecondaryLink = muiThemeable()(({ muiTheme, ...props }) => (
     {...props}
     style={{
       ...props.style,
-      color: muiTheme.palette.grey
+      color: muiTheme.palette.beige
     }}
     className='secondary-link'
   >

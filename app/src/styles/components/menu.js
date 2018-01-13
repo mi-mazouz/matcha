@@ -14,7 +14,7 @@ const MenuBar = muiThemeable()(({ muiTheme, onLogoutClick, ...props }) => (
     {...props}
     className='menu_bar'
     style={{
-      backgroundColor: muiTheme.palette.lightGrey
+      backgroundColor: muiTheme.palette.lightBeige
     }}
   >
     <IconMenu

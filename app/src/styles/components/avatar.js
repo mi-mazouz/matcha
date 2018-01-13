@@ -12,7 +12,7 @@ const Avatar = muiThemeable()(({ muiTheme, picture, onDrop, ...props }) => (
     className='circle avatar'
     style={{
       borderColor: muiTheme.palette.orange,
-      backgroundColor: picture ? null : muiTheme.palette.lightGrey
+      backgroundColor: picture ? null : muiTheme.palette.lightBeige
     }}
   >
     {

@@ -10,7 +10,7 @@ const Button = muiThemeable()(({ muiTheme, ...props }) => (
       backgroundColor: 'none'
     }}
     disableTouchRipple
-    disabledBackgroundColor={muiTheme.palette.lightGrey}
+    disabledBackgroundColor={muiTheme.palette.lightBeige}
     disabledLabelColor={muiTheme.palette.orange}
     labelColor={muiTheme.palette.orange}
   />

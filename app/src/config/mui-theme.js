@@ -4,8 +4,8 @@ export default getMuiTheme({
   fontFamily: 'Chalkduster',
   palette: {
     orange: '#ff6600',
-    grey: '#9fa9b6',
-    lightGrey: '#E6E6E6',
+    beige: '#AB9A80',
+    lightBeige: '#CDC2A4',
     red: 'red'
   }
 })
