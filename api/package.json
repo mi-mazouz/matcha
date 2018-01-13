@@ -27,8 +27,9 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.10.6",
     "nodemailer": "^4.2.0",
-    "nodemon": "^1.14.7",
     "winston": "^2.3.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^1.14.7"
+  }
 }

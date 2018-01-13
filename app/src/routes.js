@@ -15,7 +15,6 @@ const Routes = (
     <Route path='/profil' component={isAuthenticated(Profile)} />
     <Redirect to='/profil' />
   </Switch>
-
 )
 
 export default Routes

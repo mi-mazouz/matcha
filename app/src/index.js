@@ -8,7 +8,7 @@ import { ResetPasswordReducer, SignupReducer, SigninReducer } from './authentica
 import { UserReducer } from './profile/reducers'
 
 import './styles/icomoon/style.css'
-import './styles/css/main.css'
+import './styles/css/index.css'
 
 const initialeState = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}
 

@@ -1,5 +1,5 @@
 {
-  "name": "matcha_app",
+  "name": "matcha",
   "version": "1.0.0",
   "description": "Dating site",
   "main": "public/src/index.js",
