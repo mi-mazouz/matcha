@@ -32,5 +32,10 @@
      type: String,
      default: null,
      maxlength: 150
+   },
+   gender: {
+     type: String,
+     enum: ['male', 'female', null],
+     default: null
    }
  }))

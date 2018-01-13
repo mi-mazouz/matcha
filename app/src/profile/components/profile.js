@@ -3,6 +3,7 @@ import React from 'react'
 import { Avatar } from '../../styles/components/avatar'
 import { Container } from '../../styles/components/containers'
 import { LabelInput } from '../../styles/components/label'
+import { CheckBox } from '../../styles/components/buttons'
 
 import '../../styles/css/profile.css'
 
@@ -24,7 +25,10 @@ class Profile extends React.Component {
     reader.readAsBinaryString(acceptedFiles[0])
   }
 
-  change (dataToUpdate) { this.props.updateUser(dataToUpdate) }
+  change (dataToUpdate) {
+    if (dataToUpdate.target) return this.props.updateUser({gender: dataToUpdate.target.value})
+    return this.props.updateUser(dataToUpdate)
+  }
 
   render () {
     const { user } = this.props
@@ -60,6 +64,18 @@ class Profile extends React.Component {
               onChange={this.change.bind(this)}
               paramName='mail'
               style={{ fontSize: '15px' }}
+            />
+            <CheckBox
+              label='male'
+              value='male'
+              onCheck={this.change.bind(this)}
+              checked={user.gender === 'male'}
+            />
+            <CheckBox
+              label='female'
+              value='female'
+              onCheck={this.change.bind(this)}
+              checked={user.gender === 'female'}
             />
           </Container>
           <Container>

@@ -19,6 +19,7 @@ const getInfos = (req, res, next) => {
       mail: user.mail,
       firstName: user.firstName,
       lastName: user.lastName,
+      gender: user.gender,
       bio: user.bio
     })
   })
@@ -42,6 +43,7 @@ const updateInfos = (req, res, next) => {
       mail: updatedUser.mail,
       firstName: updatedUser.firstName,
       lastName: updatedUser.lastName,
+      gender: updatedUser.gender,
       bio: updatedUser.bio
     })
   })

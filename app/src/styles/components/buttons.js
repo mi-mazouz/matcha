@@ -1,6 +1,7 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
+import UiCheckBox from 'material-ui/Checkbox'
 import Dropzone from 'react-dropzone'
 
 const Button = muiThemeable()(({ muiTheme, ...props }) => (
@@ -25,7 +26,14 @@ const UploadFileButton = ({ children, ...props }) => (
   </Dropzone>
 )
 
+const CheckBox = ({ ...props }) => (
+  <UiCheckBox
+    {...props}
+  />
+)
+
 export {
   Button,
+  CheckBox,
   UploadFileButton
 }

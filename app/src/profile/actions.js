@@ -44,6 +44,7 @@ const getUser = () => dispatch => {
         mail: json.data.mail,
         firstName: json.data.firstName,
         lastName: json.data.lastName,
+        gender: json.data.gender,
         bio: json.data.bio
       }
     })
@@ -73,6 +74,7 @@ const updateUser = (dataToUpdate) => dispatch => {
         mail: json.data.mail,
         firstName: json.data.firstName,
         lastName: json.data.lastName,
+        gender: json.data.gender,
         bio: json.data.bio
       }
     })
