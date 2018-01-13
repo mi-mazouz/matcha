@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Avatar } from '../../styles/components/avatar'
+import { Avatar } from '../../styles/components/picture'
 import { Container } from '../../styles/components/containers'
 import { LabelInput } from '../../styles/components/label'
 import { CheckBox } from '../../styles/components/buttons'

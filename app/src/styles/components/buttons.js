@@ -26,11 +26,12 @@ const UploadFileButton = ({ children, ...props }) => (
   </Dropzone>
 )
 
-const CheckBox = ({ ...props }) => (
+const CheckBox = muiThemeable()(({ muiTheme, ...props }) => (
   <UiCheckBox
+    iconStyle={{fill: muiTheme.palette.orange}}
     {...props}
   />
-)
+))
 
 export {
   Button,
