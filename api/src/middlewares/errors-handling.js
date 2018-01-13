@@ -7,6 +7,10 @@ const errorsHandling = (err, req, res, next) => {
     message: err.message
   }))
 
+  if (!err.statusCode) {
+    return next(err)
+  }
+
   res.status(err.statusCode).json({message: err.message})
 }
 

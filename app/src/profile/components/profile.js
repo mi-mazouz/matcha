@@ -42,18 +42,21 @@ class Profile extends React.Component {
           <Container>
             <LabelInput
               text={user.firstName}
+              maxLength={16}
               onChange={this.change.bind(this)}
               paramName='firstName'
               style={{ fontSize: '30px' }}
             />
             <LabelInput
               text={user.lastName}
+              maxLength={16}
               onChange={this.change.bind(this)}
               paramName='lastName'
               style={{ fontSize: '30px' }}
             />
             <LabelInput
               text={user.mail}
+              maxLength={30}
               onChange={this.change.bind(this)}
               paramName='mail'
               style={{ fontSize: '15px' }}
@@ -62,6 +65,7 @@ class Profile extends React.Component {
           <Container>
             <LabelInput
               text={user.bio || 'Edit your biography'}
+              maxLength={150}
               onChange={this.change.bind(this)}
               paramName='bio'
               style={{ fontSize: '15px', height: '150px', width: '500px' }}

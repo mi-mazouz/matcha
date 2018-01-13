@@ -13,19 +13,27 @@ const Label = muiThemeable()(({ muiTheme, children, ...props }) => (
   </label>
 ))
 
-const LabelInput = muiThemeable()(({ muiTheme, text, onChange, paramName, ...props }) => (
-  <InplaceEdit
-    style={{
-      fontFamily: muiTheme.fontFamily,
-      height: '20px',
-      width: '170px',
-      ...props.style
-    }}
-    text={text || ''}
-    paramName={paramName}
-    change={onChange}
-  />
-))
+const LabelInput = muiThemeable()(({ muiTheme, text, onChange, paramName, ...props }) => {
+  const customValidateText = (text) => {
+    if (props.maxLength) return text.length < props.maxLength
+    return true
+  }
+
+  return (
+    <InplaceEdit
+      style={{
+        fontFamily: muiTheme.fontFamily,
+        height: '20px',
+        width: '170px',
+        ...props.style
+      }}
+      text={text || ''}
+      validate={customValidateText}
+      paramName={paramName}
+      change={onChange}
+    />
+  )
+})
 
 export {
   Label,

@@ -17,7 +17,6 @@ class Signup extends React.Component {
     canSubmit: false
   }
 
-
   handleSubmit (values) {
     this.props.signup(
       values.firstName,
@@ -54,6 +53,7 @@ class Signup extends React.Component {
               }}
             >
               <TextField
+                maxLength='16'
                 name='firstName'
                 hintText='First name'
                 type='text'
@@ -61,6 +61,7 @@ class Signup extends React.Component {
                 required
               />
               <TextField
+                maxLength='16'
                 name='lastName'
                 hintText='last name'
                 type='text'
@@ -69,12 +70,14 @@ class Signup extends React.Component {
               />
             </Container>
             <TextField
+              maxLength='16'
               name='userName'
               hintText='Username'
               type='text'
               required
             />
             <TextField
+              maxLength='30'
               name='mail'
               validations='isEmail'
               validationError='Wrong email'
@@ -83,6 +86,7 @@ class Signup extends React.Component {
               required
             />
             <TextField
+              maxLength='30'
               name='password'
               validations='minLength:8'
               validationError='Wrong password'
@@ -91,7 +95,7 @@ class Signup extends React.Component {
               required
             />
           </CardText>
-          <Error style={{marginTop: 0}} errorMessage={error}/>
+          <Error style={{marginTop: 0}} errorMessage={error} />
           <Button
             type='submit'
             label='Submit'

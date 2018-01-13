@@ -44,6 +44,7 @@ class Signin extends React.Component {
         >
           <CardText>
             <TextField
+              maxLength='30'
               name='mail'
               validations='isEmail'
               validationError='Wrong email'
@@ -52,6 +53,7 @@ class Signin extends React.Component {
               required
             />
             <TextField
+              maxLength='30'
               name='password'
               validations='minLength:8'
               validationError='Wrong password'
