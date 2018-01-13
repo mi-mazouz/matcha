@@ -6,6 +6,7 @@ const initialUserState = {
   mail: null,
   firstName: null,
   lastName: null,
+  bio: null,
   isFetching: false,
   error: null
 }
@@ -29,7 +30,8 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         profilePicture: payload.profilePicture,
         mail: payload.mail,
         firstName: payload.firstName,
-        lastName: payload.lastName
+        lastName: payload.lastName,
+        bio: payload.bio
       }
     case constants.UPDATE_USER_SUCCESS:
       return {
@@ -38,7 +40,8 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         error: null,
         mail: payload.mail,
         firstName: payload.firstName,
-        lastName: payload.lastName
+        lastName: payload.lastName,
+        bio: payload.bio
       }
     default:
       return state

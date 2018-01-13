@@ -16,10 +16,10 @@ const Label = muiThemeable()(({ muiTheme, children, ...props }) => (
 const LabelInput = muiThemeable()(({ muiTheme, text, onChange, paramName, ...props }) => (
   <InplaceEdit
     style={{
-      ...props.style,
       fontFamily: muiTheme.fontFamily,
       height: '20px',
-      width: '170px'
+      width: '170px',
+      ...props.style
     }}
     text={text || ''}
     paramName={paramName}

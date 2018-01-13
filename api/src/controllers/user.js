@@ -13,12 +13,14 @@ const getInfos = (req, res, next) => {
     if (!user) return next(createError.NotFound(errors.USER_NOT_FOUND))
 
     res.send({
-      profilePicture: pictureProfile.data,
+      profilePicture: pictureProfile ? pictureProfile.data : null,
       mail: user.mail,
       firstName: user.firstName,
-      lastName: user.lastName
+      lastName: user.lastName,
+      bio: user.bio
     })
   })
+  .catch(next)
 }
 
 const updateInfos = (req, res, next) => {
@@ -32,9 +34,11 @@ const updateInfos = (req, res, next) => {
     res.send({
       mail: updatedUser.mail,
       firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName
+      lastName: updatedUser.lastName,
+      bio: updatedUser.bio
     })
   })
+  .catch(next)
 }
 
 module.exports = {

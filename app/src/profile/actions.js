@@ -43,7 +43,8 @@ const getUser = () => dispatch => {
         profilePicture: json.data.profilePicture,
         mail: json.data.mail,
         firstName: json.data.firstName,
-        lastName: json.data.lastName
+        lastName: json.data.lastName,
+        bio: json.data.bio
       }
     })
   })
@@ -71,7 +72,8 @@ const updateUser = (dataToUpdate) => dispatch => {
       payload: {
         mail: json.data.mail,
         firstName: json.data.firstName,
-        lastName: json.data.lastName
+        lastName: json.data.lastName,
+        bio: json.data.bio
       }
     })
   })

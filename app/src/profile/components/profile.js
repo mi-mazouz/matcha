@@ -39,24 +39,34 @@ class Profile extends React.Component {
           picture={user.profilePicture}
         />
         <Container>
-          <LabelInput
-            text={user.firstName}
-            onChange={this.change.bind(this)}
-            paramName='firstName'
-            style={{ fontSize: '30px' }}
-          />
-          <LabelInput
-            text={user.lastName}
-            onChange={this.change.bind(this)}
-            paramName='lastName'
-            style={{ fontSize: '30px' }}
-          />
-          <LabelInput
-            text={user.mail}
-            onChange={this.change.bind(this)}
-            paramName='mail'
-            style={{ fontSize: '15px' }}
-          />
+          <Container>
+            <LabelInput
+              text={user.firstName}
+              onChange={this.change.bind(this)}
+              paramName='firstName'
+              style={{ fontSize: '30px' }}
+            />
+            <LabelInput
+              text={user.lastName}
+              onChange={this.change.bind(this)}
+              paramName='lastName'
+              style={{ fontSize: '30px' }}
+            />
+            <LabelInput
+              text={user.mail}
+              onChange={this.change.bind(this)}
+              paramName='mail'
+              style={{ fontSize: '15px' }}
+            />
+          </Container>
+          <Container>
+            <LabelInput
+              text={user.bio || 'Edit your biography'}
+              onChange={this.change.bind(this)}
+              paramName='bio'
+              style={{ fontSize: '15px', height: '150px', width: '500px' }}
+            />
+          </Container>
         </Container>
       </Container>
     )
