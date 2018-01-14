@@ -4,6 +4,7 @@ import { Avatar } from '../../styles/components/picture'
 import { Container } from '../../styles/components/containers'
 import { LabelInput, Label } from '../../styles/components/label'
 import { CheckBox } from '../../styles/components/buttons'
+import { InputChip } from '../../styles/components/chip'
 
 import '../../styles/css/profile.css'
 
@@ -116,6 +117,10 @@ class Profile extends React.Component {
               style={{ fontSize: '15px', height: '150px', width: '500px' }}
             />
           </Container>
+        </Container>
+        <Container>
+          <Label style={{ fontSize: '25px' }}>hobbies:</Label>
+          <InputChip />
         </Container>
       </Container>
     )
