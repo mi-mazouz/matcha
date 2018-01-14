@@ -7,6 +7,7 @@ const initialUserState = {
   firstName: null,
   lastName: null,
   gender: null,
+  interestedIn: null,
   bio: null,
   isFetching: false,
   error: null
@@ -33,6 +34,7 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         firstName: payload.firstName,
         lastName: payload.lastName,
         gender: payload.gender,
+        interestedIn: payload.interestedIn,
         bio: payload.bio
       }
     case constants.UPDATE_USER_SUCCESS:
@@ -44,6 +46,7 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         firstName: payload.firstName,
         lastName: payload.lastName,
         gender: payload.gender,
+        interestedIn: payload.interestedIn,
         bio: payload.bio
       }
     default:
