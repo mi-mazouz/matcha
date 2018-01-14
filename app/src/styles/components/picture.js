@@ -28,7 +28,7 @@ const Avatar = muiThemeable()(({ muiTheme, picture, onDrop, ...props }) => (
       onDrop={onDrop}
       multiple={false}
     >
-      <Label stylle={{ fontSize: '15px' }} >Edit</Label>
+      <Label style={{ fontSize: '15px' }} >Edit</Label>
     </UploadFileButton>
   </Container>
 ))

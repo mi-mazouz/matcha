@@ -37,5 +37,10 @@
      type: String,
      enum: ['male', 'female', null],
      default: null
+   },
+   interestedIn: {
+     type: String,
+     enum: ['male', 'female', 'both', null],
+     default: null
    }
  }))

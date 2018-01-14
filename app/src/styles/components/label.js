@@ -4,6 +4,7 @@ import InplaceEdit from 'react-edit-inplace'
 
 const Label = muiThemeable()(({ muiTheme, children, ...props }) => (
   <label
+    {...props}
     style={{
       ...props.style,
       fontFamily: muiTheme.fontFamily
@@ -21,10 +22,11 @@ const LabelInput = muiThemeable()(({ muiTheme, text, onChange, paramName, ...pro
 
   return (
     <InplaceEdit
+      {...props}
       style={{
         fontFamily: muiTheme.fontFamily,
-        height: '20px',
-        width: '170px',
+        height: '25px',
+        width: '110px',
         ...props.style
       }}
       text={text || ''}
