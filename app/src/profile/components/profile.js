@@ -26,7 +26,18 @@ class Profile extends React.Component {
   }
 
   change (dataToUpdate) {
-    if (dataToUpdate.target) return this.props.updateUser({gender: dataToUpdate.target.value})
+    if (dataToUpdate.target) {
+      const splitedValue = dataToUpdate.target.value.split(' ')
+
+      switch (splitedValue[0]) {
+        case 'Im':
+          return this.props.updateUser({gender: splitedValue[1]})
+        case 'interestedIn':
+          return this.props.updateUser({interestedIn: splitedValue[1]})
+        default:
+          return
+      }
+    }
     return this.props.updateUser(dataToUpdate)
   }
 
@@ -35,7 +46,7 @@ class Profile extends React.Component {
 
     return (
       <Container
-        className='profile_container'
+        className='container'
       >
         <Avatar
           onDrop={this.handleProfilePicture.bind(this)}
@@ -45,55 +56,55 @@ class Profile extends React.Component {
         <Container>
           <Container style={{display: 'flex'}}>
             <LabelInput
-              text={'Hi ' + user.firstName}
+              text={user.firstName}
               maxLength={16}
               onChange={this.change.bind(this)}
               paramName='firstName'
               style={{ fontSize: '25px' }}
             />
             <LabelInput
-              text={user.lastName + '!'}
+              text={user.lastName}
               maxLength={16}
               onChange={this.change.bind(this)}
               paramName='lastName'
               style={{ fontSize: '25px' }}
             />
           </Container>
+          <LabelInput
+            text={user.mail}
+            maxLength={30}
+            onChange={this.change.bind(this)}
+            paramName='mail'
+            style={{ fontSize: '15px' }}
+          />
           <Container>
-            <LabelInput
-              text={user.mail}
-              maxLength={30}
-              onChange={this.change.bind(this)}
-              paramName='mail'
-              style={{ fontSize: '15px' }}
-            />
-            <Label stylle={{ fontSize: '10px' }} >{`I'm a:`}</Label>
+            <Label style={{ fontSize: '15px' }} >{`I'm a:`}</Label>
             <CheckBox
               label='male'
-              value='male'
+              value='Im male'
               onCheck={this.change.bind(this)}
               checked={user.gender === 'male'}
             />
             <CheckBox
               label='female'
-              value='female'
+              value='Im female'
               onCheck={this.change.bind(this)}
               checked={user.gender === 'female'}
             />
           </Container>
           <Container>
-            <Label stylle={{ fontSize: '10px' }} >{`I'm interesting in:`}</Label>
+            <Label style={{ fontSize: '15px' }} >{`I'm interesting in:`}</Label>
             <CheckBox
               label='male'
-              value='male'
+              value='interestedIn male'
               onCheck={this.change.bind(this)}
-              checked={user.interestingIn === 'male'}
+              checked={user.interestedIn === 'male'}
             />
             <CheckBox
               label='female'
-              value='female'
+              value='interestedIn female'
               onCheck={this.change.bind(this)}
-              checked={user.interestingIn === 'female'}
+              checked={user.interestedIn === 'female'}
             />
           </Container>
           <Container>
