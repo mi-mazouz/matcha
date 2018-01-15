@@ -2,10 +2,9 @@ import React from 'react'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import { UploadFileButton } from './buttons'
-import { Label } from './label'
 import { Container } from './containers'
 
-import '../css/avatar.css'
+import '../css/picture.css'
 
 const Avatar = muiThemeable()(({ muiTheme, picture, onDrop, ...props }) => (
   <Container
@@ -24,12 +23,13 @@ const Avatar = muiThemeable()(({ muiTheme, picture, onDrop, ...props }) => (
       />
     }
     <UploadFileButton
+      id='profilePicture'
+      label='Edit'
+      profile
+      labelStyle={{fontSize: '15px'}}
       className='avatar__upload_file_button'
       onDrop={onDrop}
-      multiple={false}
-    >
-      <Label style={{ fontSize: '15px' }} >Edit</Label>
-    </UploadFileButton>
+    />
   </Container>
 ))
 

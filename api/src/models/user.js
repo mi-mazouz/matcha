@@ -46,5 +46,16 @@
    hobbies: {
      type: Array,
      default: []
+   },
+   profileScore: {
+     type: Number,
+     default: 0
+   },
+   like: {
+     type: Number,
+     default: 0
+   },
+   location: {
+     type: Boolean
    }
  }))
