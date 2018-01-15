@@ -42,5 +42,9 @@
      type: String,
      enum: ['male', 'female', 'both', null],
      default: null
+   },
+   hobbies: {
+     type: Array,
+     default: []
    }
  }))
