@@ -56,7 +56,6 @@ class Signup extends React.Component {
                 maxLength='16'
                 name='firstName'
                 hintText='First name'
-                type='text'
                 width='45%'
                 required
               />
@@ -64,7 +63,6 @@ class Signup extends React.Component {
                 maxLength='16'
                 name='lastName'
                 hintText='last name'
-                type='text'
                 width='45%'
                 required
               />
@@ -73,7 +71,6 @@ class Signup extends React.Component {
               maxLength='16'
               name='userName'
               hintText='Username'
-              type='text'
               required
             />
             <TextField
