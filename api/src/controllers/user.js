@@ -11,7 +11,7 @@ const getInfos = (req, res, next) => {
   return Promise.all([
     userService.getById(req.user.id),
     pictureService.getProfile(req.user.id),
-    pictureService.getAll(req.user.id)
+    pictureService.getNoProfile(req.user.id)
   ])
   .then(([user, pictureProfile, pictures]) => {
     if (!user) return next(createError.NotFound(errors.USER_NOT_FOUND))
@@ -26,7 +26,7 @@ const getInfos = (req, res, next) => {
       pictures: pictures ? utils.parsePictures(pictures) : null,
       profileScore: user.profileScore,
       like: user.like,
-      location: user.location,
+      isLocated: user.isLocated,
       hobbies: user.hobbies,
       bio: user.bio
     })

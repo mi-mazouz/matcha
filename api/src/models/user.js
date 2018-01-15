@@ -55,7 +55,12 @@
      type: Number,
      default: 0
    },
+   isLocated: {
+     type: Boolean,
+     default: null
+   },
    location: {
-     type: Boolean
+     type: Object,
+     default: null
    }
  }))

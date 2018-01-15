@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mi-mazouz/Matcha#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "crypto-random-string": "^1.0.0",

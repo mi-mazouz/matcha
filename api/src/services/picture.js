@@ -19,7 +19,7 @@ const getProfile = (userId) => {
   return Picture.findOne({ userId, profile: true })
 }
 
-const getAll = (userId) => {
+const getNoProfile = (userId) => {
   return Picture.find({ userId, profile: false })
 }
 
@@ -27,15 +27,15 @@ const remove = (_id) => {
   return Picture.remove({ _id })
 }
 
-const count = (userId) => {
+const countWithoutProfile = (userId) => {
   return Picture.count({ userId, profile: false })
 }
 
 module.exports = {
   create,
-  count,
+  countWithoutProfile,
   getProfile,
   update,
   remove,
-  getAll
+  getNoProfile
 }

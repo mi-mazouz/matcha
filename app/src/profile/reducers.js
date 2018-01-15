@@ -5,6 +5,7 @@ const initialUserState = {
   pictures: null,
   mail: null,
   location: null,
+  isLocated: null,
   profileScore: null,
   like: null,
   firstName: null,
@@ -21,12 +22,14 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
     case constants.PROFILE_PICTURE_REQUEST:
     case constants.PICTURES_REQUEST:
     case constants.PICTURE_DELETE_REQUEST:
+    case constants.POST_LOCATION_REQUEST:
     case constants.GET_USER_INFOS_REQUEST:
     case constants.UPDATE_USER_REQUEST:
       return { ...state, isFetching: true }
     case constants.PROFILE_PICTURE_FAILURE:
     case constants.PICTURES_FAILURE:
     case constants.PICTURE_DELETE_FAILURE:
+    case constants.POST_LOCATION_FAILURE:
     case constants.GET_USER_INFOS_FAILURE:
     case constants.UPDATE_USER_FAILURE:
       return { ...state, isFetching: false, error: payload }
@@ -35,6 +38,8 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
     case constants.PICTURES_SUCCESS:
     case constants.PICTURE_DELETE_SUCCESS:
       return { ...state, isFetching: false, error: null, pictures: payload }
+    case constants.POST_LOCATION_SUCCESS:
+      return { ...state, isFetching: false, error: null, location: payload }
     case constants.GET_USER_INFOS_SUCCESS:
       return {
         ...state,
@@ -49,7 +54,7 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         interestedIn: payload.interestedIn,
         hobbies: payload.hobbies,
         like: payload.like,
-        location: payload.location,
+        isLocated: payload.isLocated,
         profileScore: payload.profileScore,
         bio: payload.bio
       }
@@ -65,7 +70,7 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         interestedIn: payload.interestedIn,
         hobbies: payload.hobbies,
         like: payload.like,
-        location: payload.location,
+        isLocated: payload.isLocated,
         profileScore: payload.profileScore,
         bio: payload.bio
       }

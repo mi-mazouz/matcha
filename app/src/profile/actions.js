@@ -97,7 +97,7 @@ const getUserInfos = () => dispatch => {
         interestedIn: json.data.interestedIn,
         hobbies: json.data.hobbies,
         profileScore: json.data.profileScore,
-        location: json.data.location,
+        isLocated: json.data.isLocated,
         like: json.data.like,
         bio: json.data.bio
       }
@@ -133,7 +133,7 @@ const updateUser = (dataToUpdate) => dispatch => {
         profileScore: json.data.updatedUser.profileScore,
         like: json.data.updatedUser.like,
         hobbies: json.data.updatedUser.hobbies,
-        location: json.data.updatedUser.location,
+        isLocated: json.data.updatedUser.isLocated,
         bio: json.data.updatedUser.bio
       }
     })
@@ -146,10 +146,34 @@ const updateUser = (dataToUpdate) => dispatch => {
   })
 }
 
+const postLocation = () => dispatch => {
+  dispatch({
+    type: constants.POST_LOCATION_REQUEST
+  })
+
+  axios({
+    method: 'post',
+    url: config.API_BASE_URI + '/location/post-location'
+  })
+  .then((json) => {
+    dispatch({
+      type: constants.POST_LOCATION_SUCCESS,
+      payload: json.data.location
+    })
+  })
+  .catch((error) => {
+    dispatch({
+      type: constants.POST_LOCATION_FAILURE,
+      payload: error.response.data.message
+    })
+  })
+}
+
 export {
  saveProfilePicture,
  removePicture,
  savePictures,
  updateUser,
+ postLocation,
  getUserInfos
 }

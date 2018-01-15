@@ -15,21 +15,23 @@ const saveProfile = (req, res, next) => {
 
     return pictureService.update(pictureProfile, req.body.picture)
   })
-  .then((updatedPictureProfile) => res.send({ profilePicture: updatedPictureProfile.data }))
+  .then((newPictureProfile) => res.send({ profilePicture: newPictureProfile.data }))
   .catch(next)
 }
 
 const save = (req, res, next) => {
   if (!_.has(req, 'body.pictures')) return next(createError.BadRequest(errors.PHOTO_MISSING))
 
-  return pictureService.count(req.user.id)
+  return pictureService.countWithoutProfile(req.user.id)
   .then((numberOfPictures) => {
-    if (numberOfPictures + req.body.pictures.length > constants.MAX_NUMBER_OF_PICTURES) return Promise.reject(createError.BadRequest(errors.TOO_MUCH_PICTURES))
+    if (numberOfPictures + req.body.pictures.length > constants.MAX_NUMBER_OF_PICTURES) {
+      return Promise.reject(createError.BadRequest(errors.TOO_MUCH_PICTURES))
+    }
 
     return Promise.all(req.body.pictures.map((picture) => {
       return pictureService.create(req.user.id, false, picture)
     }))
-    .then(() => pictureService.getAll(req.user.id))
+    .then(() => pictureService.getNoProfile(req.user.id))
     .then((pictures) => res.send({ pictures: utils.parsePictures(pictures) }))
   })
   .catch(next)
@@ -39,7 +41,7 @@ const remove = (req, res, next) => {
   if (!_.has(req, 'body.picture')) return next(createError.BadRequest(errors.PHOTO_MISSING))
 
   return pictureService.remove(req.body.picture.id)
-  .then(() => pictureService.getAll(req.user.id))
+  .then(() => pictureService.getNoProfile(req.user.id))
   .then((pictures) => res.send({ pictures: utils.parsePictures(pictures) }))
   .catch(next)
 }

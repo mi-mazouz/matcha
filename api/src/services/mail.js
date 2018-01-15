@@ -18,7 +18,7 @@ const sendResetPasswordMail = (mail, firstName, newPassword) => {
     from: '"Matcha" <admin@matcha.com>',
     to: mail,
     subject: 'Reset your password',
-    text: `Hi ${firstName}, here you can find your new password:\n${newPassword}.\n\n You should to change it in your profil parameters`
+    text: `Hi ${firstName}, here you can find your new password:\n${newPassword}.\n\n You should to change it in your profil settings`
   }
 
   utils.transporter.sendMail(mailOptions, (err, info) => {

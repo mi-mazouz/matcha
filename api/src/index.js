@@ -5,6 +5,7 @@ const mongoDb = require('../config/database')
 const logger = require('./services/logger')
 const config = require('../config')
 const authenticationRouter = require('./routes/authentication')
+const locationRouter = require('./routes/location')
 const pictureRoute = require('./routes/picture')
 const userRoute = require('./routes/user')
 const decodetoken = require('./middlewares/token').decodetoken
@@ -24,9 +25,10 @@ mongoDb.connect(config.DATABASE_URI)
   app.use(decodetoken)
 
   app.use(requestInfos)
-  app.use('/', authenticationRouter)
+  app.use('/authentication', authenticationRouter)
   app.use('/picture', pictureRoute)
   app.use('/user', userRoute)
+  app.use('/location', locationRouter)
   app.use(errorsHandling)
 
   app.listen(config.PORT, function () {

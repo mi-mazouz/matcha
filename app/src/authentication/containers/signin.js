@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { signin } from '../actions'
 
+import { signin } from '../actions'
 import Layout from '../components/signin'
 
 export default connect(

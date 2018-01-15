@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { signup } from '../actions'
 
+import { signup } from '../actions'
 import Layout from '../components/signup'
 
 export default connect(

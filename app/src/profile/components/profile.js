@@ -12,6 +12,7 @@ import '../../styles/css/profile.css'
 class Profile extends React.Component {
   componentDidMount () {
     this.props.getUserInfos()
+    this.props.postLocation()
   }
 
   handlePictures (files, profile) {
@@ -48,7 +49,7 @@ class Profile extends React.Component {
         case 'interestedIn':
           return this.props.updateUser({interestedIn: splitedValue[1]})
         case 'location':
-          return this.props.updateUser({location: splitedValue[1] === 'yes'})
+          return this.props.updateUser({isLocated: splitedValue[1] === 'yes'})
         default:
           return
       }
@@ -114,13 +115,13 @@ class Profile extends React.Component {
                 label='yes'
                 value='location yes'
                 onCheck={this.changeInterest.bind(this)}
-                checked={user.location === true}
+                checked={user.isLocated === true}
               />
               <CheckBox
                 label='no'
                 value='location no'
                 onCheck={this.changeInterest.bind(this)}
-                checked={user.location === false}
+                checked={user.isLocated === false}
               />
               <Label style={{ fontSize: '15px' }} >{`I'm interesting in:`}</Label>
               <CheckBox

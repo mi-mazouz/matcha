@@ -12,7 +12,7 @@ const signup = (firstName, lastName, userName, mail, password) => dispatch => {
 
   axios({
     method: 'post',
-    url: config.API_BASE_URI + '/signup',
+    url: config.API_BASE_URI + '/authentication/signup',
     data: { firstName, lastName, userName, mail, password }
   })
   .then((json) => {
@@ -39,7 +39,7 @@ const signin = (mail, password) => dispatch => {
 
   axios({
     method: 'post',
-    url: config.API_BASE_URI + '/signin',
+    url: config.API_BASE_URI + '/authentication/signin',
     data: { mail, password }
   })
   .then((json) => {
@@ -66,7 +66,7 @@ const resetPassword = (mail) => dispatch => {
 
   axios({
     method: 'post',
-    url: config.API_BASE_URI + '/reset-password',
+    url: config.API_BASE_URI + '/authentication/reset-password',
     data: { mail }
   })
   .then((json) => {
