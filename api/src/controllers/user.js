@@ -21,6 +21,7 @@ const getInfos = (req, res, next) => {
       lastName: user.lastName,
       gender: user.gender,
       interestedIn: user.interestedIn,
+      hobbies: user.hobbies,
       bio: user.bio
     })
   })
@@ -46,6 +47,7 @@ const updateInfos = (req, res, next) => {
       lastName: updatedUser.lastName,
       gender: updatedUser.gender,
       interestedIn: updatedUser.interestedIn,
+      hobbies: updatedUser.hobbies,
       bio: updatedUser.bio
     })
   })

@@ -35,6 +35,7 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         lastName: payload.lastName,
         gender: payload.gender,
         interestedIn: payload.interestedIn,
+        hobbies: payload.hobbies,
         bio: payload.bio
       }
     case constants.UPDATE_USER_SUCCESS:
@@ -47,6 +48,7 @@ const UserReducer = (state = initialUserState, { type, payload }) => {
         lastName: payload.lastName,
         gender: payload.gender,
         interestedIn: payload.interestedIn,
+        hobbies: payload.hobbies,
         bio: payload.bio
       }
     default:
