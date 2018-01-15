@@ -5,13 +5,15 @@ const userService = require('../services/user')
 const pictureService = require('../services/picture')
 const errors = require('../errors')
 const constants = require('../constants')
+const utils = require('../utils')
 
 const getInfos = (req, res, next) => {
   return Promise.all([
     userService.getById(req.user.id),
-    pictureService.getProfile(req.user.id)
+    pictureService.getProfile(req.user.id),
+    pictureService.getAll(req.user.id)
   ])
-  .then(([user, pictureProfile]) => {
+  .then(([user, pictureProfile, pictures]) => {
     if (!user) return next(createError.NotFound(errors.USER_NOT_FOUND))
 
     res.send({
@@ -21,6 +23,10 @@ const getInfos = (req, res, next) => {
       lastName: user.lastName,
       gender: user.gender,
       interestedIn: user.interestedIn,
+      pictures: pictures ? utils.parsePictures(pictures) : null,
+      profileScore: user.profileScore,
+      like: user.like,
+      location: user.location,
       hobbies: user.hobbies,
       bio: user.bio
     })
@@ -40,17 +46,7 @@ const updateInfos = (req, res, next) => {
 
     return userService.patchUser(user, req.body)
   })
-  .then((updatedUser) => {
-    res.send({
-      mail: updatedUser.mail,
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
-      gender: updatedUser.gender,
-      interestedIn: updatedUser.interestedIn,
-      hobbies: updatedUser.hobbies,
-      bio: updatedUser.bio
-    })
-  })
+  .then((updatedUser) => res.send({updatedUser}))
   .catch(next)
 }
 

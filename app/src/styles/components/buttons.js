@@ -2,7 +2,9 @@ import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 import UiCheckBox from 'material-ui/Checkbox'
-import Dropzone from 'react-dropzone'
+
+import { Container } from './containers'
+import { Label } from './label'
 
 const Button = muiThemeable()(({ muiTheme, ...props }) => (
   <RaisedButton
@@ -17,13 +19,25 @@ const Button = muiThemeable()(({ muiTheme, ...props }) => (
   />
 ))
 
-const UploadFileButton = ({ children, ...props }) => (
-  <Dropzone
-    accept='image/jpeg,image/png,image/jpg,image/gif'
-    {...props}
+const UploadFileButton = ({ label, onDrop, className, profile, id, multiple, ...props }) => (
+  <Container
+    className={className}
   >
-    { children }
-  </Dropzone>
+    <input
+      multiple={multiple}
+      type='file'
+      id={id}
+      style={{display: 'none'}}
+      accept='image/jpeg,image/png,image/jpg,image/gif'
+      onChange={(event) => onDrop(event.target.files, profile)}
+    />
+    <Label
+      style={{...props.labelStyle}}
+      htmlFor={id}
+    >
+      {label}
+    </Label>
+  </Container>
 )
 
 const CheckBox = muiThemeable()(({ muiTheme, ...props }) => (

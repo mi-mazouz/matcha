@@ -16,7 +16,7 @@ const saveProfilePicture = (picture) => dispatch => {
   .then((json) => {
     dispatch({
       type: constants.PROFILE_PICTURE_SUCCESS,
-      payload: { profilePicture: json.data.profilePicture }
+      payload: json.data.profilePicture
     })
   })
   .catch((error) => {
@@ -27,9 +27,57 @@ const saveProfilePicture = (picture) => dispatch => {
   })
 }
 
-const getUser = () => dispatch => {
+const savePictures = (pictures) => dispatch => {
   dispatch({
-    type: constants.GET_USER_REQUEST
+    type: constants.PICTURES_REQUEST
+  })
+
+  axios({
+    method: 'post',
+    url: config.API_BASE_URI + '/picture/save',
+    data: { pictures }
+  })
+  .then((json) => {
+    dispatch({
+      type: constants.PICTURES_SUCCESS,
+      payload: json.data.pictures
+    })
+  })
+  .catch((error) => {
+    dispatch({
+      type: constants.PICTURES_FAILURE,
+      payload: error.response.data.message
+    })
+  })
+}
+
+const removePicture = (picture) => dispatch => {
+  dispatch({
+    type: constants.PICTURE_DELETE_REQUEST
+  })
+
+  axios({
+    method: 'delete',
+    url: config.API_BASE_URI + '/picture/delete',
+    data: { picture }
+  })
+  .then((json) => {
+    dispatch({
+      type: constants.PICTURE_DELETE_SUCCESS,
+      payload: json.data.pictures
+    })
+  })
+  .catch((error) => {
+    dispatch({
+      type: constants.PICTURE_DELETE_FAILURE,
+      payload: error.response.data.message
+    })
+  })
+}
+
+const getUserInfos = () => dispatch => {
+  dispatch({
+    type: constants.GET_USER_INFOS_REQUEST
   })
 
   axios({
@@ -38,22 +86,26 @@ const getUser = () => dispatch => {
   })
   .then((json) => {
     dispatch({
-      type: constants.GET_USER_SUCCESS,
+      type: constants.GET_USER_INFOS_SUCCESS,
       payload: {
         profilePicture: json.data.profilePicture,
+        pictures: json.data.pictures,
         mail: json.data.mail,
         firstName: json.data.firstName,
         lastName: json.data.lastName,
         gender: json.data.gender,
         interestedIn: json.data.interestedIn,
         hobbies: json.data.hobbies,
+        profileScore: json.data.profileScore,
+        location: json.data.location,
+        like: json.data.like,
         bio: json.data.bio
       }
     })
   })
   .catch((error) => {
     dispatch({
-      type: constants.GET_USER_FAILURE,
+      type: constants.GET_USER_INFOS_FAILURE,
       payload: error.response.data.message
     })
   })
@@ -73,13 +125,16 @@ const updateUser = (dataToUpdate) => dispatch => {
     dispatch({
       type: constants.UPDATE_USER_SUCCESS,
       payload: {
-        mail: json.data.mail,
-        firstName: json.data.firstName,
-        lastName: json.data.lastName,
-        gender: json.data.gender,
-        interestedIn: json.data.interestedIn,
-        hobbies: json.data.hobbies,
-        bio: json.data.bio
+        mail: json.data.updatedUser.mail,
+        firstName: json.data.updatedUser.firstName,
+        lastName: json.data.updatedUser.lastName,
+        gender: json.data.updatedUser.gender,
+        interestedIn: json.data.updatedUser.interestedIn,
+        profileScore: json.data.updatedUser.profileScore,
+        like: json.data.updatedUser.like,
+        hobbies: json.data.updatedUser.hobbies,
+        location: json.data.updatedUser.location,
+        bio: json.data.updatedUser.bio
       }
     })
   })
@@ -93,6 +148,8 @@ const updateUser = (dataToUpdate) => dispatch => {
 
 export {
  saveProfilePicture,
+ removePicture,
+ savePictures,
  updateUser,
- getUser
+ getUserInfos
 }

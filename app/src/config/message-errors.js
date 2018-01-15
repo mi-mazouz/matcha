@@ -1,6 +1,6 @@
 module.exports = {
   BIO_TOO_LONG: 'Max 150char.',
-  MAIL_EXISTS: 'This email already exists.',
+  MAIL_ALREADY_EXISTS: 'This email already exists.',
   MAIL_MISSING: 'Mail is missing.',
   MAIL_NOT_FOUND: 'Email not found.',
   MAIL_TOO_LONG: 'Mail too long.',
@@ -15,5 +15,6 @@ module.exports = {
   USER_NOT_FOUND: 'User not found',
   USERNAME_MISSING: 'Username is missing',
   USERNAME_TOO_LONG: 'USername too long',
-  SIGNIN: 'Email or password invalid.'
+  INVALID_MAIL_OR_PASSWORD: 'Email or password invalid.',
+  TOO_MUCH_PICTURES: 'You can upload only 4 pictures'
 }

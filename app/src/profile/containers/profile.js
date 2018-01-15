@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { saveProfilePicture, getUser, updateUser } from '../actions'
+import { saveProfilePicture, savePictures, getUserInfos, updateUser, removePicture } from '../actions'
 import LayoutComponent from '../components/profile'
 import BasicPage from '../../hocs/components/basic-page'
 
@@ -10,8 +10,10 @@ const Layout = connect(
   }),
   {
     saveProfilePicture,
+    savePictures,
+    removePicture,
     updateUser,
-    getUser
+    getUserInfos
   }
 )(LayoutComponent)
 
