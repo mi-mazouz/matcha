@@ -14,7 +14,7 @@ const postLocation = (req, res, next) => {
     if (!user) return next(createError.NotFound(errors.USER_NOT_FOUND))
 
     res.send({location: location.data})
-    return userService.patchUser(user, {location: location.data})
+    return userService.patch(user, {location: location.data})
   })
   .catch(next)
 }

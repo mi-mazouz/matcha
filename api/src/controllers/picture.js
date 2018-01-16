@@ -9,7 +9,7 @@ const utils = require('../utils')
 const saveProfile = (req, res, next) => {
   if (!_.has(req, 'body.picture')) return next(createError.BadRequest(errors.PHOTO_MISSING))
 
-  return pictureService.getProfile(req.user.id)
+  return pictureService.getByUserId(req.user.id)
   .then((pictureProfile) => {
     if (!pictureProfile) return pictureService.create(req.user.id, true, req.body.picture)
 
@@ -25,7 +25,7 @@ const save = (req, res, next) => {
   return pictureService.countWithoutProfile(req.user.id)
   .then((numberOfPictures) => {
     if (numberOfPictures + req.body.pictures.length > constants.MAX_NUMBER_OF_PICTURES) {
-      return Promise.reject(createError.BadRequest(errors.TOO_MUCH_PICTURES))
+      throw createError.BadRequest(errors.TOO_MUCH_PICTURES)
     }
 
     return Promise.all(req.body.pictures.map((picture) => {

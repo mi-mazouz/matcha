@@ -150,7 +150,7 @@ class Profile extends React.Component {
                 text={user.bio || 'Edit your biography'}
                 maxLength={150}
                 onChange={this.changeInterest.bind(this)}
-                paramName='bio'
+                paramName='biography'
                 style={{ fontSize: '15px', height: '150px', width: '500px' }}
               />
             </Container>

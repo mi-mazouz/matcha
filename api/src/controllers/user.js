@@ -5,47 +5,28 @@ const userService = require('../services/user')
 const pictureService = require('../services/picture')
 const errors = require('../errors')
 const constants = require('../constants')
-const utils = require('../utils')
 
 const getInfos = (req, res, next) => {
-  return Promise.all([
-    userService.getById(req.user.id),
-    pictureService.getProfile(req.user.id),
-    pictureService.getNoProfile(req.user.id)
-  ])
-  .then(([user, pictureProfile, pictures]) => {
+  return userService.getById(req.user.id)
+  .then((user) => {
     if (!user) return next(createError.NotFound(errors.USER_NOT_FOUND))
 
-    res.send({
-      profilePicture: pictureProfile ? pictureProfile.data : null,
-      mail: user.mail,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      gender: user.gender,
-      interestedIn: user.interestedIn,
-      pictures: pictures ? utils.parsePictures(pictures) : null,
-      profileScore: user.profileScore,
-      like: user.like,
-      isLocated: user.isLocated,
-      hobbies: user.hobbies,
-      bio: user.bio
+    return pictureService.getAll(req.user.id)
+    .then((pictures) => {
+      user['pictures'] = pictures
+      res.send({ user })
     })
   })
   .catch(next)
 }
 
 const updateInfos = (req, res, next) => {
-  if (_.has(req, 'body.bio') && req.body.bio.length > constants.BIO_MAX_SIZE) return next(createError.BadRequest(errors.BIO_TOO_LONG))
+  if (_.has(req, 'body.biography') && req.body.biography.length > constants.BIO_MAX_SIZE) return next(createError.BadRequest(errors.BIO_TOO_LONG))
   if (_.has(req, 'body.mail') && req.body.mail.length > constants.MAIL_MAX_SIZE) return next(createError.BadRequest(errors.MAIL_TOO_LONG))
   if (_.has(req, 'body.firstName') && req.body.firstName.length > constants.FIRST_NAME_MAX_SIZE) return next(createError.BadRequest(errors.FIRST_NAME_TOO_LONG))
   if (_.has(req, 'body.lastName') && req.body.lastName.length > constants.LAST_NAME_MAX_SIZE) return next(createError.BadRequest(errors.LAST_NAME_TOO_LONG))
 
-  return userService.getById(req.user.id)
-  .then((user) => {
-    if (!user) return next(createError.NotFound(errors.USER_NOT_FOUND))
-
-    return userService.patchUser(user, req.body)
-  })
+  return userService.patch(req.user.id, req.body)
   .then((updatedUser) => res.send({updatedUser}))
   .catch(next)
 }
