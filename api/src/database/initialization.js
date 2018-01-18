@@ -19,6 +19,7 @@ module.exports = (config) => {
     })
     .then(() => {
       return client.query(`CREATE TABLE IF NOT EXISTS public.pictures (
+        id SERIAL PRIMARY KEY,
         userId INTEGER REFERENCES users (id),
         profile BOOLEAN NOT NULL,
         data VARCHAR NOT NULL,

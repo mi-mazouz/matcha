@@ -12,7 +12,6 @@ const create = (firstName, lastName, username, mail, encryptedPassword) => {
       'firstName, lastName, username, mail, password',
       `'${firstName}', '${lastName}', '${username}', '${mail}', '${encryptedPassword}'`
     )
-    .then(() => postgreSql.selectWhere(client, '*', 'users', `mail='${mail}'`))
     .then((user) => {
       postgreSql.end(client)
       return Promise.resolve(user.rows[0])
@@ -34,8 +33,6 @@ const patch = (userId, body) => {
     )
     .then((user) => {
       postgreSql.end(client)
-
-      if (!user.rows[0]) return Promise.resolve(null)
       return Promise.resolve(user.rows[0])
     })
   })

@@ -12,7 +12,7 @@ import '../../styles/css/profile.css'
 class Profile extends React.Component {
   componentDidMount () {
     this.props.getUserInfos()
-    this.props.postLocation()
+    // this.props.postLocation()
   }
 
   handlePictures (files, profile) {
@@ -68,19 +68,19 @@ class Profile extends React.Component {
           <Avatar
             onDrop={this.handlePictures.bind(this)}
             size={200}
-            picture={user.profilePicture}
+            picture={user.profilePicture ? user.profilePicture.data : null}
           />
           <Container>
             <Container style={{display: 'flex'}}>
               <LabelInput
-                text={user.firstName}
+                text={user.firstname}
                 maxLength={16}
                 onChange={this.changeInterest.bind(this)}
                 paramName='firstName'
                 style={{ fontSize: '25px' }}
               />
               <LabelInput
-                text={user.lastName}
+                text={user.lastname}
                 maxLength={16}
                 onChange={this.changeInterest.bind(this)}
                 paramName='lastName'
@@ -98,15 +98,15 @@ class Profile extends React.Component {
               <Label style={{ fontSize: '15px' }} >{`I'm a:`}</Label>
               <CheckBox
                 label='male'
-                value='Im male'
+                value='Im Male'
                 onCheck={this.changeInterest.bind(this)}
-                checked={user.gender === 'male'}
+                checked={user.gender === 'Male'}
               />
               <CheckBox
                 label='female'
-                value='Im female'
+                value='Im Female'
                 onCheck={this.changeInterest.bind(this)}
-                checked={user.gender === 'female'}
+                checked={user.gender === 'Female'}
               />
             </Container>
             <Container>
@@ -147,7 +147,7 @@ class Profile extends React.Component {
             </Container>
             <Container>
               <LabelInput
-                text={user.bio || 'Edit your biography'}
+                text={user.biography || 'Edit your biography'}
                 maxLength={150}
                 onChange={this.changeInterest.bind(this)}
                 paramName='biography'

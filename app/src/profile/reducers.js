@@ -1,79 +1,49 @@
 import * as constants from './constants'
 
 const initialUserState = {
+  firstname: null,
+  lastname: null,
+  gender: null,
   profilePicture: null,
   pictures: null,
   mail: null,
-  location: null,
-  isLocated: null,
-  profileScore: null,
-  like: null,
-  firstName: null,
-  lastName: null,
-  gender: null,
-  interestedIn: null,
-  bio: null,
+  biography: null,
+  // location: null,
+  // isLocated: null,
+  // profileScore: null,
+  // like: null,
+  // username: null,
+  // interestedIn: null,
   isFetching: false,
   error: null
 }
 
 const UserReducer = (state = initialUserState, { type, payload }) => {
   switch (type) {
+    // case constants.POST_LOCATION_REQUEST:
     case constants.PROFILE_PICTURE_REQUEST:
     case constants.PICTURES_REQUEST:
-    case constants.PICTURE_DELETE_REQUEST:
-    case constants.POST_LOCATION_REQUEST:
+    case constants.PICTURE_REMOVE_REQUEST:
     case constants.GET_USER_INFOS_REQUEST:
     case constants.UPDATE_USER_REQUEST:
       return { ...state, isFetching: true }
+      // case constants.POST_LOCATION_FAILURE:
     case constants.PROFILE_PICTURE_FAILURE:
     case constants.PICTURES_FAILURE:
-    case constants.PICTURE_DELETE_FAILURE:
-    case constants.POST_LOCATION_FAILURE:
+    case constants.PICTURE_REMOVE_FAILURE:
     case constants.GET_USER_INFOS_FAILURE:
     case constants.UPDATE_USER_FAILURE:
       return { ...state, isFetching: false, error: payload }
-    case constants.PROFILE_PICTURE_SUCCESS:
-      return { ...state, isFetching: false, error: null, profilePicture: payload }
+    // case constants.POST_LOCATION_SUCCESS:
     case constants.PICTURES_SUCCESS:
-    case constants.PICTURE_DELETE_SUCCESS:
-      return { ...state, isFetching: false, error: null, pictures: payload }
-    case constants.POST_LOCATION_SUCCESS:
-      return { ...state, isFetching: false, error: null, location: payload }
+      const pictures = [...state.pictures, ...payload]
+
+      return { ...state, pictures, isFetching: false, error: null }
+    case constants.PROFILE_PICTURE_SUCCESS:
+    case constants.PICTURE_REMOVE_SUCCESS:
     case constants.GET_USER_INFOS_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        error: null,
-        profilePicture: payload.profilePicture,
-        pictures: payload.pictures,
-        mail: payload.mail,
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        gender: payload.gender,
-        interestedIn: payload.interestedIn,
-        hobbies: payload.hobbies,
-        like: payload.like,
-        isLocated: payload.isLocated,
-        profileScore: payload.profileScore,
-        bio: payload.bio
-      }
     case constants.UPDATE_USER_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        error: null,
-        mail: payload.mail,
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        gender: payload.gender,
-        interestedIn: payload.interestedIn,
-        hobbies: payload.hobbies,
-        like: payload.like,
-        isLocated: payload.isLocated,
-        profileScore: payload.profileScore,
-        bio: payload.bio
-      }
+      return { ...state, ...payload, isFetching: false, error: null }
     default:
       return state
   }

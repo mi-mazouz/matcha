@@ -35,16 +35,28 @@ const selectWhere = (client, regex, tableName, conditions) => {
 }
 
 const updateWhere = (client, tableName, newData, conditions) => {
-  return client.query(`UPDATE ${tableName} SET ${newData} WHERE ${conditions};`)
+  return client.query(`UPDATE ${tableName} SET ${newData} WHERE ${conditions} RETURNING *;`)
+  .then((result) => JSON.parse(JSON.stringify(result)))
 }
 
 const insert = (client, tableName, columNames, values) => {
-  return client.query(`INSERT INTO ${tableName} (${columNames}) VALUES (${values});`)
+  return client.query(`INSERT INTO ${tableName} (${columNames}) VALUES (${values}) RETURNING *;`)
+  .then((result) => JSON.parse(JSON.stringify(result)))
+}
+
+const count = (client, columNames, tableName) => {
+  return client.query(`SELECT COUNT (${columNames}) FROM ${tableName};`)
+}
+
+const deleteWhere = (client, tableName, conditions) => {
+  return client.query(`DELETE FROM ${tableName} WHERE ${conditions};`)
 }
 
 module.exports = {
   connect,
+  count,
   createEnum,
+  deleteWhere,
   end,
   insert,
   selectWhere,

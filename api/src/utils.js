@@ -11,14 +11,6 @@ const buildToken = (userId) => {
   )
 }
 
-const parsePictures = (pictures) => pictures.map((picture) => {
-  const pictureObject = {}
-
-  pictureObject['data'] = picture.data
-  pictureObject['id'] = picture.id
-  return pictureObject
-})
-
 const buildRandomString = (size) => {
   return cryptoRandomString(size)
 }
@@ -35,6 +27,6 @@ const transporter = nodeMailer.createTransport({
 module.exports = {
   buildToken,
   transporter,
-  parsePictures,
+  // parsePictures,
   buildRandomString
 }
