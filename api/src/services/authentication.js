@@ -24,8 +24,8 @@ const signup = (firstName, lastName, username, mail, password) => {
     )
   })
   .then((user) => {
-    mailService.sendConfirmationMail(user.mail, user.firstName)
-    return utils.buildToken(user.id)
+    // mailService.sendConfirmationMail(user.mail, user.firstName)
+    return utils.buildToken(user._id)
   })
 }
 
