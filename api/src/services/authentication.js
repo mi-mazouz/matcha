@@ -40,13 +40,14 @@ const signin = (mail, password) => {
     .then((passwordMatched) => {
       if (!passwordMatched) throw createError.BadRequest(errors.SIGNIN)
 
-      return utils.buildToken(user._id)
+      return utils.buildToken(user.id)
     })
   })
 }
 
 const resetPassword = (user) => {
   const newPassword = utils.buildRandomString(8)
+
   mailService.sendResetPasswordMail(
     user.mail,
     user.firstName,
@@ -55,8 +56,7 @@ const resetPassword = (user) => {
 
   return bcrypt.hash(newPassword, 10)
   .then((newEncryptedPassword) => {
-    user.password = newEncryptedPassword
-    return user.save()
+    return userService.patch(user.id, {password: newEncryptedPassword})
   })
 }
 

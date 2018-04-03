@@ -14,9 +14,11 @@ const saveProfilePicture = (picture) => dispatch => {
     data: { picture }
   })
   .then((json) => {
+    const pictureProfile = json.data
+
     dispatch({
       type: constants.PROFILE_PICTURE_SUCCESS,
-      payload: json.data.profilePicture
+      payload: pictureProfile
     })
   })
   .catch((error) => {
@@ -38,9 +40,11 @@ const savePictures = (pictures) => dispatch => {
     data: { pictures }
   })
   .then((json) => {
+    const pictures = json.data
+
     dispatch({
       type: constants.PICTURES_SUCCESS,
-      payload: json.data.pictures
+      payload: pictures
     })
   })
   .catch((error) => {
@@ -53,23 +57,25 @@ const savePictures = (pictures) => dispatch => {
 
 const removePicture = (picture) => dispatch => {
   dispatch({
-    type: constants.PICTURE_DELETE_REQUEST
+    type: constants.PICTURE_REMOVE_REQUEST
   })
 
   axios({
     method: 'delete',
-    url: config.API_BASE_URI + '/picture/delete',
+    url: config.API_BASE_URI + '/picture/remove',
     data: { picture }
   })
   .then((json) => {
+    const pictures = json.data
+
     dispatch({
-      type: constants.PICTURE_DELETE_SUCCESS,
-      payload: json.data.pictures
+      type: constants.PICTURE_REMOVE_SUCCESS,
+      payload: pictures
     })
   })
   .catch((error) => {
     dispatch({
-      type: constants.PICTURE_DELETE_FAILURE,
+      type: constants.PICTURE_REMOVE_FAILURE,
       payload: error.response.data.message
     })
   })
@@ -85,22 +91,11 @@ const getUserInfos = () => dispatch => {
     url: config.API_BASE_URI + '/user/get-infos'
   })
   .then((json) => {
+    const user = json.data
+
     dispatch({
       type: constants.GET_USER_INFOS_SUCCESS,
-      payload: {
-        profilePicture: json.data.profilePicture,
-        pictures: json.data.pictures,
-        mail: json.data.mail,
-        firstName: json.data.firstName,
-        lastName: json.data.lastName,
-        gender: json.data.gender,
-        interestedIn: json.data.interestedIn,
-        hobbies: json.data.hobbies,
-        profileScore: json.data.profileScore,
-        isLocated: json.data.isLocated,
-        like: json.data.like,
-        bio: json.data.bio
-      }
+      payload: user
     })
   })
   .catch((error) => {
@@ -122,20 +117,11 @@ const updateUser = (dataToUpdate) => dispatch => {
     data: dataToUpdate
   })
   .then((json) => {
+    const user = json.data
+
     dispatch({
       type: constants.UPDATE_USER_SUCCESS,
-      payload: {
-        mail: json.data.updatedUser.mail,
-        firstName: json.data.updatedUser.firstName,
-        lastName: json.data.updatedUser.lastName,
-        gender: json.data.updatedUser.gender,
-        interestedIn: json.data.updatedUser.interestedIn,
-        profileScore: json.data.updatedUser.profileScore,
-        like: json.data.updatedUser.like,
-        hobbies: json.data.updatedUser.hobbies,
-        isLocated: json.data.updatedUser.isLocated,
-        bio: json.data.updatedUser.bio
-      }
+      payload: user
     })
   })
   .catch((error) => {
