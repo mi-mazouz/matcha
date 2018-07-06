@@ -1,6 +1,23 @@
 const winston = require('winston')
 
-winston.level = 'debug'
-winston.default.transports.console.colorize = true
+const format = winston.format.combine(
+  winston.format.colorize(),
+  winston.format.simple(),
+)
 
-module.exports = winston
+const logger = winston.createLogger({
+  level: 'error',
+  levels: {
+    debug: 0,
+    info: 1,
+    warning: 2,
+    error: 3
+  },
+  transports: [
+    new winston.transports.Console({
+      format,
+    })
+  ]
+})
+
+module.exports = logger

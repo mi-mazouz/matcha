@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 
 const errors = require('../errors')
-const userService = require('../services/user')
+// const userService = require('../services/user')
 
 const userJwt = (req, res, next) => {
   if (!_.has(req, 'user')) return next(createError.Unauthorized(errors.TOKEN_INVALID))
@@ -21,7 +21,7 @@ const decodetoken = (req, res, next) => {
     if (err || !decoded.userId) return next()
 
     req.token = decoded
-    return userService.getById(decoded.userId)
+    // return userService.getById(decoded.userId)
     .then((user) => {
       req.user = user
 
