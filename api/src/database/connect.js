@@ -1,9 +1,9 @@
 const { Client } = require('pg')
 const logger = require('../services/logger')
 
-const config = require('./config')
+const config = require('../config')
 
-const connect = () => {
+module.exports = () => {
   const postgresClient = new Client({
     user: config.DATABASE['user'],
     host: config.DATABASE['host'],
@@ -23,6 +23,3 @@ const connect = () => {
   })
 }
 
-module.exports = {
-  connect
-}
