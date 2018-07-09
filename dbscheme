@@ -1,0 +1,73 @@
+-------------------------
+MATCHA_DB
+________________________
+
+CREATE TABLE IF NOT EXISTS matcha CHARACTER SET UTF8;
+USE 'matcha';
+CREATE TABLE IF NOT EXISTS user
+(
+  uid INT NOT NULL AUTO_INCREMENT,
+	email VARCHAR(32) NOT NULL UNIQUE,
+	password VARCHAR(72) NOT NULL,
+	mail_confirmation_token VARCHAR(72), 
+	username VARCHAR(16) NOT NULL UNIQUE,
+	genre ENUM("female", "male") NOT NULL,
+	sexual_orientation ENUM("bisexual", "homosexual", "heterosexual") DEFAULT "bisexual" NOT NULL,
+  name VARCHAR(16) NOT NULL,
+	surname VARCHAR(16) NOT NULL,
+  birth_date DATETIME NOT NULL, 
+  location VARCHAR(32) NOT NULL,
+	custom_location VARCHAR(32) NOT NULL,
+	last_connection DATETIME NOT NULL,
+  popularity_score DECIMAL NOT NULL,
+  number_of_reports SMALLINT NOT NULL DEFAULT,
+	bio VARCHAR(500) NOT NULL,
+);
+// semicolon to remove if problems.
+
+CREATE TABLE IF NOT EXISTS notification
+(
+  nid INT NOT NULL AUTO_INCREMENT
+  uid INT NOT NULL AUTO_INCREMENT
+  seen BOOLEAN
+  timestamp
+  notification_text
+);
+
+CREATE TABLE IF NOT EXISTS block
+(
+  uid INT NOT NULL AUTO_INCREMENT
+  uid_blocked INT NOT NULL AUTO_INCREMENT
+);
+
+CREATE TABLE IF NOT EXISTS message
+(
+  from_uid INT NOT NULL AUTO_INCREMENT
+  to_uid INT NOT NULL AUTO_INCREMENT
+  timestamp DATETIME NOT NULL
+  message_text VARCHAR(500)
+);
+
+CREATE TABLE IF NOT EXISTS pictures
+(
+  uid INT NOT NULL AUTO_INCREMENT
+  path VARCHAR(512)
+);
+
+CREATE TABLE IF NOT EXISTS tag
+(
+  uid INT NOT NULL AUTO_INCREMENT
+  name VARCHAR(16)
+);
+
+CREATE TABLE IF NOT EXISTS match
+(
+  uid INT NOT NULL AUTO_INCREMENT
+  uid_liked INT NOT NULL AUTO_INCREMENT
+);
+
+CREATE TABLE IF NOT EXISTS vistors
+(
+  uid INT NOT NULL AUTO_INCREMENT
+  uid_visitor INT NOT NULL AUTO_INCREMENT
+);
