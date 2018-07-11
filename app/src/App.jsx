@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { history, muiTheme, axios } from './config'
 import { createStore } from './store'
-import Routes from './Routes'
+import Routes from './routes'
 
 const store = createStore()
 
