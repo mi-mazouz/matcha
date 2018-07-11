@@ -1,6 +1,4 @@
-import createHistory from 'history/createHashHistory'
+import { createBrowserHistory } from 'history'
 import 'url-search-params-polyfill'
 
-export const URLSearchParams = window.URLSearchParams
-
-export default createHistory()
+export default createBrowserHistory()

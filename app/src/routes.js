@@ -1,20 +1,11 @@
 import React from 'react'
-import { Redirect, Route, Switch } from 'react-router'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
-import isAuthenticated from './hocs/components/authentication'
-import Signin from './authentication/containers/signin'
-import Signup from './authentication/containers/signup'
-import ResetPassword from './authentication/containers/reset-password'
-import Profile from './profile/containers/profile'
+import LandingPage from './Layouts/LandingPage'
 
-const Routes = (
+export default () => (
   <Switch>
-    <Route path='/signin' component={Signin} />
-    <Route path='/signup' component={Signup} />
-    <Route path='/reset-password' component={ResetPassword} />
-    <Route path='/profil' component={isAuthenticated(Profile)} />
-    <Redirect to='/profil' />
+    <Route path="/" component={LandingPage} />
+    <Redirect to="/" />
   </Switch>
 )
-
-export default Routes

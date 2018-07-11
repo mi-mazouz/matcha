@@ -22,6 +22,6 @@ const initInterceptorRequest = () => {
   })
 }
 
-export {
- initInterceptorRequest
+export default {
+  initInterceptorRequest
 }

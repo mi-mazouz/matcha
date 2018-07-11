@@ -1,6 +1,9 @@
 mongodb
 node_modules
 .DS_Store
+.vs/
 npm-debug.log
 package-lock.json
 api/config/secret.key
+app/yarn.lock
+app/yarn-error.log

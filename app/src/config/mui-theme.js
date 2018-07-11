@@ -3,9 +3,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 export default getMuiTheme({
   fontFamily: 'Circular Std',
   palette: {
-    orange: '#ff6600',
-    beige: '#CDC2A4',
-    lightBeige: '#D8CFC0',
-    red: 'red'
+    pinkGradient: 'linear-gradient(267deg, #ee286d, #be00a7)',
+    blueGradient: 'linear-gradient(267deg, #3cd5e5, #ee286d)'
   }
 })

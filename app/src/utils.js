@@ -2,7 +2,7 @@ import history from './config/history'
 
 const logout = () => {
   delete window.localStorage.token
-  history.push('/signin')
+  history.push('/')
 }
 
 const getToken = () => {
