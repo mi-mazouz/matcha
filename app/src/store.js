@@ -6,6 +6,8 @@ import {
   combineReducers
 } from 'redux'
 
+import { reducer as formReducer } from 'redux-form'
+
 const initialState = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}
 const sagaMiddleware = createSagaMiddleware()
 
@@ -15,6 +17,7 @@ const createStore = () => {
 
   const store = createReduxStore(
     combineReducers({
+      form: formReducer
     }),
     initialState,
     compose(

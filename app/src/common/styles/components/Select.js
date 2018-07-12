@@ -1,0 +1,38 @@
+import React from 'react'
+import styled from 'styled-components'
+import { withTheme } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
+
+const SelectWrapper = withTheme()(styled.div`
+  &:not(.is-multiple):not(.is-loading)::after {
+    border-color: ${props => props.theme.palette.grey} !important;
+  }
+  width: 100%;
+`)
+
+const StyledSelect = withTheme()(styled.select`
+  &:focus {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  color: ${$props => $props.theme.palette.grey} !important;
+  opacity: 0.8;
+  width: inherit;
+  font-weight: 600;
+  text-align-last: center;
+`)
+
+const Select = ({ input, children }) => (
+  <SelectWrapper className="select">
+    <StyledSelect {...input}>
+      { children }
+    </StyledSelect>
+  </SelectWrapper>
+)
+
+Select.propTypes = {
+  children: PropTypes.node.isRequired,
+  input: PropTypes.object
+}
+
+export default Select

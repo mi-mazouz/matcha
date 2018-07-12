@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { getToken, logout } from '../utils'
+import constants from './constants'
 
 const initInterceptorRequest = () => {
   axios.interceptors.request.use((config) => {
@@ -22,6 +23,4 @@ const initInterceptorRequest = () => {
   })
 }
 
-export default {
-  initInterceptorRequest
-}
+export const restClient = initInterceptorRequest(axios.create({ baseURL: constants.HTTP_API_BASE_URI }))
