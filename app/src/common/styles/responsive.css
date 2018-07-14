@@ -1,0 +1,9 @@
+@media screen and (max-width : 568px) {
+  .title.is-1 {
+    font-size: 2rem;
+  }
+
+  .form {
+    width: 100%;
+  }
+}

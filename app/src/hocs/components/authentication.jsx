@@ -7,7 +7,7 @@ export default (WrappedComponent) => {
     render () {
       const token = getToken()
       if (!token) {
-        history.push('/signin')
+        history.push('/')
         return null
       }
 
