@@ -11,7 +11,6 @@ const StyledButton = styled.button`
   border-style: none !important;
 `
 
-
 const Button = ({ children, ...props }) => (
   <StyledButton
     {...props}
