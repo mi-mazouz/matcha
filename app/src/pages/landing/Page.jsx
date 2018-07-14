@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import Logo from '../common/components/Logo'
-import Title from '../common/components/Title'
+import Logo from '../../common/components/Logo'
+import Container from '../../common/components/Container'
+import Title from '../../common/components/Title'
 import Form from './Form'
-
-const PageContainer = styled.div`
-  text-align: center;
-`
 
 const TitleWrapped = styled(Title)`
   color: #ffffff !important;
@@ -22,11 +19,11 @@ class LandingPage extends Component {
   render() {
     return (
       <Section className="section">
-        <PageContainer className="container">
+        <Container>
           <Logo />
           <TitleWrapped className="title is-1">Find your soulmate</TitleWrapped>
           <Form />
-        </PageContainer>
+        </Container>
       </Section>
     )
   }

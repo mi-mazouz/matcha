@@ -6,11 +6,11 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Button from '../common/components/Button'
-import Select from '../common/components/Select'
-import Input from '../common/components/Input'
-import Paper from '../common/components/Paper'
-import Tag from '../common/components/Tag'
+import Button from '../../common/components/Button'
+import Select from '../../common/components/Select'
+import Paper from '../../common/components/Paper'
+import Tag from '../../common/components/Tag'
+import { Input } from '../../common/components/Input'
 import { LANDING_PAGE_FORM_SUBMIT } from './constants'
 
 const Form = styled.form`
@@ -58,9 +58,9 @@ class LandingPageForm extends Component {
     tag: ''
   }
 
-  renderSelect = ({ input, ...rest }) => (
+  renderSelect = ({ input, children }) => (
     <Select input={input}>
-      { rest.children }
+      { children }
     </Select>
   )
 
@@ -150,7 +150,7 @@ class LandingPageForm extends Component {
                   </PaperPlaceHolder> : 
                   this.state.tags.map((value, index) => (
                     <LandingPageTag
-                      size="is-medium"
+                      size="is-small"
                       key={index}
                       onDelete={() => this.handleTagDelete(index)}
                     >
@@ -167,7 +167,7 @@ class LandingPageForm extends Component {
           isLoading={this.props.submitting}
           isDisabled={this.props.submitting}
         >
-          Submit
+          Find!
         </Button>
       </Form>
     )
