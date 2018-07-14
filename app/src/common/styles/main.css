@@ -13,3 +13,8 @@ body {
 #root {
   height: 100%;
 }
+
+.is-danger {
+  color: #c10027 !important;
+  border-color: #c10027 !important;
+}

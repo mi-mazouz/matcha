@@ -7,7 +7,7 @@ import {
   combineReducers
 } from 'redux'
 
-import { landingPageFormSubmit } from './landing-page/saga'
+import { landingPageFormSubmit } from './pages/landing/saga'
 
 const initialState = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}
 const sagaMiddleware = createSagaMiddleware()
