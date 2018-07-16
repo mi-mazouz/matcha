@@ -5,16 +5,22 @@ import PropTypes from 'prop-types'
 
 import LandingPage from '../pages/landing/Page'
 import SignInPage from '../pages/authentication/sign-in/Page'
+import SignUpPage from '../pages/authentication/sign-up/Page'
 import LogoutNavBar from '../common/components/LogoutNavBar'
 import StyledPage from '../common/components/Page'
 
 import landingPageBackgroundImage2x from '../pages/landing/assets/background@2x.jpg'
 import landingPageBackgroundImage from '../pages/landing/assets/background.jpg'
+// import signInPageBackgroundImage2x from '../pages/authentication/assets/sign-in-sign-up-back-ground@2x.jpg'
+// import SignInPageBackgroundImage from '../pages/authentication/assets/sign-in-sign-up-back-ground.jpg'
+// import signUpBackgroundImage2x from '../pages/authentication/assets/sign-in-sign-up-back-ground@2x.jpg'
+// import SignUpPageBackgroundImage from '../pages/authentication/assets/sign-in-sign-up-back-ground.jpg'
+
 
 const Page = styled(StyledPage)`
   background-image: url(${landingPageBackgroundImage2x});
   @media screen and (max-width : 568px) {
-    background-image: url(${landingPageBackgroundImage});
+   background-image: url(${landingPageBackgroundImage});
   }
 `
 
@@ -24,6 +30,7 @@ const LogoutLayout = () => (
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/sign-in" component={SignInPage} />
+      <Route exact path="/sign-up" component={SignUpPage} />
       <Redirect to="/" />
     </Switch>
   </Page>
