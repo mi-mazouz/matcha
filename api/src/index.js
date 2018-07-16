@@ -13,15 +13,15 @@ const authenticationRouter = require('./authentication/routes')
 
 const app = express()
 
-app.use(cors())
-app.use(bodyParser.json({ limit: '50mb' }), bodyParser.urlencoded({ extended: true }))
-app.use(expressJwt({ secret: fs.readFileSync(path.join(__dirname, './config/secret.key')), credentialsRequired: false }))
+const jwtSecret = Buffer.from(fs.readFileSync(path.join(__dirname, '/config/secret.key')), 'base64')
+
+app.use(cors(), bodyParser.json(), expressJwt({ secret: jwtSecret, credentialsRequired: false }))
 app.use(requestInfos)
 
-app.post('/authentication', authenticationRouter);
+app.use('/authentication', authenticationRouter);
 
 app.use(errorsHandling)
 
-app.listen(config.PORT, function () {
+app.listen(config.PORT, () => {
   logger.info('App listening on port ' + config.PORT)
 })

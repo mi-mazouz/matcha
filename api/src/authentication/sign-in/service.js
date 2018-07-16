@@ -1,7 +1,10 @@
+const createError = require('http-errors')
 const bcrypt = require('bcrypt')
 
+const logger = require('../../services/logger')
 const userQuery = require('../../database/queries/user')
 const utils = require('../../utils')
+const errors = require('../../errors')
 
 module.exports = (mail, password) => {
   logger.info(`A user tried to login with email: ${mail}`)
