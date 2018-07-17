@@ -1,8 +1,6 @@
 # Matcha
-This is a dating site
+This is a dating website
 
 You must to install the API, see api/README.md
 
-- npm install
-
-- npm start
+- yarn && yarn start

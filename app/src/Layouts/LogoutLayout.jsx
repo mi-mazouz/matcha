@@ -34,8 +34,6 @@ const LogoutLayout = ({ location }) => (
   </Page>
 )
 
-
-
 LogoutLayout.propTypes = {
   location: PropTypes.object.isRequired
 }
