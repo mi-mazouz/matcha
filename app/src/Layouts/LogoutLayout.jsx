@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import LandingPage from '../pages/landing/Page'
 import SignInPage from '../pages/authentication/sign-in/Page'
+import SignUpPage from '../pages/authentication/sign-up/Page'
 import LogoutNavBar from '../common/components/LogoutNavBar'
 import StyledPage from '../common/components/Page'
 
@@ -24,10 +25,13 @@ const LogoutLayout = () => (
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/sign-in" component={SignInPage} />
+      <Route exact path="/sign-up" component={SignUpPage} />
       <Redirect to="/" />
     </Switch>
   </Page>
 )
+
+
 
 LogoutLayout.propTypes = {
   location: PropTypes.object.isRequired
