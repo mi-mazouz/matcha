@@ -3,7 +3,7 @@ const connect = require('../connect')
 const getByMail = (mail) => {
   return connect()
   .then((postgresClient) => {
-    return postgresClient.query(`SELECT * FROM users WHERE mail = ${mail};`)
+    return postgresClient.query(`SELECT * FROM users WHERE mail='${mail}';`)
     .then((result) => {
       postgresClient.end()
       

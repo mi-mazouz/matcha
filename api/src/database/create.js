@@ -1,4 +1,5 @@
 const connect = require('./connect')
+const logger = require('../services/logger')
 
 connect().then((postgresClient) => {
   return postgresClient.query(`CREATE TABLE IF NOT EXISTS public.users (
@@ -10,5 +11,12 @@ connect().then((postgresClient) => {
     mail VARCHAR (32) UNIQUE NOT NULL,
     createdAt TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp
   );`)
-  .then(() => process.exit(0))
+  .then(() => {
+    logger.info('[PostgreSQL][SUCCESS] Database created successfully')
+    return process.exit(0)
+  })
+  .catch((error) => {
+    logger.error('[PostgreSQL][ERROR] Error during the database creation: ', error)
+    return process.exit(1)
+  })
 })
