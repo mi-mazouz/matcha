@@ -12,7 +12,7 @@ connect().then((postgresClient) => {
     createdAt TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp
   );`)
   .then(() => {
-    logger.info(`[PostgreSQL][SUCCESS] Database created successfully`)
+    logger.info('[PostgreSQL][SUCCESS] Database created successfully')
     return process.exit(0)
   })
   .catch((error) => {

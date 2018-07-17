@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const expressJwt = require('express-jwt');
+const expressJwt = require('express-jwt')
 const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
@@ -18,10 +18,8 @@ const jwtSecret = Buffer.from(fs.readFileSync(path.join(__dirname, '/config/secr
 app.use(cors(), bodyParser.json(), expressJwt({ secret: jwtSecret, credentialsRequired: false }))
 app.use(requestInfos)
 
-app.use('/authentication', authenticationRouter);
+app.use('/authentication', authenticationRouter)
 
 app.use(errorsHandling)
 
-app.listen(config.PORT, () => {
-  logger.info('App listening on port ' + config.PORT)
-})
+app.listen(config.PORT, () => logger.info('App listening on port ' + config.PORT))

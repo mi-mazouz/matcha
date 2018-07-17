@@ -25,6 +25,7 @@ module.exports = {
         "react/prop-types": "error",
         "react/jsx-no-undef": "error",
         "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "comma-dangle": ["error", "never"],
         "indent": [
             "error",
             2,
