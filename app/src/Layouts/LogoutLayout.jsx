@@ -9,18 +9,21 @@ import SignUpPage from '../pages/authentication/sign-up/Page'
 import LogoutNavBar from '../common/components/LogoutNavBar'
 import StyledPage from '../common/components/Page'
 
-import landingPageBackgroundImage2x from '../pages/landing/assets/background@2x.jpg'
 import landingPageBackgroundImage from '../pages/landing/assets/background.jpg'
+import authenticationBackgroundImage from '../pages/authentication/assets/background.png'
+import mobileBackgroundImage from '../pages/assets/mobile-background.jpg'
 
 const Page = styled(StyledPage)`
-  background-image: url(${landingPageBackgroundImage2x});
+  background-image: ${props => props.location.pathname === '/'
+    ? `url(${landingPageBackgroundImage})`
+    : `url(${authenticationBackgroundImage})`};
   @media screen and (max-width : 568px) {
-    background-image: url(${landingPageBackgroundImage});
+    background-image: url(${mobileBackgroundImage});
   }
 `
 
-const LogoutLayout = () => (
-  <Page>
+const LogoutLayout = ({ location }) => (
+  <Page location={location}>
     <LogoutNavBar />
     <Switch>
       <Route exact path="/" component={LandingPage} />
