@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 
 import Button from '../../../common/components/Button'
 import { InputWithIcons } from '../../../common/components/Input'
-import { isEmail } from '../../../utils'
 
 const Form = styled.form`
   width: 300px;
@@ -19,13 +18,12 @@ const validate = (values) => {
   const errors = {}
 
   if (!values.email) errors.email = 'Required'
-  else if (!isEmail(values.email)) errors.email = 'Unexcepted email'
   if (!values.password) errors.password = 'Required'
   
   return errors
 }
 
-class SignInForm extends Component {
+class SignUpFormPage extends Component {
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
@@ -86,7 +84,7 @@ class SignInForm extends Component {
   }
 }
 
-SignInForm.propTypes = {
+SignUpFormPage.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
@@ -99,4 +97,4 @@ export default compose(
     form: 'signInPage',
     validate
   })
-)(withTheme()(SignInForm))
+)(withTheme()(SignUpFormPage))

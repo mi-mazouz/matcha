@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Logo from '../../../common/components/Logo'
 import Title from '../../../common/components/Title'
 import Container from '../../../common/components/Container'
+import Form from './Form'
 
 const TitleWrapped = styled(Title)`
   color: #ffffff !important;
@@ -16,6 +17,7 @@ class SignUpPage extends Component {
         <Container>
           <Logo />
           <TitleWrapped className="title is-1">Sign Up!</TitleWrapped>
+          <Form />
         </Container>
       </div>
     )
