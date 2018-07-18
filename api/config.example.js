@@ -1,10 +1,10 @@
 module.exports = {
   DATABASE: {
-    name: 'postgres',
-    user: 'root',
-    password: 'root',
-    host: 'localhost',
-    port: 5432
+    database: 'xxxx',
+    user: 'xxxx',
+    password: 'xxxx',
+    host: 'xxxx',
+    port: 9999
   },
-  PORT: 8080
+  PORT: 8888
 }

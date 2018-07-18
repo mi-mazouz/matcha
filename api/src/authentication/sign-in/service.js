@@ -1,21 +1,21 @@
 const createError = require('http-errors')
 const bcrypt = require('bcrypt')
 
+const UserModel = require('../../database/models').User
 const logger = require('../../services/logger')
-const userQuery = require('../../database/queries/user')
 const utils = require('../../utils')
 const errors = require('../../errors')
 
-module.exports = (mail, password) => {
-  logger.info(`A user tried to login with email: ${mail}`)
+module.exports = (email, password) => {
+  logger.info(`A user tried to login with email: ${email}`)
 
-  return userQuery.getByMail(mail)
+  return UserModel.findOne({ where: { email } })
   .then((user) => {
-    if (!user) throw createError.BadRequest(errors.INVALID_MAIL_OR_PASSWORD)
+    if (!user) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
 
     return bcrypt.compare(password, user.password)
     .then((passwordMatched) => {
-      if (!passwordMatched) throw createError.BadRequest(errors.INVALID_MAIL_OR_PASSWORD)
+      if (!passwordMatched) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
 
       return utils.buildToken(user.id)
     })

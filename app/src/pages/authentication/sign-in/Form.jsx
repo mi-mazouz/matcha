@@ -17,7 +17,7 @@ const Form = styled.form`
 const validate = (values) => {
   const errors = {}
 
-  if (!values.username) errors.username = 'Required'
+  if (!values.email) errors.email = 'Required'
   if (!values.password) errors.password = 'Required'
   
   return errors
@@ -52,10 +52,10 @@ class LandingPageForm extends Component {
         <div className="columns">
           <div className="column">
             <Field
-              name="username"
+              name="email"
               icon="user"
-              placeholder='Username'
-              type="text"
+              placeholder='Email'
+              type="email"
               component={this.renderInput}
             />
           </div>
