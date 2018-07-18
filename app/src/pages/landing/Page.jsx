@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 import Logo from '../../common/components/Logo'
 import Container from '../../common/components/Container'
-import Title from '../../common/components/Title'
+import styledTitle from '../../common/components/Title'
 import Form from './Form'
 
-const TitleWrapped = styled(Title)`
+const Title = styled(styledTitle)`
   color: #ffffff !important;
   margin-top: 20px;
 `
@@ -21,7 +21,7 @@ class LandingPage extends Component {
       <Section className="section">
         <Container>
           <Logo />
-          <TitleWrapped className="title is-1">Find your soulmate</TitleWrapped>
+          <Title className="title is-1">Find your soulmate</Title>
           <Form />
         </Container>
       </Section>

@@ -25,7 +25,7 @@ const validate = (values) => {
   return errors
 }
 
-class LandingPageForm extends Component {
+class SignInForm extends Component {
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
@@ -86,7 +86,7 @@ class LandingPageForm extends Component {
   }
 }
 
-LandingPageForm.propTypes = {
+SignInForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
@@ -99,4 +99,4 @@ export default compose(
     form: 'signInPage',
     validate
   })
-)(withTheme()(LandingPageForm))
+)(withTheme()(SignInForm))

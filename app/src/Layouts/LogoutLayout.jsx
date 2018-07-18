@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import LandingPage from '../pages/landing/Page'
-import SignInPage from '../pages/authentication/sign-in/Page'
-import SignUpPage from '../pages/authentication/sign-up/Page'
+import LandingPage from '../pages/landing'
+import SignInPage from '../pages/authentication/sign-in'
+import SignUpPage from '../pages/authentication/sign-up'
 import LogoutNavBar from '../common/components/LogoutNavBar'
 import StyledPage from '../common/components/Page'
 

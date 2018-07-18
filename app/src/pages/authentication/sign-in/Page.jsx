@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import Logo from '../../../common/components/Logo'
-import Title from '../../../common/components/Title'
+import styledTitle from '../../../common/components/Title'
 import Container from '../../../common/components/Container'
 import Form from './Form'
 
-const TitleWrapped = styled(Title)`
+const Title = styled(styledTitle)`
   color: #ffffff !important;
   margin-top: 20px;
 `
@@ -17,7 +17,7 @@ class SignInPage extends Component {
       <div className="section">
         <Container>
           <Logo />
-          <TitleWrapped className="title is-1">Sign In!</TitleWrapped>
+          <Title className="title is-1">Sign In!</Title>
           <Form />
         </Container>
       </div>
