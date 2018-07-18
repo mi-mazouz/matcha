@@ -25,12 +25,12 @@ Input.propTypes = {
   className: PropTypes.string
 }
 
-const InputWithIcons = withTheme()(({ theme, inputIcon, error, isValid, ...props }) => (
+const InputWithIcons = withTheme()(({ theme, icon, error, isValid, ...props }) => (
   <div className="field">
     <div className="control has-icons-left has-icons-right">
       <Input {...props} error={error} />
       <span className="icon is-left">
-        <FontAwesomeIcon icon={inputIcon} color={theme.palette.grey} />
+        <FontAwesomeIcon icon={icon} color={theme.palette.grey} />
       </span>
       <span className="icon is-right">
         {
@@ -43,9 +43,9 @@ const InputWithIcons = withTheme()(({ theme, inputIcon, error, isValid, ...props
 ))
 
 InputWithIcons.propTypes = {
-  inputIcon: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   error: PropTypes.bool.isRequired,
-  isValid: PropTypes.bool.isRequired,
+  isValid: PropTypes.bool.isRequired
 }
 
 export {

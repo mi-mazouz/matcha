@@ -24,14 +24,14 @@ const validate = (values) => {
 }
 
 class LandingPageForm extends Component {
-  renderInput = ({ input, meta, icon, placeholder }) => {
-    const error = meta.error && meta.touched && !meta.active
+  renderInput = ({ input, meta, placeholder, ...props }) => {
+    const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
     
     return (
       <InputWithIcons
         {...input}
-        inputIcon={icon}
+        {...props}
         error={error}
         isValid={isValid}
         placeholder={error ? meta.error : placeholder}
