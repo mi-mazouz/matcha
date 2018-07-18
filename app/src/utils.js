@@ -13,8 +13,15 @@ const setToken = (token) => {
   window.localStorage.token = token
 }
 
+const isEmail = (email) => {
+  const regex = /^(([a-zA-Z0-9._-]{1,32})@([a-z]{2,16}).([a-z.0-9]{2,16}))$/
+
+  return regex.test(email)
+}
+
 export {
   logout,
   getToken,
-  setToken
+  setToken,
+  isEmail
 }

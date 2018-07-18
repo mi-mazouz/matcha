@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 
 import Button from '../../../common/components/Button'
 import { InputWithIcons } from '../../../common/components/Input'
+import { isEmail } from '../../../utils'
 
 const Form = styled.form`
   width: 300px;
@@ -18,6 +19,7 @@ const validate = (values) => {
   const errors = {}
 
   if (!values.email) errors.email = 'Required'
+  else if (!isEmail(values.email)) errors.email = 'Unexcepted email'
   if (!values.password) errors.password = 'Required'
   
   return errors
