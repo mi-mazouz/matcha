@@ -1,6 +1,6 @@
 module.exports = {
   DATABASE: {
-    name: 'postgres',
+    database: 'postgres',
     user: 'root',
     password: 'root',
     host: 'localhost',
