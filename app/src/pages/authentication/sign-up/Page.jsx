@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
-class HelloWorld extends Component {
+import Logo from '../../../common/components/Logo'
+import Title from '../../../common/components/Title'
+import Container from '../../../common/components/Container'
+
+const TitleWrapped = styled(Title)`
+  color: #ffffff !important;
+  margin-top: 20px;
+`
+class SignUpPage extends Component {
   render() {
     return (
-      <h1>Hello World</h1>
+      <div className="sectin">
+        <Container>
+          <Logo />
+          <TitleWrapped className="title is-1">Sign Up!</TitleWrapped>
+        </Container>
+      </div>
     )
   }
 }
 
-export default HelloWorld
+export default SignUpPage
