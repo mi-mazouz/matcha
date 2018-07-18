@@ -25,7 +25,11 @@ const validate = (values) => {
   return errors
 }
 
+<<<<<<< Updated upstream
 class SignInForm extends Component {
+=======
+class SignInFormPage extends Component {
+>>>>>>> Stashed changes
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
@@ -86,7 +90,11 @@ class SignInForm extends Component {
   }
 }
 
+<<<<<<< Updated upstream
 SignInForm.propTypes = {
+=======
+SignInFormPage.propTypes = {
+>>>>>>> Stashed changes
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
@@ -99,4 +107,8 @@ export default compose(
     form: 'signInPage',
     validate
   })
+<<<<<<< Updated upstream
 )(withTheme()(SignInForm))
+=======
+)(withTheme()(SignInFormPage))
+>>>>>>> Stashed changes
