@@ -13,7 +13,7 @@ const TitleWrapped = styled(Title)`
 class SignUpPage extends Component {
   render() {
     return (
-      <div className="sectin">
+      <div className="section">
         <Container>
           <Logo />
           <TitleWrapped className="title is-1">Sign Up!</TitleWrapped>

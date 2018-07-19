@@ -7,13 +7,43 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Button from '../../../common/components/Button'
-import { InputWithIcons } from '../../../common/components/Input'
+import { Input } from '../../../common/components/Input'
+import Paper from '../../../common/components/Paper'
+import Tag from '../../../common/components/Tag'
 
 const Form = styled.form`
-  width: 300px;
+  width: 435px;
   margin: auto
 `
+const Columns = styled.div`
+  display: flex !important;
+`
+const PaperPlaceHolder = styled.div`
+  width: 100%;
+`
 
+const PaperTag = styled(Paper)`
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  opacity: 0.8;
+  height: 36px;
+  padding: 5px;
+`
+
+const SignUpPageTag = styled(Tag)`
+  margin-bottom: 0px !important;
+  flex-wrap: unset !important;
+  &:not(:last-child) {
+    margin-right: 10px;
+  & > span {
+    margin-bottom: 0px !important;
+  }`
+
+const TagsColumn = styled.div`
+  overflow: scroll;
+`
 const validate = (values) => {
   const errors = {}
 
@@ -24,12 +54,17 @@ const validate = (values) => {
 }
 
 class SignUpFormPage extends Component {
+  state = {
+    tags: [],
+    tag: ''
+  }
+  
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
     
     return (
-      <InputWithIcons
+      <Input
         {...input}
         {...props}
         error={error}
@@ -49,7 +84,7 @@ class SignUpFormPage extends Component {
   render() {
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-        <div className="columns">
+        <Columns className="columns">
           <div className="column">
             <Field
               name="email"
@@ -59,25 +94,93 @@ class SignUpFormPage extends Component {
               component={this.renderInput}
             />
           </div>
-        </div>
-        <div className="columns">
           <div className="column">
             <Field
-              icon="lock"
               name="password"
+              icon="lock"
               placeholder='Password'
               type="password"
               component={this.renderInput}
             />
           </div>
-        </div>
+        </Columns>
+        <Columns className="columns">
+          <div className="column">
+            <Field
+              name="username"
+              icon="user"
+              placeholder='Username'
+              type="text"
+              component={this.renderInput}
+            />
+          </div>
+          <div className="column">
+            <Field
+              name="sex"
+              icon="lock"
+              placeholder='Sex'
+              type="password"
+              component={this.renderInput}
+            />
+          </div>
+        </Columns>
+        <Columns className="columns">
+          <div className="column">
+            <Field
+              name="firstname"
+              icon="user"
+              placeholder='Firstname'
+              type="text"
+              component={this.renderInput}
+            />
+          </div>
+          <div className="column">
+            <Field
+              name="lastname"
+              icon="lock"
+              placeholder='Lastname'
+              type="text"
+              component={this.renderInput}
+            />
+          </div>
+        </Columns>
+        <Columns className="columns">
+          <div className="column">
+            <Input
+              type="text"
+              placeholder="#Interests"
+              onChange={this.handleTag}
+              onKeyPress={this.handleTags}
+            />
+          </div>
+          <TagsColumn className="column is-half">
+            <PaperTag>
+              {
+                this.state.tags.length === 0 ?
+                  <PaperPlaceHolder className="has-text-centered">
+                    My interests
+                  </PaperPlaceHolder> : 
+                  this.state.tags.map((value, index) => (
+                    <SignUpPageTag
+                      size="is-small"
+                      key={index}
+                      onDelete={() => this.handleTagDelete(index)}
+                    >
+                      { value }
+                    </SignUpPageTag>
+                  ))
+              }
+            </PaperTag>
+          </TagsColumn>
+        </Columns>
+          
         <Button
           backgroundImage={this.props.theme.palette.mixGradient}
           type="submit"
           isLoading={this.props.submitting}
           isDisabled={this.props.submitting}
         >
-          Sign In!
+          Sign Up!
         </Button>
       </Form>
     )
