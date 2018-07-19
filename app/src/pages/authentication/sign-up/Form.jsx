@@ -15,35 +15,35 @@ const Form = styled.form`
   width: 435px;
   margin: auto
 `
-const Columns = styled.div`
-  display: flex !important;
-`
-const PaperPlaceHolder = styled.div`
-  width: 100%;
-`
+// const Columns = styled.div`
+//   display: flex !important;
+// `
+// const PaperPlaceHolder = styled.div`
+//   width: 100%;
+// `
 
-const PaperTag = styled(Paper)`
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  opacity: 0.8;
-  height: 36px;
-  padding: 5px;
-`
+// const PaperTag = styled(Paper)`
+//   overflow: scroll;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+//   opacity: 0.8;
+//   height: 36px;
+//   padding: 5px;
+// `
 
-const SignUpPageTag = styled(Tag)`
-  margin-bottom: 0px !important;
-  flex-wrap: unset !important;
-  &:not(:last-child) {
-    margin-right: 10px;
-  & > span {
-    margin-bottom: 0px !important;
-  }`
+// const SignUpPageTag = styled(Tag)`
+//   margin-bottom: 0px !important;
+//   flex-wrap: unset !important;
+//   &:not(:last-child) {
+//     margin-right: 10px;
+//   & > span {
+//     margin-bottom: 0px !important;
+//   }`
 
-const TagsColumn = styled.div`
-  overflow: scroll;
-`
+// const TagsColumn = styled.div`
+//   overflow: scroll;
+// `
 const validate = (values) => {
   const errors = {}
 
