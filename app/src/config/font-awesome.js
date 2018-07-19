@@ -1,5 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faCalendarAlt,
   faCheck,
   faEnvelope,
   faExclamationTriangle,
@@ -13,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+  faCalendarAlt,
   faCheck,
   faEnvelope,
   faExclamationTriangle,

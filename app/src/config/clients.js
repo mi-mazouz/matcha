@@ -23,4 +23,4 @@ const initInterceptorRequest = () => {
   })
 }
 
-export const restClient = initInterceptorRequest(axios.create({ baseURL: constants.HTTP_API_BASE_URI }))
+export const httpClient = initInterceptorRequest(axios.create({ baseURL: constants.HTTP_API_BASE_URI }))

@@ -6,6 +6,7 @@ export default (WrappedComponent) => {
   class isAuthenticated extends React.Component {
     render () {
       const token = getToken()
+   
       if (!token) {
         history.push('/')
         return null
