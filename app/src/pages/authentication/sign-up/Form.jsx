@@ -58,7 +58,7 @@ class SignUpFormPage extends Component {
     tags: [],
     tag: ''
   }
-  
+
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
@@ -84,95 +84,51 @@ class SignUpFormPage extends Component {
   render() {
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-        <Columns className="columns">
-          <div className="column">
-            <Field
-              name="email"
-              icon="user"
-              placeholder='Email'
-              type="email"
-              component={this.renderInput}
-            />
-          </div>
-          <div className="column">
-            <Field
-              name="password"
-              icon="lock"
-              placeholder='Password'
-              type="password"
-              component={this.renderInput}
-            />
-          </div>
-        </Columns>
-        <Columns className="columns">
-          <div className="column">
-            <Field
-              name="username"
-              icon="user"
-              placeholder='Username'
-              type="text"
-              component={this.renderInput}
-            />
-          </div>
-          <div className="column">
-            <Field
-              name="sex"
-              icon="lock"
-              placeholder='Sex'
-              type="password"
-              component={this.renderInput}
-            />
-          </div>
-        </Columns>
-        <Columns className="columns">
-          <div className="column">
-            <Field
-              name="firstname"
-              icon="user"
-              placeholder='Firstname'
-              type="text"
-              component={this.renderInput}
-            />
-          </div>
-          <div className="column">
-            <Field
-              name="lastname"
-              icon="lock"
-              placeholder='Lastname'
-              type="text"
-              component={this.renderInput}
-            />
-          </div>
-        </Columns>
-        <Columns className="columns">
-          <div className="column">
-            <Input
-              type="text"
-              placeholder="#Interests"
-              onChange={this.handleTag}
-              onKeyPress={this.handleTags}
-            />
-          </div>
-          <TagsColumn className="column is-half">
-            <PaperTag>
-              {
-                this.state.tags.length === 0 ?
-                  <PaperPlaceHolder className="has-text-centered">
-                    My interests
-                  </PaperPlaceHolder> : 
-                  this.state.tags.map((value, index) => (
-                    <SignUpPageTag
-                      size="is-small"
-                      key={index}
-                      onDelete={() => this.handleTagDelete(index)}
-                    >
-                      { value }
-                    </SignUpPageTag>
-                  ))
-              }
-            </PaperTag>
-          </TagsColumn>
-        </Columns>
+        <div className="column">
+          <Field
+            name="email"
+            icon="user"
+            placeholder='Email'
+            type="email"
+            component={this.renderInput}
+          />
+        </div>
+        <div className="column">
+          <Field
+            name="password"
+            icon="lock"
+            placeholder='Password'
+            type="password"
+            component={this.renderInput}
+          />
+        </div>
+        <div className="column">
+          <Field
+            name="username"
+            icon="user"
+            placeholder='Username'
+            type="text"
+            component={this.renderInput}
+          />
+        </div>
+        <div className="column">
+          <Field
+            name="firstname"
+            icon="user"
+            placeholder='Firstname'
+            type="text"
+            component={this.renderInput}
+          />
+        </div>
+        <div className="column">
+          <Field
+            name="lastname"
+            icon="lock"
+            placeholder='Lastname'
+            type="text"
+            component={this.renderInput}
+          />
+        </div>
           
         <Button
           backgroundImage={this.props.theme.palette.mixGradient}
