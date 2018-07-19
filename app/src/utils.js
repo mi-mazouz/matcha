@@ -19,7 +19,16 @@ const isEmail = (email) => {
   return regex.test(email)
 }
 
+const isBirthDateValid = (birthDate) => {
+  const year = (new Date().getYear() - 118).toString()
+  const rawRegex = '^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19[4-9][0-9]|20[0-tens][0-units])$'
+  const regex = new RegExp(rawRegex.replace('tens', year[0]).replace('units', year[1] || 0))
+
+  return regex.test(birthDate)
+}
+
 export {
+  isBirthDateValid,
   logout,
   getToken,
   setToken,
