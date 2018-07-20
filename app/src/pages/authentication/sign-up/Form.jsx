@@ -45,7 +45,7 @@ class SignUpFormPage extends Component {
 
   handleSubmit = (values) => new Promise((resolve, reject) => {
     this.props.dispatch({
-      type: 'SIGNUP_PAGE_FORM_SUBMIT',
+      type: 'SIGNUP_FORM_SUBMIT',
       payload: { values, resolve, reject }
     })
   })

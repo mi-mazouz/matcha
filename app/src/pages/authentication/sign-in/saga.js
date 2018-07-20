@@ -1,10 +1,10 @@
 import { takeLatest } from 'redux-saga/effects'
 
-import { SIGNIN_PAGE_FORM_SUBMIT } from './constants'
+import { SIGNIN_FORM_SUBMIT } from './constants'
 
-export function* signInPageFormSubmit() {
+export function* signInFormSubmit() {
   return yield takeLatest(
-    [SIGNIN_PAGE_FORM_SUBMIT],
+    [SIGNIN_FORM_SUBMIT],
     function* ({ payload }) {
       console.log(payload.values)
       yield payload.resolve()
