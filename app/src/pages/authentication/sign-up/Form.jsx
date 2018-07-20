@@ -5,12 +5,9 @@ import { reduxForm, Field } from 'redux-form'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-// import { Message } from 'semantic-ui-react'
 
 import Button from '../../../common/components/Button'
 import { Input } from '../../../common/components/Input'
-// import Paper from '../../../common/components/Paper'
-// import Tag from '../../../common/components/Tag'
 
 const Form = styled.form`
   width: 435px;
