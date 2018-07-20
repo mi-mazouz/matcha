@@ -22,9 +22,9 @@ const StyledSelect = withTheme()(styled.select`
   text-align-last: center;
 `)
 
-const Select = ({ input, children }) => (
+const Select = ({ children, ...props }) => (
   <SelectWrapper className="select">
-    <StyledSelect {...input}>
+    <StyledSelect {...props}>
       { children }
     </StyledSelect>
   </SelectWrapper>

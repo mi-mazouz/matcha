@@ -59,7 +59,7 @@ class LandingPageForm extends Component {
   }
 
   renderSelect = ({ input, children }) => (
-    <Select input={input}>
+    <Select {...input}>
       { children }
     </Select>
   )
