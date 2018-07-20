@@ -19,7 +19,7 @@ const validate = (values) => {
   const errors = {}
 
   if (!values.email) errors.email = 'Required'
-  else if (!isEmail(values.email)) errors.email = 'Unexcepted email'
+  else if (!isEmail(values.email)) errors.email = 'Wrong format'
   if (!values.password) errors.password = 'Required'
   
   return errors
@@ -30,6 +30,7 @@ class SignInForm extends Component {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
     
+    if (error) input.value = ''
     return (
       <InputWithIcons
         {...input}
@@ -55,7 +56,7 @@ class SignInForm extends Component {
           <div className="column">
             <Field
               name="email"
-              icon="user"
+              icon="envelope"
               placeholder='Email'
               type="email"
               component={this.renderInput}

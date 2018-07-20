@@ -6,34 +6,47 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import { InputWithIcons } from '../../../common/components/Input'
+import { isBirthDateValid, isEmail } from '../../../utils'
 import Button from '../../../common/components/Button'
-import { Input } from '../../../common/components/Input'
+import Select from '../../../common/components/Select'
 
 const Form = styled.form`
   width: 435px;
   margin: auto
 `
+const Columns = styled.div`
+  display: flex !important;
+`
 const validate = (values) => {
   const errors = {}
 
-  if (!values.email) errors.email = 'Email Required'
-  if (!values.password) errors.password = 'Location Required'
+  if (!values.lookingFor) errors.lookingFor = 'Required'
+  if (!values.gender) errors.gender = 'Required'
+  if (!values.username) errors.username = 'Required'
+  if (!values.birthDate) errors.birthDate = 'Required'
+  else if (!isBirthDateValid(values.birthDate)) errors.birthDate = 'Wrong format'
+  if (!values.email) errors.email = 'Required'
+  else if (!isEmail(values.email)) errors.email = 'Wrong format'
+  if (!values.password) errors.password = 'Required'
   
   return errors
 }
 
 class SignUpFormPage extends Component {
-  state = {
-    tags: [],
-    tag: ''
-  }
+  renderSelect = ({ input, children }) => (
+    <Select input={input}>
+      { children }
+    </Select>
+  )
 
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
     
+    if (error) input.value = ''
     return (
-      <Input
+      <InputWithIcons
         {...input}
         {...props}
         error={error}
@@ -53,52 +66,66 @@ class SignUpFormPage extends Component {
   render() {
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-        <div className="column">
-          <Field
-            name="email"
-            icon="user"
-            placeholder='Email'
-            type="email"
-            component={this.renderInput}
-          />
-        </div>
-        <div className="column">
-          <Field
-            name="password"
-            icon="lock"
-            placeholder='Password'
-            type="password"
-            component={this.renderInput}
-          />
-        </div>
-        <div className="column">
-          <Field
-            name="username"
-            icon="user"
-            placeholder='Username'
-            type="text"
-            component={this.renderInput}
-          />
-        </div>
-        <div className="column">
-          <Field
-            name="firstname"
-            icon="user"
-            placeholder='Firstname'
-            type="text"
-            component={this.renderInput}
-          />
-        </div>
-        <div className="column">
-          <Field
-            name="lastname"
-            icon="lock"
-            placeholder='Lastname'
-            type="text"
-            component={this.renderInput}
-          />
-        </div>
-          
+        <Columns className="columns">
+          <div className="column">
+            <Field name="gender" component={this.renderSelect}>
+              <option  value="" disabled>I am</option>
+              <option >Female</option>
+              <option >Male</option>
+            </Field>
+          </div>
+          <div className="column">
+            <Field name="lookingFor" component={this.renderSelect}>
+              <option value="" disabled>Looking for</option>
+              <option >Female</option>
+              <option >Male</option>
+            </Field>
+          </div>
+        </Columns>
+        <Columns className="columns">
+          <div className="column is-half">
+            <Field
+              name="username"
+              icon="user"
+              placeholder='Username'
+              type="text"
+              component={this.renderInput}
+            />
+          </div>
+          <div className="column">
+            <Columns className="columns">
+              <div className="column">
+                <Field
+                  name="birthDate"
+                  icon="calendar-alt"
+                  placeholder='Ex: 08/06/1954'
+                  type="text"
+                  component={this.renderInput}
+                />
+              </div>
+            </Columns>
+          </div>
+        </Columns>
+        <Columns className="columns">
+          <div className="column">
+            <Field
+              name="email"
+              icon="envelope"
+              placeholder='Email'
+              type="email"
+              component={this.renderInput}
+            />
+          </div>
+          <div className="column">
+            <Field
+              name="password"
+              icon="lock"
+              placeholder='Password'
+              type="password"
+              component={this.renderInput}
+            />
+          </div>
+        </Columns>
         <Button
           backgroundImage={this.props.theme.palette.mixGradient}
           type="submit"
