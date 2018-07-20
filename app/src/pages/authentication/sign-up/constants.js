@@ -1,0 +1,1 @@
+export const SIGNUP_FORM_SUBMIT = 'SIGNUP_FORM_SUBMIT'

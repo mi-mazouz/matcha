@@ -58,7 +58,7 @@ class SignUpFormPage extends Component {
 
   handleSubmit = (values) => new Promise((resolve, reject) => {
     this.props.dispatch({
-      // type: LANDING_PAGE_FORM_SUBMIT,
+      type: 'SIGNUP_FORM_SUBMIT',
       payload: { values, resolve, reject }
     })
   })
@@ -149,7 +149,7 @@ SignUpFormPage.propTypes = {
 export default compose(
   connect(),
   reduxForm({
-    form: 'signInPage',
+    form: 'signUpPage',
     validate
   })
 )(withTheme()(SignUpFormPage))
