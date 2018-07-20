@@ -44,6 +44,7 @@ class SignUpFormPage extends Component {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
     
+    if (error) input.value = ''
     return (
       <InputWithIcons
         {...input}
