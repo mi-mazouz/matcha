@@ -5,50 +5,22 @@ import { reduxForm, Field } from 'redux-form'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+// import { Message } from 'semantic-ui-react'
 
 import Button from '../../../common/components/Button'
 import { Input } from '../../../common/components/Input'
-import Paper from '../../../common/components/Paper'
-import Tag from '../../../common/components/Tag'
+// import Paper from '../../../common/components/Paper'
+// import Tag from '../../../common/components/Tag'
 
 const Form = styled.form`
   width: 435px;
   margin: auto
 `
-// const Columns = styled.div`
-//   display: flex !important;
-// `
-// const PaperPlaceHolder = styled.div`
-//   width: 100%;
-// `
-
-// const PaperTag = styled(Paper)`
-//   overflow: scroll;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-//   opacity: 0.8;
-//   height: 36px;
-//   padding: 5px;
-// `
-
-// const SignUpPageTag = styled(Tag)`
-//   margin-bottom: 0px !important;
-//   flex-wrap: unset !important;
-//   &:not(:last-child) {
-//     margin-right: 10px;
-//   & > span {
-//     margin-bottom: 0px !important;
-//   }`
-
-// const TagsColumn = styled.div`
-//   overflow: scroll;
-// `
 const validate = (values) => {
   const errors = {}
 
-  if (!values.email) errors.email = 'Required'
-  if (!values.password) errors.password = 'Required'
+  if (!values.email) errors.email = 'Email Required'
+  if (!values.password) errors.password = 'Location Required'
   
   return errors
 }
@@ -76,7 +48,7 @@ class SignUpFormPage extends Component {
 
   handleSubmit = (values) => new Promise((resolve, reject) => {
     this.props.dispatch({
-      // type: LANDING_PAGE_FORM_SUBMIT,
+      type: 'SIGNUP_PAGE_FORM_SUBMIT',
       payload: { values, resolve, reject }
     })
   })
@@ -153,7 +125,7 @@ SignUpFormPage.propTypes = {
 export default compose(
   connect(),
   reduxForm({
-    form: 'signInPage',
+    form: 'signUpPage',
     validate
   })
 )(withTheme()(SignUpFormPage))

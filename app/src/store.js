@@ -8,6 +8,7 @@ import {
 } from 'redux'
 
 import { landingPageFormSubmit } from './pages/landing/saga'
+import { signUpPageFormSubmit } from './pages/authentication/sign-up/saga'
 
 const initialState = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}
 const sagaMiddleware = createSagaMiddleware()
@@ -28,6 +29,7 @@ const createStore = () => {
   )
 
   sagaMiddleware.run(landingPageFormSubmit)
+  sagaMiddleware.run(signUpPageFormSubmit)
   
   return store
 }

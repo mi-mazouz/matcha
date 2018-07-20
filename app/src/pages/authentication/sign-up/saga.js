@@ -1,10 +1,10 @@
 import { takeLatest } from 'redux-saga/effects'
 
-import { LANDING_PAGE_FORM_SUBMIT } from './constants'
+import { SIGNUP_PAGE_FORM_SUBMIT } from './constants'
 
-export function* landingPageFormSubmit() {
+export function* signUpPageFormSubmit() {
   return yield takeLatest(
-    [LANDING_PAGE_FORM_SUBMIT],
+    [SIGNUP_PAGE_FORM_SUBMIT],
     function* ({ payload }) {
       console.log(payload.values)
       yield payload.resolve()
