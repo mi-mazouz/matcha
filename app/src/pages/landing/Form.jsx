@@ -94,7 +94,7 @@ class LandingPageForm extends Component {
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
-            <Field name="gender" component={this.renderSelect}>
+            <Field name="sex" component={this.renderSelect}>
               <option  value="" disabled>I am</option>
               <option >Female</option>
               <option >Male</option>

@@ -21,8 +21,8 @@ const Columns = styled.div`
 const validate = (values) => {
   const errors = {}
 
-  if (!values.lookingFor) errors.lookingFor = 'Required'
-  if (!values.gender) errors.gender = 'Required'
+  if (!values.sexualOrientation) errors.sexualOrientation = 'Required'
+  if (!values.sex) errors.sex = 'Required'
   if (!values.username) errors.username = 'Required'
   if (!values.birthDate) errors.birthDate = 'Required'
   else if (!isBirthDateValid(values.birthDate)) errors.birthDate = 'Wrong format'
@@ -35,7 +35,7 @@ const validate = (values) => {
 
 class SignUpFormPage extends Component {
   renderSelect = ({ input, children }) => (
-    <Select input={input}>
+    <Select {...input}>
       { children }
     </Select>
   )
@@ -68,17 +68,18 @@ class SignUpFormPage extends Component {
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
-            <Field name="gender" component={this.renderSelect}>
+            <Field name="sex" component={this.renderSelect}>
               <option  value="" disabled>I am</option>
               <option >Female</option>
               <option >Male</option>
             </Field>
           </div>
           <div className="column">
-            <Field name="lookingFor" component={this.renderSelect}>
+            <Field name="sexualOrientation" component={this.renderSelect}>
               <option value="" disabled>Looking for</option>
               <option >Female</option>
               <option >Male</option>
+              <option >Both</option>
             </Field>
           </div>
         </Columns>
