@@ -1,7 +1,7 @@
 const createError = require('http-errors')
 const bcrypt = require('bcrypt')
 
-const UserModel = require('../../database/models').User
+const UserModel = require('../../../database/models').User
 const logger = require('../../services/logger')
 const utils = require('../../utils')
 const errors = require('../../errors')
