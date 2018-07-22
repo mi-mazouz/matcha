@@ -1,6 +1,5 @@
-# Matcha
-This is a dating website
+# Requirements
+- You must to install the API, see api/README.md
 
-You must to install the API, see api/README.md
-
+# Installation
 - yarn && yarn start
