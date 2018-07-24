@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import Logo from '../../../common/components/Logo'
-import Title from '../../../common/components/Title'
+import StyledTitle from '../../../common/components/Title'
 import Container from '../../../common/components/Container'
 import Form from './Form'
 
-const TitleWrapped = styled(Title)`
+const TitleWrapped = styled(StyledTitle)`
   color: #ffffff !important;
   margin-top: 20px;
 `
