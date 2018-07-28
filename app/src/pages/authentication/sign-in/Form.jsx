@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -42,12 +40,10 @@ class SignInForm extends Component {
     )
   }
 
-  handleSubmit = (values) => new Promise((resolve, reject) => {
-    this.props.dispatch({
-      type: 'SIGNIN_FORM_SUBMIT',
-      payload: { values, resolve, reject }
-    })
-  })
+  handleSubmit = (values) => new Promise((resolve, reject) => this.props.dispatch({
+    type: 'SIGNIN_FORM_SUBMIT',
+    payload: { values, resolve, reject }
+  }))
 
   render() {
     return (
@@ -94,10 +90,7 @@ SignInForm.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default compose(
-  connect(),
-  reduxForm({
-    form: 'signInPage',
-    validate
-  })
-)(withTheme()(SignInForm))
+export default reduxForm({
+  form: 'signInPage',
+  validate
+})(withTheme()(SignInForm))
