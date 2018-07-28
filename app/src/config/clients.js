@@ -2,9 +2,10 @@ import axios from 'axios'
 
 import { getToken, logout } from '../utils'
 import constants from './constants'
+import errors from './errors'
 
 const initInterceptorRequest = (client) => {
-  axios.interceptors.request.use((config) => {
+  client.interceptors.request.use((config) => {
     const token = getToken()
 
     if (token) {
@@ -14,9 +15,10 @@ const initInterceptorRequest = (client) => {
     return config
   })
 
-  axios.interceptors.response.use(null, (error) => {
-    if (error.response && error.response.status === 401 && error.response.data.message === 'TOKEN_INVALID') {
-      logout()
+  client.interceptors.response.use(null, (error) => {
+    if (error.response) {
+      if (error.response.data.message === 'TOKEN_INVALID') logout()
+      else error.response.data.message = errors[error.response.data.message] || 'An error occured'
     }
 
     return Promise.reject(error)
