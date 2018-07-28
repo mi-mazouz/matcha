@@ -14,7 +14,6 @@ const Paper = ({ children, ...props }) => (
   </StyledPaper>
 )
   
-
 Paper.propTypes = {
   children: PropTypes.node.isRequired
 }

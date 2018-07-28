@@ -6,10 +6,10 @@
   "main": "src/index.js",
   "scripts": {
     "migrate": "./node_modules/.bin/sequelize db:migrate --config database/config --migrations-path database/migrations",
-    "migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo --config database/config/index.json --migrations-path database/migrations",
+    "migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo --config database/config --migrations-path database/migrations",
     "migration:create": "./node_modules/.bin/sequelize migration:create --config database/config --migrations-path database/migrations",
     "start": "yarn run migrate && yarn run server:watch",
-    "server:watch": "nodemon --config nodemon.json --inspect ./src/index.js"
+    "server:watch": "nodemon --config nodemon.json --inspect ./src"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.22.2",
+    "pg": "^7.4.3",
     "sequelize": "^4.38.0",
     "winston": "3.0.0"
   },

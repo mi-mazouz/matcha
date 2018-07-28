@@ -3,7 +3,7 @@ import axios from 'axios'
 import { getToken, logout } from '../utils'
 import constants from './constants'
 
-const initInterceptorRequest = () => {
+const initInterceptorRequest = (client) => {
   axios.interceptors.request.use((config) => {
     const token = getToken()
 
@@ -21,6 +21,8 @@ const initInterceptorRequest = () => {
 
     return Promise.reject(error)
   })
+
+  return client
 }
 
 export const httpClient = initInterceptorRequest(axios.create({ baseURL: constants.HTTP_API_BASE_URI }))

@@ -10,6 +10,7 @@ import {
 import { landingPageFormSubmit } from './pages/landing/saga'
 import { signUpFormSubmit } from './pages/authentication/sign-up/saga'
 import { signInFormSubmit } from './pages/authentication/sign-in/saga'
+import signInReducer from './pages/authentication/sign-in/reducer'
 
 const initialState = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}
 const sagaMiddleware = createSagaMiddleware()
@@ -20,7 +21,9 @@ const createStore = () => {
 
   const store = createReduxStore(
     combineReducers({
-      form: formReducer
+      form: formReducer.plugin({
+        signIn: signInReducer
+      })
     }),
     initialState,
     compose(
