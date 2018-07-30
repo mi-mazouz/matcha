@@ -9,7 +9,7 @@ const initInterceptorRequest = (client) => {
     const token = getToken()
 
     if (token) {
-      config.headers['authorization'] = token
+      config.headers['authorization'] = 'Bearer ' + token
     }
 
     return config

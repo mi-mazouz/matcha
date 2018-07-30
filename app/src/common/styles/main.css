@@ -9,6 +9,9 @@ body {
   height: 100vh;
   font-family: 'ShreeDev0714' !important;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 #root {
   height: 100%;

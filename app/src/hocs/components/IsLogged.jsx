@@ -1,20 +1,18 @@
 import React from 'react'
-import history from '../../config/history'
+import { Redirect } from 'react-router-dom'
+
 import { getToken } from '../../utils'
 
 export default (WrappedComponent) => {
-  class isAuthenticated extends React.Component {
+  class IsLogged extends React.Component {
     render () {
       const token = getToken()
    
-      if (!token) {
-        history.push('/')
-        return null
-      }
+      if (!token) return <Redirect to="/" />
 
       return <WrappedComponent {...this.props} />
     }
   }
 
-  return isAuthenticated
+  return IsLogged
 }

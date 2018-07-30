@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 
-import { httpClient } from '../../../config/clients'
+import { httpClient, history } from '../../../config'
+import { setToken } from '../../../utils'
 import {
   SIGNIN_FORM_SUBMIT,
   SIGNIN_FORM_ERROR
@@ -17,11 +18,12 @@ export function* signInFormSubmit() {
           data: { ...payload.values}
         })
 
-        console.log(data)
+        yield call(setToken, data.token)
+        yield call(history.push, '/profile')
       } catch (error) {
         document.getElementsByName('email')[0].blur()
         document.getElementsByName('password')[0].blur()
-        yield put({ type: SIGNIN_FORM_ERROR, payload: { error: error.response.data.message } })
+        return yield put({ type: SIGNIN_FORM_ERROR, payload: { error: error.response.data.message } })
       }
 
       return yield payload.resolve()
