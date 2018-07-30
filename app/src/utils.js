@@ -27,8 +27,15 @@ const isBirthDateValid = (birthDate) => {
   return regex.test(birthDate)
 }
 
+const isPasswordValid = (password) => {
+  const regex = /^(?=.{8,})(?=.*?[0-9])(?=.*?[A-Z]).*?[a-z].*$/
+
+  return regex.text(password)
+}
+
 export {
   isBirthDateValid,
+  isPasswordValid,
   logout,
   getToken,
   setToken,

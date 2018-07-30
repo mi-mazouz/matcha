@@ -49,6 +49,9 @@ const Columns = styled.div`
 
 const TagsColumn = styled.div`
   overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 class LandingPageForm extends Component {
