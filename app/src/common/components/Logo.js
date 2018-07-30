@@ -1,14 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import Logo from '../assets/logo.png'
-import Logo2x from '../assets/logo@2x.png'
-import Logo3x from '../assets/logo@3x.png'
+import logoImage from '../assets/logo.png'
+import logoImage2x from '../assets/logo@2x.png'
+import logoImage3x from '../assets/logo@3x.png'
 
-export default () => (
-  <img
+const StyledLogo = styled.img`
+  ${props => props.size && `width: ${props.size}px;`}
+  max-height: unset !important
+`
+
+const Logo = ({ ...props }) => (
+  <StyledLogo
+    {...props}
     className="logo"
-    src={Logo}
-    srcSet={`${Logo2x} 2x, ${Logo3x} 3x`}
+    src={logoImage}
+    srcSet={`${logoImage2x} 2x, ${logoImage3x} 3x`}
     alt=""
   />
 )
+
+export default Logo
