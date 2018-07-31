@@ -19,7 +19,7 @@ export function* signInFormSubmit() {
         })
 
         yield call(setToken, data.token)
-        yield call(history.push, '/profile')
+        yield call(history.push, '/dashboard')
       } catch (error) {
         document.getElementsByName('email')[0].blur()
         document.getElementsByName('password')[0].blur()

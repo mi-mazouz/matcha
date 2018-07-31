@@ -7,3 +7,23 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width: 1087px) {
+  .navbar-link {
+    padding-right: 0.75rem !important;
+    padding-bottom: 0px !important;
+  }
+  
+  .navbar-menu {
+    padding: 0px !important;
+  }
+
+  .navbar-item {
+    margin-right: 0px;
+  }
+
+  .navbar-item:first-child {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+}
