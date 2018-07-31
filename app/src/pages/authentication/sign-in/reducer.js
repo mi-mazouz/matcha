@@ -5,6 +5,7 @@ export default (state, { type, payload }) => {
     case SIGNIN_FORM_ERROR:
       return {
         ...state,
+        submitting: false,
         syncErrors: {
           email: payload.error,
           password: payload.error
