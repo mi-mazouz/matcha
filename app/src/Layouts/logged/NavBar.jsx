@@ -67,7 +67,7 @@ const Dropdown = styled.div`
 const MenuTitle = styled.span`
   border-bottom: solid;
   border-radius: 0px !important;
-  border-bottom-width: 1px;
+  border-bottom-width: 0.1rem;
   font-size: 16px;
   font-weight: bold;
   font-style: normal;
