@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { InputWithIcons } from '../../../common/components/Input'
-import { isBirthDateValid, isEmail } from '../../../utils'
+import { isBirthDateValid, isEmail, isPasswordValid } from '../../../utils'
 import Button from '../../../common/components/Button'
 import Select from '../../../common/components/Select'
 
@@ -29,6 +29,7 @@ const validate = (values) => {
   if (!values.email) errors.email = 'Required'
   else if (!isEmail(values.email)) errors.email = 'Wrong format'
   if (!values.password) errors.password = 'Required'
+  else if (!isPasswordValid(values.password)) errors.password = 'Password not safe'
   
   return errors
 }
