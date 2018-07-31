@@ -15,7 +15,10 @@ const app = express()
 
 const jwtSecret = Buffer.from(fs.readFileSync(path.join(__dirname, '/config/secret.key')), 'base64')
 
-app.use(cors(), bodyParser.json(), expressJwt({ secret: jwtSecret, credentialsRequired: false }))
+app.use(cors({
+  allowedHeaders: ['Content-Type, Authorization'],
+  methods: ['GET', 'PUT', 'POST', 'DELETE']
+}), bodyParser.json(), expressJwt({ secret: jwtSecret, credentialsRequired: false }))
 app.use(requestInfos)
 
 app.use('/authentication', authenticationRouter)
