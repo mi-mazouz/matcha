@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import Protypes from 'prop-types'
 
 import logoImage from '../assets/logo.png'
-import logoImage2x from '../assets/logo@2x.png'
-import logoImage3x from '../assets/logo@3x.png'
 import logoNavbarImage from '../assets/logo-navbar.png'
 
 const StyledLogo = styled.img`
@@ -17,7 +15,6 @@ const Logo = ({ isNavbar, ...props }) => (
     {...props}
     className="logo"
     src={isNavbar ? logoNavbarImage : logoImage}
-    srcSet={`${logoImage2x} 2x, ${logoImage3x} 3x`}
     alt=""
   />
 )
