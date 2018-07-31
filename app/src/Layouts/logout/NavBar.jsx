@@ -27,13 +27,11 @@ const Menu = styled.div`
   }
   padding: 0px !important;
   position: relative;
-
 `
 
 const MenuEnd = styled.div`
-  margin-right: 10px;
   position: absolute;
-  right: 0;
+  right: 0px;
 `
 
 const MenuLink = styled(Link)`

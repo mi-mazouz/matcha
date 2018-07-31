@@ -7,10 +7,6 @@ import { Link } from 'react-router-dom'
 import { logout } from '../../utils'
 import Logo from '../../common/components/Logo'
 
-const NavBar = styled.div`
-  padding-bottom: 0px !important;
-`
-
 const BurgerWrapper = styled.div`
   &:hover {
     background-color: transparent !important;
@@ -26,53 +22,63 @@ const Burger = styled.span`
 
 const NavBarEnd = styled.div`
   position: absolute;
-  right: 0;
+  right: 32px;
+  top: 27px;
 `
 
-const MenuLink = withTheme()(styled(Link)`
-  text-align: left;
-  margin-right: 80px;
+const MenuLinkRouter = withTheme()(styled(Link)`
   &:hover {
     color: ${props => props.theme.palette.pink} !important;
     background-color: transparent !important;
+  }
+  margin-right: 60px;
+  & > span:hover {
+    border-bottom: solid;
+    border-bottom-width: 2px;
   }
   ${props => props.isselected && `color: ${props.theme.palette.pink} !important;`}
 `)
 
-const DropdownLink = withTheme()(styled.div`
+const MenuSubLinkRouter = styled(Link)`
+  font-weight: bold;
   &:hover {
-    color: ${props => props.theme.palette.pink} !important;
-    background-color: transparent !important;
-  }
-  &:after {
-    border-color: black !important;
-  }
-  text-align: left;
-  background-color: transparent !important;
-`)
-
-const Dropdown = styled.div`
-  width: 100px;
-  min-width: 95% !important;
-  box-shadow: none !important;
-  & > a {
-    padding-right: 10px !important;
-    text-align: right;
-  }
-  & > a > span {
-    border: none;
+    color: black !important;
+    background-color: whitesmoke !important;
   }
 `
 
+const MenuSubLink = styled.a`
+  font-weight: bold;
+  &:hover {
+    color: black !important;
+    background-color: whitesmoke !important;
+  }
+`
+
+const DropdownLink = withTheme()(styled.div`
+  &:after {
+    border-color: black !important;
+  }
+  &:hover {
+    &:after {
+      border-color: ${props => props.theme.palette.pink} !important;
+    }
+    color: ${props => props.theme.palette.pink} !important;
+    background-color: transparent !important;
+  }
+  background-color: transparent !important;
+`)
+
 const MenuTitle = styled.span`
-  border-bottom: solid;
-  border-radius: 0px !important;
-  border-bottom-width: 0.1rem;
   font-size: 16px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
+  ${props => props.isselected && `
+    border-bottom: solid;
+    border-bottom-width: 2px;
+  `}
 `
 
 class LogoutNavBar extends Component {
@@ -86,7 +92,7 @@ class LogoutNavBar extends Component {
     const { location } = this.props
 
     return (
-      <NavBar className="navbar is-spaced">
+      <div className="navbar has-shadow is-spaced">
         <div className="navbar-brand">
           <Link className="navbar-item" to='/'>
             <Logo size={180} isNavbar />
@@ -101,38 +107,69 @@ class LogoutNavBar extends Component {
         </div>
         <div className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
           <NavBarEnd className="navbar-end">
-            <MenuLink
+            <MenuLinkRouter
               isselected={location.pathname === '/dashboard/profile' ? 1 : 0}
               className="navbar-item"
               to="/dashboard/profile"
             >
-              <MenuTitle>Profile</MenuTitle>
-            </MenuLink>
-            <MenuLink
+              <MenuTitle
+                isselected={location.pathname === '/dashboard/profile' ? 1 : 0}
+              >
+                Profile
+              </MenuTitle>
+            </MenuLinkRouter>
+            <MenuLinkRouter
               isselected={location.pathname === '/dashboard/messages' ? 1 : 0}
               className="navbar-item"
               to="/dashboard/messages"
             >
-              <MenuTitle>Messages</MenuTitle>
-            </MenuLink>
+              <MenuTitle
+                isselected={location.pathname === '/dashboard/messages' ? 1 : 0}
+              >
+                Messages
+              </MenuTitle>
+            </MenuLinkRouter>
+            <MenuLinkRouter
+              isselected={location.pathname === '/dashboard/match' ? 1 : 0}
+              className="navbar-item"
+              to="/dashboard/match"
+            >
+              <MenuTitle
+                isselected={location.pathname === '/dashboard/match' ? 1 : 0}
+              >
+                Match
+              </MenuTitle>
+            </MenuLinkRouter>
+            <MenuLinkRouter
+              isselected={location.pathname === '/dashboard/browse' ? 1 : 0}
+              className="navbar-item"
+              to="/dashboard/browse"
+            >
+              <MenuTitle
+                isselected={location.pathname === '/dashboard/Browse' ? 1 : 0}
+              >
+                Browse
+              </MenuTitle>
+            </MenuLinkRouter>
             <div className="navbar-item has-dropdown is-hoverable">
               <DropdownLink className="navbar-link">
-                <MenuTitle>Account</MenuTitle>
+                <MenuTitle>Settings</MenuTitle>
               </DropdownLink>
-              <Dropdown className="navbar-dropdown">
-                <MenuLink
-                  onClick={logout}
-                  isselected={location.pathname === '/dashboard/messages' ? 1 : 0}
+              <div className="navbar-dropdown">
+                <MenuSubLinkRouter
                   className="navbar-item"
-                  to="/dashboard/messages"
+                  to="/dashboard/account"
                 >
-                  <MenuTitle>Logout</MenuTitle>
-                </MenuLink>
-              </Dropdown>
+                  Account
+                </MenuSubLinkRouter>
+                <MenuSubLink className="navbar-item" onClick={logout}>
+                  Logout
+                </MenuSubLink>
+              </div>
             </div>    
           </NavBarEnd>
         </div>
-      </NavBar>
+      </div>
     )
   }
 }
