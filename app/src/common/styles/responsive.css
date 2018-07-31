@@ -23,6 +23,10 @@
     padding: 0px !important;
   }
 
+  .navbar-item {
+    margin-right: 0px;
+  }
+
   .navbar-link:hover {
     color: #4a4a4a !important;
     cursor: default;
