@@ -28,7 +28,7 @@ const NavBarEnd = styled.div`
 
 const MenuLinkRouter = withTheme()(styled(Link)`
   &:hover {
-    color: ${props => props.theme.palette.pink} !important;
+    color: ${props => props.theme.palette.purple} !important;
     background-color: transparent !important;
   }
   margin-right: 60px;
@@ -36,7 +36,7 @@ const MenuLinkRouter = withTheme()(styled(Link)`
     border-bottom: solid;
     border-bottom-width: 2px;
   }
-  ${props => props.isselected && `color: ${props.theme.palette.pink} !important;`}
+  ${props => props.isselected && `color: ${props.theme.palette.purple} !important;`}
 `)
 
 const MenuSubLinkRouter = styled(Link)`
@@ -61,9 +61,9 @@ const DropdownLink = withTheme()(styled.div`
   }
   &:hover {
     &:after {
-      border-color: ${props => props.theme.palette.pink} !important;
+      border-color: ${props => props.theme.palette.purple} !important;
     }
-    color: ${props => props.theme.palette.pink} !important;
+    color: ${props => props.theme.palette.purple} !important;
     background-color: transparent !important;
   }
   background-color: transparent !important;
@@ -92,7 +92,7 @@ class LogoutNavBar extends Component {
     const { location } = this.props
 
     return (
-      <div className="navbar has-shadow is-spaced">
+      <div className="navbar is-spaced">
         <div className="navbar-brand">
           <Link className="navbar-item" to='/'>
             <Logo size={180} isNavbar />
