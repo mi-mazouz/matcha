@@ -19,7 +19,7 @@ export function* signUpFormSubmit() {
         document.getElementsByName('username')[0].blur()
         document.getElementsByName('birthDate')[0].blur()
         document.getElementsByName('sexualOrientation')[0].blur()
-        document.getElementsByName('sex')[0].blur()
+        document.getElementsByName('gender')[0].blur()
         document.getElementsByName('email')[0].blur()
         document.getElementsByName('password')[0].blur()
         return yield put ({ type: SIGNUP_FORM_ERROR, payload: { error: error.response.data.message } })
