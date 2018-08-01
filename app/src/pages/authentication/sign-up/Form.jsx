@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { InputWithIcons } from '../../../common/components/Input'
-import { isBirthDateValid, isEmail, isPasswordValid } from '../../../utils'
+import { isBirthDateValid, isEmail, isPasswordValid, isUsername } from '../../../utils'
 import Button from '../../../common/components/Button'
 import Select from '../../../common/components/Select'
 
@@ -22,8 +22,9 @@ const validate = (values) => {
   const errors = {}
 
   if (!values.sexualOrientation) errors.sexualOrientation = 'Required'
-  if (!values.sex) errors.sex = 'Required'
+  if (!values.gender) errors.gender = 'Required'
   if (!values.username) errors.username = 'Required'
+  else if (!isUsername(values.username)) errors.username = 'Wrong format'
   if (!values.birthDate) errors.birthDate = 'Required'
   else if (!isBirthDateValid(values.birthDate)) errors.birthDate = 'Wrong format'
   if (!values.email) errors.email = 'Required'
@@ -69,7 +70,7 @@ class SignUpFormPage extends Component {
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
-            <Field name="sex" component={this.renderSelect}>
+            <Field name="gender" component={this.renderSelect}>
               <option  value="" disabled>I am</option>
               <option >Female</option>
               <option >Male</option>
