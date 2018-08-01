@@ -6,10 +6,15 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import {
+  isBirthDate,
+  isName,
+  isEmail,
+  isPassword,
+  isUsername
+} from '../../../utils'
 import { InputWithIcons } from '../../../common/components/Input'
-import { isBirthDateValid, isEmail, isPasswordValid, isUsername } from '../../../utils'
 import Button from '../../../common/components/Button'
-import Select from '../../../common/components/Select'
 
 const Form = styled.form`
   width: 435px;
@@ -21,27 +26,28 @@ const Columns = styled.div`
 const validate = (values) => {
   const errors = {}
 
-  if (!values.sexualOrientation) errors.sexualOrientation = 'Required'
-  if (!values.gender) errors.gender = 'Required'
+  if (!values.firstName) errors.firstName = 'Required'
+  else if (!isName(values.firstName)) errors.firstName = 'Wrong format'
+
+  if (!values.lastName) errors.lastName = 'Required'
+  else if (!isName(values.lastName)) errors.lastName = 'Wrong format'
+
   if (!values.username) errors.username = 'Required'
   else if (!isUsername(values.username)) errors.username = 'Wrong format'
+
   if (!values.birthDate) errors.birthDate = 'Required'
-  else if (!isBirthDateValid(values.birthDate)) errors.birthDate = 'Wrong format'
+  else if (!isBirthDate(values.birthDate)) errors.birthDate = 'Wrong format'
+
   if (!values.email) errors.email = 'Required'
   else if (!isEmail(values.email)) errors.email = 'Wrong format'
+
   if (!values.password) errors.password = 'Required'
-  else if (!isPasswordValid(values.password)) errors.password = 'Password not safe'
+  else if (!isPassword(values.password)) errors.password = 'Password not safe'
   
   return errors
 }
 
-class SignUpFormPage extends Component {
-  renderSelect = ({ input, children }) => (
-    <Select {...input}>
-      { children }
-    </Select>
-  )
-
+class SignUpForm extends Component {
   renderInput = ({ input, meta, placeholder, ...props }) => {
     const error = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
@@ -70,19 +76,22 @@ class SignUpFormPage extends Component {
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
-            <Field name="gender" component={this.renderSelect}>
-              <option  value="" disabled>I am</option>
-              <option >Female</option>
-              <option >Male</option>
-            </Field>
+            <Field
+              name="firstName"
+              icon="user"
+              placeholder='First name'
+              type="text"
+              component={this.renderInput}
+            />
           </div>
           <div className="column">
-            <Field name="sexualOrientation" component={this.renderSelect}>
-              <option value="" disabled>Looking for</option>
-              <option >Female</option>
-              <option >Male</option>
-              <option >Both</option>
-            </Field>
+            <Field
+              name="lastName"
+              icon="user"
+              placeholder='Last name'
+              type="text"
+              component={this.renderInput}
+            />
           </div>
         </Columns>
         <Columns className="columns">
@@ -142,7 +151,7 @@ class SignUpFormPage extends Component {
   }
 }
 
-SignUpFormPage.propTypes = {
+SignUpForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
@@ -152,7 +161,7 @@ SignUpFormPage.propTypes = {
 export default compose(
   connect(),
   reduxForm({
-    form: 'signUpPage',
+    form: 'signUp',
     validate
   })
-)(withTheme()(SignUpFormPage))
+)(withTheme()(SignUpForm))

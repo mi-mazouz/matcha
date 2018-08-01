@@ -2,20 +2,29 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('User', {
       id: {
-        allowNull: false,
+        type: Sequelize.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
       gender: {
-        type: Sequelize.ENUM('FEMALE', 'MALE')
+        type: Sequelize.ENUM('FEMALE', 'MALE', 'INTERSEXED'),
+        defaultValue: 'INTERSEXED'
       },
       sexualOrientation: {
         type: Sequelize.ENUM('FEMALE', 'MALE', 'BISEXUAL'),
         defaultValue: 'BISEXUAL'
       },
+      firstName: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+      },
+      lastName: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+      },
       username: {
-        type: Sequelize.STRING(16)
+        type: Sequelize.STRING(16),
+        allowNull: false
       },
       birthDate: {
         type: Sequelize.DATE,

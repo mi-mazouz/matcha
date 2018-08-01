@@ -13,15 +13,17 @@ export function* signUpFormSubmit() {
           url: '/authentication/sign-up',
           data: { ...payload.values}
         })
+
         yield call(setToken, data.token)
         yield call(history.push, '/dashboard')
       } catch (error) {
+        document.getElementsByName('firstName')[0].blur()
+        document.getElementsByName('lastName')[0].blur()
         document.getElementsByName('username')[0].blur()
         document.getElementsByName('birthDate')[0].blur()
-        document.getElementsByName('sexualOrientation')[0].blur()
-        document.getElementsByName('gender')[0].blur()
         document.getElementsByName('email')[0].blur()
         document.getElementsByName('password')[0].blur()
+
         return yield put ({ type: SIGNUP_FORM_ERROR, payload: { error: error.response.data.message } })
       }
 

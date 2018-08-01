@@ -16,7 +16,7 @@ const Section = styled(StyledSection)`
   padding-bottom: 0rem !important;
 `
 
-class SignUpPage extends Component {
+class SignUp extends Component {
   render() {
     return (
       <Section>
@@ -30,4 +30,4 @@ class SignUpPage extends Component {
   }
 }
 
-export default SignUpPage
+export default SignUp

@@ -23,6 +23,7 @@ export function* signInFormSubmit() {
       } catch (error) {
         document.getElementsByName('email')[0].blur()
         document.getElementsByName('password')[0].blur()
+
         return yield put({ type: SIGNIN_FORM_ERROR, payload: { error: error.response.data.message } })
       }
 

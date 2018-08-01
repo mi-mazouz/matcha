@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 
 import NavBar from './NavBar'
 import LandingPage from '../../pages/landing'
-import SignInPage from '../../pages/authentication/sign-in'
-import SignUpPage from '../../pages/authentication/sign-up'
+import SignIn from '../../pages/authentication/sign-in'
+import SignUp from '../../pages/authentication/sign-up'
 import StyledPage from '../../common/components/Page'
 
 import landingPageBackgroundImage from '../../pages/landing/assets/background.jpg'
@@ -27,8 +27,8 @@ const LogoutLayout = ({ location }) => (
     <NavBar />
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route exact path="/sign-in" component={SignInPage} />
-      <Route exact path="/sign-up" component={SignUpPage} />
+      <Route exact path="/sign-in" component={SignIn} />
+      <Route exact path="/sign-up" component={SignUp} />
       <Redirect to="/" />
     </Switch>
   </Page>

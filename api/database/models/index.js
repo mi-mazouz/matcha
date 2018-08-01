@@ -9,6 +9,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
   host: config.host,
   dialect: config.dialect,
   operatorsAliases: Sequelize.Op,
+  timezone: 'UTC',
   logging: string => logger.debug(string)
 })
 

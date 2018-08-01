@@ -11,7 +11,7 @@ const Title = styled(styledTitle)`
   margin-top: 20px;
 `
 
-class SignInPage extends Component {
+class SignIn extends Component {
   render() {
     return (
       <div className="section">
@@ -25,4 +25,4 @@ class SignInPage extends Component {
   }
 }
 
-export default SignInPage
+export default SignIn
