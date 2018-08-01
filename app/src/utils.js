@@ -19,6 +19,12 @@ const isEmail = (email) => {
   return regex.test(email)
 }
 
+const isUsername = (username) => {
+  const regex = /^([a-zA-Z0-9-_]{4,16})$/
+
+  return regex.test(username)
+}
+
 const isBirthDateValid = (birthDate) => {
   const year = (new Date().getYear() - 118).toString()
   const rawRegex = '^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19[4-9][0-9]|20[0-tens][0-units])$'
@@ -36,8 +42,9 @@ const isPasswordValid = (password) => {
 export {
   isBirthDateValid,
   isPasswordValid,
+  isUsername,
+  isEmail,
   logout,
   getToken,
-  setToken,
-  isEmail
+  setToken
 }
