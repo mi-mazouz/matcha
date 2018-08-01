@@ -23,6 +23,8 @@ const PaperTag = styled(Paper)`
   &::-webkit-scrollbar {
     display: none;
   }
+  width: 100%;
+  ${props => !props.isfirst && 'box-shadow: unset !important;'}
   opacity: 0.8;
   height: 36px;
   padding: 5px;
@@ -45,13 +47,6 @@ const PaperPlaceHolder = styled.div`
 
 const Columns = styled.div`
   display: flex !important;
-`
-
-const TagsColumn = styled.div`
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 class LandingPageForm extends Component {
@@ -144,25 +139,27 @@ class LandingPageForm extends Component {
               onKeyPress={this.handleTags}
             />
           </div>
-          <TagsColumn className="column is-half">
-            <PaperTag>
-              {
-                this.state.tags.length === 0 ?
-                  <PaperPlaceHolder className="has-text-centered">
-                    My interests
-                  </PaperPlaceHolder> : 
-                  this.state.tags.map((value, index) => (
-                    <LandingPageTag
-                      size="is-small"
-                      key={index}
-                      onDelete={() => this.handleTagDelete(index)}
-                    >
-                      { value }
-                    </LandingPageTag>
-                  ))
-              }
+          <div className="column is-half">
+            <PaperTag isfirst={1}>
+              <PaperTag>
+                {
+                  this.state.tags.length === 0 ?
+                    <PaperPlaceHolder className="has-text-centered">
+                      My interests
+                    </PaperPlaceHolder> : 
+                    this.state.tags.map((value, index) => (
+                      <LandingPageTag
+                        size="is-small"
+                        key={index}
+                        onDelete={() => this.handleTagDelete(index)}
+                      >
+                        { value }
+                      </LandingPageTag>
+                    ))
+                }
+              </PaperTag>
             </PaperTag>
-          </TagsColumn>
+          </div>
         </Columns>
         <Button
           backgroundImage={this.props.theme.palette.mixGradient}
