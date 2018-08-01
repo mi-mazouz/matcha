@@ -28,14 +28,14 @@ const NavBarEnd = styled.div`
 
 const MenuLinkRouter = withTheme()(styled(Link)`
   &:hover {
+    & > span {
+      border-bottom: solid;
+      border-bottom-width: 2px;
+    }
     color: ${props => props.theme.palette.purple} !important;
     background-color: transparent !important;
   }
   margin-right: 60px;
-  & > span:hover {
-    border-bottom: solid;
-    border-bottom-width: 2px;
-  }
   ${props => props.isselected && `color: ${props.theme.palette.purple} !important;`}
 `)
 
