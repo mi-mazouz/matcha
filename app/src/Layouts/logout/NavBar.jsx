@@ -30,13 +30,17 @@ const Menu = styled.div`
 `
 
 const MenuEnd = styled.div`
+  height: 51px;
   position: absolute;
   right: 0px;
 `
 
 const MenuLink = styled(Link)`
   &:hover {
-    text-decoration: underline;
+    & > span {
+      border-bottom: solid;
+      border-bottom-width: 2px;
+    }
     background-color: transparent !important;
     color: #ffffff !important;
   }
