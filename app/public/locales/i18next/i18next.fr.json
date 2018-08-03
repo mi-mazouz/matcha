@@ -12,6 +12,7 @@
   "man": "Homme",
   "my_interests": "Mes intérêts",
   "password": "Mot de passe",
+  "pictures": "Photos",
   "profile": "Profil",
   "settings": "Paramètres",
   "sign_in": "Se connecter",
@@ -23,5 +24,6 @@
   },
   "to": "À",
   "username": "Nom d'utilisateur",
-  "woman": "Femme"
+  "woman": "Femme",
+  "years_old": "Ans"
 }

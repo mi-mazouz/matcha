@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 import { logout } from '../../utils'
 import Logo from '../../common/components/Logo'
+import Badge from '../../common/components/Badge'
 
 const BurgerWrapper = styled.div`
   &:hover {
@@ -122,9 +123,11 @@ class LogoutNavBar extends Component {
               className="navbar-item"
               to="/dashboard/messages"
             >
-              <MenuTitle isselected={location.pathname === '/dashboard/messages' ? 1 : 0}>
-                Messages
-              </MenuTitle>
+              <Badge badgeContent={0} top={-20} right={-20}>
+                <MenuTitle isselected={location.pathname === '/dashboard/messages' ? 1 : 0}>
+                  Messages
+                </MenuTitle>
+              </Badge>
             </MenuLinkRouter>
             <MenuLinkRouter
               isselected={location.pathname === '/dashboard/match' ? 1 : 0}

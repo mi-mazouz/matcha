@@ -12,6 +12,7 @@
   "man": "Man",
   "my_interests": "My interests",
   "password": "Password",
+  "pictures": "Pictures",
   "profile": "Profile",
   "settings": "Settings",
   "sign_in": "Sign in",
@@ -23,5 +24,6 @@
   },
   "to": "To",
   "username": "Username",
-  "woman": "Woman"
+  "woman": "Woman",
+  "years_old": "Years old"
 }
