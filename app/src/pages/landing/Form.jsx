@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { compose } from 'redux'
+import { translate } from 'react-i18next'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { withTheme } from '@material-ui/core/styles'
@@ -88,21 +89,23 @@ class LandingPageForm extends Component {
   }
 
   render() {
+    const { t } = this.props
+    
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
             <Field name="gender" component={this.renderSelect}>
-              <option  value="" disabled>I am</option>
-              <option >Female</option>
-              <option >Male</option>
+              <option  value="" disabled>{t('i_am')}</option>
+              <option >{t('woman')}</option>
+              <option >{t('man')}</option>
             </Field>
           </div>
           <div className="column">
             <Field name="lookingFor" component={this.renderSelect}>
-              <option value="" disabled>Looking for</option>
-              <option >Female</option>
-              <option >Male</option>
+              <option value="" disabled>{t('looking_for')}</option>
+              <option >{t('woman')}</option>
+              <option >{t('man')}</option>
             </Field>
           </div>
         </Columns>
@@ -111,13 +114,13 @@ class LandingPageForm extends Component {
             <Columns className="columns">
               <div className="column">
                 <Field onChange={this.handleFromChange} name="from" component={this.renderSelect}>
-                  <option value="" disabled>From</option>
+                  <option value="" disabled>{t('from')}</option>
                   {Array(63).fill(null).map((_, index) => <option key={index}>{index + 18}</option>)}
                 </Field>
               </div>
               <div className="column">
                 <Field name="to" component={this.renderSelect}>
-                  <option value="" disabled>To</option>
+                  <option value="" disabled>{t('to')}</option>
                   {Array(63 - (this.state.fromValue - 18)).fill(null).map((_, index) => <option key={index}>{index + this.state.fromValue}</option>)}
                 </Field>
               </div>
@@ -134,7 +137,7 @@ class LandingPageForm extends Component {
           <div className="column">
             <Input
               type="text"
-              placeholder="#Interests"
+              placeholder={`#${t('interests')}`}
               onChange={this.handleTag}
               onKeyPress={this.handleTags}
             />
@@ -145,7 +148,7 @@ class LandingPageForm extends Component {
                 {
                   this.state.tags.length === 0 ?
                     <PaperPlaceHolder className="has-text-centered">
-                      My interests
+                      {t('my_interests')}
                     </PaperPlaceHolder> : 
                     this.state.tags.map((value, index) => (
                       <LandingPageTag
@@ -177,6 +180,7 @@ class LandingPageForm extends Component {
 LandingPageForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   dispatch: PropTypes.func.isRequired
 }
@@ -186,4 +190,4 @@ export default compose(
   reduxForm({
     form: 'landingPage'
   })
-)(withTheme()(LandingPageForm))
+)(translate()(withTheme()(LandingPageForm)))

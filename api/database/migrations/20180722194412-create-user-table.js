@@ -7,11 +7,11 @@ module.exports = {
         primaryKey: true
       },
       gender: {
-        type: Sequelize.ENUM('FEMALE', 'MALE', 'INTERSEXED'),
+        type: Sequelize.ENUM('WOMAN', 'MAN', 'INTERSEXED'),
         defaultValue: 'INTERSEXED'
       },
       sexualOrientation: {
-        type: Sequelize.ENUM('FEMALE', 'MALE', 'BISEXUAL'),
+        type: Sequelize.ENUM('WOMAN', 'MAN', 'BISEXUAL'),
         defaultValue: 'BISEXUAL'
       },
       firstName: {

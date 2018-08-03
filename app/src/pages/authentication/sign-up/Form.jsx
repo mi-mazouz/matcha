@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 import { reduxForm, Field } from 'redux-form'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -72,6 +73,8 @@ class SignUpForm extends Component {
   })
 
   render() {
+    const { t } = this.props
+    
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
@@ -79,7 +82,7 @@ class SignUpForm extends Component {
             <Field
               name="firstName"
               icon="user"
-              placeholder='First name'
+              placeholder={t('first_name')}
               type="text"
               component={this.renderInput}
             />
@@ -88,7 +91,7 @@ class SignUpForm extends Component {
             <Field
               name="lastName"
               icon="user"
-              placeholder='Last name'
+              placeholder={t('last_name')}
               type="text"
               component={this.renderInput}
             />
@@ -99,7 +102,7 @@ class SignUpForm extends Component {
             <Field
               name="username"
               icon="user"
-              placeholder='Username'
+              placeholder={t('username')}
               type="text"
               component={this.renderInput}
             />
@@ -110,7 +113,7 @@ class SignUpForm extends Component {
                 <Field
                   name="birthDate"
                   icon="calendar-alt"
-                  placeholder='Ex: 08/06/1954'
+                  placeholder={t('birth_date_placeholder')}
                   type="text"
                   component={this.renderInput}
                 />
@@ -132,7 +135,7 @@ class SignUpForm extends Component {
             <Field
               name="password"
               icon="lock"
-              placeholder='Password'
+              placeholder={t('password')}
               type="password"
               component={this.renderInput}
             />
@@ -155,6 +158,7 @@ SignUpForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
+  t: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
@@ -164,4 +168,4 @@ export default compose(
     form: 'signUp',
     validate
   })
-)(withTheme()(SignUpForm))
+)(translate()(withTheme()(SignUpForm)))
