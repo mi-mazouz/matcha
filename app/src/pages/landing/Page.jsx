@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import Logo from '../../common/components/Logo'
 import Container from '../../common/components/Container'
@@ -18,11 +20,13 @@ const Section = styled(StyledSection)`
 
 class LandingPage extends Component {
   render() {
+    const { t } = this.props
+
     return (
       <Section>
         <Container>
           <Logo />
-          <Title className="is-1">Find your soulmate</Title>
+          <Title className="is-1">{t('title_page.landing_page')}</Title>
           <Form />
         </Container>
       </Section>
@@ -30,4 +34,8 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage
+LandingPage.propTypes = {
+  t: PropTypes.func.isRequired
+}
+
+export default translate()(LandingPage)

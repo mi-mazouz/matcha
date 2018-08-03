@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { withTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
@@ -35,7 +36,7 @@ const MenuLinkRouter = withTheme()(styled(Link)`
     color: ${props => props.theme.palette.purple} !important;
     background-color: transparent !important;
   }
-  margin-right: 60px;
+  margin-right: 30px;
   ${props => props.isselected && `color: ${props.theme.palette.purple} !important;`}
 `)
 
@@ -89,7 +90,7 @@ class LogoutNavBar extends Component {
   handleBurgerClick = () => this.setState({isActive: !this.state.isActive})
 
   render() {
-    const { location } = this.props
+    const { location, t } = this.props
 
     return (
       <div className="navbar is-spaced">
@@ -112,10 +113,8 @@ class LogoutNavBar extends Component {
               className="navbar-item"
               to="/dashboard/profile"
             >
-              <MenuTitle
-                isselected={location.pathname === '/dashboard/profile' ? 1 : 0}
-              >
-                Profile
+              <MenuTitle isselected={location.pathname === '/dashboard/profile' ? 1 : 0}>
+                {t('profile')}
               </MenuTitle>
             </MenuLinkRouter>
             <MenuLinkRouter
@@ -123,9 +122,7 @@ class LogoutNavBar extends Component {
               className="navbar-item"
               to="/dashboard/messages"
             >
-              <MenuTitle
-                isselected={location.pathname === '/dashboard/messages' ? 1 : 0}
-              >
+              <MenuTitle isselected={location.pathname === '/dashboard/messages' ? 1 : 0}>
                 Messages
               </MenuTitle>
             </MenuLinkRouter>
@@ -134,9 +131,7 @@ class LogoutNavBar extends Component {
               className="navbar-item"
               to="/dashboard/match"
             >
-              <MenuTitle
-                isselected={location.pathname === '/dashboard/match' ? 1 : 0}
-              >
+              <MenuTitle isselected={location.pathname === '/dashboard/match' ? 1 : 0}>
                 Match
               </MenuTitle>
             </MenuLinkRouter>
@@ -145,25 +140,23 @@ class LogoutNavBar extends Component {
               className="navbar-item"
               to="/dashboard/browse"
             >
-              <MenuTitle
-                isselected={location.pathname === '/dashboard/Browse' ? 1 : 0}
-              >
+              <MenuTitle isselected={location.pathname === '/dashboard/Browse' ? 1 : 0}>
                 Browse
               </MenuTitle>
             </MenuLinkRouter>
             <div className="navbar-item has-dropdown is-hoverable">
               <DropdownLink className="navbar-link">
-                <MenuTitle>Settings</MenuTitle>
+                <MenuTitle>{t('settings')}</MenuTitle>
               </DropdownLink>
               <div className="navbar-dropdown">
                 <MenuSubLinkRouter
                   className="navbar-item"
                   to="/dashboard/account"
                 >
-                  Account
+                  {t('account')}
                 </MenuSubLinkRouter>
                 <MenuSubLink className="navbar-item" onClick={logout}>
-                  Logout
+                  {t('logout')}
                 </MenuSubLink>
               </div>
             </div>    
@@ -175,7 +168,8 @@ class LogoutNavBar extends Component {
 }
 
 LogoutNavBar.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired
 }
   
-export default LogoutNavBar
+export default translate()(LogoutNavBar)

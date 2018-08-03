@@ -1,0 +1,27 @@
+{
+  "account": "Compte",
+  "birth_date_placeholder": "Ex: 25/06/1994",
+  "i_am": "Je suis",
+  "interests": "Intérêts",
+  "first_name": "Prénom",
+  "forgot_password_link_title": "Mot de passe oublié ?",
+  "from": "De",
+  "last_name": "Nom",
+  "logout": "Se déconnecter",
+  "looking_for": "Je recherche",
+  "man": "Homme",
+  "my_interests": "Mes intérêts",
+  "password": "Mot de passe",
+  "profile": "Profil",
+  "settings": "Paramètres",
+  "sign_in": "Se connecter",
+  "sign_up": "S'enregistrer",
+  "title_page": {
+    "landing_page": "Trouve ton âme soeur !",
+    "sign_in": "Se connecter !",
+    "sign_up": "S'enregistrer !"
+  },
+  "to": "À",
+  "username": "Nom d'utilisateur",
+  "woman": "Femme"
+}

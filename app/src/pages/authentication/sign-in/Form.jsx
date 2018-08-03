@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
+import { translate } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -12,6 +14,13 @@ const Form = styled.form`
   width: 300px;
   margin: auto
 `
+
+const StyledLink = withTheme()(styled(Link)`
+  float: right;
+  font-weight: bold;
+  font-size: 14px;
+  color: ${props => props.theme.palette.grey};
+`)
 
 const validate = (values) => {
   const errors = {}
@@ -46,6 +55,8 @@ class SignInForm extends Component {
   }))
 
   render() {
+    const { t } = this.props
+
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <div className="columns">
@@ -64,10 +75,11 @@ class SignInForm extends Component {
             <Field
               icon="lock"
               name="password"
-              placeholder='Password'
+              placeholder={t('password')}
               type="password"
               component={this.renderInput}
             />
+            <StyledLink to='/forgot-password'>{t('forgot_password_link_title')}</StyledLink>
           </div>
         </div>
         <Button
@@ -87,10 +99,11 @@ SignInForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
+  t: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 export default reduxForm({
   form: 'signIn',
   validate
-})(withTheme()(SignInForm))
+})(translate()(withTheme()(SignInForm)))

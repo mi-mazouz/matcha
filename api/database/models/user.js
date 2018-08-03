@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Model = sequelize.define('User', {
     gender: {
-      type: DataTypes.ENUM('FEMALE', 'MALE', 'INTERSEXED'),
+      type: DataTypes.ENUM('WOMAN', 'MAN', 'INTERSEXED'),
       defaultValue: 'INTERSEXED'
     },
     sexualOrientation: {
-      type: DataTypes.ENUM('FEMALE', 'MALE', 'BISEXUAL'),
+      type: DataTypes.ENUM('WOMAN', 'MAN', 'BISEXUAL'),
       defaultValue: 'BISEXUAL'
     },
     firstName: {

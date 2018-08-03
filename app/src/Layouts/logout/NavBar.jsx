@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 const NavBar = styled.nav`
@@ -65,6 +67,8 @@ class LogoutNavBar extends Component {
   handleBurgerClick = () => this.setState({isActive: !this.state.isActive})
 
   render() {
+    const { t } = this.props
+
     return (
       <NavBar className="navbar">
         <div className="navbar-brand">
@@ -79,10 +83,10 @@ class LogoutNavBar extends Component {
         <Menu className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
           <MenuEnd className="navbar-end">
             <MenuLink className="navbar-item" to="/sign-in">
-              <MenuTitle marginToAlign={10}>Sign In</MenuTitle>
+              <MenuTitle marginToAlign={10}>{t('sign_in')}</MenuTitle>
             </MenuLink>
             <MenuLink className="navbar-item" to="/sign-up">
-              <MenuTitle>Sign Up</MenuTitle>
+              <MenuTitle>{t('sign_up')}</MenuTitle>
             </MenuLink>
           </MenuEnd>
         </Menu>
@@ -90,5 +94,9 @@ class LogoutNavBar extends Component {
     )
   }
 }
-  
-export default LogoutNavBar
+
+LogoutNavBar.propTypes = {
+  t: PropTypes.func.isRequired
+}
+
+export default translate()(LogoutNavBar)

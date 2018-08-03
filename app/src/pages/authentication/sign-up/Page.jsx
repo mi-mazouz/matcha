@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 
 import Logo from '../../../common/components/Logo'
 import StyledTitle from '../../../common/components/Title'
@@ -18,11 +20,13 @@ const Section = styled(StyledSection)`
 
 class SignUp extends Component {
   render() {
+    const { t } = this.props
+
     return (
       <Section>
         <Container>
           <Logo />
-          <Title className="is-1">Sign Up!</Title>
+          <Title className="is-1">{t('title_page.sign_up')}</Title>
           <Form />
         </Container>
       </Section>
@@ -30,4 +34,8 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp
+SignUp.propTypes = {
+  t: PropTypes.func.isRequired
+}
+
+export default translate()(SignUp)

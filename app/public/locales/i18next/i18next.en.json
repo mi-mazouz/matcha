@@ -1,0 +1,27 @@
+{
+  "account": "Account",
+  "birth_date_placeholder": "Ex: 06/25/1994",
+  "i_am": "I am",
+  "interests": "Interests",
+  "first_name": "First name",
+  "forgot_password_link_title": "Forgot your password?",
+  "from": "From",
+  "last_name": "Last name",
+  "logout": "Logout",
+  "looking_for": "Looking for",
+  "man": "Man",
+  "my_interests": "My interests",
+  "password": "Password",
+  "profile": "Profile",
+  "settings": "Settings",
+  "sign_in": "Sign in",
+  "sign_up": "Sign up",
+  "title_page": {
+    "landing_page": "Find your soulmate!",
+    "sign_in": "Sign in!",
+    "sign_up": "Sign ip!"
+  },
+  "to": "To",
+  "username": "Username",
+  "woman": "Woman"
+}
