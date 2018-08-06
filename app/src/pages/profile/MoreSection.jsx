@@ -7,7 +7,7 @@ import { withTheme } from '@material-ui/core/styles'
 
 import Title from '../../common/components/Title'
 import StyledPaper from '../../common/components/Paper'
-import StyledAvatarWithInfos from '../../common/components/Avatar'
+import AvatarWithInfos from '../../common/components/Avatar'
 import Container from '../../common/components/Container'
 
 const Paper = styled(StyledPaper)`
@@ -41,12 +41,6 @@ const AvatarsWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   display: flex;
-`
-
-const AvatarWithInfos = styled(StyledAvatarWithInfos)`
-  &:not(:nth-of-type(3)) {
-    margin-right: 10px;
-  }
 `
 
 const Text = styled.p`
