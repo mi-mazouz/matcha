@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { translate } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -15,7 +15,7 @@ const Form = styled.form`
   margin: auto
 `
 
-const StyledLink = withTheme()(styled(Link)`
+const Link = withTheme()(styled(RouterLink)`
   float: right;
   font-weight: bold;
   font-size: 14px;
@@ -79,7 +79,7 @@ class SignInForm extends Component {
               type="password"
               component={this.renderInput}
             />
-            <StyledLink to='/forgot-password'>{t('forgot_password_link_title')}</StyledLink>
+            <Link to='/forgot-password'>{t('forgot_password_link_title')}</Link>
           </div>
         </div>
         <Button

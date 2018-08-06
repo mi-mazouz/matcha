@@ -46,7 +46,7 @@ const MenuLink = styled(Link)`
     background-color: transparent !important;
     color: #ffffff !important;
   }
-  text-align: right;
+  text-align: left;
 `
 
 const MenuTitle = styled.span`
@@ -56,7 +56,6 @@ const MenuTitle = styled.span`
   font-stretch: normal;
   letter-spacing: normal;
   color: #ffffff;
-  ${props => props.marginToAlign && `margin-right: ${props.marginToAlign}px;`}
 `
 
 class LogoutNavBar extends Component {
@@ -83,7 +82,7 @@ class LogoutNavBar extends Component {
         <Menu className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
           <MenuEnd className="navbar-end">
             <MenuLink className="navbar-item" to="/sign-in">
-              <MenuTitle marginToAlign={10}>{t('sign_in')}</MenuTitle>
+              <MenuTitle>{t('sign_in')}</MenuTitle>
             </MenuLink>
             <MenuLink className="navbar-item" to="/sign-up">
               <MenuTitle>{t('sign_up')}</MenuTitle>
