@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 const StyledContainer = styled.div`
   text-align: center;
+  width: 100% !important;
 `
 
 const Container = ({ children }) => (

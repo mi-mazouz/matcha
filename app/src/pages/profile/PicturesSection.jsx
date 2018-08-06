@@ -27,10 +27,10 @@ const Paper = styled(StyledPaper)`
   box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16) !important;
 `
 
-const StyledEditIcon = styled(FontAwesomeIcon)`
+const EditIcon = styled(FontAwesomeIcon)`
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: 4px;
+  right: 4px;
   cursor: pointer;
 `
 
@@ -42,7 +42,7 @@ class PicturesSection extends Component {
       <div className="column is-4">
         <Paper>
           <Title className="is-4">{t('pictures').toUpperCase()}</Title>
-          <StyledEditIcon icon="edit" color={theme.palette.grey} />
+          <EditIcon icon="edit" color={theme.palette.grey} />
           <NestedColumns className="columns">
             <div className="column">
               <Figure className="image is-128x128">

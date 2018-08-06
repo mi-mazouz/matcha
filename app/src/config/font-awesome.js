@@ -1,11 +1,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faArrowRight,
+  faArrowLeft,
   faCalendarAlt,
   faCheck,
   faEdit,
   faEnvelope,
   faExclamationTriangle,
-  faGenderless,
   faLock,
   faMapMarkerAlt,
   faMars,
@@ -15,12 +16,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+  faArrowRight,
+  faArrowLeft,
   faCalendarAlt,
   faCheck,
   faEdit,
   faEnvelope,
   faExclamationTriangle,
-  faGenderless,
   faLock,
   faMapMarkerAlt,
   faMars,

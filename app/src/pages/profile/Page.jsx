@@ -5,6 +5,7 @@ import Container from '../../common/components/Container'
 import Section from '../../common/components/Section'
 import PicturesSection from './PicturesSection'
 import InfosSection from './InfosSection'
+import MoreSection from './MoreSection'
 
 const Columns = styled.div`
   width: 100%;
@@ -19,8 +20,7 @@ class Profile extends Component {
           <Columns className="columns">
             <InfosSection />
             <PicturesSection />
-            <div className="column">
-            </div>
+            <MoreSection />
           </Columns>
         </Container>
       </Section>

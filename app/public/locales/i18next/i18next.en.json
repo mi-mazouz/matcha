@@ -7,14 +7,17 @@
   "forgot_password_link_title": "Forgot your password?",
   "from": "From",
   "last_name": "Last name",
+  "location": "Location",
   "logout": "Logout",
   "looking_for": "Looking for",
   "man": "Man",
   "my_interests": "My interests",
   "password": "Password",
   "pictures": "Pictures",
+  "popularity_rating": "Popularity rating",
   "profile": "Profile",
   "settings": "Settings",
+  "sexual_orientation": "Sexual orientation",
   "sign_in": "Sign in",
   "sign_up": "Sign up",
   "title_page": {
@@ -24,6 +27,7 @@
   },
   "to": "To",
   "username": "Username",
+  "viewed_profile_title": "The last people who viewed my profile",
   "woman": "Woman",
   "years_old": "Years old"
 }
