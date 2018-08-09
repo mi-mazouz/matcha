@@ -11,6 +11,14 @@ const buildToken = (userId) => {
   )
 }
 
+const buildEmailConfirmToken = (userId) => {
+  return jwt.sign(
+    { userId: userId.toString(), emailConfirming : true },
+    fs.readFileSync(path.join(__dirname, '/config/secret.key')),
+    { expiresIn: '1h'}
+  )
+}
+
 const isName = (name) => {
   const regex = /^([a-zA-Z]{2,50})$/
 
@@ -51,6 +59,7 @@ const capitalizeName = (name) => {
 
 module.exports = {
   buildToken,
+  buildEmailConfirmToken,
   isName,
   isEmail,
   isBirthDate,
