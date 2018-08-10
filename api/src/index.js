@@ -9,16 +9,25 @@ const config = require('../config')
 const logger = require('./services/logger')
 const errorsHandling = require('./middlewares/errors-handling').errorsHandling
 const requestInfos = require('./middlewares/request-infos').requestInfos
+const getToken = require('./middlewares/request-infos').getToken
 const authenticationRouter = require('./authentication/routes')
 
 const app = express()
 
 const jwtSecret = Buffer.from(fs.readFileSync(path.join(__dirname, '/config/secret.key')), 'base64')
 
-app.use(cors({
-  allowedHeaders: ['Content-Type, Authorization'],
-  methods: ['GET', 'PUT', 'POST', 'DELETE']
-}), bodyParser.json(), expressJwt({ secret: jwtSecret, credentialsRequired: false }))
+app.use(
+  cors({
+    allowedHeaders: ['Content-Type, Authorization'],
+    methods: ['GET', 'PUT', 'POST', 'DELETE']
+  }),
+  bodyParser.json(),
+  expressJwt({
+    secret: jwtSecret,
+    credentialsRequired: false,
+    getToken
+  })
+)
 app.use(requestInfos)
 
 app.use('/authentication', authenticationRouter)
