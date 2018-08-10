@@ -9,5 +9,6 @@ export default createMuiTheme({
     pink: '#d152d3',
     blue: '#39d9e7',
     mixGradient: 'linear-gradient(267deg, #39d9e7, #d152d3)'
-  }
+  },
+  fontFamily: 'ShreeDev0714'
 })
