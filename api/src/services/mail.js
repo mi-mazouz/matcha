@@ -6,7 +6,6 @@ const logger = require('./logger')
 const sendEmailConfirm = (userData, token) => {
   sgMail.setApiKey(config.SENDGRID_API_KEY)
   sgMail.setSubstitutionWrappers('{{', '}}')
-  
   const msg = {
     to: userData.email,
     from: 'staff@matcha.com',
@@ -14,7 +13,7 @@ const sendEmailConfirm = (userData, token) => {
     templateId: config.EMAIL_TEMPLATES['FR'].CONFIRM_EMAIL_ID,
     dynamicTemplateData: {
       firstName: userData.firstName,
-      link: `${config.APP_END_POINT}/confirm-email?token=${token}`
+      confirmLink: `${config.APP_END_POINT}/confirm-email/${token}`
     }
   }
 
