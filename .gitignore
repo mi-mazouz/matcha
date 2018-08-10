@@ -1,6 +1,7 @@
 node_modules
 .DS_Store
 .vs/
+.vscode/
 npm-debug.log
 package-lock.json
 api/config/secret.key
