@@ -23,6 +23,10 @@ const Burger = styled.span`
 `
 
 const NavBarEnd = styled.div`
+  @media screen and (max-width: 1088px) {
+    background-color: white;
+    box-shadow: 0 1.5px 3px 0 rgba(0,0,0,0.16) !important;
+  }
   position: absolute;
   right: 32px;
   top: 27px;
