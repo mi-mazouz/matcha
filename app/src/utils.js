@@ -51,12 +51,14 @@ const isBirthDate = (birthDate) => {
 
   if (getLanguage() === 'fr') {
     const frenchBirthDate = birthDate.match(/\d+/g)
+    if (!frenchBirthDate) return false
+
     const month = frenchBirthDate[1]
-    
+
     frenchBirthDate[1] = frenchBirthDate[0]
     frenchBirthDate[0] = month
 
-    return regex.test(frenchBirthDate.join('/'))  
+    return regex.test(frenchBirthDate.join('/'))
   }
 
   return regex.test(birthDate)
