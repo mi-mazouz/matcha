@@ -4,6 +4,7 @@ const UserModel = require('../../../database/models').User
 const logger = require('../../services/logger')
 const utils = require('../../utils')
 const errors = require('../../errors')
+const sendConfirmEmail = require('../../services/mail').sendConfirmEmail
 
 module.exports = (firstName, lastName, username, birthDate, email, password) => {
   logger.info(`A user tried to register with email: ${email} and username: ${username}`)
@@ -14,7 +15,11 @@ module.exports = (firstName, lastName, username, birthDate, email, password) => 
 
     return new UserModel({ firstName, lastName, username, birthDate, email, password }).save()
     .then((user) => {
-      // send email activation
+      sendConfirmEmail({
+        firstName: user.firstName,
+        email: user.email
+      },
+      utils.buildEmailConfirmToken(user.id))
       return utils.buildToken(user.id)
     })
   })

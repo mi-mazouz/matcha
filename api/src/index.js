@@ -2,19 +2,16 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const expressJwt = require('express-jwt')
 const cors = require('cors')
-const fs = require('fs')
-const path = require('path')
 
-const config = require('../config')
+const config = require('./config')
 const logger = require('./services/logger')
 const errorsHandling = require('./middlewares/errors-handling').errorsHandling
 const requestInfos = require('./middlewares/request-infos').requestInfos
-const getToken = require('./middlewares/request-infos').getToken
+const getToken = require('./middlewares/token-handling').getToken
 const authenticationRouter = require('./authentication/routes')
 
+const secretKey = require('./utils').getSecretKey()
 const app = express()
-
-const jwtSecret = Buffer.from(fs.readFileSync(path.join(__dirname, '/config/secret.key')), 'base64')
 
 app.use(
   cors({
@@ -23,7 +20,7 @@ app.use(
   }),
   bodyParser.json(),
   expressJwt({
-    secret: jwtSecret,
+    secret: secretKey,
     credentialsRequired: false,
     getToken
   })

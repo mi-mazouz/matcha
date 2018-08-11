@@ -9,6 +9,7 @@
     "migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo --config database/config --migrations-path database/migrations",
     "migration:create": "./node_modules/.bin/sequelize migration:create --config database/config --migrations-path database/migrations",
     "start": "yarn run migrate && yarn run server:watch",
+    "start:production": "NODE_ENV=production yarn run migrate && yarn run server:watch",
     "server:watch": "nodemon --config nodemon.json --inspect ./src"
   },
   "repository": {
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/mi-mazouz/Matcha#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "bcrypt": "3.0.0",
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
