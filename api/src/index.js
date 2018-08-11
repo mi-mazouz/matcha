@@ -9,7 +9,7 @@ const config = require('../config')
 const logger = require('./services/logger')
 const errorsHandling = require('./middlewares/errors-handling').errorsHandling
 const requestInfos = require('./middlewares/request-infos').requestInfos
-const getToken = require('./middlewares/request-infos').getToken
+const getToken = require('./middlewares/token-handling').getToken
 const authenticationRouter = require('./authentication/routes')
 
 const app = express()
