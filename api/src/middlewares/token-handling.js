@@ -1,3 +1,7 @@
+const createError = require('http-errors')
+
+const errors = require('../errors')
+
 const getToken = (req) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     return req.headers.authorization.split(' ')[1]
@@ -6,6 +10,12 @@ const getToken = (req) => {
   return null
 }
 
+const isConfirmEmailToken = (req, _, next) => {
+  if (req.user && req.user.emailConfirming) return next()
+  else return next(createError.BadRequest(errors.BAD_TOKEN))
+}
+
 module.exports = {
-  getToken
+  getToken,
+  isConfirmEmailToken
 }
