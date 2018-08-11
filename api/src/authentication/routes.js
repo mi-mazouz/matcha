@@ -5,6 +5,7 @@ const fs = require('fs')
 
 const signInController = require('./sign-in/controller')
 const signUpController = require('./sign-up/controller')
+const confirmEmailcontroller = require('./confirm-email/controller')
 const tokenHandling = require('../middlewares/token-handling')
 
 const router = express.Router()
@@ -21,7 +22,7 @@ router.put(
     getToken: tokenHandling.getTokenFromParams
   }),
   tokenHandling.confirmEmailToken,
-  (req) => console.log(req.user)
+  confirmEmailcontroller
 )
 
 module.exports = router
