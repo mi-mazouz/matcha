@@ -7,12 +7,7 @@ export default (state, { type, payload }) => {
         ...state,
         submitting: false,
         syncErrors: {
-          username: payload.error,
-          birthDate: payload.error,
-          sexualOrientation: payload.error,
-          gender: payload.error,
-          email: payload.error,
-          password: payload.error
+          email: payload.error === 'Email already use' && 'Email already use'
         }
       }
     default:
