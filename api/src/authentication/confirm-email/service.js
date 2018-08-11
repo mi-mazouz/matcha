@@ -6,7 +6,7 @@ const errors = require('../../errors')
 module.exports = (userId) => {
   return UserModel.findById(userId)
   .then((user) => {
-    if (!user) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
+    if (!user) throw createError.BadRequest(errors.USER_NOT_FOUND)
 
     return user.update({ emailConfirmed : true })
   })

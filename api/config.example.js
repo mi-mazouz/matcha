@@ -1,7 +1,7 @@
 module.exports = {
-  APP_END_POINT: 'app_url',
+  APP_END_POINT: 'appEndPoint',
   EMAIL_TEMPLATES: { 
-    FR: {
+    EN: {
       CONFIRM_EMAIL_ID: 'xxxxxxx'
     }
   },

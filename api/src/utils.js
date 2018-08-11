@@ -5,7 +5,7 @@ const _ = require('lodash')
 
 const buildToken = (userId) => {
   return jwt.sign(
-    { userId: userId.toString() },
+    { id: userId.toString() },
     fs.readFileSync(path.join(__dirname, '/config/secret.key')),
     { expiresIn: '1h'}
   )
@@ -13,7 +13,7 @@ const buildToken = (userId) => {
 
 const buildEmailConfirmToken = (userId) => {
   return jwt.sign(
-    { userId: userId.toString(), emailConfirming : true },
+    { id: userId.toString(), emailConfirming : true },
     fs.readFileSync(path.join(__dirname, '/config/secret.key')),
     { expiresIn: '1h'}
   )
@@ -57,9 +57,15 @@ const capitalizeName = (name) => {
   }).join('-')
 }
 
+const getSecretKey = () => Buffer.from(
+  fs.readFileSync(path.join(__dirname, './config/secret.key')),
+  'base64'
+)
+
 module.exports = {
   buildToken,
   buildEmailConfirmToken,
+  getSecretKey,
   isName,
   isEmail,
   isBirthDate,

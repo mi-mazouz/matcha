@@ -10,20 +10,14 @@ const getToken = (req) => {
   return null
 }
 
-const getTokenFromParams = (req) => {
-  if (req.params && req.params.token) return req.params.token
-
-  return null
-}
-
 const userToken = (req, _, next) => {
-  if (!req.user) return next(createError.Unauthorized(errors.BAD_TOKEN))
+  if (!req.user || !req.user.id) return next(createError.Unauthorized(errors.BAD_TOKEN))
 
   return next()
 }
 
 const confirmEmailToken = (req, _, next) => {
-  if (!req.user || !req.user.emailConfirming) return next(createError.Unauthorized(errors.BAD_TOKEN))
+  if (!req.user || !req.user.id || !req.user.emailConfirming) return next(createError.Unauthorized(errors.BAD_TOKEN))
 
   return next()
 }
@@ -31,6 +25,5 @@ const confirmEmailToken = (req, _, next) => {
 module.exports = {
   confirmEmailToken,
   getToken,
-  getTokenFromParams,
   userToken
 }
