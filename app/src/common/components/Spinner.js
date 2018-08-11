@@ -6,7 +6,7 @@ import { withTheme } from '@material-ui/core/styles'
 
 const SpinnerContainer = withTheme()(styled.div`
   & > div {
-    color: ${props => props.theme.palette.purple};
+    color: ${props => props.theme.palette.mixGradient};
   }
   position: absolute;
   top: 45%;
