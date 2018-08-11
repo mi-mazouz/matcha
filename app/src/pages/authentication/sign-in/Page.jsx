@@ -5,6 +5,7 @@ import { translate } from 'react-i18next'
 
 import Logo from '../../../common/components/Logo'
 import styledTitle from '../../../common/components/Title'
+import Section from '../../../common/components/Section'
 import Container from '../../../common/components/Container'
 import Form from './Form'
 
@@ -18,13 +19,13 @@ class SignIn extends Component {
     const { t } = this.props
     
     return (
-      <div className="section">
+      <Section>
         <Container>
           <Logo />
           <Title className="title is-1">{t('title_page.sign_in')}</Title>
           <Form />
         </Container>
-      </div>
+      </Section>
     )
   }
 }
