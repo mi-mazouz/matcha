@@ -16,9 +16,10 @@ const initInterceptorRequest = (client) => {
   })
 
   client.interceptors.response.use(null, (error) => {
-    if (error.response) {
-      if (error.response.data.message === 'TOKEN_INVALID') logout()
-      else error.response.data.message = errors[error.response.data.message] || 'An error occured'
+    if (error.response && error.response.data) {
+      if (error.response.data.message && error.response.data.message === 'TOKEN_INVALID') logout()
+      else if (error.response.data.message) error.response.data.message = errors[error.response.data.message] || 'An error occured'
+      else error.response.data = { message: errors[error.response.data] || 'An error occured' }
     }
 
     return Promise.reject(error)

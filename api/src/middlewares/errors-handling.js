@@ -10,7 +10,7 @@ const errorsHandling = (err, req, res, next) => {
   }))
 
   if (err.name === 'UnauthorizedError') {
-    res.status(401).send(errors.TOKEN_EXPIRED)
+    res.status(401).send(errors.EMAIL_TOKEN_EXPIRED)
   }
 
   if (!err.statusCode) {
