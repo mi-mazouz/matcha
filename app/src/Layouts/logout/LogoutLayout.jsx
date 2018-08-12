@@ -8,7 +8,7 @@ import LandingPage from '../../pages/landing'
 import SignIn from '../../pages/authentication/sign-in'
 import SignUp from '../../pages/authentication/sign-up'
 import StyledPage from '../../common/components/Page'
-import ConfirmEmail from '../../components/confirm-email'
+import ConfirmEmail from '../../global/components/confirm-email'
 
 import landingPageBackgroundImage from '../../pages/landing/assets/background.jpg'
 import authenticationBackgroundImage from '../../pages/authentication/assets/background.png'
