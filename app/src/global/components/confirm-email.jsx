@@ -18,6 +18,16 @@ class ConfirmEmail extends React.Component {
       })
     
       await setToken(data.token)
+      await this.props.dispatch({
+        type: ADD_NOTIFICATION,
+        payload: {
+          title: 'Notification',
+          message: 'Email confirmed successfully',
+          level: 'success',
+          position: 'tr',
+          autoDismiss: 3
+        }
+      })
       history.push('/dashboard/profile')
     } catch(error) {
       await this.props.dispatch({

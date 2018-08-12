@@ -1,5 +1,4 @@
 const logger = require('../services/logger')
-
 const errors = require('../errors')
 
 const errorsHandling = (err, req, res, next) => {
@@ -9,8 +8,8 @@ const errorsHandling = (err, req, res, next) => {
     message: err.message
   }))
 
-  if (err.name === 'UnauthorizedError') {
-    res.status(401).send(errors.EMAIL_TOKEN_EXPIRED)
+  if (err.name === 'UnauthorizedError' && err.message === 'jwt expired') {
+    res.status(err.status).json({message: errors.EMAIL_TOKEN_EXPIRED})
   }
 
   if (!err.statusCode) {
