@@ -17,7 +17,9 @@ const userToken = (req, _, next) => {
 }
 
 const confirmEmailToken = (req, _, next) => {
-  if (!req.user || !req.user.id || !req.user.emailConfirming) return next(createError.Unauthorized(errors.BAD_TOKEN))
+  if (!req.user || !req.user.id || !req.user.emailConfirming) {
+    return next(createError.Unauthorized(errors.BAD_TOKEN))
+  }
 
   return next()
 }
