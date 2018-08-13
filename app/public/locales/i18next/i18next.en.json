@@ -28,6 +28,7 @@
   "pictures": "Pictures",
   "popularity_rating": "Popularity rating",
   "profile": "Profile",
+  "required": "Require",
   "settings": "Settings",
   "sexual_orientation": "Sexual orientation",
   "sign_in": "Sign in",
@@ -41,5 +42,6 @@
   "username": "Username",
   "viewed_profile_title": "The last people who viewed my profile",
   "woman": "Woman",
+  "wrong_format": "Wrong format",
   "years_old": "Years old"
 }

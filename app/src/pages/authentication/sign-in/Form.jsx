@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { translate } from 'react-i18next'
 import { Link as RouterLink } from 'react-router-dom'
@@ -7,8 +8,9 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Button from '../../../common/components/Button'
-import { InputWithIcons } from '../../../common/components/Input'
-import { isEmail } from '../../../utils'
+import Error from '../../../common/components/Error'
+import { InputWithError } from '../../../common/components/Input'
+import { isEmail, isPassword } from '../../../utils'
 
 const Form = styled.form`
   width: 300px;
@@ -25,9 +27,10 @@ const Link = withTheme()(styled(RouterLink)`
 const validate = (values) => {
   const errors = {}
 
-  if (!values.email) errors.email = 'Required'
-  else if (!isEmail(values.email)) errors.email = 'Wrong format'
-  if (!values.password) errors.password = 'Required'
+  if (!values.email) errors.email = 'required'
+  else if (!isEmail(values.email)) errors.email = 'wrong_format'
+  if (!values.password) errors.password = 'required'
+  else if (!isPassword(values.password)) errors.password = 'wrong_format'
   
   return errors
 }
@@ -39,12 +42,13 @@ class SignInForm extends Component {
 
     if (error) input.value = ''
     return (
-      <InputWithIcons
+      <InputWithError
         {...input}
         {...props}
-        error={error}
+        isError={error}
         isValid={isValid}
-        placeholder={error ? this.props.t(meta.error) : placeholder}
+        placeholder={placeholder}
+        errorText={error && typeof meta.error === 'string' && this.props.t(meta.error)}
       />
     )
   }
@@ -55,7 +59,7 @@ class SignInForm extends Component {
   }))
 
   render() {
-    const { t } = this.props
+    const { t, globalError } = this.props
 
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
@@ -82,6 +86,7 @@ class SignInForm extends Component {
             <Link to='/forgot-password'>{t('forgot_password_link_title')}</Link>
           </div>
         </div>
+        {globalError && <Error>{t(globalError)}</Error>}
         <Button
           backgroundImage={this.props.theme.palette.mixGradient}
           type="submit"
@@ -100,10 +105,13 @@ SignInForm.propTypes = {
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool,
   t: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  globalError: PropTypes.string
 }
 
 export default reduxForm({
   form: 'signIn',
   validate
-})(translate()(withTheme()(SignInForm)))
+})(connect(store => ({
+  globalError: store.form.signIn.globalError
+}))(translate()(withTheme()(SignInForm))))

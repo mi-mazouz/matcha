@@ -11,6 +11,9 @@ export function* signInFormSubmit() {
   return yield takeLatest(
     [SIGNIN_FORM_SUBMIT],
     function* ({ payload }) {
+      document.getElementsByName('email')[0].blur()
+      document.getElementsByName('password')[0].blur()
+
       try {
         const { data } = yield call(httpClient, {
           method: 'POST',
@@ -21,9 +24,6 @@ export function* signInFormSubmit() {
         yield call(setToken, data.token)
         yield call(history.push, '/dashboard')
       } catch (error) {
-        document.getElementsByName('email')[0].blur()
-        document.getElementsByName('password')[0].blur()
-
         return yield put({ type: SIGNIN_FORM_ERROR, payload: { error: error.response.data.message } })
       }
 
