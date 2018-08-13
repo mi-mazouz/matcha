@@ -6,9 +6,10 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         submitting: false,
+        globalError: payload.error,
         syncErrors: {
-          email: payload.error,
-          password: payload.error
+          email: true,
+          password: true
         }
       }
     default:
