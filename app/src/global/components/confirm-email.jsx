@@ -25,7 +25,7 @@ class ConfirmEmail extends React.Component {
           message: 'Email confirmed successfully',
           level: 'success',
           position: 'tr',
-          autoDismiss: 3
+          autoDismiss: 5
         }
       })
       history.push('/dashboard/profile')
