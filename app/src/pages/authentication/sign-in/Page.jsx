@@ -5,13 +5,17 @@ import { translate } from 'react-i18next'
 
 import Logo from '../../../common/components/Logo'
 import styledTitle from '../../../common/components/Title'
-import Section from '../../../common/components/Section'
+import StyledSection from '../../../common/components/Section'
 import Container from '../../../common/components/Container'
 import Form from './Form'
 
 const Title = styled(styledTitle)`
   color: #ffffff !important;
   margin-top: 20px;
+`
+
+const Section = styled(StyledSection)`
+  padding: 2rem 1.5rem !important;
 `
 
 class SignIn extends Component {

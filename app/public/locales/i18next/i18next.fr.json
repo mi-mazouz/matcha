@@ -28,6 +28,7 @@
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",
   "profile": "Profil",
+  "required": "Requis",
   "settings": "Paramètres",
   "sexual_orientation": "Orientation sexuel",
   "sign_in": "Se connecter",
@@ -41,5 +42,6 @@
   "username": "Nom d'utilisateur",
   "viewed_profile_title": "Les dernières personnes qui ont consulté mon profil",
   "woman": "Femme",
+  "wrong_format": "Mauvais format",
   "years_old": "Ans"
 }

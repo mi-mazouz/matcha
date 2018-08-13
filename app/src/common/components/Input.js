@@ -9,10 +9,15 @@ const StyledInput = withTheme()(styled.input`
     border-color: transparent !important;
     box-shadow: none !important;
   }
-  ${props => props.error && `&::-webkit-input-placeholder { color: ${props.theme.palette.red} !important; }`}
   caret-color: black;
   opacity: 0.8;
 `)
+
+const ErrorText = styled.strong`
+  font-size: 14px !important;
+  text-align: left;
+  position: absolute;
+`
 
 const Input = ({ className, ...props }) => (
   <StyledInput
@@ -25,30 +30,31 @@ Input.propTypes = {
   className: PropTypes.string
 }
 
-const InputWithIcons = withTheme()(({ theme, icon, error, isValid, ...props }) => (
+const InputWithError = withTheme()(({ theme, icon, isError, errorText, isValid, ...props }) => (
   <div className="field">
     <div className="control has-icons-left has-icons-right">
-      <Input {...props} error={error} />
+      <Input {...props} isError={isError} />
       <span className="icon is-left">
         <FontAwesomeIcon icon={icon} color={theme.palette.grey} />
       </span>
       <span className="icon is-right">
         {
-          (error && <FontAwesomeIcon icon="exclamation-triangle" color={theme.palette.red} />) ||
+          (isError && <FontAwesomeIcon icon="exclamation-triangle" color={theme.palette.red} />) ||
           (isValid && <FontAwesomeIcon icon="check" color={theme.palette.green} />)
         }
       </span>
     </div>
+    <ErrorText className="help is-danger">{errorText}</ErrorText>
   </div>
 ))
 
-InputWithIcons.propTypes = {
+InputWithError.propTypes = {
   icon: PropTypes.string.isRequired,
-  error: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
   isValid: PropTypes.bool.isRequired
 }
 
 export {
   Input,
-  InputWithIcons
+  InputWithError
 }

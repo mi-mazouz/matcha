@@ -14,7 +14,7 @@ import {
   isPassword,
   isUsername
 } from '../../../utils'
-import { InputWithIcons } from '../../../common/components/Input'
+import { InputWithError } from '../../../common/components/Input'
 import Button from '../../../common/components/Button'
 
 const Form = styled.form`
@@ -55,7 +55,7 @@ class SignUpForm extends Component {
     
     if (error) input.value = ''
     return (
-      <InputWithIcons
+      <InputWithError
         {...input}
         {...props}
         error={error}
