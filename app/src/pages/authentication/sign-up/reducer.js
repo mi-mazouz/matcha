@@ -7,7 +7,7 @@ export default (state, { type, payload }) => {
         ...state,
         submitting: false,
         syncErrors: {
-          email: payload.error === 'Email already use' && 'Email already use'
+          email: payload.error === 'email_already_used' && payload.error
         }
       }
     default:

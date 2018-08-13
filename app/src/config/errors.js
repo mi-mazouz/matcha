@@ -1,5 +1,5 @@
 export default {
-  INVALID_EMAIL_OR_PASSWORD: 'Email or password invalid',
-  EMAIL_ALREADY_EXISTS: 'Email already use',
-  EMAIL_TOKEN_EXPIRED: 'Your confirmation email is expired'
+  INVALID_EMAIL_OR_PASSWORD: 'email_or_password_invalid',
+  EMAIL_ALREADY_EXISTS: 'email_already_used',
+  EMAIL_TOKEN_EXPIRED: 'token_expired'
 }

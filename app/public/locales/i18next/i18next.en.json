@@ -1,17 +1,29 @@
 {
   "account": "Account",
   "birth_date_placeholder": "Ex: 06/25/1994",
-  "i_am": "I am",
-  "interests": "Interests",
+  "email_or_password_invalid": "Email or password invalid",
+  "email_already_used": "Email already used",
   "first_name": "First name",
   "forgot_password_link_title": "Forgot your password?",
   "from": "From",
+  "i_am": "I am",
+  "interests": "Interests",
   "last_name": "Last name",
   "location": "Location",
   "logout": "Logout",
   "looking_for": "Looking for",
   "man": "Man",
   "my_interests": "My interests",
+  "notifications": {
+    "success": {
+      "confirmation_email": "Email confirmed successfully"
+    },
+    "error": {
+      "confirmation_email": {
+        "token_expired": "Your email confirmation link is expired"
+      }
+    }
+  },
   "password": "Password",
   "pictures": "Pictures",
   "popularity_rating": "Popularity rating",

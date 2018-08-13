@@ -44,7 +44,7 @@ class SignInForm extends Component {
         {...props}
         error={error}
         isValid={isValid}
-        placeholder={error ? meta.error : placeholder}
+        placeholder={error ? this.props.t(meta.error) : placeholder}
       />
     )
   }
