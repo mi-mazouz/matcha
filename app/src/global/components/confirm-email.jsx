@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { translate } from 'react-i18next'
 
 import Spinner from '../../common/components/Spinner.js'
 import { httpClient, history } from '../../config'
@@ -22,10 +23,10 @@ class ConfirmEmail extends React.Component {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: 'Email confirmed successfully',
+          message: this.props.t('notifications.success.confirmation_email'),
           level: 'success',
           position: 'tr',
-          autoDismiss: 3
+          autoDismiss: 5
         }
       })
       history.push('/dashboard/profile')
@@ -34,7 +35,7 @@ class ConfirmEmail extends React.Component {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: error.response.data.message,
+          message: this.props.t(`notifications.error.confirmation_email.${error.response.data.message}`),
           level: 'error',
           position: 'tr',
           autoDismiss: 0
@@ -50,8 +51,9 @@ class ConfirmEmail extends React.Component {
 }
 
 ConfirmEmail.propTypes = {
+  t: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect()(ConfirmEmail)
+export default connect()(translate()(ConfirmEmail))

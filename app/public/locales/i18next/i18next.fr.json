@@ -1,17 +1,29 @@
 {
   "account": "Compte",
   "birth_date_placeholder": "Ex: 25/06/1994",
-  "i_am": "Je suis",
-  "interests": "Intérêts",
+  "email_or_password_invalid": "Email ou mot de passe invalide",
+  "email_already_used": "Cette email existe déjà",
   "first_name": "Prénom",
   "forgot_password_link_title": "Mot de passe oublié ?",
   "from": "De",
+  "i_am": "Je suis",
+  "interests": "Intérêts",
   "last_name": "Nom",
   "location": "Localisation",
   "logout": "Se déconnecter",
   "looking_for": "Je recherche",
   "man": "Homme",
   "my_interests": "Mes intérêts",
+  "notifications": {
+    "success": {
+      "confirmation_email": "Email confirmé avec succès"
+    },
+    "error": {
+      "confirmation_email": {
+        "token_expired": "Ton lien de confirmation est expiré"
+      }
+    }
+  },
   "password": "Mot de passe",
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",

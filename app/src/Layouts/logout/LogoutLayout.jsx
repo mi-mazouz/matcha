@@ -8,7 +8,6 @@ import LandingPage from '../../pages/landing'
 import SignIn from '../../pages/authentication/sign-in'
 import SignUp from '../../pages/authentication/sign-up'
 import StyledPage from '../../common/components/Page'
-import ConfirmEmail from '../../global/components/confirm-email'
 
 import landingPageBackgroundImage from '../../pages/landing/assets/background.jpg'
 import authenticationBackgroundImage from '../../pages/authentication/assets/background.png'
@@ -30,7 +29,6 @@ const LogoutLayout = ({ location }) => (
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/sign-in" component={SignIn} />
       <Route exact path="/sign-up" component={SignUp} />
-      <Route exact path="/confirm-email/:token" component={ConfirmEmail} />
       <Redirect to="/" />
     </Switch>
   </Page>

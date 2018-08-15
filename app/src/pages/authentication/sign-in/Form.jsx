@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 import Button from '../../../common/components/Button'
 import { InputWithIcons } from '../../../common/components/Input'
-import { isEmail } from '../../../utils'
+import { isEmail, isPassword } from '../../../utils'
 
 const Form = styled.form`
   width: 300px;
@@ -28,6 +28,7 @@ const validate = (values) => {
   if (!values.email) errors.email = 'Required'
   else if (!isEmail(values.email)) errors.email = 'Wrong format'
   if (!values.password) errors.password = 'Required'
+  else if (!isPassword(values.password)) errors.password = 'Wrong format'
   
   return errors
 }
@@ -44,7 +45,7 @@ class SignInForm extends Component {
         {...props}
         error={error}
         isValid={isValid}
-        placeholder={error ? meta.error : placeholder}
+        placeholder={error ? this.props.t(meta.error) : placeholder}
       />
     )
   }
