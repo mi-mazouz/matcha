@@ -22,6 +22,7 @@ module.exports = {
         "react/jsx-indent-props": ["error", 2],
         "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
         "react/jsx-tag-spacing": "error",
+        "react/require-default-props": "error",
         "react/prop-types": "error",
         "react/jsx-no-undef": "error",
         "no-multiple-empty-lines": ["error", { "max": 1 }],
