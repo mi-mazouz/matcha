@@ -6,6 +6,7 @@ import { withTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
 import { logout } from '../../utils'
+import medias from '../../config/medias'
 import Logo from '../../common/components/Logo'
 import Badge from '../../common/components/Badge'
 
@@ -23,13 +24,13 @@ const Burger = styled.span`
 `
 
 const NavBarEnd = styled.div`
-  @media screen and (max-width: 1088px) {
-    background-color: white;
-    box-shadow: 0 1.5px 3px 0 rgba(0,0,0,0.16) !important;
-  }
   position: absolute;
   right: 32px;
   top: 27px;
+  ${medias.desktop`
+    background-color: white;
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16) !important;
+  `};
 `
 
 const MenuLinkRouter = withTheme()(styled(Link)`
@@ -42,7 +43,7 @@ const MenuLinkRouter = withTheme()(styled(Link)`
     background-color: transparent !important;
   }
   margin-right: 30px;
-  ${props => props.isselected && `color: ${props.theme.palette.purple} !important;`}
+  ${props => props.isselected && `color: ${props.theme.palette.purple} !important;`};
 `)
 
 const MenuSubLinkRouter = styled(Link)`
@@ -81,10 +82,12 @@ const MenuTitle = styled.span`
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
-  ${props => props.isselected && `
+  ${props =>
+    props.isselected &&
+    `
     border-bottom: solid;
     border-bottom-width: 2px;
-  `}
+  `};
 `
 
 class LogoutNavBar extends Component {
@@ -92,7 +95,7 @@ class LogoutNavBar extends Component {
     isActive: false
   }
 
-  handleBurgerClick = () => this.setState({isActive: !this.state.isActive})
+  handleBurgerClick = () => this.setState({ isActive: !this.state.isActive })
 
   render() {
     const { location, t } = this.props
@@ -100,15 +103,18 @@ class LogoutNavBar extends Component {
     return (
       <div className="navbar is-spaced">
         <div className="navbar-brand">
-          <Link className="navbar-item" to='/'>
+          <Link className="navbar-item" to="/">
             <Logo size={180} isNavbar />
           </Link>
-          <BurgerWrapper onClick={this.handleBurgerClick} className={`navbar-burger ${this.state.isActive && 'is-active'}`}>
-            {
-              Array(3).fill(null).map((_, index) => (
+          <BurgerWrapper
+            onClick={this.handleBurgerClick}
+            className={`navbar-burger ${this.state.isActive && 'is-active'}`}
+          >
+            {Array(3)
+              .fill(null)
+              .map((_, index) => (
                 <Burger key={index} isActive={this.state.isActive} marginTop={index * 4} />
-              ))
-            }
+              ))}
           </BurgerWrapper>
         </div>
         <div className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
@@ -156,17 +162,14 @@ class LogoutNavBar extends Component {
                 <MenuTitle>{t('settings')}</MenuTitle>
               </DropdownLink>
               <div className="navbar-dropdown">
-                <MenuSubLinkRouter
-                  className="navbar-item"
-                  to="/dashboard/account"
-                >
+                <MenuSubLinkRouter className="navbar-item" to="/dashboard/account">
                   {t('account')}
                 </MenuSubLinkRouter>
                 <MenuSubLink className="navbar-item" onClick={logout}>
                   {t('logout')}
                 </MenuSubLink>
               </div>
-            </div>    
+            </div>
           </NavBarEnd>
         </div>
       </div>
@@ -178,5 +181,5 @@ LogoutNavBar.propTypes = {
   location: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 }
-  
+
 export default translate()(LogoutNavBar)

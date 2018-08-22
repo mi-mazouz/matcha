@@ -12,14 +12,16 @@ import StyledPage from '../../common/components/Page'
 import landingPageBackgroundImage from '../../pages/landing/assets/background.jpg'
 import authenticationBackgroundImage from '../../pages/authentication/assets/background.png'
 import mobileBackgroundImage from '../../pages/assets/mobile-background.jpg'
+import medias from '../../config/medias'
 
 const Page = styled(StyledPage)`
-  background-image: ${props => props.location.pathname === '/'
-    ? `url(${landingPageBackgroundImage})`
-    : `url(${authenticationBackgroundImage})`};
-  @media screen and (max-width : 568px) {
+  background-image: ${props =>
+    props.location.pathname === '/'
+      ? `url(${landingPageBackgroundImage})`
+      : `url(${authenticationBackgroundImage})`};
+  ${medias.tabletSm`
     background-image: url(${mobileBackgroundImage});
-  }
+  `};
 `
 
 const LogoutLayout = ({ location }) => (

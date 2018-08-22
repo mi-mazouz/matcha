@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+import medias from '../../config/medias'
+
 const NavBar = styled.nav`
   background-color: transparent !important;
 `
@@ -23,10 +25,10 @@ const Burger = styled.span`
 `
 
 const Menu = styled.div`
-  @media screen and (max-width: 1087px) {
+  ${medias.desktop`
     background-color: transparent !important;
     box-shadow: none !important;
-  }
+  `};
   padding: 0px !important;
   position: relative;
 `
@@ -63,7 +65,7 @@ class LogoutNavBar extends Component {
     isActive: false
   }
 
-  handleBurgerClick = () => this.setState({isActive: !this.state.isActive})
+  handleBurgerClick = () => this.setState({ isActive: !this.state.isActive })
 
   render() {
     const { t } = this.props
@@ -71,12 +73,15 @@ class LogoutNavBar extends Component {
     return (
       <NavBar className="navbar">
         <div className="navbar-brand">
-          <BurgerWrapper onClick={this.handleBurgerClick} className={`navbar-burger ${this.state.isActive && 'is-active'}`}>
-            {
-              Array(3).fill(null).map((_, index) => (
+          <BurgerWrapper
+            onClick={this.handleBurgerClick}
+            className={`navbar-burger ${this.state.isActive && 'is-active'}`}
+          >
+            {Array(3)
+              .fill(null)
+              .map((_, index) => (
                 <Burger key={index} isActive={this.state.isActive} marginTop={index * 4} />
-              ))
-            }
+              ))}
           </BurgerWrapper>
         </div>
         <Menu className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
