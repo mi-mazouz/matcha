@@ -7,24 +7,18 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import {
-  isBirthDate,
-  isName,
-  isEmail,
-  isPassword,
-  isUsername
-} from '../../../utils'
-import { InputWithIcons } from '../../../common/components/Input'
+import { isBirthDate, isName, isEmail, isPassword, isUsername } from '../../../utils'
+import { InputWithIconsAndError } from '../../../common/components/Input'
 import Button from '../../../common/components/Button'
 
 const Form = styled.form`
   width: 435px;
-  margin: auto
+  margin: auto;
 `
 const Columns = styled.div`
   display: flex !important;
 `
-const validate = (values) => {
+const validate = values => {
   const errors = {}
 
   if (!values.firstName) errors.firstName = 'Required'
@@ -44,37 +38,40 @@ const validate = (values) => {
 
   if (!values.password) errors.password = 'Required'
   else if (!isPassword(values.password)) errors.password = 'Password not safe'
-  
+
   return errors
 }
 
 class SignUpForm extends Component {
-  renderInput = ({ input, meta, placeholder, ...props }) => {
-    const error = (meta.error && meta.touched && !meta.active) || false
+  renderInput = ({ input, meta, ...props }) => {
+    const isError = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
-    
-    if (error) input.value = ''
+
     return (
-      <InputWithIcons
+      <InputWithIconsAndError
         {...input}
         {...props}
-        error={error}
+        isError={isError}
+        onKeyUp={event => {
+          if (event.key === 'Enter') document.getElementsByName(input.name)[0].blur()
+        }}
         isValid={isValid}
-        placeholder={error ? this.props.t(meta.error) : placeholder}
+        errorText={isError ? this.props.t(meta.error) : ''}
       />
     )
   }
 
-  handleSubmit = (values) => new Promise((resolve, reject) => {
-    this.props.dispatch({
-      type: 'SIGNUP_FORM_SUBMIT',
-      payload: { values, resolve, reject }
+  handleSubmit = values =>
+    new Promise((resolve, reject) => {
+      this.props.dispatch({
+        type: 'SIGNUP_FORM_SUBMIT',
+        payload: { values, resolve, reject }
+      })
     })
-  })
 
   render() {
     const { t } = this.props
-    
+
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
@@ -126,7 +123,7 @@ class SignUpForm extends Component {
             <Field
               name="email"
               icon="envelope"
-              placeholder='Email'
+              placeholder="Email"
               type="email"
               component={this.renderInput}
             />
@@ -157,7 +154,7 @@ class SignUpForm extends Component {
 SignUpForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
-  submitting: PropTypes.bool,
+  submitting: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }

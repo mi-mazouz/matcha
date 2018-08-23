@@ -7,12 +7,12 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Button from '../../../common/components/Button'
-import { InputWithIcons } from '../../../common/components/Input'
+import { InputWithIconsAndError } from '../../../common/components/Input'
 import { isEmail, isPassword } from '../../../utils'
 
 const Form = styled.form`
   width: 300px;
-  margin: auto
+  margin: auto;
 `
 
 const Link = withTheme()(styled(RouterLink)`
@@ -22,38 +22,43 @@ const Link = withTheme()(styled(RouterLink)`
   color: ${props => props.theme.palette.grey};
 `)
 
-const validate = (values) => {
+const validate = values => {
   const errors = {}
 
   if (!values.email) errors.email = 'Required'
   else if (!isEmail(values.email)) errors.email = 'Wrong format'
   if (!values.password) errors.password = 'Required'
   else if (!isPassword(values.password)) errors.password = 'Wrong format'
-  
+
   return errors
 }
 
 class SignInForm extends Component {
-  renderInput = ({ input, meta, placeholder, ...props }) => {
-    const error = (meta.error && meta.touched && !meta.active) || false
+  renderInput = ({ input, meta, ...props }) => {
+    const isError = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
 
-    if (error) input.value = ''
     return (
-      <InputWithIcons
+      <InputWithIconsAndError
         {...input}
         {...props}
-        error={error}
+        isError={isError}
+        onKeyUp={event => {
+          if (event.key === 'Enter') document.getElementsByName(input.name)[0].blur()
+        }}
         isValid={isValid}
-        placeholder={error ? this.props.t(meta.error) : placeholder}
+        errorText={isError ? this.props.t(meta.error) : ''}
       />
     )
   }
 
-  handleSubmit = (values) => new Promise((resolve, reject) => this.props.dispatch({
-    type: 'SIGNIN_FORM_SUBMIT',
-    payload: { values, resolve, reject }
-  }))
+  handleSubmit = values =>
+    new Promise((resolve, reject) =>
+      this.props.dispatch({
+        type: 'SIGNIN_FORM_SUBMIT',
+        payload: { values, resolve, reject }
+      })
+    )
 
   render() {
     const { t } = this.props
@@ -65,7 +70,7 @@ class SignInForm extends Component {
             <Field
               name="email"
               icon="envelope"
-              placeholder='Email'
+              placeholder="Email"
               type="email"
               component={this.renderInput}
             />
@@ -80,7 +85,7 @@ class SignInForm extends Component {
               type="password"
               component={this.renderInput}
             />
-            <Link to='/forgot-password'>{t('forgot_password_link_title')}</Link>
+            <Link to="/forgot-password">{t('forgot_password_link_title')}</Link>
           </div>
         </div>
         <Button
@@ -99,7 +104,7 @@ class SignInForm extends Component {
 SignInForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
-  submitting: PropTypes.bool,
+  submitting: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired
 }
