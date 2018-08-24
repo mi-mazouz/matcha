@@ -37,7 +37,10 @@ const validate = values => {
   else if (!isEmail(values.email)) errors.email = 'Wrong format'
 
   if (!values.password) errors.password = 'Required'
-  else if (!isPassword(values.password)) errors.password = 'Password not safe'
+  else if (!isPassword(values.password)) {
+    errors.password =
+      'Your password must contain at least 8 characters, 1 capital letter and 1 number'
+  }
 
   return errors
 }

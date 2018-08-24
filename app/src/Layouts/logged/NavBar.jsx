@@ -125,7 +125,7 @@ class LogoutNavBar extends Component {
               to="/dashboard/profile"
             >
               <MenuTitle isselected={location.pathname === '/dashboard/profile' ? 1 : 0}>
-                {t('profile')}
+                {t('nav_bars.logged.profile')}
               </MenuTitle>
             </MenuLinkRouter>
             <MenuLinkRouter
@@ -135,7 +135,7 @@ class LogoutNavBar extends Component {
             >
               <Badge badgeContent={0} top={-20} right={-20}>
                 <MenuTitle isselected={location.pathname === '/dashboard/messages' ? 1 : 0}>
-                  Messages
+                  {t('nav_bars.logged.messages')}
                 </MenuTitle>
               </Badge>
             </MenuLinkRouter>
@@ -159,14 +159,14 @@ class LogoutNavBar extends Component {
             </MenuLinkRouter>
             <div className="navbar-item has-dropdown is-hoverable">
               <DropdownLink className="navbar-link">
-                <MenuTitle>{t('settings')}</MenuTitle>
+                <MenuTitle>{t('nav_bars.logged.settings')}</MenuTitle>
               </DropdownLink>
               <div className="navbar-dropdown">
                 <MenuSubLinkRouter className="navbar-item" to="/dashboard/account">
-                  {t('account')}
+                  {t('nav_bars.logged.account')}
                 </MenuSubLinkRouter>
                 <MenuSubLink className="navbar-item" onClick={logout}>
-                  {t('logout')}
+                  {t('nav_bars.logged.logout')}
                 </MenuSubLink>
               </div>
             </div>

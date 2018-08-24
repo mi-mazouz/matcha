@@ -1,5 +1,4 @@
 {
-  "account": "Account",
   "birth_date_placeholder": "Ex: 06/25/1994",
   "email_or_password_invalid": "Email or password invalid",
   "email_already_used": "Email already used",
@@ -10,10 +9,22 @@
   "interests": "Interests",
   "last_name": "Last name",
   "location": "Location",
-  "logout": "Logout",
   "looking_for": "Looking for",
   "man": "Man",
   "my_interests": "My interests",
+  "nav_bars": {
+    "logout": {
+      "sign_in": "Sign in",
+      "sign_up": "Sign up"
+    },
+    "logged": {
+      "account": "Account",
+      "logout": "Logout",
+      "messages": "Messages",
+      "profile": "Profile",
+      "settings": "Settings"
+    }
+  },
   "notifications": {
     "success": {
       "confirmation_email": "Email confirmed successfully"
@@ -27,11 +38,7 @@
   "password": "Password",
   "pictures": "Pictures",
   "popularity_rating": "Popularity rating",
-  "profile": "Profile",
-  "settings": "Settings",
   "sexual_orientation": "Sexual orientation",
-  "sign_in": "Sign in",
-  "sign_up": "Sign up",
   "title_page": {
     "landing_page": "Find your soulmate!",
     "sign_in": "Sign in!",

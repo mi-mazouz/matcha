@@ -9,7 +9,7 @@ import { setToken } from '../../utils'
 import { ADD_NOTIFICATION } from '../constants'
 
 class ConfirmEmail extends React.Component {
-  async componentDidMount () {
+  async componentDidMount() {
     const { match } = this.props
 
     try {
@@ -17,7 +17,7 @@ class ConfirmEmail extends React.Component {
         method: 'PUT',
         url: `/authentication/confirm-email?token=${match.params.token}`
       })
-    
+
       await setToken(data.token)
       await this.props.dispatch({
         type: ADD_NOTIFICATION,
@@ -30,22 +30,24 @@ class ConfirmEmail extends React.Component {
         }
       })
       history.push('/dashboard/profile')
-    } catch(error) {
+    } catch (error) {
       await this.props.dispatch({
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: this.props.t(`notifications.error.confirmation_email.${error.response.data.message}`),
+          message: this.props.t(
+            `notifications.error.confirmation_email.${error.response.data.message}`
+          ),
           level: 'error',
           position: 'tr',
           autoDismiss: 0
         }
       })
       history.push('/')
-    } 
+    }
   }
 
-  render () {
+  render() {
     return <Spinner />
   }
 }

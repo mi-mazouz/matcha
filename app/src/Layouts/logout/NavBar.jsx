@@ -87,10 +87,10 @@ class LogoutNavBar extends Component {
         <Menu className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
           <MenuEnd className="navbar-end">
             <MenuLink className="navbar-item" to="/sign-in">
-              <MenuTitle>{t('sign_in')}</MenuTitle>
+              <MenuTitle>{t('nav_bars.logout.sign_in')}</MenuTitle>
             </MenuLink>
             <MenuLink className="navbar-item" to="/sign-up">
-              <MenuTitle>{t('sign_up')}</MenuTitle>
+              <MenuTitle>{t('nav_bars.logout.sign_up')}</MenuTitle>
             </MenuLink>
           </MenuEnd>
         </Menu>
