@@ -6,9 +6,10 @@ module.exports = {
   extends: ['eslint:recommended', 'prettier'],
   rules: {
     'no-multiple-empty-lines': ['error', { max: 1 }],
+    'no-multi-spaces': 'error',
     'comma-dangle': ['error', 'never'],
-    indent: ['error', 2, { MemberExpression: 0, SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
+    indent: ['error', 2, { MemberExpression: 0, SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'never']
   }

@@ -24,9 +24,10 @@ module.exports = {
     'react/prop-types': 'error',
     'react/jsx-no-undef': 'error',
     'no-multiple-empty-lines': ['error', { max: 1 }],
+    'no-multi-spaces': 'error',
     'comma-dangle': ['error', 'never'],
-    indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
+    indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'never']
   }
