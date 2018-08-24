@@ -17,7 +17,7 @@ const StyledTag = withTheme()(styled.span`
 const Tag = ({ children, onDelete, size, backgroundColor, className }) => (
   <div className={`tags has-addons ${className}`}>
     <StyledTag backgroundColor={backgroundColor} className={`tag ${size}`}>
-      { children }
+      {children}
     </StyledTag>
     <Delete className={`tag ${size} is-delete`} onClick={onDelete} />
   </div>
@@ -29,6 +29,11 @@ Tag.propTypes = {
   size: PropTypes.string.isRequired,
   className: PropTypes.string,
   backgroundColor: PropTypes.string
+}
+
+Tag.defaultProps = {
+  className: null,
+  backgroundColor: null
 }
 
 export default Tag

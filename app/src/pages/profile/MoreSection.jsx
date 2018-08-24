@@ -58,15 +58,15 @@ class MoreSection extends Component {
           <AvatarsListWrapper>
             <ArrowLeftIcon icon="arrow-left" color={theme.palette.grey} />
             <AvatarsWrapper>
-              {
-                Array(3).fill(null).map((_, index) => (
+              {Array(3)
+                .fill(null)
+                .map((_, index) => (
                   <AvatarWithInfos
                     key={index}
                     AvatarClassName="image is-64x64"
-                    src='https://bulma.io/images/placeholders/128x128.png'
+                    src="https://bulma.io/images/placeholders/128x128.png"
                   />
-                ))
-              }
+                ))}
             </AvatarsWrapper>
             <ArrowRightIcon icon="arrow-right" color={theme.palette.grey} />
           </AvatarsListWrapper>
@@ -75,12 +75,10 @@ class MoreSection extends Component {
           <Title className="is-6">Few words about me:</Title>
           <Container>
             <Text>
-              Une biographie Écouter (une bio),
-              du grec ancien βίος, « la vie » et γραφή, « écrire »,
-              est un écrit qui a pour objet l'histoire d'une vie particulière ou
-              d'un événement dans la vie du protagoniste.
-              Elle peut être écrite par la personne elle-même (autobiographie) ou
-              par une autre personne.
+              Une biographie Écouter (une bio), du grec ancien βίος, « la vie » et γραφή, « écrire
+              », est un écrit qui a pour objet l'histoire d'une vie particulière ou d'un événement
+              dans la vie du protagoniste. Elle peut être écrite par la personne elle-même
+              (autobiographie) ou par une autre personne.
             </Text>
           </Container>
         </Paper>

@@ -28,4 +28,10 @@ Button.propTypes = {
   isLoading: PropTypes.bool
 }
 
+Button.defaultProps = {
+  className: null,
+  isDisabled: false,
+  isLoading: false
+}
+
 export default Button

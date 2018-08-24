@@ -16,14 +16,18 @@ const SpinnerContainer = withTheme()(styled.div`
   align-items: center;
 `)
 
-const Spinner = ({size, ...props}) => (
+const Spinner = ({ size, ...props }) => (
   <SpinnerContainer {...props}>
-    <CircularProgress size={size || 100} />
+    <CircularProgress size={size} />
   </SpinnerContainer>
 )
 
 Spinner.propTypes = {
   size: PropTypes.number
+}
+
+Spinner.defaultProps = {
+  size: 100
 }
 
 export default Spinner

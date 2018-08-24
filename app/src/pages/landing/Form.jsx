@@ -16,7 +16,7 @@ import { LANDING_PAGE_FORM_SUBMIT } from './constants'
 
 const Form = styled.form`
   width: 435px;
-  margin: auto
+  margin: auto;
 `
 
 const PaperTag = styled(Paper)`
@@ -25,8 +25,7 @@ const PaperTag = styled(Paper)`
     display: none;
   }
   width: 100%;
-  ${props => !props.isfirst && 'box-shadow: unset !important;'}
-  opacity: 0.8;
+  ${props => !props.isfirst && 'box-shadow: unset !important;'} opacity: 0.8;
   height: 36px;
   padding: 5px;
 `
@@ -57,31 +56,29 @@ class LandingPageForm extends Component {
     tag: ''
   }
 
-  renderSelect = ({ input, children }) => (
-    <Select {...input}>
-      { children }
-    </Select>
-  )
+  renderSelect = ({ input, children }) => <Select {...input}>{children}</Select>
 
   handleFromChange = (_, value) => this.setState({ fromValue: parseInt(value, 10) })
 
-  handleSubmit = (values) => new Promise((resolve, reject) => {
-    values.tags = [...this.state.tags]
-    this.props.dispatch({
-      type: LANDING_PAGE_FORM_SUBMIT,
-      payload: { values, resolve, reject }
+  handleSubmit = values =>
+    new Promise((resolve, reject) => {
+      values.tags = [...this.state.tags]
+      this.props.dispatch({
+        type: LANDING_PAGE_FORM_SUBMIT,
+        payload: { values, resolve, reject }
+      })
     })
-  })
 
-  handleTagDelete = (index) => this.setState({ tags: [...this.state.tags].filter((_, i) => index !== i) })
+  handleTagDelete = index =>
+    this.setState({ tags: [...this.state.tags].filter((_, i) => index !== i) })
 
-  handleTag = (event) => this.setState({ tag: '#' + event.target.value })
-  
-  handleTags = (event) => {
+  handleTag = event => this.setState({ tag: '#' + event.target.value })
+
+  handleTags = event => {
     if (event.key === 'Enter') {
       event.preventDefault()
       const tags = [...this.state.tags]
-      
+
       tags.unshift(this.state.tag)
       this.setState({ tags })
       event.target.value = null
@@ -89,23 +86,27 @@ class LandingPageForm extends Component {
   }
 
   render() {
-    const { t } = this.props
-    
+    const { t, submitting, theme } = this.props
+
     return (
       <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
             <Field name="gender" component={this.renderSelect}>
-              <option  value="" disabled>{t('i_am')}</option>
-              <option >{t('woman')}</option>
-              <option >{t('man')}</option>
+              <option value="" disabled>
+                {t('i_am')}
+              </option>
+              <option>{t('woman')}</option>
+              <option>{t('man')}</option>
             </Field>
           </div>
           <div className="column">
             <Field name="lookingFor" component={this.renderSelect}>
-              <option value="" disabled>{t('looking_for')}</option>
-              <option >{t('woman')}</option>
-              <option >{t('man')}</option>
+              <option value="" disabled>
+                {t('looking_for')}
+              </option>
+              <option>{t('woman')}</option>
+              <option>{t('man')}</option>
             </Field>
           </div>
         </Columns>
@@ -114,22 +115,40 @@ class LandingPageForm extends Component {
             <Columns className="columns">
               <div className="column">
                 <Field onChange={this.handleFromChange} name="from" component={this.renderSelect}>
-                  <option value="" disabled>{t('from')}</option>
-                  {Array(63).fill(null).map((_, index) => <option key={index}>{index + 18}</option>)}
+                  <option value="" disabled>
+                    {t('from')}
+                  </option>
+                  {Array(63)
+                    .fill(null)
+                    .map((_, index) => (
+                      <option key={index}>{index + 18}</option>
+                    ))}
                 </Field>
               </div>
               <div className="column">
                 <Field name="to" component={this.renderSelect}>
-                  <option value="" disabled>{t('to')}</option>
-                  {Array(63 - (this.state.fromValue - 18)).fill(null).map((_, index) => <option key={index}>{index + this.state.fromValue}</option>)}
+                  <option value="" disabled>
+                    {t('to')}
+                  </option>
+                  {Array(63 - (this.state.fromValue - 18))
+                    .fill(null)
+                    .map((_, index) => (
+                      <option key={index}>{index + this.state.fromValue}</option>
+                    ))}
                 </Field>
               </div>
             </Columns>
           </div>
           <div className="column">
             <Field name="distance" component={this.renderSelect}>
-              <option value="" disabled>Distance</option>
-              {Array(10).fill(null).map((_, index) => <option key={index}>{index * 5} Km</option>)}
+              <option value="" disabled>
+                Distance
+              </option>
+              {Array(10)
+                .fill(null)
+                .map((_, index) => (
+                  <option key={index}>{index * 5} Km</option>
+                ))}
             </Field>
           </div>
         </Columns>
@@ -145,30 +164,30 @@ class LandingPageForm extends Component {
           <div className="column is-half">
             <PaperTag isfirst={1}>
               <PaperTag>
-                {
-                  this.state.tags.length === 0 ?
-                    <PaperPlaceHolder className="has-text-centered">
-                      {t('my_interests')}
-                    </PaperPlaceHolder> : 
-                    this.state.tags.map((value, index) => (
-                      <LandingPageTag
-                        size="is-small"
-                        key={index}
-                        onDelete={() => this.handleTagDelete(index)}
-                      >
-                        { value }
-                      </LandingPageTag>
-                    ))
-                }
+                {this.state.tags.length === 0 ? (
+                  <PaperPlaceHolder className="has-text-centered">
+                    {t('my_interests')}
+                  </PaperPlaceHolder>
+                ) : (
+                  this.state.tags.map((value, index) => (
+                    <LandingPageTag
+                      size="is-small"
+                      key={index}
+                      onDelete={() => this.handleTagDelete(index)}
+                    >
+                      {value}
+                    </LandingPageTag>
+                  ))
+                )}
               </PaperTag>
             </PaperTag>
           </div>
         </Columns>
         <Button
-          backgroundImage={this.props.theme.palette.mixGradient}
+          backgroundImage={theme.palette.mixGradient}
           type="submit"
-          isLoading={this.props.submitting}
-          isDisabled={this.props.submitting}
+          isLoading={submitting}
+          isDisabled={submitting}
         >
           Find!
         </Button>
@@ -181,8 +200,8 @@ LandingPageForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
-  submitting: PropTypes.bool,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired
 }
 
 export default compose(

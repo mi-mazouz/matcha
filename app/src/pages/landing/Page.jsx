@@ -19,7 +19,7 @@ const Section = styled(StyledSection)`
 `
 
 class LandingPage extends Component {
-  render () {
+  render() {
     const { t } = this.props
 
     return (

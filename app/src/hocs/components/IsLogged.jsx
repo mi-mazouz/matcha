@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom'
 
 import { getToken } from '../../utils'
 
-export default (WrappedComponent) => {
+export default WrappedComponent => {
   class IsLogged extends React.Component {
-    render () {
+    render() {
       const token = getToken()
-   
+
       if (!token) return <Redirect to="/" />
 
       return <WrappedComponent {...this.props} />

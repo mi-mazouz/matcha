@@ -50,12 +50,11 @@ class InfosSection extends Component {
             alt=""
           />
         </Figure>
-        <Title className="is-6">Mickael Mazouz, 28 {t('years_old')}
+        <Title className="is-6">
+          Mickael Mazouz, 28 {t('years_old')}
           <Icon icon="venus" color={theme.palette.grey} />
         </Title>
-        <Paper>
-          {t('popularity_rating') + ': 15'}
-        </Paper>
+        <Paper>{t('popularity_rating') + ': 15'}</Paper>
         <Paper className="control has-icons-right">
           {t('location') + ': Paris'}
           <span className="icon is-right">

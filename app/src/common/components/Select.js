@@ -24,15 +24,12 @@ const StyledSelect = withTheme()(styled.select`
 
 const Select = ({ children, ...props }) => (
   <SelectWrapper className="select">
-    <StyledSelect {...props}>
-      { children }
-    </StyledSelect>
+    <StyledSelect {...props}>{children}</StyledSelect>
   </SelectWrapper>
 )
 
 Select.propTypes = {
-  children: PropTypes.node.isRequired,
-  input: PropTypes.object
+  children: PropTypes.node.isRequired
 }
 
 export default Select

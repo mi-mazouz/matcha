@@ -8,12 +8,8 @@ const StyledPaper = styled(MuiPaper)`
   align-items: center;
 `
 
-const Paper = ({ children, ...props }) => (
-  <StyledPaper {...props}>
-    { children }
-  </StyledPaper>
-)
-  
+const Paper = ({ children, ...props }) => <StyledPaper {...props}>{children}</StyledPaper>
+
 Paper.propTypes = {
   children: PropTypes.node.isRequired
 }

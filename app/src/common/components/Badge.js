@@ -13,9 +13,9 @@ const StyledBadge = withTheme()(styled(MuiBadge)`
   }
 `)
 
-const Badge = ({ children, badgeContent, ...props}) => (
-  <StyledBadge badgeContent={badgeContent} {...props} >
-    { children }
+const Badge = ({ children, badgeContent, ...props }) => (
+  <StyledBadge badgeContent={badgeContent} {...props}>
+    {children}
   </StyledBadge>
 )
 

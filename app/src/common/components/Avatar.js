@@ -23,18 +23,9 @@ const Infos = styled.span`
 `
 
 const AvatarWithInfos = ({ src, AvatarClassName, theme, ...props }) => (
-  <AvatarContainer
-    color={theme.palette.blue}
-    {...props}
-  >
-    <MuiAvatar
-      className={AvatarClassName}
-      src={src}
-      alt=""
-    />
-    <Infos>
-      Joris Carol, 28 Yo
-    </Infos>
+  <AvatarContainer color={theme.palette.blue} {...props}>
+    <MuiAvatar className={AvatarClassName} src={src} alt="" />
+    <Infos>Joris Carol, 28 Yo</Infos>
   </AvatarContainer>
 )
 
@@ -42,6 +33,10 @@ AvatarWithInfos.propTypes = {
   src: PropTypes.string.isRequired,
   theme: PropTypes.object.isRequired,
   AvatarClassName: PropTypes.string
+}
+
+AvatarWithInfos.defaultProps = {
+  AvatarClassName: null
 }
 
 export default withTheme()(AvatarWithInfos)

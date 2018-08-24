@@ -8,9 +8,7 @@ const StyledContainer = styled.div`
 `
 
 const Container = ({ children }) => (
-  <StyledContainer className="container">
-    { children }
-  </StyledContainer>
+  <StyledContainer className="container">{children}</StyledContainer>
 )
 
 Container.propTypes = {

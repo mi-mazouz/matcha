@@ -17,7 +17,7 @@ const Title = styled(styledTitle)`
 class SignIn extends Component {
   render() {
     const { t } = this.props
-    
+
     return (
       <Section>
         <Container>
