@@ -5,6 +5,7 @@
   "description": "Dating site",
   "main": "public/src/index.js",
   "scripts": {
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "start": "react-scripts start"
   },
   "repository": {

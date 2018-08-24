@@ -5,6 +5,7 @@
   "description": "Dating site",
   "main": "src/index.js",
   "scripts": {
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "migrate": "./node_modules/.bin/sequelize db:migrate --config database/config --migrations-path database/migrations",
     "migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo --config database/config --migrations-path database/migrations",
     "migration:create": "./node_modules/.bin/sequelize migration:create --config database/config --migrations-path database/migrations",
