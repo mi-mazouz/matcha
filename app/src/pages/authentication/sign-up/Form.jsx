@@ -8,8 +8,8 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import { isBirthDate, isName, isEmail, isPassword, isUsername } from '../../../utils'
-import { InputWithIconsAndError } from '../../../common/components/Input'
-import Button from '../../../common/components/Button'
+import { InputWithIconsAndError } from '../../../global/components/Input'
+import Button from '../../../global/components/Button'
 
 const Form = styled.form`
   width: 435px;

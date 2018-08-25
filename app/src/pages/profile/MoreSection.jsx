@@ -5,10 +5,10 @@ import { translate } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withTheme } from '@material-ui/core/styles'
 
-import Title from '../../common/components/Title'
-import StyledPaper from '../../common/components/Paper'
-import AvatarWithInfos from '../../common/components/Avatar'
-import Container from '../../common/components/Container'
+import Title from '../../global/components/Title'
+import StyledPaper from '../../global/components/Paper'
+import AvatarWithInfos from '../../global/components/Avatar'
+import Container from '../../global/components/Container'
 
 const Paper = styled(StyledPaper)`
   &:not(:first-child) {

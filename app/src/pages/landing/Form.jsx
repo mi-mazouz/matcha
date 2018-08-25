@@ -7,11 +7,11 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Button from '../../common/components/Button'
-import Select from '../../common/components/Select'
-import Paper from '../../common/components/Paper'
-import Tag from '../../common/components/Tag'
-import { Input } from '../../common/components/Input'
+import Button from '../../global/components/Button'
+import Select from '../../global/components/Select'
+import Paper from '../../global/components/Paper'
+import Tag from '../../global/components/Tag'
+import { Input } from '../../global/components/Input'
 import { LANDING_PAGE_FORM_SUBMIT } from './constants'
 
 const Form = styled.form`

@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 
 import { logout } from '../../utils'
 import medias from '../../config/medias'
-import Logo from '../../common/components/Logo'
-import Badge from '../../common/components/Badge'
+import Logo from '../../global/components/Logo'
+import Badge from '../../global/components/Badge'
 
 const BurgerWrapper = styled.div`
   &:hover {

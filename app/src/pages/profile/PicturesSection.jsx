@@ -5,8 +5,8 @@ import { translate } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withTheme } from '@material-ui/core/styles'
 
-import Title from '../../common/components/Title'
-import StyledPaper from '../../common/components/Paper'
+import Title from '../../global/components/Title'
+import StyledPaper from '../../global/components/Paper'
 
 const NestedColumns = styled.div`
   width: 100%;
@@ -41,7 +41,8 @@ class PicturesSection extends Component {
     return (
       <div className="column is-4">
         <Paper>
-          <Title className="is-4">{t('pictures').toUpperCase()}</Title>
+          <Title className="is-4">{t('pictures')
+            .toUpperCase()}</Title>
           <EditIcon icon="edit" color={theme.palette.grey} />
           <NestedColumns className="columns">
             <div className="column">

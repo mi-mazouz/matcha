@@ -3,10 +3,10 @@ import { translate } from 'react-i18next'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Logo from '../../common/components/Logo'
-import Container from '../../common/components/Container'
-import styledTitle from '../../common/components/Title'
-import StyledSection from '../../common/components/Section'
+import Logo from '../../global/components/Logo'
+import Container from '../../global/components/Container'
+import styledTitle from '../../global/components/Title'
+import StyledSection from '../../global/components/Section'
 import Form from './Form'
 
 const Title = styled(styledTitle)`

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import Container from '../../common/components/Container'
-import Section from '../../common/components/Section'
+import Container from '../../global/components/Container'
+import Section from '../../global/components/Section'
 import PicturesSection from './PicturesSection'
 import InfosSection from './InfosSection'
 import MoreSection from './MoreSection'

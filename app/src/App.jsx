@@ -4,7 +4,7 @@ import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import { I18nextProvider } from 'react-i18next'
 
-import Notification from './common/components/notification'
+import Notification from './global/components/notification'
 import LogoutLayout from './Layouts/logout'
 import LoggedLayout from './Layouts/logged'
 import ConfirmEmail from './pages/authentication/comfirm-email'

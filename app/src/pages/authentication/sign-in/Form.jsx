@@ -6,8 +6,8 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Button from '../../../common/components/Button'
-import { InputWithIconsAndError } from '../../../common/components/Input'
+import Button from '../../../global/components/Button'
+import { InputWithIconsAndError } from '../../../global/components/Input'
 import { isEmail } from '../../../utils'
 
 const Form = styled.form`
