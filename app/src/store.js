@@ -7,7 +7,7 @@ import { signUpFormSubmit } from './pages/authentication/sign-up/saga'
 import { signInFormSubmit } from './pages/authentication/sign-in/saga'
 import signInReducer from './pages/authentication/sign-in/reducer'
 import signUpReducer from './pages/authentication/sign-up/reducer'
-import notificationReducer from './global/reducers/notification'
+import notificationReducer from './common/components/notification/reducer'
 
 const initialState =
   (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}

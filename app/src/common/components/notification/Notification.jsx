@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import NotificationSystem from 'react-notification-system'
 
-import { NOTIFICATION_REMOVED } from '../../global/constants'
+import { NOTIFICATION_REMOVED } from './constants'
 
 class Notification extends Component {
   componentWillReceiveProps(nextProps) {

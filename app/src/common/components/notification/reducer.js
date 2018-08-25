@@ -1,4 +1,4 @@
-import { ADD_NOTIFICATION, NOTIFICATION_REMOVED } from '../constants'
+import { ADD_NOTIFICATION, NOTIFICATION_REMOVED } from './constants'
 
 export default (state = null, { type, payload }) => {
   switch (type) {
