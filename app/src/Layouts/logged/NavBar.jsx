@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import classnames from 'classnames'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
@@ -108,7 +109,7 @@ class LogoutNavBar extends Component {
           </Link>
           <BurgerWrapper
             onClick={this.handleBurgerClick}
-            className={`navbar-burger ${this.state.isActive && 'is-active'}`}
+            className={classnames('navbar-burger', { 'is-active': this.state.isActive })}
           >
             {Array(3)
               .fill(null)
@@ -117,7 +118,7 @@ class LogoutNavBar extends Component {
               ))}
           </BurgerWrapper>
         </div>
-        <div className={`navbar-menu ${this.state.isActive && 'is-active'}`}>
+        <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
           <NavBarEnd className="navbar-end">
             <MenuLinkRouter
               isselected={location.pathname === '/dashboard/profile' ? 1 : 0}

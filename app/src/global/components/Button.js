@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
 
 const StyledButton = styled.button`
@@ -11,11 +12,11 @@ const StyledButton = styled.button`
   border-style: none !important;
 `
 
-const Button = ({ children, ...props }) => (
+const Button = ({ children, isLoading, isDisabled, ...props }) => (
   <StyledButton
     {...props}
-    className={`button ${props.isLoading && 'is-loading'}`}
-    disabled={props.isDisabled}
+    className={classnames('button', { 'is-loading': isLoading })}
+    disabled={isDisabled}
   >
     {children}
   </StyledButton>

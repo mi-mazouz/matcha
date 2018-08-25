@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { withTheme } from '@material-ui/core/styles'
@@ -20,7 +21,7 @@ const ErrorText = styled.p`
 `
 
 const Input = ({ className, ...props }) => (
-  <StyledInput className={`input ${className}`} {...props} />
+  <StyledInput className={classnames('input', className)} {...props} />
 )
 
 Input.propTypes = {
@@ -44,7 +45,7 @@ const InputWithIconsAndError = withTheme()(
             (isValid && <FontAwesomeIcon icon="check" color={theme.palette.green} />)}
         </span>
       </div>
-      <ErrorText className="help is-danger">{errorText}</ErrorText>
+      {isError && <ErrorText className="help is-danger">{errorText}</ErrorText>}
     </div>
   )
 )

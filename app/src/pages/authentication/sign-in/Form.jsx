@@ -60,10 +60,10 @@ class SignInForm extends Component {
     )
 
   render() {
-    const { t } = this.props
+    const { t, theme, submitting, handleSubmit } = this.props
 
     return (
-      <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+      <Form className="form" onSubmit={handleSubmit(this.handleSubmit)}>
         <div className="columns">
           <div className="column">
             <Field
@@ -88,10 +88,10 @@ class SignInForm extends Component {
           </div>
         </div>
         <Button
-          backgroundImage={this.props.theme.palette.mixGradient}
+          backgroundImage={theme.palette.mixGradient}
           type="submit"
-          isLoading={this.props.submitting}
-          isDisabled={this.props.submitting}
+          isLoading={submitting}
+          isDisabled={submitting}
         >
           Sign In!
         </Button>

@@ -25,7 +25,11 @@ class Notification extends Component {
 
 Notification.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  notification: PropTypes.object.isRequired
+  notification: PropTypes.object
+}
+
+Notification.defaultProps = {
+  notification: null
 }
 
 export default connect(store => ({ notification: store.notification }))(Notification)

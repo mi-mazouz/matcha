@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import MuiAvatar from '@material-ui/core/Avatar'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -24,7 +25,7 @@ const Infos = styled.span`
 
 const AvatarWithInfos = ({ src, AvatarClassName, theme, ...props }) => (
   <AvatarContainer color={theme.palette.blue} {...props}>
-    <MuiAvatar className={AvatarClassName} src={src} alt="" />
+    <MuiAvatar className={classnames(AvatarClassName)} src={src} alt="" />
     <Infos>Joris Carol, 28 Yo</Infos>
   </AvatarContainer>
 )

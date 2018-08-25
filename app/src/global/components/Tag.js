@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
@@ -15,11 +16,11 @@ const StyledTag = withTheme()(styled.span`
 `)
 
 const Tag = ({ children, onDelete, size, backgroundColor, className }) => (
-  <div className={`tags has-addons ${className}`}>
-    <StyledTag backgroundColor={backgroundColor} className={`tag ${size}`}>
+  <div className={classnames('tags has-addons', className)}>
+    <StyledTag backgroundColor={backgroundColor} className={classnames('tag', size)}>
       {children}
     </StyledTag>
-    <Delete className={`tag ${size} is-delete`} onClick={onDelete} />
+    <Delete className={classnames('tag is-delete', size)} onClick={onDelete} />
   </div>
 )
 
