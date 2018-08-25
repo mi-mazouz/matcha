@@ -7,7 +7,7 @@ export default (state, { type, payload }) => {
         ...state,
         submitting: false,
         syncErrors: {
-          email: payload.error,
+          ...state.syncErrors,
           password: payload.error
         }
       }

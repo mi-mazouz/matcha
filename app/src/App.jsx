@@ -6,7 +6,7 @@ import { I18nextProvider } from 'react-i18next'
 
 import Notification from './common/components/Notification'
 import LogoutLayout from './Layouts/logout/LogoutLayout'
-import LoggedLayout from './Layouts/logged/LoggedLayout'
+import LoggedLayout from './Layouts/logged'
 import ConfirmEmail from './global/components/confirm-email'
 import { history, muiTheme, i18n } from './config'
 import { createStore } from './store'
