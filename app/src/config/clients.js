@@ -1,8 +1,26 @@
 import axios from 'axios'
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost'
 
 import { getToken, logout } from '../utils'
 import constants from './constants'
 import errors from './errors'
+
+const authLink = new ApolloLink((operation, forward) => {
+  const token = getToken()
+
+  if (token) {
+    operation.setContext({
+      headers: { authorization: 'Bearer ' + token }
+    })
+  }
+
+  return forward(operation)
+})
+
+export const graphqlClient = new ApolloClient({
+  link: ApolloLink.from([authLink, new HttpLink({ uri: constants.GRAPHQL_API_BASE_URI })]),
+  cache: new InMemoryCache()
+})
 
 const initInterceptorRequest = client => {
   client.interceptors.request.use(config => {

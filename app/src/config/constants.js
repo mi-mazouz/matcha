@@ -1,3 +1,4 @@
 export default {
-  HTTP_API_BASE_URI: 'http://localhost:8080'
+  HTTP_API_BASE_URI: 'http://localhost:8080',
+  GRAPHQL_API_BASE_URI: 'http://localhost:9000/graphql'
 }

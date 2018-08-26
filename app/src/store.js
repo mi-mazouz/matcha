@@ -5,6 +5,7 @@ import { createStore as createReduxStore, applyMiddleware, compose, combineReduc
 import { landingPageFormSubmit } from './pages/landing/saga'
 import { signUpFormSubmit } from './pages/authentication/sign-up/saga'
 import { signInFormSubmit } from './pages/authentication/sign-in/saga'
+import { fetchUser } from './pages/profile/saga'
 import signInReducer from './pages/authentication/sign-in/reducer'
 import signUpReducer from './pages/authentication/sign-up/reducer'
 import notificationReducer from './global/components/notification/reducer'
@@ -35,6 +36,7 @@ const createStore = () => {
   sagaMiddleware.run(landingPageFormSubmit)
   sagaMiddleware.run(signInFormSubmit)
   sagaMiddleware.run(signUpFormSubmit)
+  sagaMiddleware.run(fetchUser)
 
   return store
 }
