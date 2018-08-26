@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import Container from '../../global/components/Container'
-import Section from '../../global/components/Section'
+import Container from '../../../global/components/Container'
+import Section from '../../../global/components/Section'
 import PicturesSection from './PicturesSection'
 import InfosSection from './InfosSection'
 import MoreSection from './MoreSection'
@@ -13,6 +13,8 @@ const Columns = styled.div`
 `
 
 class Profile extends Component {
+  componentWillMount() {}
+
   render() {
     return (
       <Section>

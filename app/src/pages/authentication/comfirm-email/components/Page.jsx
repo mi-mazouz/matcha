@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
 
-import Spinner from '../../../global/components/Spinner.js'
-import { httpClient, history } from '../../../config'
-import { setToken } from '../../../utils'
-import { ADD_NOTIFICATION } from '../../../global/components/notification/constants'
+import Spinner from '../../../../global/components/Spinner.js'
+import { httpClient, history } from '../../../../config'
+import { setToken } from '../../../../utils'
+import { ADD_NOTIFICATION } from '../../../../global/components/notification/constants'
 
 class ConfirmEmail extends React.Component {
   async componentDidMount() {

@@ -6,9 +6,10 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Button from '../../../global/components/Button'
-import { InputWithIconsAndError } from '../../../global/components/Input'
-import { isEmail } from '../../../utils'
+import Button from '../../../../global/components/Button'
+import { InputWithIconsAndError } from '../../../../global/components/Input'
+import { SIGNIN_FORM_SUBMIT } from '../constants'
+import { isEmail } from '../../../../utils'
 
 const Form = styled.form`
   width: 300px;
@@ -54,7 +55,7 @@ class SignInForm extends Component {
   handleSubmit = values =>
     new Promise((resolve, reject) =>
       this.props.dispatch({
-        type: 'SIGNIN_FORM_SUBMIT',
+        type: SIGNIN_FORM_SUBMIT,
         payload: { values, resolve, reject }
       })
     )

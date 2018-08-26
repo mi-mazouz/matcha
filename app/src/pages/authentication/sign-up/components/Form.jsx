@@ -7,9 +7,10 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { isBirthDate, isName, isEmail, isPassword, isUsername } from '../../../utils'
-import { InputWithIconsAndError } from '../../../global/components/Input'
-import Button from '../../../global/components/Button'
+import { isBirthDate, isName, isEmail, isPassword, isUsername } from '../../../../utils'
+import { InputWithIconsAndError } from '../../../../global/components/Input'
+import Button from '../../../../global/components/Button'
+import { SIGNUP_FORM_SUBMIT } from '../constants'
 
 const Form = styled.form`
   width: 435px;
@@ -67,7 +68,7 @@ class SignUpForm extends Component {
   handleSubmit = values =>
     new Promise((resolve, reject) => {
       this.props.dispatch({
-        type: 'SIGNUP_FORM_SUBMIT',
+        type: SIGNUP_FORM_SUBMIT,
         payload: { values, resolve, reject }
       })
     })

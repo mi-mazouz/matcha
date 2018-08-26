@@ -5,8 +5,8 @@ import { translate } from 'react-i18next'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withTheme } from '@material-ui/core/styles'
 
-import Title from '../../global/components/Title'
-import StyledPaper from '../../global/components/Paper'
+import Title from '../../../global/components/Title'
+import StyledPaper from '../../../global/components/Paper'
 
 const NestedColumns = styled.div`
   width: 100%;
