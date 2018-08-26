@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const path = require('path')
 const _ = require('lodash')
 
-const logger = require('../../src/services/logger')
+const logger = require('../../src/config/logger')
 const config = require('../config').production
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
@@ -13,9 +13,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
   logging: string => logger.debug(string)
 })
 
-const modelFiles = [
-  'user'
-]
+const modelFiles = ['user']
 const models = _.keyBy(modelFiles.map(file => sequelize.import(path.join(__dirname, file))), 'name')
 
 module.exports = models

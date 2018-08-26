@@ -1,12 +1,12 @@
 const sgMail = require('@sendgrid/mail')
 
 const config = require('../config')
-const logger = require('./logger')
+const logger = require('../config/logger')
 
 const sendConfirmEmail = (userData, token) => {
   sgMail.setApiKey(config.SENDGRID_API_KEY)
   sgMail.setSubstitutionWrappers('{{', '}}')
-  
+
   const msg = {
     to: userData.email,
     from: 'staff@matcha.com',
@@ -18,11 +18,12 @@ const sendConfirmEmail = (userData, token) => {
     }
   }
 
-  return sgMail.send(msg)
+  return sgMail
+  .send(msg)
   .then(() => logger.info('Confirm email sent successfully'))
-  .catch((error) => logger.error(error.message))
-} 
+  .catch(error => logger.error(error.message))
+}
 
 module.exports = {
-  sendConfirmEmail 
+  sendConfirmEmail
 }

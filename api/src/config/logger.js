@@ -1,9 +1,6 @@
 const winston = require('winston')
 
-const format = winston.format.combine(
-  winston.format.colorize(),
-  winston.format.simple()
-)
+const format = winston.format.combine(winston.format.colorize(), winston.format.simple())
 
 const logger = winston.createLogger({
   level: 'error',

@@ -7,6 +7,7 @@ import { withTheme } from '@material-ui/core/styles'
 
 import StyledTitle from '../../../global/components/Title'
 import StyledPaper from '../../../global/components/Paper'
+import { getGenderIcon } from '../../../utils'
 
 const Figure = styled.figure`
   margin: auto
@@ -39,7 +40,7 @@ const Paper = styled(StyledPaper)`
 
 class InfosSection extends Component {
   render() {
-    const { theme, t } = this.props
+    const { theme, t, user } = this.props
 
     return (
       <div className="column is-4">
@@ -51,8 +52,11 @@ class InfosSection extends Component {
           />
         </Figure>
         <Title className="is-6">
-          Mickael Mazouz, 28 {t('years_old')}
-          <Icon icon="venus" color={theme.palette.grey} />
+          {`${user.firstName} ${user.lastName} ${new Date(Date.now())
+            .getFullYear() -
+            new Date(user.birthDate)
+              .getFullYear()} ${t('years_old')}`}
+          <Icon icon={getGenderIcon(user.gender)} color={theme.palette.grey} />
         </Title>
         <Paper>{t('popularity_rating') + ': 15'}</Paper>
         <Paper className="control has-icons-right">
@@ -68,7 +72,7 @@ class InfosSection extends Component {
           </span>
         </Paper>
         <Paper className="control has-icons-right">
-          {t('sexual_orientation') + ': Woman'}
+          {`${t('sexual_orientation')} ${t(user.sexualOrientation.toLowerCase())}`}
           <span className="icon is-right">
             <EditIcon icon="edit" color={theme.palette.grey} />
           </span>
@@ -80,7 +84,14 @@ class InfosSection extends Component {
 
 InfosSection.propTypes = {
   t: PropTypes.func.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    birthDate: PropTypes.number.isRequired,
+    firstName: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    sexualOrientation: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default translate()(withTheme()(InfosSection))

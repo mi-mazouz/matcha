@@ -8,6 +8,7 @@ import { signInFormSubmit } from './pages/authentication/sign-in/saga'
 import { fetchUser } from './pages/profile/saga'
 import signInReducer from './pages/authentication/sign-in/reducer'
 import signUpReducer from './pages/authentication/sign-up/reducer'
+import profileReducer from './pages/profile/reducer'
 import notificationReducer from './global/components/notification/reducer'
 
 const initialState =
@@ -24,7 +25,8 @@ const createStore = () => {
         signIn: signInReducer,
         signUp: signUpReducer
       }),
-      notification: notificationReducer
+      notification: notificationReducer,
+      profile: profileReducer
     }),
     initialState,
     compose(

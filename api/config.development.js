@@ -1,6 +1,6 @@
 module.exports = {
   APP_END_POINT: 'http://localhost:3000',
-  EMAIL_TEMPLATES: { 
+  EMAIL_TEMPLATES: {
     EN: {
       CONFIRM_EMAIL_ID: 'd-6fb4c72a0c9243c78188d45405bf5d7e'
     }

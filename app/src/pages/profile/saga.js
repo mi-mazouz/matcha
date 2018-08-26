@@ -5,25 +5,23 @@ import { history, graphqlClient } from '../../config'
 import { logout } from '../../utils'
 import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS } from './constants'
 import { ADD_NOTIFICATION } from '../../global/components/notification/constants'
-import { userProfileQuery } from './queries'
+import { fetchUserProfile } from './queries'
 
 export function* fetchUser() {
   return yield takeLatest([FETCH_USER_REQUEST], function*() {
     try {
       const { data } = yield call(graphqlClient.query, {
-        query: userProfileQuery,
+        query: fetchUserProfile,
         fetchPolicy: 'no-cache'
       })
-      console.log(data)
 
       return yield put({
         type: FETCH_USER_SUCCESS,
-        payload: data
+        payload: data.getUser
       })
     } catch (error) {
       yield call(logout)
       yield call(history.push, '/login')
-
       return yield put({
         type: ADD_NOTIFICATION,
         payload: {

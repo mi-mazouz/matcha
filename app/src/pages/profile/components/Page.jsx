@@ -31,7 +31,7 @@ class Profile extends Component {
       <Section>
         <Container>
           <Columns className="columns">
-            <InfosSection />
+            <InfosSection user={user} />
             <PicturesSection />
             <MoreSection />
           </Columns>
@@ -51,5 +51,5 @@ Profile.defaultProps = {
 }
 
 export default connect(store => ({
-  user: store.user
+  user: store.profile.user
 }))(Profile)

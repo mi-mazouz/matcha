@@ -1,0 +1,16 @@
+scalar Birthdate
+
+type Query {
+  getUser(id: ID): User
+}
+
+type User {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  gender: String
+  sexualOrientation: String
+  username: String
+  birthDate: Birthdate
+}

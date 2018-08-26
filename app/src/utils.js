@@ -76,4 +76,25 @@ const isPassword = password => {
   return regex.test(password)
 }
 
-export { isBirthDate, isPassword, isUsername, isEmail, isName, logout, getToken, setToken }
+const getGenderIcon = gender => {
+  switch (gender) {
+    case 'MAN':
+      return 'mars'
+    case 'WOMAN':
+      return 'venus'
+    default:
+      return 'transgender'
+  }
+}
+
+export {
+  isBirthDate,
+  isPassword,
+  isUsername,
+  isEmail,
+  isName,
+  logout,
+  getToken,
+  getGenderIcon,
+  setToken
+}

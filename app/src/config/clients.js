@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost'
 
-import { getToken, logout } from '../utils'
+import { getToken } from '../utils'
 import constants from './constants'
 import errors from './errors'
 
@@ -34,10 +34,8 @@ const initInterceptorRequest = client => {
   })
 
   client.interceptors.response.use(null, error => {
-    if (error.response && error.response.data) {
-      if (error.response.data.message && error.response.data.message === 'TOKEN_INVALID') logout()
-      else if (error.response.data.message)
-        error.response.data.message = errors[error.response.data.message] || 'An error occured'
+    if (error.response && error.response.data && error.response.data.message) {
+      error.response.data.message = errors[error.response.data.message] || 'An error occured'
     }
 
     return Promise.reject(error)
