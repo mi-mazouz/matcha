@@ -10,16 +10,19 @@ module.exports = (firstName, lastName, username, birthDate, email, password) => 
   logger.info(`A user tried to register with email: ${email} and username: ${username}`)
 
   return UserModel.findOne({ where: { email } })
-  .then((user) => {
+  .then(user => {
     if (user) throw createError.BadRequest(errors.EMAIL_ALREADY_EXISTS)
 
-    return new UserModel({ firstName, lastName, username, birthDate, email, password }).save()
-    .then((user) => {
-      sendConfirmEmail({
-        firstName: user.firstName,
-        email: user.email
-      },
-      utils.buildEmailConfirmToken(user.id))
+    return new UserModel({ firstName, lastName, username, birthDate, email, password })
+    .save()
+    .then(user => {
+      sendConfirmEmail(
+        {
+          firstName: user.firstName,
+          email: user.email
+        },
+        utils.buildEmailConfirmToken(user.id)
+      )
       return utils.buildToken(user.id)
     })
   })

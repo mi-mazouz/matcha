@@ -10,7 +10,8 @@ const requestInfos = require('./middlewares/request-infos').requestInfos
 const getToken = require('./middlewares/token-handling').getToken
 const authenticationRouter = require('./authentication/routes')
 
-const secretKey = require('./utils').getSecretKey()
+const secretKey = require('./utils')
+.getSecretKey()
 const app = express()
 
 app.use(

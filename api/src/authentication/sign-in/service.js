@@ -10,11 +10,11 @@ module.exports = (email, password) => {
   logger.info(`A user tried to login with email: ${email}`)
 
   return UserModel.findOne({ where: { email } })
-  .then((user) => {
+  .then(user => {
     if (!user) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
 
     return bcrypt.compare(password, user.password)
-    .then((passwordMatched) => {
+    .then(passwordMatched => {
       if (!passwordMatched) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
 
       return utils.buildToken(user.id)
