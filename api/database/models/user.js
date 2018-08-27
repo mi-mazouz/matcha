@@ -37,6 +37,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
+    },
+    tags: {
+      type: DataTypes.STRING(64),
+      allowNull: false
+    },
+    lat: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
+    },
+    long: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
     }
   }, {
     tableName: 'User'
