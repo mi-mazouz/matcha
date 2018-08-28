@@ -18,7 +18,7 @@ const Icon = styled(FontAwesomeIcon)`
   margin-left: 10px;
 `
 
-const EditIcon = Icon.extend`
+const EditIcon = styled(Icon)`
   cursor: pointer;
 `
 

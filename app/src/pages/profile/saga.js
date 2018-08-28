@@ -1,7 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-// import { translate } from 'react-i18next'
 
-import { history, graphqlClient } from '../../config'
+import { history, graphqlClient, i18n } from '../../config'
 import { logout } from '../../utils'
 import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS } from './constants'
 import { ADD_NOTIFICATION } from '../../global/components/notification/constants'
@@ -26,8 +25,7 @@ export function* fetchUser() {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          // message: translate('error.response.data.message'),
-          message: 'An error occured, please try to sign in again',
+          message: i18n.t(error.networkError.result.message),
           level: 'error',
           position: 'tr',
           autoDismiss: 5

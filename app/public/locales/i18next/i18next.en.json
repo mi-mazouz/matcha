@@ -1,4 +1,5 @@
 {
+  "bad_token": "An error occured",
   "birth_date_placeholder": "Ex: 06/25/1994",
   "bisexual": "Bisexual",
   "email_or_password_invalid": "Email or password invalid",
@@ -46,6 +47,7 @@
     "sign_up": "Sign up!"
   },
   "to": "To",
+  "token_expired": "An error occured, please try to reconnect",
   "username": "Username",
   "viewed_profile_title": "The last people who viewed my profile",
   "woman": "Woman",

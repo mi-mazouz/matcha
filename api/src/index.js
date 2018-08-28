@@ -7,7 +7,8 @@ const { ApolloServer } = require('apollo-server-express')
 
 const config = require('./config')
 const logger = require('./config/logger')
-const errorsHandling = require('./middlewares/errors-handling').errorsHandling
+const httpErrorsHandling = require('./middlewares/errors-handling').httpErrorsHandling
+const graphqlErrorsHandling = require('./middlewares/errors-handling').graphqlErrorsHandling
 const requestInfos = require('./middlewares/request-infos').requestInfos
 const getToken = require('./middlewares/token-handling').getToken
 const getSecretKey = require('./tools').getSecretKey
@@ -20,7 +21,8 @@ const { schema, resolver } = glue('src/graphql')
 const graphqlServer = new ApolloServer({
   typeDefs: schema,
   resolvers: resolver,
-  context: grahpqlContext
+  context: grahpqlContext,
+  formatError: graphqlErrorsHandling
 })
 
 app.use(
@@ -41,6 +43,6 @@ graphqlServer.applyMiddleware({ app, path: '/graphql' })
 
 app.use('/authentication', authenticationRouter)
 
-app.use(errorsHandling)
+app.use(httpErrorsHandling)
 
 app.listen(config.PORT, () => logger.info('App listening on port ' + config.PORT))

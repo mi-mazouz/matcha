@@ -8,7 +8,6 @@ module.exports = {
   rules: {
     'no-multiple-empty-lines': ['error', { max: 1 }],
     'no-multi-spaces': 'error',
-
     'comma-dangle': ['error', 'never'],
     'linebreak-style': ['error', 'unix'],
     'newline-per-chained-call': ['error', { ignoreChainWithDepth: 1 }],

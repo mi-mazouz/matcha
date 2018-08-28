@@ -24,11 +24,11 @@ const Icon = styled(FontAwesomeIcon)`
   cursor: pointer;
 `
 
-const ArrowLeftIcon = Icon.extend`
+const ArrowLeftIcon = styled(Icon)`
   margin-right: 15px;
 `
 
-const ArrowRightIcon = Icon.extend`
+const ArrowRightIcon = styled(Icon)`
   margin-left: 15px;
 `
 

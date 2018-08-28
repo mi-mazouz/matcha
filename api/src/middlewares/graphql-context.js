@@ -1,11 +1,11 @@
-const createError = require('http-errors')
+const { ApolloError } = require('apollo-server-express')
 
 const errors = require('../config/errors')
 const UserModel = require('../../database/models').User
 
 module.exports = ({ req }) => {
-  // fix promiseWarning when throw error
-  if (!req.user || !req.user.id) throw req.next(createError.Unauthorized(errors.BAD_TOKEN))
+  if (!req.user || !req.user.id)
+    throw new ApolloError(errors.BAD_TOKEN, 401, { path: '/graphql', locations: 'getUser' })
 
   return UserModel.findById(req.user.id)
   .then(user => ({ userAuthenticated: user }))
