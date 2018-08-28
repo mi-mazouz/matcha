@@ -2,9 +2,9 @@ const createError = require('http-errors')
 const bcrypt = require('bcrypt')
 
 const UserModel = require('../../../database/models').User
-const logger = require('../../services/logger')
-const utils = require('../../utils')
-const errors = require('../../errors')
+const logger = require('../../config/logger')
+const buildToken = require('../../tools/token').buildToken
+const errors = require('../../config/errors')
 
 module.exports = (email, password) => {
   logger.info(`A user tried to login with email: ${email}`)
@@ -17,7 +17,7 @@ module.exports = (email, password) => {
     .then(passwordMatched => {
       if (!passwordMatched) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
 
-      return utils.buildToken(user.id)
+      return buildToken(user.id)
     })
   })
 }

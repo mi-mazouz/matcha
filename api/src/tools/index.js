@@ -1,23 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const jwt = require('jsonwebtoken')
 const _ = require('lodash')
-
-const buildToken = userId => {
-  return jwt.sign(
-    { id: userId.toString() },
-    fs.readFileSync(path.join(__dirname, '/config/secret.key')),
-    { expiresIn: '1h' }
-  )
-}
-
-const buildEmailConfirmToken = userId => {
-  return jwt.sign(
-    { id: userId.toString(), emailConfirming: true },
-    fs.readFileSync(path.join(__dirname, '/config/secret.key')),
-    { expiresIn: '1h' }
-  )
-}
 
 const isName = name => {
   const regex = /^([a-zA-Z]{2,50})$/
@@ -63,11 +46,9 @@ const capitalizeName = name => {
 }
 
 const getSecretKey = () =>
-  Buffer.from(fs.readFileSync(path.join(__dirname, './config/secret.key')), 'base64')
+  Buffer.from(fs.readFileSync(path.join(__dirname, '../config/secret.key')), 'base64')
 
 module.exports = {
-  buildToken,
-  buildEmailConfirmToken,
   getSecretKey,
   isName,
   isEmail,

@@ -1,7 +1,7 @@
 const createError = require('http-errors')
 
 const UserModel = require('../../../database/models').User
-const errors = require('../../errors')
+const errors = require('../../config/errors')
 
 module.exports = userId => {
   return UserModel.findById(userId)

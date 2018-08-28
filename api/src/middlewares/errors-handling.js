@@ -1,7 +1,7 @@
-const logger = require('../services/logger')
-const errors = require('../errors')
+const logger = require('../config/logger')
+const errors = require('../config/errors')
 
-const errorsHandling = (err, req, res, next) => {
+const httpErrorsHandling = (err, req, res, next) => {
   logger.error(
     JSON.stringify({
       route: req.path,
@@ -10,9 +10,16 @@ const errorsHandling = (err, req, res, next) => {
     })
   )
 
-  if (err.name === 'UnauthorizedError' && err.message === 'jwt expired') {
-    res.status(err.status)
-    .json({ message: errors.EMAIL_TOKEN_EXPIRED })
+  if (err.name === 'UnauthorizedError') {
+    if (err.message === 'jwt expired') {
+      res.status(err.status)
+      .json({ message: errors.TOKEN_EXPIRED })
+      return
+    } else if (err.message === 'invalid signature') {
+      res.status(err.status)
+      .json({ message: errors.BAD_TOKEN })
+      return
+    }
   }
 
   if (!err.statusCode) {
@@ -23,6 +30,20 @@ const errorsHandling = (err, req, res, next) => {
   .json({ message: err.message })
 }
 
+const graphqlErrorsHandling = error => {
+  logger.error(
+    JSON.stringify({
+      route: error.path,
+      location: error.locations,
+      status: error.extensions.code,
+      message: error.message.split(':')[1].trim()
+    })
+  )
+
+  return error
+}
+
 module.exports = {
-  errorsHandling
+  httpErrorsHandling,
+  graphqlErrorsHandling
 }

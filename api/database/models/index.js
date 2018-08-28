@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const path = require('path')
 const _ = require('lodash')
 
-const logger = require('../../src/services/logger')
+const logger = require('../../src/config/logger')
 const config = require('../config').production
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {

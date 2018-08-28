@@ -1,8 +1,41 @@
 import axios from 'axios'
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost'
+import { onError } from 'apollo-link-error'
 
-import { getToken, logout } from '../utils'
+import { getToken } from '../utils'
 import constants from './constants'
-import errors from './errors'
+import getErrorTranslateKey from './errors'
+
+const authLink = new ApolloLink((operation, forward) => {
+  const token = getToken()
+
+  if (token) {
+    operation.setContext({
+      headers: { authorization: 'Bearer ' + token }
+    })
+  }
+
+  return forward(operation)
+})
+
+const afterLink = onError(({ networkError }) => {
+  if (networkError.result) {
+    if (networkError.result.message) {
+      networkError.result.message = getErrorTranslateKey(networkError.result.message)
+    } else if (networkError.result.errors && networkError.result.errors.length > 0) {
+      networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
+    }
+  }
+})
+
+export const graphqlClient = new ApolloClient({
+  link: ApolloLink.from([
+    authLink,
+    afterLink,
+    new HttpLink({ uri: constants.GRAPHQL_API_BASE_URI })
+  ]),
+  cache: new InMemoryCache()
+})
 
 const initInterceptorRequest = client => {
   client.interceptors.request.use(config => {
@@ -16,10 +49,8 @@ const initInterceptorRequest = client => {
   })
 
   client.interceptors.response.use(null, error => {
-    if (error.response && error.response.data) {
-      if (error.response.data.message && error.response.data.message === 'TOKEN_INVALID') logout()
-      else if (error.response.data.message)
-        error.response.data.message = errors[error.response.data.message] || 'An error occured'
+    if (error.response && error.response.data && error.response.data.message) {
+      error.response.data.message = getErrorTranslateKey(error.response.data.message)
     }
 
     return Promise.reject(error)

@@ -1,7 +1,7 @@
 const createError = require('http-errors')
 const _ = require('lodash')
 
-const errors = require('../../errors')
+const errors = require('../../config/errors')
 const signInService = require('./service')
 
 module.exports = (req, res, next) => {

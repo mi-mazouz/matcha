@@ -3,6 +3,7 @@ module.exports = {
     es6: true,
     node: true
   },
+  parser: 'babel-eslint',
   extends: ['eslint:recommended', 'prettier'],
   rules: {
     'no-multiple-empty-lines': ['error', { max: 1 }],

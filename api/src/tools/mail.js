@@ -1,7 +1,7 @@
 const sgMail = require('@sendgrid/mail')
 
 const config = require('../config')
-const logger = require('./logger')
+const logger = require('../config/logger')
 
 const sendConfirmEmail = (userData, token) => {
   sgMail.setApiKey(config.SENDGRID_API_KEY)
