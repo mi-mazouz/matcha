@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import NavBar from './NavBar'
 import Profile from '../../pages/profile'
-import Page from '../../common/components/Page'
+import Page from '../../global/components/Page'
 
 const LoggedLayout = ({ location }) => (
   <Page>

@@ -1,6 +1,7 @@
 {
-  "account": "Compte",
+  "bad_token": "Une erreur s'est produite",
   "birth_date_placeholder": "Ex: 25/06/1994",
+  "bisexual": "Bisexuel",
   "email_or_password_invalid": "Email ou mot de passe invalide",
   "email_already_used": "Cette email existe déjà",
   "first_name": "Prénom",
@@ -10,10 +11,22 @@
   "interests": "Intérêts",
   "last_name": "Nom",
   "location": "Localisation",
-  "logout": "Se déconnecter",
   "looking_for": "Je recherche",
   "man": "Homme",
   "my_interests": "Mes intérêts",
+  "nav_bars": {
+    "logout": {
+      "sign_in": "Se connecter",
+      "sign_up": "S'enregistrer"
+    },
+    "logged": {
+      "account": "Compte",
+      "logout": "Se déconnecter",
+      "messages": "Messages",
+      "profile": "Profil",
+      "settings": "Paramètres"
+    }
+  },
   "notifications": {
     "success": {
       "confirmation_email": "Email confirmé avec succès"
@@ -27,17 +40,14 @@
   "password": "Mot de passe",
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",
-  "profile": "Profil",
-  "settings": "Paramètres",
   "sexual_orientation": "Orientation sexuel",
-  "sign_in": "Se connecter",
-  "sign_up": "S'enregistrer",
   "title_page": {
     "landing_page": "Trouve ton âme soeur !",
     "sign_in": "Se connecter !",
     "sign_up": "S'enregistrer !"
   },
   "to": "À",
+  "token_expired": "Oups!! Une erreur s'est produite, essayez de vous reconnecter",
   "username": "Nom d'utilisateur",
   "viewed_profile_title": "Les dernières personnes qui ont consulté mon profil",
   "woman": "Femme",

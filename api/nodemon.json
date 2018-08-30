@@ -8,10 +8,9 @@
     "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
   },
   "ignoreRoot": "ignoreRoot",
-  "watch":
-    "./src/",
+  "watch": ["./src/", "./database"],
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "js json html"
+  "ext": "js graphql json"
 }
