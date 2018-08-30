@@ -10,7 +10,7 @@ module.exports = {
     'no-multi-spaces': 'error',
     'comma-dangle': ['error', 'never'],
     'linebreak-style': ['error', 'unix'],
-    'newline-per-chained-call': ['error', { ignoreChainWithDepth: 1 }],
+    'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }],
     indent: ['error', 2, { MemberExpression: 0, SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'never']

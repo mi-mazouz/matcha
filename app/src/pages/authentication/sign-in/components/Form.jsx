@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import Button from '../../../../global/components/Button'
 import { InputWithIconsAndError } from '../../../../global/components/Input'
 import { SIGNIN_FORM_SUBMIT } from '../constants'
-import { isEmail } from '../../../../utils'
+import { isEmail } from '../../../../tools'
 
 const Form = styled.form`
   width: 300px;

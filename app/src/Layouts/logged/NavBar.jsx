@@ -6,7 +6,7 @@ import { translate } from 'react-i18next'
 import { withTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
-import { logout } from '../../utils'
+import { logout } from '../../tools'
 import medias from '../../config/medias'
 import Logo from '../../global/components/Logo'
 import Badge from '../../global/components/Badge'

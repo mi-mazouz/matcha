@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost'
 import { onError } from 'apollo-link-error'
 
-import { getToken } from '../utils'
+import { getToken } from '../tools'
 import constants from './constants'
 import getErrorTranslateKey from './errors'
 

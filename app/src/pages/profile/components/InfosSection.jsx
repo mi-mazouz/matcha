@@ -7,7 +7,8 @@ import { withTheme } from '@material-ui/core/styles'
 
 import StyledTitle from '../../../global/components/Title'
 import StyledPaper from '../../../global/components/Paper'
-import { getGenderIcon } from '../../../utils'
+import { getGenderIcon } from '../../../tools'
+import { getAge } from '../../../tools/dates'
 
 const Figure = styled.figure`
   margin: auto
@@ -52,10 +53,7 @@ class InfosSection extends Component {
           />
         </Figure>
         <Title className="is-6">
-          {`${user.firstName} ${user.lastName} ${new Date(Date.now())
-            .getFullYear() -
-            new Date(user.birthDate)
-              .getFullYear()} ${t('years_old')}`}
+          {`${user.firstName} ${user.lastName} ${getAge(user.birthDate)} ${t('years_old')}`}
           <Icon icon={getGenderIcon(user.gender)} color={theme.palette.grey} />
         </Title>
         <Paper>{t('popularity_rating') + ': 15'}</Paper>

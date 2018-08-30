@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 
 import { history, graphqlClient, i18n } from '../../config'
-import { logout } from '../../utils'
+import { logout } from '../../tools'
 import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS } from './constants'
 import { ADD_NOTIFICATION } from '../../global/components/notification/constants'
 import { fetchUserProfile } from './queries'
