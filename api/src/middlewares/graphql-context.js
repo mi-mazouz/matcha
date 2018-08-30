@@ -8,5 +8,8 @@ module.exports = ({ req }) => {
     throw new ApolloError(errors.BAD_TOKEN, 401, { path: '/graphql', locations: 'getUser' })
 
   return UserModel.findById(req.user.id)
-  .then(user => ({ userAuthenticated: user }))
+  .then(user => {
+    if (!user) throw new ApolloError(errors.USER_NOT_FOUND, 401, { path: '/graphql', locations: 'getUser' })
+    return { userAuthenticated: user }
+  })
 }
