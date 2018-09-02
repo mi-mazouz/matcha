@@ -1,6 +1,8 @@
 const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
 
+const PictureModel = require('../../../database/models').Picture
+
 const Birthdate = new GraphQLScalarType({
   name: 'Date',
   description: 'Birthdate format.',
@@ -33,7 +35,21 @@ const Query = {
   }
 }
 
+const User = {
+  profilePicture: (_, { id }, { userAuthenticated }) => {
+    if (id) return null
+
+    return PictureModel.findOne({ where: { userId: userAuthenticated.id, isProfile: true } })
+    .then(
+      picture => ({
+        path: picture.path
+      })
+    )
+  }
+}
+
 exports.resolver = {
   Query,
+  User,
   Birthdate
 }

@@ -9,6 +9,9 @@ const fetchUserProfile = gql`
       birthDate
       gender
       sexualOrientation
+      profilePicture {
+        path
+      }
     }
   }
 `

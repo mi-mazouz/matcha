@@ -5,7 +5,6 @@ type Query {
 }
 
 type User {
-  id: ID
   email: String
   firstName: String
   lastName: String
@@ -13,4 +12,5 @@ type User {
   sexualOrientation: String
   username: String
   birthDate: Birthdate
+  profilePicture: Picture
 }

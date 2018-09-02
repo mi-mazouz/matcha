@@ -1,0 +1,3 @@
+type Picture {
+  path: String
+}

@@ -6,6 +6,7 @@
   "main": "public/src/index.js",
   "scripts": {
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "build": "react-scripts build",
     "start": "react-scripts start"
   },
   "repository": {
