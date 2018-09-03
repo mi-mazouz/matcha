@@ -3,7 +3,7 @@ import requests
 import bcrypt
 from faker import Faker
 
-from tools import get_gender, get_sexual_orientation, display_progress_bar, add_user, add_picture_profile
+from tools import capitalize_name, get_gender, get_sexual_orientation, display_progress_bar, add_user, add_picture_profile
 
 if '--help' in sys.argv:
     print('Usage: [PYTHON_ENV=development] python <script-name> [number_of_users=100 max:1000] [region="fr"]')
@@ -17,8 +17,8 @@ random_users = requests.get(f'https://randomuser.me/api/?inc=gender,name,locatio
 
 for index, random_user in enumerate(random_users['results']):
     user = {
-        'first_name': random_user['name']['first'],
-        'last_name': random_user['name']['last'],
+        'first_name': capitalize_name(random_user['name']['first']),
+        'last_name': capitalize_name(random_user['name']['last']),
         'username': random_user['login']['username'],
         'password': bcrypt.hashpw(b'Test1234', bcrypt.gensalt(10)).decode('ascii'),
         'email': random_user['email'],

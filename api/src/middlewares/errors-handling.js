@@ -40,6 +40,7 @@ const graphqlErrorsHandling = error => {
     })
   )
 
+  error.message = error.message.split(':')[1].trim()
   return error
 }
 

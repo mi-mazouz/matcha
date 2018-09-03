@@ -5,6 +5,13 @@ import random
 import psycopg2
 import datetime
 
+def capitalize_name(name):
+  new_name = ''
+  for index, letter in enumerate(name):
+    if index == 0: new_name += name[index].upper()
+    else: new_name += name[index]
+  
+  return new_name
 
 def display_progress_bar(toolbar_width, index):
   percent = ((index * 100) // toolbar_width)

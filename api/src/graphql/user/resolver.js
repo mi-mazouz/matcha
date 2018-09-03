@@ -41,9 +41,13 @@ const User = {
 
     return PictureModel.findOne({ where: { userId: userAuthenticated.id, isProfile: true } })
     .then(
-      picture => ({
-        path: picture.path
-      })
+      picture => {
+        if (!picture) return null
+
+        return {
+          path: picture.path
+        }
+      }
     )
   }
 }

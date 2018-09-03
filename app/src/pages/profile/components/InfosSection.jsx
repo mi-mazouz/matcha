@@ -45,7 +45,14 @@ class InfosSection extends Component {
     return (
       <div className="column is-4">
         <Figure className="image is-128x128">
-          <img className="is-rounded" src={user.profilePicture.path} alt="" />
+          <img
+            className="is-rounded"
+            alt=""
+            src={
+              (user.profilePicture && user.profilePicture.path) ||
+              'https://bulma.io/images/placeholders/128x128.png'
+            }
+          />
         </Figure>
         <Title className="is-6">
           {`${user.firstName} ${user.lastName} ${new Date(Date.now())
@@ -87,7 +94,7 @@ InfosSection.propTypes = {
     gender: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     sexualOrientation: PropTypes.string.isRequired,
-    profilePicture: PropTypes.shape({ path: PropTypes.string.isRequired }).isRequired
+    profilePicture: PropTypes.shape({ path: PropTypes.string.isRequired })
   }).isRequired
 }
 
