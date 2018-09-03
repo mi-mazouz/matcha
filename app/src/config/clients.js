@@ -19,13 +19,12 @@ const authLink = new ApolloLink((operation, forward) => {
 })
 
 const afterLink = onError(({ networkError }) => {
-  if (
-    networkError &&
-    networkError.result &&
-    networkError.result.errors &&
-    networkError.result.errors.length > 0
-  ) {
-    networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
+  if (networkError && networkError.result) {
+    if (networkError.result.errors && networkError.result.errors.length > 0) {
+      networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
+    } else if (networkError.result.message) {
+      networkError.result.message = getErrorTranslateKey(networkError.result.message)
+    }
   }
 })
 
