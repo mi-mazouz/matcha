@@ -11,7 +11,7 @@ export function* fetchUser() {
     try {
       const { data } = yield call(graphqlClient.query, {
         query: fetchUserProfile,
-        fetchPolicy: 'no-cache'
+        fetchPolicy: 'cache-first'
       })
 
       return yield put({
