@@ -1,0 +1,30 @@
+# source: http://localhost:8080/graphql
+# timestamp: Tue Sep 04 2018 17:33:39 GMT-0700 (PDT)
+
+"""Birthdate format."""
+scalar Date
+
+type Picture {
+  path: String
+}
+
+type Query {
+  getUser(id: ID): User
+}
+
+"""
+The `Upload` scalar type represents a file upload promise that resolves an
+object containing `stream`, `filename`, `mimetype` and `encoding`.
+"""
+scalar Upload
+
+type User {
+  email: String
+  firstName: String
+  lastName: String
+  gender: String
+  sexualOrientation: String
+  username: String
+  birthDate: Date
+  profilePicture: Picture
+}
