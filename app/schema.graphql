@@ -1,15 +1,23 @@
 # source: http://localhost:8080/graphql
-# timestamp: Tue Sep 04 2018 17:33:39 GMT-0700 (PDT)
+# timestamp: Thu Sep 06 2018 11:31:23 GMT-0700 (PDT)
 
-"""Birthdate format."""
+"""
+Birthdate format.
+"""
 scalar Date
+
+type Query {
+  getPictures(userId: ID): Pictures
+  getUser(id: ID): User
+}
 
 type Picture {
   path: String
 }
 
-type Query {
-  getUser(id: ID): User
+type Pictures {
+  profilePicture: Picture
+  pictures: [Pictures]
 }
 
 """
@@ -26,5 +34,4 @@ type User {
   sexualOrientation: String
   username: String
   birthDate: Date
-  profilePicture: Picture
 }

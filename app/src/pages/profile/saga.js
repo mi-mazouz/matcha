@@ -16,7 +16,7 @@ export function* fetchUser() {
 
       return yield put({
         type: FETCH_USER_SUCCESS,
-        payload: data.getUser
+        payload: { ...data.getUser, ...data.getPictures }
       })
     } catch (error) {
       yield call(logout)
