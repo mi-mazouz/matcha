@@ -48,8 +48,11 @@ class InfosSection extends Component {
         <Figure className="image is-128x128">
           <img
             className="is-rounded"
-            src="https://bulma.io/images/placeholders/128x128.png"
             alt=""
+            src={
+              (user.profilePicture && user.profilePicture.path) ||
+              'https://bulma.io/images/placeholders/128x128.png'
+            }
           />
         </Figure>
         <Title className="is-6">
@@ -88,7 +91,8 @@ InfosSection.propTypes = {
     firstName: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    sexualOrientation: PropTypes.string.isRequired
+    sexualOrientation: PropTypes.string.isRequired,
+    profilePicture: PropTypes.shape({ path: PropTypes.string.isRequired })
   }).isRequired
 }
 

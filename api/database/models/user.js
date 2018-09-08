@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.define(
+module.exports = (Sequelize, DataTypes) => {
+  const Model = Sequelize.define(
     'User',
     {
       gender: {

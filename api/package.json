@@ -41,10 +41,10 @@
     "winston": "3.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "9.0.0",
     "eslint": "5.2.0",
     "eslint-config-prettier": "^3.0.1",
-    "nodemon": "^1.14.7",
+    "nodemon": "1.18.4",
     "sequelize-cli": "^4.0.0"
   }
 }

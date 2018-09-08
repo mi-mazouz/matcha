@@ -13,7 +13,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
   logging: string => logger.debug(string)
 })
 
-const modelFiles = ['user']
+const modelFiles = ['user', 'picture']
 const models = _.keyBy(modelFiles.map(file => sequelize.import(path.join(__dirname, file))), 'name')
 
 module.exports = models
