@@ -3,8 +3,8 @@ import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost'
 import { onError } from 'apollo-link-error'
 
 import { getToken } from '../utils'
-import constants from './constants'
 import getErrorTranslateKey from './errors'
+import { config } from '../config'
 
 const authLink = new ApolloLink((operation, forward) => {
   const token = getToken()
@@ -19,17 +19,17 @@ const authLink = new ApolloLink((operation, forward) => {
 })
 
 const afterLink = onError(({ networkError }) => {
-  if (networkError.result && networkError.result.errors && networkError.result.errors.length > 0) {
-    networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
+  if (networkError && networkError.result) {
+    if (networkError.result.errors && networkError.result.errors.length > 0) {
+      networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
+    } else if (networkError.result.message) {
+      networkError.result.message = getErrorTranslateKey(networkError.result.message)
+    }
   }
 })
 
 export const graphqlClient = new ApolloClient({
-  link: ApolloLink.from([
-    authLink,
-    afterLink,
-    new HttpLink({ uri: constants.GRAPHQL_API_BASE_URI })
-  ]),
+  link: ApolloLink.from([authLink, afterLink, new HttpLink({ uri: config.GRAPHQL_API_BASE_URI })]),
   cache: new InMemoryCache()
 })
 
@@ -56,5 +56,5 @@ const initInterceptorRequest = client => {
 }
 
 export const httpClient = initInterceptorRequest(
-  axios.create({ baseURL: constants.HTTP_API_BASE_URI })
+  axios.create({ baseURL: config.HTTP_API_BASE_URI })
 )

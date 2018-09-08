@@ -36,7 +36,7 @@ const EditIcon = styled(FontAwesomeIcon)`
 
 class PicturesSection extends Component {
   render() {
-    const { theme, t } = this.props
+    const { theme, t, pictures } = this.props
 
     return (
       <div className="column is-4">
@@ -45,26 +45,13 @@ class PicturesSection extends Component {
             .toUpperCase()}</Title>
           <EditIcon icon="edit" color={theme.palette.grey} />
           <NestedColumns className="columns">
-            <div className="column">
-              <Figure className="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/256x256.png" alt="" />
-              </Figure>
-            </div>
-            <div className="column">
-              <Figure className="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/256x256.png" alt="" />
-              </Figure>
-            </div>
-            <div className="column">
-              <Figure className="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/256x256.png" alt="" />
-              </Figure>
-            </div>
-            <div className="column">
-              <Figure className="image is-128x128">
-                <img src="https://bulma.io/images/placeholders/256x256.png" alt="" />
-              </Figure>
-            </div>
+            {pictures.map((picture, index) => (
+              <div key={index} className="column">
+                <Figure className="image is-128x128">
+                  <img src={picture.path} alt="" />
+                </Figure>
+              </div>
+            ))}
           </NestedColumns>
         </Paper>
       </div>
@@ -74,7 +61,12 @@ class PicturesSection extends Component {
 
 PicturesSection.propTypes = {
   t: PropTypes.func.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  pictures: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string.isRequired
+    })
+  ).isRequired
 }
 
 export default translate()(withTheme()(PicturesSection))

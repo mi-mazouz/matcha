@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     browser: true,
+    node: true,
     es6: true
   },
   extends: ['eslint:recommended', 'prettier'],
@@ -12,7 +13,7 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  plugins: ['react'],
+  plugins: ['react', 'graphql'],
   rules: {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
@@ -28,6 +29,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'linebreak-style': ['error', 'unix'],
     'newline-per-chained-call': ['error', { ignoreChainWithDepth: 1 }],
+    'graphql/template-strings': ['error', { env: 'apollo', projectName: 'Matcha' }],
     indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'never']

@@ -32,7 +32,7 @@ class Profile extends Component {
         <Container>
           <Columns className="columns">
             <InfosSection user={user} />
-            <PicturesSection />
+            <PicturesSection pictures={user.pictures} />
             <MoreSection />
           </Columns>
         </Container>

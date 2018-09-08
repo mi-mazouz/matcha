@@ -1,0 +1,12 @@
+type Query {
+  getPictures(userId: ID): Pictures
+}
+
+type Pictures {
+  profilePicture: Picture
+  pictures: [Picture]
+}
+
+type Picture {
+  path: String
+}

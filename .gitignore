@@ -2,8 +2,12 @@ node_modules
 .DS_Store
 .vs/
 .vscode/
-npm-debug.log
-package-lock.json
+.mypy_cache/
 api/config/secret.key
-app/yarn.lock
-app/yarn-error.log
+**/npm-debug.log
+**/package-lock.json
+**/yarn.lock
+**/yarn-error.log
+**/config.development*
+**/config.production*
+**/__pycache__
