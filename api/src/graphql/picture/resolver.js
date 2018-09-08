@@ -1,28 +1,32 @@
 const PictureModel = require('../../../database/models').Picture
 
 const Query = {
-  getPictures: (_, { id }) => {
-    if (id) return null
+  getPictures: (_, { userId }, { userAuthenticated }) => {
+    return PictureModel.findAll({
+      where: { userId: userId || userAuthenticated.id, isProfile: false }
+    })
+    .then(pictures => {
+      if (!pictures) return null
 
-    return {
-      pictures: null
-    }
+      return {
+        pictures: pictures.map(picture => ({ path: picture.path }))
+      }
+    })
   }
 }
 
 const Pictures = {
   profilePicture: (_, { userId }, { userAuthenticated }) => {
-    if (userId) return null
+    return PictureModel.findOne({
+      where: { userId: userId || userAuthenticated.id, isProfile: true }
+    })
+    .then(profilePicture => {
+      if (!profilePicture) return null
 
-    return PictureModel.findOne({ where: { userId: userAuthenticated.id, isProfile: true } })
-    .then(
-      profilePicture => {
-        if (!profilePicture) return null
-        return {
-          path: profilePicture.path
-        }
+      return {
+        path: profilePicture.path
       }
-    )
+    })
   }
 }
 

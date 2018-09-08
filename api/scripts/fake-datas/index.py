@@ -3,17 +3,20 @@ import requests
 import bcrypt
 from faker import Faker
 
-from tools import capitalize_name, get_gender, get_sexual_orientation, display_progress_bar, add_user, add_picture_profile
+from tools import capitalize_name, get_gender, get_sexual_orientation, display_progress_bar, add_user, add_picture
 
 if '--help' in sys.argv:
-    print('Usage: [PYTHON_ENV=development] python <script-name> [number_of_users=100 max:1000] [region="fr"]')
+    print(
+        'Usage: [PYTHON_ENV=development] python <script-name> [number_of_users=100 max:1000] [region="fr"]')
     sys.exit()
 
-number_of_users = int(sys.argv[1]) if len(sys.argv) >= 2 and sys.argv[1].isdigit() == True and int(sys.argv[1]) < 1000 else 100
+number_of_users = int(sys.argv[1]) if len(sys.argv) >= 2 and sys.argv[1].isdigit(
+) == True and int(sys.argv[1]) < 1000 else 100
 region = sys.argv[2] if len(sys.argv) == 3 else 'fr'
 
 fake = Faker(region)
-random_users = requests.get(f'https://randomuser.me/api/?inc=gender,name,location,email,login,picture,registered&nat={region}&results={number_of_users}').json()
+random_users = requests.get(
+    f'https://randomuser.me/api/?inc=gender,name,location,email,login,picture,registered&nat={region}&results={number_of_users}').json()
 
 for index, random_user in enumerate(random_users['results']):
     user = {
@@ -38,4 +41,13 @@ for index, random_user in enumerate(random_users['results']):
         'created_at': random_user['registered']['date'],
         'updated_at': random_user['registered']['date'],
     }
-    add_picture_profile(picture)
+    add_picture(picture, True)
+
+    for index in range(4):
+        picture = {
+            'user_id': user_id,
+            'path': requests.get('https://picsum.photos/400/300/?random').url,
+            'created_at': random_user['registered']['date'],
+            'updated_at': random_user['registered']['date'],
+        }
+        add_picture(picture)

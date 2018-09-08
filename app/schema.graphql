@@ -17,7 +17,7 @@ type Picture {
 
 type Pictures {
   profilePicture: Picture
-  pictures: [Pictures]
+  pictures: [Picture]
 }
 
 """

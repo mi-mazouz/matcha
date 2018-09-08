@@ -11,6 +11,9 @@ const fetchUserProfile = gql`
       sexualOrientation
     }
     getPictures(userId: $id) {
+      pictures {
+        path
+      }
       profilePicture {
         path
       }
