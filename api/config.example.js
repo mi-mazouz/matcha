@@ -3,6 +3,9 @@ module.exports = {
   EMAIL_TEMPLATES: {
     EN: {
       CONFIRM_EMAIL_ID: 'xxxxxxx'
+    },
+    FR: {
+      CONFIRM_EMAIL_ID: 'xxxxxxx'
     }
   },
   PORT: 8080,
