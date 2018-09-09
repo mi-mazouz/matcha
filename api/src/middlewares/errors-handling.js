@@ -12,12 +12,10 @@ const httpErrorsHandling = (err, req, res, next) => {
 
   if (err.name === 'UnauthorizedError') {
     if (err.message === 'jwt expired') {
-      res.status(err.status)
-      .json({ message: errors.TOKEN_EXPIRED })
+      res.status(err.status).json({ message: errors.TOKEN_EXPIRED })
       return
     } else if (err.message === 'invalid signature') {
-      res.status(err.status)
-      .json({ message: errors.BAD_TOKEN })
+      res.status(err.status).json({ message: errors.BAD_TOKEN })
       return
     }
   }
@@ -26,8 +24,7 @@ const httpErrorsHandling = (err, req, res, next) => {
     return next(err)
   }
 
-  res.status(err.statusCode)
-  .json({ message: err.message })
+  res.status(err.statusCode).json({ message: err.message })
 }
 
 const graphqlErrorsHandling = error => {

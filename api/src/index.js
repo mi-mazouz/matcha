@@ -35,7 +35,7 @@ app.use(
     secret: secretKey,
     credentialsRequired: false,
     getToken
-  })
+  }).unless(['authentication/token/refresh'])
 )
 app.use(requestInfos)
 
