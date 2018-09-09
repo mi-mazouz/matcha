@@ -1,6 +1,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Picture', {
+    return queryInterface
+    .createTable('Picture', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -20,8 +21,10 @@ module.exports = {
         references: {
           model: 'User',
           key: 'id',
-          allowNull: false
-        }
+          name: 'userIdReference'
+        },
+        onDelete: 'cascade',
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +35,13 @@ module.exports = {
         type: Sequelize.DATE
       }
     })
+    .then(() =>
+      queryInterface.addIndex('Picture', ['userId', 'isProfile'], {
+        indicesType: 'UNIQUE',
+        where: { isProfile: true },
+        name: 'uniqueProfilePicture'
+      })
+    )
   },
 
   down: queryInterface => {
