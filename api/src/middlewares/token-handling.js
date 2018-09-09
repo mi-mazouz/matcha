@@ -1,6 +1,8 @@
 const createError = require('http-errors')
+const jwt = require('jsonwebtoken')
 
 const errors = require('../config/errors')
+const getSecretKey = require('../tools').getSecretKey
 
 const getToken = req => {
   if (req.query && req.query.token) return req.query.token
@@ -11,15 +13,32 @@ const getToken = req => {
   return null
 }
 
+const refreshToken = (req, _, next) => {
+  const token = getToken(req)
+
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, getSecretKey(), { ignoreExpiration: true }, (error, decoded) => {
+      if (error) return reject(error)
+      return resolve(decoded)
+    })
+  }).then(decodedToken => {
+    if (!decodedToken || !decodedToken.id || decodedToken.emailConfirming) {
+      return next(createError.Unauthorized(errors.BAD_TOKEN))
+    }
+
+    req.user = { id: decodedToken.id }
+    return next()
+  })
+}
+
 const confirmEmailToken = (req, _, next) => {
-  if (!req.user || !req.user.id || !req.user.emailConfirming) {
-    return next(createError.Unauthorized(errors.BAD_TOKEN))
-  }
+  if (req.user.emailConfirming !== true) return next(createError.Unauthorized(errors.BAD_TOKEN))
 
   return next()
 }
 
 module.exports = {
   confirmEmailToken,
-  getToken
+  getToken,
+  refreshToken
 }

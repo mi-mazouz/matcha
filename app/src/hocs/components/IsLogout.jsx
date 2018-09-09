@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { getToken } from '../../tools'
+import { getToken } from '../../tools/token'
 
 export default WrappedComponent => {
   class IsLogout extends React.Component {

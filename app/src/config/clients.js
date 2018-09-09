@@ -1,21 +1,41 @@
 import axios from 'axios'
-import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from 'apollo-boost'
+import jwt from 'jsonwebtoken'
+import { ApolloClient, ApolloLink, Observable, HttpLink, InMemoryCache } from 'apollo-boost'
 import { onError } from 'apollo-link-error'
 
-import { getToken } from '../tools'
+import { getToken, setToken } from '../tools/token'
 import getErrorTranslateKey from './errors'
 import { config } from '../config'
 
 const authLink = new ApolloLink((operation, forward) => {
-  const token = getToken()
+  return new Observable(observable => {
+    const token = getToken()
 
-  if (token) {
-    operation.setContext({
-      headers: { authorization: 'Bearer ' + token }
-    })
-  }
+    if (token) {
+      const decodedToken = jwt.decode(token)
 
-  return forward(operation)
+      operation.setContext({
+        headers: { authorization: 'Bearer ' + token }
+      })
+
+      if (Math.floor(Date.now() / 1000) + 60 * 60 - decodedToken.exp >= 3300) {
+        return httpClient
+          .get('/authentication/refresh-token')
+          .then(response => {
+            setToken(response.data.token)
+
+            return forward(operation)
+              .subscribe(observable)
+          })
+          .catch(error => {
+            observable.error({ result: { message: error.response.data.message } })
+          })
+      }
+    }
+
+    return forward(operation)
+      .subscribe(observable)
+  })
 })
 
 const afterLink = onError(({ networkError }) => {

@@ -21,6 +21,7 @@ export function* fetchUser() {
     } catch (error) {
       yield call(logout)
       yield call(history.push, '/login')
+
       return yield put({
         type: ADD_NOTIFICATION,
         payload: {

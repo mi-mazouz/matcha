@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 
 import { httpClient, history } from '../../../config'
-import { setToken } from '../../../tools'
+import { setToken } from '../../../tools/token'
 import { SIGNIN_FORM_SUBMIT, SIGNIN_FORM_ERROR } from './constants'
 
 export function* signInFormSubmit() {

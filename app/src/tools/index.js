@@ -5,14 +5,6 @@ const logout = () => {
   history.push('/')
 }
 
-const getToken = () => {
-  return window.localStorage.token
-}
-
-const setToken = token => {
-  window.localStorage.token = token
-}
-
 const isName = name => {
   const regex = /^([a-zA-Z]{2,50})$/
 
@@ -48,4 +40,4 @@ const getGenderIcon = gender => {
   }
 }
 
-export { isPassword, isUsername, isEmail, isName, logout, getToken, getGenderIcon, setToken }
+export { isPassword, isUsername, isEmail, isName, logout, getGenderIcon }

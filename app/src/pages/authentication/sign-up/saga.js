@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { history, httpClient } from '../../../config'
-import { setToken } from '../../../tools'
+import { setToken } from '../../../tools/token'
 import { SIGNUP_FORM_ERROR, SIGNUP_FORM_SUBMIT } from './constants'
 
 export function* signUpFormSubmit() {
