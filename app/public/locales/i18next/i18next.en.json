@@ -30,7 +30,8 @@
   },
   "notifications": {
     "success": {
-      "confirmation_email": "Email confirmed successfully"
+      "confirmation_email": "Email confirmed successfully",
+      "resend_confirmation_email": "Email send successfully"
     },
     "error": {
       "confirmation_email": {
@@ -41,6 +42,7 @@
   "password": "Password",
   "pictures": "Pictures",
   "popularity_rating": "Popularity rating",
+  "send_again": "Send again",
   "sexual_orientation": "Sexual orientation",
   "title_page": {
     "landing_page": "Find your soulmate!",

@@ -20,7 +20,10 @@ const sendConfirmEmail = (userData, token) => {
 
   return sgMail
   .send(msg)
-  .then(() => logger.info('Confirm email sent successfully'))
+  .then(() => {
+    logger.info('Confirm email sent successfully')
+    return Promise.resolve()
+  })
   .catch(error => logger.error(error.message))
 }
 

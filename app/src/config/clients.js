@@ -14,15 +14,14 @@ const authLink = new ApolloLink((operation, forward) => {
     if (token) {
       const decodedToken = jwt.decode(token)
 
-      operation.setContext({
-        headers: { authorization: 'Bearer ' + token }
-      })
-
-      if (Math.floor(Date.now() / 1000) + 60 * 60 - decodedToken.exp >= 3300) {
+      if (Math.floor(Date.now() / 1000) + 60 - decodedToken.exp >= 60) {
         return httpClient
           .get('/authentication/refresh-token')
           .then(response => {
             setToken(response.data.token)
+            operation.setContext({
+              headers: { authorization: 'Bearer ' + response.data.token }
+            })
 
             return forward(operation)
               .subscribe(observable)
@@ -30,6 +29,10 @@ const authLink = new ApolloLink((operation, forward) => {
           .catch(error => {
             observable.error({ result: { message: error.response.data.message } })
           })
+      } else {
+        operation.setContext({
+          headers: { authorization: 'Bearer ' + token }
+        })
       }
     }
 

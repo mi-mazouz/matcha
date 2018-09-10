@@ -9,7 +9,12 @@ class Notification extends Component {
   componentWillReceiveProps(nextProps) {
     const { notification } = this.props
 
-    if (!notification && nextProps.notification)
+    if (
+      (!notification && nextProps.notification) ||
+      (notification &&
+        nextProps.notification &&
+        notification.message !== nextProps.notification.message)
+    )
       this.refs.notificationSystem.addNotification({
         ...nextProps.notification,
         onRemove: () => this.props.dispatch({ type: NOTIFICATION_REMOVED })
