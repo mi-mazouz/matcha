@@ -30,7 +30,8 @@
   },
   "notifications": {
     "success": {
-      "confirmation_email": "Email confirmé avec succès"
+      "confirmation_email": "Email confirmé avec succès",
+      "resend_confirmation_email": "Email envoyé avec succès"
     },
     "error": {
       "confirmation_email": {
@@ -41,6 +42,7 @@
   "password": "Mot de passe",
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",
+  "send_again": "Envoyez à nouveau",
   "sexual_orientation": "Orientation sexuel",
   "title_page": {
     "landing_page": "Trouve ton âme soeur !",

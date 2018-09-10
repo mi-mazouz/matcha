@@ -13,16 +13,33 @@ const getToken = req => {
   return null
 }
 
-const refreshToken = (req, _, next) => {
-  const token = getToken(req)
-
+const verifyToken = (token, ignoreExpiration) => {
   return new Promise((resolve, reject) => {
-    jwt.verify(token, getSecretKey(), { ignoreExpiration: true }, (error, decoded) => {
+    jwt.verify(token, getSecretKey(), { ignoreExpiration }, (error, decoded) => {
       if (error) return reject(error)
       return resolve(decoded)
     })
-  }).then(decodedToken => {
+  })
+}
+
+const refreshToken = (req, _, next) => {
+  const token = getToken(req)
+
+  return verifyToken(token, true).then(decodedToken => {
     if (!decodedToken || !decodedToken.id || decodedToken.emailConfirming) {
+      return next(createError.Unauthorized(errors.BAD_TOKEN))
+    }
+
+    req.user = { id: decodedToken.id }
+    return next()
+  })
+}
+
+const resendConfirmEmailToken = (req, _, next) => {
+  const token = getToken(req)
+
+  return verifyToken(token, true).then(decodedToken => {
+    if (!decodedToken || !decodedToken.id || decodedToken.emailConfirming !== true) {
       return next(createError.Unauthorized(errors.BAD_TOKEN))
     }
 
@@ -40,5 +57,6 @@ const confirmEmailToken = (req, _, next) => {
 module.exports = {
   confirmEmailToken,
   getToken,
-  refreshToken
+  refreshToken,
+  resendConfirmEmailToken
 }

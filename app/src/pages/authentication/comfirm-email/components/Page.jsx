@@ -2,19 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { translate } from 'react-i18next'
+import { withTheme } from '@material-ui/core/styles'
 
+import Button from '../../../../global/components/Button'
 import Spinner from '../../../../global/components/Spinner.js'
 import { httpClient, history } from '../../../../config'
 import { setToken } from '../../../../tools/token'
+import { RESEND_CONFIRM_EMAIL } from '../constants'
 import { ADD_NOTIFICATION } from '../../../../global/components/notification/constants'
 
 class ConfirmEmail extends React.Component {
   async componentDidMount() {
-    const { match } = this.props
+    const { match, t, theme } = this.props
 
     try {
       const { data } = await httpClient({
-        method: 'PUT',
+        method: 'PATCH',
         url: `/authentication/confirm-email?token=${match.params.token}`
       })
 
@@ -23,7 +26,7 @@ class ConfirmEmail extends React.Component {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: this.props.t('notifications.success.confirmation_email'),
+          message: t('notifications.success.confirmation_email'),
           level: 'success',
           position: 'tr',
           autoDismiss: 5
@@ -35,12 +38,24 @@ class ConfirmEmail extends React.Component {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: this.props.t(
-            `notifications.error.confirmation_email.${error.response.data.message}`
+          message: t(`notifications.error.confirmation_email.${error.response.data.message}`),
+          children: (
+            <Button
+              onClick={() =>
+                this.props.dispatch({
+                  type: RESEND_CONFIRM_EMAIL,
+                  payload: { token: match.params.token }
+                })
+              }
+              isSmall
+              backgroundColor={theme.palette.red}
+            >
+              {t('send_again')}
+            </Button>
           ),
           level: 'error',
           position: 'tr',
-          autoDismiss: 5
+          autoDismiss: 0
         }
       })
       history.push('/')
@@ -58,4 +73,4 @@ ConfirmEmail.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-export default connect()(translate()(ConfirmEmail))
+export default connect()(translate()(withTheme()(ConfirmEmail)))

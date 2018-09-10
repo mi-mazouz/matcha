@@ -8,14 +8,16 @@ const StyledButton = styled.button`
     box-shadow: none !important;
   }
   background-image: ${props => props.backgroundImage};
+  background-color: ${props => props.backgroundColor} !important;
   color: #ffffff !important;
   border-style: none !important;
+  font-weight: 600;
 `
 
-const Button = ({ children, isLoading, isDisabled, ...props }) => (
+const Button = ({ children, isLoading, isDisabled, isSmall, ...props }) => (
   <StyledButton
     {...props}
-    className={classnames('button', { 'is-loading': isLoading })}
+    className={classnames('button', { 'is-loading': isLoading, 'is-small': isSmall })}
     disabled={isDisabled}
   >
     {children}
@@ -30,6 +32,8 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  backgroundImage: null,
+  backgroundColor: null,
   className: null,
   isDisabled: false,
   isLoading: false

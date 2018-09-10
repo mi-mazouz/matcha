@@ -28,14 +28,14 @@ const graphqlServer = new ApolloServer({
 app.use(
   cors({
     allowedHeaders: ['Content-Type, Authorization'],
-    methods: ['GET', 'PUT', 'POST', 'DELETE']
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'PATCH']
   }),
   bodyParser.json(),
   expressJwt({
     secret: secretKey,
     credentialsRequired: false,
     getToken
-  }).unless(['authentication/token/refresh'])
+  }).unless({ path: ['/authentication/refresh-token', '/authentication/resend-confirm-email'] })
 )
 app.use(requestInfos)
 
