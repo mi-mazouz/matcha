@@ -42,9 +42,13 @@
   "password": "Mot de passe",
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",
+  "send": "Envoyer",
   "send_again": "Envoyez à nouveau",
   "sexual_orientation": "Orientation sexuel",
+  "sign_in": "Se connecter",
+  "sign_up": "S'enregistrer",
   "title_page": {
+    "forgot_password": "Retrouve ton mot de passe par email",
     "landing_page": "Trouve ton âme soeur !",
     "sign_in": "Se connecter !",
     "sign_up": "S'enregistrer !"

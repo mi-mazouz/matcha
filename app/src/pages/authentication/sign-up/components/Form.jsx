@@ -149,7 +149,7 @@ class SignUpForm extends Component {
           isLoading={this.props.submitting}
           isDisabled={this.props.submitting}
         >
-          Sign Up!
+          {t('sign_up')}
         </Button>
       </Form>
     )
