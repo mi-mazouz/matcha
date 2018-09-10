@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { translate } from 'react-i18next'
-import { Link as RouterLink } from 'react-router-dom'
 import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Button from '../../../../global/components/Button'
 import { InputWithIconsAndError } from '../../../../global/components/Input'
-import { SIGNIN_FORM_SUBMIT } from '../constants'
+import { FORGOT_PASSWORD_FORM_SUBMIT } from '../constants'
 import { isEmail } from '../../../../tools'
 
 const Form = styled.form`
@@ -16,24 +15,16 @@ const Form = styled.form`
   margin: auto;
 `
 
-const Link = withTheme()(styled(RouterLink)`
-  float: right;
-  font-weight: bold;
-  font-size: 14px;
-  color: ${props => props.theme.palette.grey};
-`)
-
 const validate = values => {
   const errors = {}
 
   if (!values.email) errors.email = 'Required'
   else if (!isEmail(values.email)) errors.email = 'Wrong format'
-  if (!values.password) errors.password = 'Required'
 
   return errors
 }
 
-class SignInForm extends Component {
+class ForgotPasswordForm extends Component {
   renderInput = ({ input, meta, ...props }) => {
     const isError = (meta.error && meta.touched && !meta.active) || false
     const isValid = !meta.error && meta.touched && !meta.active
@@ -55,7 +46,7 @@ class SignInForm extends Component {
   handleSubmit = values =>
     new Promise((resolve, reject) =>
       this.props.dispatch({
-        type: SIGNIN_FORM_SUBMIT,
+        type: FORGOT_PASSWORD_FORM_SUBMIT,
         payload: { values, resolve, reject }
       })
     )
@@ -76,32 +67,20 @@ class SignInForm extends Component {
             />
           </div>
         </div>
-        <div className="columns">
-          <div className="column">
-            <Field
-              icon="lock"
-              name="password"
-              placeholder={t('password')}
-              type="password"
-              component={this.renderInput}
-            />
-            <Link to="/forgot-password">{t('forgot_password_link_title')}</Link>
-          </div>
-        </div>
         <Button
           backgroundImage={theme.palette.mixGradient}
           type="submit"
           isLoading={submitting}
           isDisabled={submitting}
         >
-          {t('sign_in')}
+          {t('send')}
         </Button>
       </Form>
     )
   }
 }
 
-SignInForm.propTypes = {
+ForgotPasswordForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -110,6 +89,6 @@ SignInForm.propTypes = {
 }
 
 export default reduxForm({
-  form: 'signIn',
+  form: 'forgotPassword',
   validate
-})(translate()(withTheme()(SignInForm)))
+})(translate()(withTheme()(ForgotPasswordForm)))
