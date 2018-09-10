@@ -18,7 +18,6 @@ export function* resendConfirmEmail() {
           title: 'Notification',
           message: i18n.t('notifications.success.resend_confirmation_email'),
           level: 'success',
-          children: null,
           position: 'tr',
           autoDismiss: 5
         }
