@@ -67,10 +67,10 @@ class SignUpForm extends Component {
   }
 
   handleSubmit = values =>
-    new Promise((resolve, reject) => {
+    new Promise(resolve => {
       this.props.dispatch({
         type: SIGNUP_FORM_SUBMIT,
-        payload: { values, resolve, reject }
+        payload: { values, resolve }
       })
     })
 

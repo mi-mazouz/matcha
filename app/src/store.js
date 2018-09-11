@@ -7,8 +7,10 @@ import { signUpFormSubmit } from './pages/authentication/sign-up/saga'
 import { signInFormSubmit } from './pages/authentication/sign-in/saga'
 import { fetchUser } from './pages/profile/saga'
 import { resendConfirmEmail } from './pages/authentication/comfirm-email/saga'
+import { forgotPasswordFormSubmit } from './pages/authentication/forgot-password/saga'
 import signInReducer from './pages/authentication/sign-in/reducer'
 import signUpReducer from './pages/authentication/sign-up/reducer'
+import forgotPasswordReducer from './pages/authentication/forgot-password/reducer'
 import profileReducer from './pages/profile/reducer'
 import notificationReducer from './global/components/notification/reducer'
 
@@ -24,7 +26,8 @@ const createStore = () => {
     combineReducers({
       form: formReducer.plugin({
         signIn: signInReducer,
-        signUp: signUpReducer
+        signUp: signUpReducer,
+        forgotPassword: forgotPasswordReducer
       }),
       notification: notificationReducer,
       profile: profileReducer
@@ -41,6 +44,7 @@ const createStore = () => {
   sagaMiddleware.run(signUpFormSubmit)
   sagaMiddleware.run(fetchUser)
   sagaMiddleware.run(resendConfirmEmail)
+  sagaMiddleware.run(forgotPasswordFormSubmit)
 
   return store
 }

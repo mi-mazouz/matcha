@@ -53,10 +53,10 @@ class SignInForm extends Component {
   }
 
   handleSubmit = values =>
-    new Promise((resolve, reject) =>
+    new Promise(resolve =>
       this.props.dispatch({
         type: SIGNIN_FORM_SUBMIT,
-        payload: { values, resolve, reject }
+        payload: { values, resolve }
       })
     )
 
