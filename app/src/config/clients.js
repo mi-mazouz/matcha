@@ -14,7 +14,7 @@ const authLink = new ApolloLink((operation, forward) => {
     if (token) {
       const decodedToken = jwt.decode(token)
 
-      if (Math.floor(Date.now() / 1000) + 60 - decodedToken.exp >= 60) {
+      if (Math.floor(Date.now() / 1000) + 60 * 60 - decodedToken.exp >= 2000) {
         return httpClient
           .get('/authentication/refresh-token')
           .then(response => {
