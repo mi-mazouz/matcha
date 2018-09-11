@@ -33,17 +33,17 @@
     "success": {
       "confirmation_email": "Email confirmed successfully",
       "forgot_password_email": "Email send successfully",
-      "resend_confirmation_email": "Email send successfully"
+      "resend_confirmation_email": "Email send successfully",
+      "reset_password": "Password reset successfully"
     },
     "error": {
-      "confirmation_email": {
-        "token_expired": "Your email confirmation link is expired"
-      }
+      "token_expired": "Your email confirmation link is expired"
     }
   },
   "password": "Password",
   "pictures": "Pictures",
   "popularity_rating": "Popularity rating",
+  "reset": "Reset",
   "send": "Send",
   "send_again": "Send again",
   "sexual_orientation": "Sexual orientation",
@@ -52,6 +52,7 @@
   "title_page": {
     "forgot_password": "Find your password by mail",
     "landing_page": "Find your soulmate!",
+    "reset_password": "Reset your password",
     "sign_in": "Sign in!",
     "sign_up": "Sign up!"
   },

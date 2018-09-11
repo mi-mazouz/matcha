@@ -38,7 +38,7 @@ class ConfirmEmail extends React.Component {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: t(`notifications.error.confirmation_email.${error.response.data.message}`),
+          message: t(`notifications.error.${error.response.data.message}`),
           children: (
             <Button
               onClick={() =>
