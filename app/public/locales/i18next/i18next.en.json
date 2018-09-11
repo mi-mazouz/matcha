@@ -57,6 +57,7 @@
   },
   "to": "To",
   "token_expired": "Oups!! An error occured, please try to reconnect",
+  "user_inactive": "Sorry, you were stay inactive too long, please try to reconnect",
   "username": "Username",
   "viewed_profile_title": "The last people who viewed my profile",
   "woman": "Woman",
