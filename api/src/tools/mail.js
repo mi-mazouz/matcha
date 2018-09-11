@@ -24,9 +24,40 @@ const sendConfirmEmail = (userData, token) => {
     logger.info('Confirm email sent successfully')
     return Promise.resolve()
   })
-  .catch(error => logger.error(error.message))
+  .catch(error => {
+    logger.error(error.message)
+    throw error
+  })
+}
+
+const sendForgotPasswordEmail = (userData, token) => {
+  sgMail.setApiKey(config.SENDGRID_API_KEY)
+  sgMail.setSubstitutionWrappers('{{', '}}')
+
+  const msg = {
+    to: userData.email,
+    from: 'staff@matcha.com',
+    subject: 'Reset your password',
+    templateId: config.EMAIL_TEMPLATES['EN'].RESET_PASSWORD_EMAIL_ID,
+    dynamicTemplateData: {
+      firstName: userData.firstName,
+      forgotPasswordLink: `${config.APP_END_POINT}/reset-password/${token}`
+    }
+  }
+
+  return sgMail
+  .send(msg)
+  .then(() => {
+    logger.info('Reset password email sent successfully')
+    return Promise.resolve()
+  })
+  .catch(error => {
+    logger.error(error.message)
+    throw error
+  })
 }
 
 module.exports = {
-  sendConfirmEmail
+  sendConfirmEmail,
+  sendForgotPasswordEmail
 }
