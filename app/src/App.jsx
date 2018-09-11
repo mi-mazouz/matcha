@@ -9,10 +9,8 @@ import LogoutLayout from './Layouts/logout'
 import LoggedLayout from './Layouts/logged'
 import ConfirmEmail from './pages/authentication/comfirm-email'
 import { history, muiTheme, i18n } from './config'
-import { createStore } from './store'
+import store from './store'
 import { IsLogout, IsLogged } from './hocs/components'
-
-const store = createStore()
 
 class App extends Component {
   render() {
