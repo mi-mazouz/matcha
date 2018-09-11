@@ -33,17 +33,17 @@
     "success": {
       "confirmation_email": "Email confirmé avec succès",
       "forgot_password_email": "Email envoyé avec succès",
-      "resend_confirmation_email": "Email envoyé avec succès"
+      "resend_confirmation_email": "Email envoyé avec succès",
+      "reset_password_email": "Mot de passe réinitialisé avec succès"
     },
     "error": {
-      "confirmation_email": {
-        "token_expired": "Ton lien de confirmation est expiré"
-      }
+      "token_expired": "Ton lien de confirmation est expiré"
     }
   },
   "password": "Mot de passe",
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",
+  "reset": "Réinitialiser",
   "send": "Envoyer",
   "send_again": "Envoyez à nouveau",
   "sexual_orientation": "Orientation sexuel",
@@ -52,6 +52,7 @@
   "title_page": {
     "forgot_password": "Retrouve ton mot de passe par email",
     "landing_page": "Trouve ton âme soeur !",
+    "reset_password": "Réinitialise ton mot de passe",
     "sign_in": "Se connecter !",
     "sign_up": "S'enregistrer !"
   },
