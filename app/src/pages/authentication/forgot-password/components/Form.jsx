@@ -44,10 +44,10 @@ class ForgotPasswordForm extends Component {
   }
 
   handleSubmit = values =>
-    new Promise((resolve, reject) =>
+    new Promise(resolve =>
       this.props.dispatch({
         type: FORGOT_PASSWORD_FORM_SUBMIT,
-        payload: { values, resolve, reject }
+        payload: { values, resolve }
       })
     )
 

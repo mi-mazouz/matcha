@@ -3,8 +3,9 @@
   "bad_token": "Oups!! An error occured, please try to reconnect",
   "birth_date_placeholder": "Ex: 06/25/1994",
   "bisexual": "Bisexual",
-  "email_or_password_invalid": "Email or password invalid",
   "email_already_used": "Email already used",
+  "email_invalid": "Email invalid",
+  "email_or_password_invalid": "Email or password invalid",
   "first_name": "First name",
   "forgot_password_link_title": "Forgot your password?",
   "from": "From",
@@ -31,6 +32,7 @@
   "notifications": {
     "success": {
       "confirmation_email": "Email confirmed successfully",
+      "forgot_password_email": "Email send successfully",
       "resend_confirmation_email": "Email send successfully"
     },
     "error": {
