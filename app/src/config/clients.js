@@ -4,8 +4,12 @@ import { ApolloClient, ApolloLink, Observable, HttpLink, InMemoryCache } from 'a
 import { onError } from 'apollo-link-error'
 
 import { getToken, setToken } from '../tools/token'
+import { config, i18n } from '../config'
+import { logout } from '../tools'
+import { errors } from './errors'
+import { ADD_NOTIFICATION } from '../global/components/notification/constants'
+import store from '../store'
 import getErrorTranslateKey from './errors'
-import { config } from '../config'
 
 const authLink = new ApolloLink((operation, forward) => {
   return new Observable(observable => {
@@ -14,7 +18,7 @@ const authLink = new ApolloLink((operation, forward) => {
     if (token) {
       const decodedToken = jwt.decode(token)
 
-      if (Math.floor(Date.now() / 1000) + 60 - decodedToken.exp >= 60) {
+      if (Math.floor(Date.now() / 1000) + 60 * 60 - decodedToken.exp >= 2000) {
         return httpClient
           .get('/authentication/refresh-token')
           .then(response => {
@@ -27,7 +31,21 @@ const authLink = new ApolloLink((operation, forward) => {
               .subscribe(observable)
           })
           .catch(error => {
-            observable.error({ result: { message: error.response.data.message } })
+            if (error.response.data.message === errors.USER_INACTIVE) {
+              logout()
+              store.dispatch({
+                type: ADD_NOTIFICATION,
+                payload: {
+                  title: 'Notification',
+                  message: i18n.t(getErrorTranslateKey(error.response.data.message)),
+                  level: 'error',
+                  position: 'tr',
+                  autoDismiss: 5
+                }
+              })
+
+              return observable.error(null)
+            } else return observable.error({ result: { message: error.response.data.message } })
           })
       } else {
         operation.setContext({
@@ -69,7 +87,9 @@ const initInterceptorRequest = client => {
 
   client.interceptors.response.use(null, error => {
     if (error.response && error.response.data && error.response.data.message) {
-      error.response.data.message = getErrorTranslateKey(error.response.data.message)
+      if (!error.response.data.message === errors.USER_INACTIVE) {
+        error.response.data.message = getErrorTranslateKey(error.response.data.message)
+      }
     }
 
     return Promise.reject(error)

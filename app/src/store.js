@@ -51,4 +51,4 @@ const createStore = () => {
   return store
 }
 
-export { createStore }
+export default createStore()

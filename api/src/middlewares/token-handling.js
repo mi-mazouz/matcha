@@ -22,19 +22,6 @@ const verifyToken = (token, ignoreExpiration) => {
   })
 }
 
-const refreshToken = (req, _, next) => {
-  const token = getToken(req)
-
-  return verifyToken(token, true).then(decodedToken => {
-    if (!decodedToken || !decodedToken.id || decodedToken.emailConfirming) {
-      return next(createError.Unauthorized(errors.BAD_TOKEN))
-    }
-
-    req.user = { id: decodedToken.id }
-    return next()
-  })
-}
-
 const resendConfirmEmailToken = (req, _, next) => {
   const token = getToken(req)
 
@@ -57,6 +44,5 @@ const confirmEmailToken = (req, _, next) => {
 module.exports = {
   confirmEmailToken,
   getToken,
-  refreshToken,
   resendConfirmEmailToken
 }
