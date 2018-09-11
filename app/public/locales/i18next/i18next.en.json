@@ -34,7 +34,7 @@
       "confirmation_email": "Email confirmed successfully",
       "forgot_password_email": "Email send successfully",
       "resend_confirmation_email": "Email send successfully",
-      "reset_password": "Password reset successfully"
+      "reset_password_email": "Password reset successfully"
     },
     "error": {
       "token_expired": "Your email confirmation link is expired"

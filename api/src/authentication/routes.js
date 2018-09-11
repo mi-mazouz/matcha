@@ -5,9 +5,11 @@ const signUpController = require('./sign-up/controller')
 const confirmEmailController = require('./confirm-email/controller')
 const refreshTokenController = require('./refresh-token/controller')
 const resendConfirmEmailController = require('./resend-confirm-email/controller')
+const resetPasswordController = require('./reset-password/controller')
 const forgotPasswordController = require('./forgot-password/controller')
 const confirmEmailToken = require('../middlewares/token-handling').confirmEmailToken
 const resendConfirmEmailToken = require('../middlewares/token-handling').resendConfirmEmailToken
+const resetPasswordToken = require('../middlewares/token-handling').resetPasswordToken
 
 const router = express.Router()
 
@@ -16,6 +18,7 @@ router.post('/sign-up', signUpController)
 router.post('/forgot-password', forgotPasswordController)
 router.get('/refresh-token', refreshTokenController)
 router.post('/resend-confirm-email', resendConfirmEmailToken, resendConfirmEmailController)
+router.patch('/reset-password', resetPasswordToken, resetPasswordController)
 router.patch('/confirm-email', confirmEmailToken, confirmEmailController)
 
 module.exports = router
