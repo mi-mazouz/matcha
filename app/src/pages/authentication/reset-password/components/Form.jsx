@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { translate } from 'react-i18next'
 import { withTheme } from '@material-ui/core/styles'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 

@@ -1,8 +1,9 @@
-import { history } from '../config'
+import { history, graphqlClient } from '../config'
 
 const logout = () => {
   delete window.localStorage.token
   history.push('/')
+  graphqlClient.cache.reset()
 }
 
 const isName = name => {
