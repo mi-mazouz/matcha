@@ -26,7 +26,7 @@ class ConfirmEmail extends React.Component {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: t('notifications.success.confirmation_email'),
+          message: t('notifications.success.successfully_sent'),
           level: 'success',
           position: 'tr',
           autoDismiss: 5

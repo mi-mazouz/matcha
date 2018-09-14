@@ -35,7 +35,9 @@ app.use(
     secret: secretKey,
     credentialsRequired: false,
     getToken
-  }).unless({ path: ['/authentication/resend-confirm-email', '/authentication/reset-password'] })
+  }).unless({
+    path: ['/authentication/resend-confirm-email', '/authentication/resend-reset-password-email']
+  })
 )
 app.use(requestInfos)
 
