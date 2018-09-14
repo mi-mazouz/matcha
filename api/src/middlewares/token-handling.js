@@ -35,7 +35,7 @@ const resendConfirmEmailToken = (req, _, next) => {
   })
 }
 
-const resetPasswordToken = (req, _, next) => {
+const resendResetPasswordEmailToken = (req, _, next) => {
   const token = getToken(req)
 
   return verifyToken(token, true).then(decodedToken => {
@@ -48,6 +48,12 @@ const resetPasswordToken = (req, _, next) => {
   })
 }
 
+const resetPasswordToken = (req, _, next) => {
+  if (req.user.passwordReseting !== true) return next(createError.Unauthorized(errors.BAD_TOKEN))
+
+  return next()
+}
+
 const confirmEmailToken = (req, _, next) => {
   if (req.user.emailConfirming !== true) return next(createError.Unauthorized(errors.BAD_TOKEN))
 
@@ -58,5 +64,6 @@ module.exports = {
   confirmEmailToken,
   getToken,
   resendConfirmEmailToken,
-  resetPasswordToken
+  resetPasswordToken,
+  resendResetPasswordEmailToken
 }

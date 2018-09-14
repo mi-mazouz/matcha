@@ -15,7 +15,7 @@ export function* forgotPasswordFormSubmit() {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: i18n.t('notifications.success.forgot_password_email'),
+          message: i18n.t('notifications.success.successfully_sent'),
           level: 'success',
           position: 'tr',
           autoDismiss: 5

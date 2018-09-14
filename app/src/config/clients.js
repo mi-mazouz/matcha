@@ -87,7 +87,7 @@ const initInterceptorRequest = client => {
 
   client.interceptors.response.use(null, error => {
     if (error.response && error.response.data && error.response.data.message) {
-      if (!error.response.data.message === errors.USER_INACTIVE) {
+      if (error.response.data.message !== errors.USER_INACTIVE) {
         error.response.data.message = getErrorTranslateKey(error.response.data.message)
       }
     }

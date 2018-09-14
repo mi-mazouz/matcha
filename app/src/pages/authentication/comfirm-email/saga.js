@@ -16,7 +16,7 @@ export function* resendConfirmEmail() {
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
-          message: i18n.t('notifications.success.resend_confirmation_email'),
+          message: i18n.t('notifications.success.successfully_sent'),
           level: 'success',
           position: 'tr',
           autoDismiss: 5

@@ -31,10 +31,7 @@
   },
   "notifications": {
     "success": {
-      "confirmation_email": "Email confirmé avec succès",
-      "forgot_password_email": "Email envoyé avec succès",
-      "resend_confirmation_email": "Email envoyé avec succès",
-      "reset_password_email": "Mot de passe réinitialisé avec succès"
+      "successfully_sent": "Email confirmé avec succès"
     },
     "error": {
       "token_expired": "Ton lien de confirmation est expiré"

@@ -6,19 +6,16 @@ import NotificationSystem from 'react-notification-system'
 import { NOTIFICATION_REMOVED } from './constants'
 
 class Notification extends Component {
-  componentWillReceiveProps(nextProps) {
+  async componentWillReceiveProps(nextProps) {
     const { notification } = this.props
 
-    if (
-      (!notification && nextProps.notification) ||
-      (notification &&
-        nextProps.notification &&
-        notification.message !== nextProps.notification.message)
-    )
-      this.refs.notificationSystem.addNotification({
+    if (!notification && nextProps.notification) {
+      await this.props.dispatch({ type: NOTIFICATION_REMOVED })
+      await this.refs.notificationSystem.addNotification({
         ...nextProps.notification,
         onRemove: () => this.props.dispatch({ type: NOTIFICATION_REMOVED })
       })
+    }
   }
 
   _notificationSystem = null
