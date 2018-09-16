@@ -13,7 +13,7 @@ import { ADD_NOTIFICATION } from '../../../../global/components/notification/con
 
 class ConfirmEmail extends React.Component {
   async componentDidMount() {
-    const { match, t, theme } = this.props
+    const { match, t, theme, dispatch } = this.props
 
     try {
       const { data } = await httpClient({
@@ -22,7 +22,7 @@ class ConfirmEmail extends React.Component {
       })
 
       await setToken(data.token)
-      await this.props.dispatch({
+      await dispatch({
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
@@ -34,7 +34,7 @@ class ConfirmEmail extends React.Component {
       })
       history.push('/dashboard/profile')
     } catch (error) {
-      await this.props.dispatch({
+      await dispatch({
         type: ADD_NOTIFICATION,
         payload: {
           title: 'Notification',
@@ -42,7 +42,7 @@ class ConfirmEmail extends React.Component {
           children: (
             <Button
               onClick={() =>
-                this.props.dispatch({
+                dispatch({
                   type: RESEND_CONFIRM_EMAIL,
                   payload: { token: match.params.token }
                 })
