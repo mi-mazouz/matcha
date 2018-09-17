@@ -13,13 +13,14 @@ const sizes = {
   mobileSm: 360
 }
 
-const medias = Object.keys(sizes).reduce((medias, mediaName) => {
-  medias[mediaName] = (...args) => css`
+const medias = Object.keys(sizes)
+  .reduce((medias, mediaName) => {
+    medias[mediaName] = (...args) => css`
     @media (max-width: ${sizes[mediaName]}px) {
       ${css(...args)};
     }
   `
-  return medias
-}, {})
+    return medias
+  }, {})
 
 export default medias

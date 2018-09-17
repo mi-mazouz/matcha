@@ -2,10 +2,6 @@
   .title.is-1 {
     font-size: 2rem;
   }
-
-  .form {
-    width: 100%;
-  }
 }
 
 @media screen and (min-width: 1088px) {
@@ -20,18 +16,10 @@
 }
 
 @media screen and (max-width: 1087px) {
-  .navbar-menu {
-    padding: 0px !important;
-  }
-
-  .navbar-item {
-    margin-right: 0px !important;
-  }
-
-  .navbar-link:hover {
+  /* .navbar-link:hover {
     color: #4a4a4a !important;
     cursor: default;
-  }
+  } */
 
   .navbar-end {
     right: 0;

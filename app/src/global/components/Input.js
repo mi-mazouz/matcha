@@ -42,6 +42,8 @@ const ErrorText = styled.p`
   text-align: start;
   font-size: 14px !important;
   font-weight: bold;
+  color: ${props => props.theme.palette.red} !important;
+  border-color: ${props => props.theme.palette.red} !important;
 `
 
 const Input = ({ className, ...props }) => (
@@ -69,7 +71,11 @@ const InputWithIconsAndError = withTheme()(
             (isValid && <FontAwesomeIcon icon="check" color={theme.palette.green} />)}
         </span>
       </div>
-      {isError && <ErrorText className="help is-danger">{errorText}</ErrorText>}
+      {isError && (
+        <ErrorText theme={theme} className="help is-danger">
+          {errorText}
+        </ErrorText>
+      )}
     </div>
   )
 )

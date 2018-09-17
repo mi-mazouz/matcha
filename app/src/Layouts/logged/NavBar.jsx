@@ -44,7 +44,10 @@ const MenuLinkRouter = withTheme()(styled(Link)`
     color: ${props => props.theme.palette.purple} !important;
     background-color: transparent !important;
   }
-  margin-right: 30px;
+  margin-right: 30px !important;
+  ${medias.desktop`
+    margin: 0px !important;
+  `};
   ${props => props.selected && `color: ${props.theme.palette.purple} !important;`};
 `)
 
@@ -54,6 +57,10 @@ const MenuSubLinkRouter = styled(Link)`
     color: black !important;
     background-color: whitesmoke !important;
   }
+`
+
+const Menu = styled.div`
+  padding: 0px !important;
 `
 
 const MenuSubLink = styled.a`
@@ -76,6 +83,12 @@ const DropdownLink = withTheme()(styled.div`
     background-color: transparent !important;
   }
   background-color: transparent !important;
+  ${medias.desktop`
+    &:hover {
+      color: #4a4a4a !important;
+      cursor: default;
+    }
+  `};
 `)
 
 const MenuTitle = styled.span`
@@ -96,7 +109,7 @@ const StyledInputSearch = styled(InputSearch)`
   margin-bottom: 6px !important;
   margin-right: 30px !important;
   ${medias.desktop`
-    margin-bottom: 0px !important;
+    margin: 0px !important;
     padding: 0.5rem 0.75rem !important;
   `};
 `
@@ -104,12 +117,7 @@ const StyledInputSearch = styled(InputSearch)`
 class LogoutNavBar extends Component {
   state = {
     isActive: false,
-    selectedItem: undefined
-  }
-
-  componentWillMount() {
-    const splitedLocation = this.props.location.pathname.split('/')
-    this.setState({ selectedItem: splitedLocation[splitedLocation.length - 1] })
+    selectedItem: 'profile'
   }
 
   handleBurgerClick = () => this.setState({ isActive: !this.state.isActive })
@@ -135,7 +143,7 @@ class LogoutNavBar extends Component {
               ))}
           </BurgerWrapper>
         </div>
-        <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
+        <Menu className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
           <NavBarEnd className="navbar-end">
             <StyledInputSearch placeholder="Search users" className="navbar-item" />
             <MenuLinkRouter
@@ -179,7 +187,7 @@ class LogoutNavBar extends Component {
               </div>
             </div>
           </NavBarEnd>
-        </div>
+        </Menu>
       </div>
     )
   }
