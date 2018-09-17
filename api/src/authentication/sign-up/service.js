@@ -6,11 +6,10 @@ const tokenTools = require('../../tools/token')
 const errors = require('../../config/errors')
 const sendConfirmEmail = require('../../tools/mail').sendConfirmEmail
 
-module.exports = (firstName, lastName, username, birthDate, email, password) => {
+module.exports = (firstName, lastName, username, birthDate, email, password, language) => {
   logger.info(`A user tried to register with email: ${email} and username: ${username}`)
 
-  return UserModel.findOne({ where: { email } })
-  .then(user => {
+  return UserModel.findOne({ where: { email } }).then(user => {
     if (user) throw createError.BadRequest(errors.EMAIL_ALREADY_EXISTS)
 
     return new UserModel({ firstName, lastName, username, birthDate, email, password })
@@ -19,7 +18,8 @@ module.exports = (firstName, lastName, username, birthDate, email, password) => 
       sendConfirmEmail(
         {
           firstName: user.firstName,
-          email: user.email
+          email: user.email,
+          language: language
         },
         tokenTools.buildEmailConfirmToken(user.id)
       )

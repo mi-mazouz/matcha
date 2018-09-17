@@ -10,6 +10,7 @@ module.exports = {
       RESET_PASSWORD_EMAIL_ID: 'xxxxxxx'
     }
   },
+  LANGUAGES: ['XX', 'XX'],
   PORT: 8080,
   SENDGRID_API_KEY: 'xxxx'
 }

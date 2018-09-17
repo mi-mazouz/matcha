@@ -30,7 +30,7 @@ const resendConfirmEmailToken = (req, _, next) => {
       return next(createError.Unauthorized(errors.BAD_TOKEN))
     }
 
-    req.user = { id: decodedToken.id }
+    req.user = { ...req.user, id: decodedToken.id }
     return next()
   })
 }
@@ -43,7 +43,7 @@ const resendResetPasswordEmailToken = (req, _, next) => {
       return next(createError.Unauthorized(errors.BAD_TOKEN))
     }
 
-    req.user = { id: decodedToken.id }
+    req.user = { ...req.user, id: decodedToken.id }
     return next()
   })
 }

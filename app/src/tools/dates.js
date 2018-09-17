@@ -8,7 +8,7 @@ const isBirthDate = birthDate => {
   const regex = new RegExp(rawRegex.replace('tens', year[0])
     .replace('units', year[1] || 0))
 
-  if (getLanguage() === 'fr') {
+  if (getLanguage() === 'FR') {
     const frenchBirthDate = birthDate.match(/\d+/g)
     if (!frenchBirthDate) return false
 

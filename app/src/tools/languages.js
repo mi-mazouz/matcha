@@ -11,7 +11,7 @@ const getLanguage = () => {
   return language
     .split('-')[0]
     .split('_')[0]
-    .toLowerCase()
+    .toUpperCase()
 }
 
 export { getLanguage }
