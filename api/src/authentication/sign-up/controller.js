@@ -27,7 +27,8 @@ module.exports = (req, res, next) => {
       req.body.username,
       new Date(req.body.birthDate),
       req.body.email,
-      encryptPassword
+      encryptPassword,
+      req.user.language
     )
   })
   .then(token => res.send({ token }))
