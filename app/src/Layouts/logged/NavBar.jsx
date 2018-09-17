@@ -7,6 +7,7 @@ import { withTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
 import { logout } from '../../tools'
+import { InputSearch } from '../../global/components/Input'
 import medias from '../../config/medias'
 import Logo from '../../global/components/Logo'
 import Badge from '../../global/components/Badge'
@@ -44,7 +45,7 @@ const MenuLinkRouter = withTheme()(styled(Link)`
     background-color: transparent !important;
   }
   margin-right: 30px;
-  ${props => props.isselected && `color: ${props.theme.palette.purple} !important;`};
+  ${props => props.selected && `color: ${props.theme.palette.purple} !important;`};
 `)
 
 const MenuSubLinkRouter = styled(Link)`
@@ -84,22 +85,38 @@ const MenuTitle = styled.span`
   font-stretch: normal;
   letter-spacing: normal;
   ${props =>
-    props.isselected &&
+    props.selected &&
     `
     border-bottom: solid;
     border-bottom-width: 2px;
   `};
 `
 
+const StyledInputSearch = styled(InputSearch)`
+  margin-bottom: 6px !important;
+  margin-right: 30px !important;
+  ${medias.desktop`
+    margin-bottom: 0px !important;
+    padding: 0.5rem 0.75rem !important;
+  `};
+`
+
 class LogoutNavBar extends Component {
   state = {
-    isActive: false
+    isActive: false,
+    selectedItem: undefined
+  }
+
+  componentWillMount() {
+    const splitedLocation = this.props.location.pathname.split('/')
+    this.setState({ selectedItem: splitedLocation[splitedLocation.length - 1] })
   }
 
   handleBurgerClick = () => this.setState({ isActive: !this.state.isActive })
 
   render() {
-    const { location, t } = this.props
+    const { t } = this.props
+    const { selectedItem } = this.state
 
     return (
       <div className="navbar is-spaced">
@@ -120,43 +137,33 @@ class LogoutNavBar extends Component {
         </div>
         <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
           <NavBarEnd className="navbar-end">
+            <StyledInputSearch placeholder="Search users" className="navbar-item" />
             <MenuLinkRouter
-              isselected={location.pathname === '/dashboard/profile' ? 1 : 0}
+              selected={selectedItem === 'profile'}
               className="navbar-item"
               to="/dashboard/profile"
             >
-              <MenuTitle isselected={location.pathname === '/dashboard/profile' ? 1 : 0}>
+              <MenuTitle selected={selectedItem === 'profile'}>
                 {t('nav_bars.logged.profile')}
               </MenuTitle>
             </MenuLinkRouter>
             <MenuLinkRouter
-              isselected={location.pathname === '/dashboard/messages' ? 1 : 0}
+              selected={selectedItem === 'messages'}
               className="navbar-item"
               to="/dashboard/messages"
             >
               <Badge badgeContent={0} top={-20} right={-20}>
-                <MenuTitle isselected={location.pathname === '/dashboard/messages' ? 1 : 0}>
+                <MenuTitle selected={selectedItem === 'messages'}>
                   {t('nav_bars.logged.messages')}
                 </MenuTitle>
               </Badge>
             </MenuLinkRouter>
             <MenuLinkRouter
-              isselected={location.pathname === '/dashboard/match' ? 1 : 0}
+              selected={selectedItem === 'match'}
               className="navbar-item"
               to="/dashboard/match"
             >
-              <MenuTitle isselected={location.pathname === '/dashboard/match' ? 1 : 0}>
-                Match
-              </MenuTitle>
-            </MenuLinkRouter>
-            <MenuLinkRouter
-              isselected={location.pathname === '/dashboard/browse' ? 1 : 0}
-              className="navbar-item"
-              to="/dashboard/browse"
-            >
-              <MenuTitle isselected={location.pathname === '/dashboard/Browse' ? 1 : 0}>
-                Browse
-              </MenuTitle>
+              <MenuTitle selected={selectedItem === 'match'}>{t('match')}</MenuTitle>
             </MenuLinkRouter>
             <div className="navbar-item has-dropdown is-hoverable">
               <DropdownLink className="navbar-link">
