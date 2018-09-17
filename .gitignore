@@ -3,7 +3,7 @@ node_modules
 .vs/
 .vscode/
 .mypy_cache/
-api/config/secret.key
+api/src/config/secret.key
 **/npm-debug.log
 **/package-lock.json
 **/yarn.lock
