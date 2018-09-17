@@ -26,7 +26,7 @@ const Burger = styled.span`
 `
 
 const Menu = styled.div`
-  ${medias.desktop`
+  ${medias.desktop.max`
     background-color: transparent !important;
     box-shadow: none !important;
   `};

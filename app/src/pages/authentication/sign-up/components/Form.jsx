@@ -7,15 +7,15 @@ import { withTheme } from '@material-ui/core/styles'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import Button from '../../../../global/components/Button'
+import Form from '../../../../global/components/Form'
 import { isName, isEmail, isPassword, isUsername } from '../../../../tools'
 import { isBirthDate } from '../../../../tools/dates'
 import { InputWithIconsAndError } from '../../../../global/components/Input'
-import Button from '../../../../global/components/Button'
 import { SIGNUP_FORM_SUBMIT } from '../constants'
 
-const Form = styled.form`
+const StyledForm = styled(Form)`
   width: 435px;
-  margin: auto;
 `
 const Columns = styled.div`
   display: flex !important;
@@ -78,7 +78,7 @@ class SignUpForm extends Component {
     const { t } = this.props
 
     return (
-      <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+      <StyledForm onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
             <Field
@@ -151,7 +151,7 @@ class SignUpForm extends Component {
         >
           {t('sign_up')}
         </Button>
-      </Form>
+      </StyledForm>
     )
   }
 }

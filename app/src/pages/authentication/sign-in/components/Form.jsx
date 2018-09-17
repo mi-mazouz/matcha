@@ -7,13 +7,13 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Button from '../../../../global/components/Button'
+import Form from '../../../../global/components/Form'
 import { InputWithIconsAndError } from '../../../../global/components/Input'
 import { SIGNIN_FORM_SUBMIT } from '../constants'
 import { isEmail } from '../../../../tools'
 
-const Form = styled.form`
+const StyledForm = styled(Form)`
   width: 300px;
-  margin: auto;
 `
 
 const Link = withTheme()(styled(RouterLink)`
@@ -64,7 +64,7 @@ class SignInForm extends Component {
     const { t, theme, submitting, handleSubmit } = this.props
 
     return (
-      <Form className="form" onSubmit={handleSubmit(this.handleSubmit)}>
+      <StyledForm onSubmit={handleSubmit(this.handleSubmit)}>
         <div className="columns">
           <div className="column">
             <Field
@@ -96,7 +96,7 @@ class SignInForm extends Component {
         >
           {t('sign_in')}
         </Button>
-      </Form>
+      </StyledForm>
     )
   }
 }

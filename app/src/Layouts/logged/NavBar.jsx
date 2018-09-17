@@ -29,10 +29,16 @@ const NavBarEnd = styled.div`
   position: absolute;
   right: 32px;
   top: 27px;
-  ${medias.desktop`
+  ${medias.desktop.max`
+    right: 0;
+    top: unset;
     background-color: white;
     box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16) !important;
   `};
+`
+
+const StyledBadge = styled(Badge)`
+  display: inline !important;
 `
 
 const MenuLinkRouter = withTheme()(styled(Link)`
@@ -44,7 +50,10 @@ const MenuLinkRouter = withTheme()(styled(Link)`
     color: ${props => props.theme.palette.purple} !important;
     background-color: transparent !important;
   }
-  margin-right: 30px;
+  margin-right: 30px !important;
+  ${medias.desktop.max`
+    margin: 0px !important;
+  `};
   ${props => props.selected && `color: ${props.theme.palette.purple} !important;`};
 `)
 
@@ -54,6 +63,25 @@ const MenuSubLinkRouter = styled(Link)`
     color: black !important;
     background-color: whitesmoke !important;
   }
+`
+
+const DropDown = withTheme()(styled.div`
+  &:hover {
+    & > div {
+      ${medias.desktop.min`
+        & > span {
+          color: ${props => props.theme.palette.purple} !important;
+        }
+      `};
+      &:after {
+        border-color: ${props => props.theme.palette.purple} !important;
+      }
+    }
+  }
+`)
+
+const Menu = styled.div`
+  padding: 0px !important;
 `
 
 const MenuSubLink = styled.a`
@@ -76,6 +104,12 @@ const DropdownLink = withTheme()(styled.div`
     background-color: transparent !important;
   }
   background-color: transparent !important;
+  ${medias.desktop.max`
+    &:hover {
+      color: #4a4a4a !important;
+      cursor: default;
+    }
+  `};
 `)
 
 const MenuTitle = styled.span`
@@ -95,8 +129,8 @@ const MenuTitle = styled.span`
 const StyledInputSearch = styled(InputSearch)`
   margin-bottom: 6px !important;
   margin-right: 30px !important;
-  ${medias.desktop`
-    margin-bottom: 0px !important;
+  ${medias.desktop.max`
+    margin: 0px !important;
     padding: 0.5rem 0.75rem !important;
   `};
 `
@@ -104,12 +138,7 @@ const StyledInputSearch = styled(InputSearch)`
 class LogoutNavBar extends Component {
   state = {
     isActive: false,
-    selectedItem: undefined
-  }
-
-  componentWillMount() {
-    const splitedLocation = this.props.location.pathname.split('/')
-    this.setState({ selectedItem: splitedLocation[splitedLocation.length - 1] })
+    selectedItem: 'profile'
   }
 
   handleBurgerClick = () => this.setState({ isActive: !this.state.isActive })
@@ -135,7 +164,7 @@ class LogoutNavBar extends Component {
               ))}
           </BurgerWrapper>
         </div>
-        <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
+        <Menu className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
           <NavBarEnd className="navbar-end">
             <StyledInputSearch placeholder="Search users" className="navbar-item" />
             <MenuLinkRouter
@@ -152,11 +181,11 @@ class LogoutNavBar extends Component {
               className="navbar-item"
               to="/dashboard/messages"
             >
-              <Badge badgeContent={0} top={-20} right={-20}>
+              <StyledBadge badgeContent={0} top={-20} right={-20}>
                 <MenuTitle selected={selectedItem === 'messages'}>
                   {t('nav_bars.logged.messages')}
                 </MenuTitle>
-              </Badge>
+              </StyledBadge>
             </MenuLinkRouter>
             <MenuLinkRouter
               selected={selectedItem === 'match'}
@@ -165,7 +194,7 @@ class LogoutNavBar extends Component {
             >
               <MenuTitle selected={selectedItem === 'match'}>{t('match')}</MenuTitle>
             </MenuLinkRouter>
-            <div className="navbar-item has-dropdown is-hoverable">
+            <DropDown className="navbar-item has-dropdown is-hoverable">
               <DropdownLink className="navbar-link">
                 <MenuTitle>{t('nav_bars.logged.settings')}</MenuTitle>
               </DropdownLink>
@@ -177,9 +206,9 @@ class LogoutNavBar extends Component {
                   {t('nav_bars.logged.logout')}
                 </MenuSubLink>
               </div>
-            </div>
+            </DropDown>
           </NavBarEnd>
-        </div>
+        </Menu>
       </div>
     )
   }

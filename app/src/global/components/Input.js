@@ -2,8 +2,9 @@ import React from 'react'
 import classnames from 'classnames'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import MuiInput from '@material-ui/core/Input'
+import FormControl from '@material-ui/core/FormControl'
 import { withTheme } from '@material-ui/core/styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -16,25 +17,22 @@ const StyledInput = styled.input`
   opacity: 0.8;
 `
 
-const StyledTextField = styled(TextField)`
-  .MuiInput-underline-18:after {
-    border-bottom: 2px solid ${props => props.theme.palette.purple} !important;
-  }
-  .MuiInput-underline-18:before {
-    border-bottom: 1px solid ${props => props.theme.palette.grey} !important;
-  }
-  .MuiInput-underline-18:hover:not(.MuiInput-disabled-17):not(.MuiInput-focused-16):not(.MuiInput-error-19):before {
-    border-bottom: 2px solid ${props => props.theme.palette.purple} !important;
-  }
-  .MuiInput-input-22 {
+const StyledFormControl = styled(FormControl)`
+  & > div > input {
+    &:hover {
+      cursor: pointer;
+    }
     &:focus {
       cursor: text;
     }
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: ${props => props.theme.palette.grey};
+    font-size: 12px;
+    font-weight: 800;
     font-family: ${props => props.theme.fontFamily};
+  }
+  & > div {
+    &:after {
+      border-bottom: 2px solid ${props => props.theme.palette.purple} !important;
+    }
   }
 `
 
@@ -42,6 +40,8 @@ const ErrorText = styled.p`
   text-align: start;
   font-size: 14px !important;
   font-weight: bold;
+  color: ${props => props.theme.palette.red} !important;
+  border-color: ${props => props.theme.palette.red} !important;
 `
 
 const Input = ({ className, ...props }) => (
@@ -69,7 +69,11 @@ const InputWithIconsAndError = withTheme()(
             (isValid && <FontAwesomeIcon icon="check" color={theme.palette.green} />)}
         </span>
       </div>
-      {isError && <ErrorText className="help is-danger">{errorText}</ErrorText>}
+      {isError && (
+        <ErrorText theme={theme} className="help is-danger">
+          {errorText}
+        </ErrorText>
+      )}
     </div>
   )
 )
@@ -82,20 +86,17 @@ InputWithIconsAndError.propTypes = {
 }
 
 const InputSearch = withTheme()(({ placeholder, theme, ...props }) => (
-  <StyledTextField
-    {...props}
-    theme={theme}
-    placeholder={placeholder}
-    InputProps={{
-      startAdornment: (
+  <StyledFormControl theme={theme} {...props}>
+    <MuiInput
+      placeholder={placeholder}
+      startAdornment={
         <InputAdornment position="start">
           <FontAwesomeIcon icon="search" color={theme.palette.grey} />
         </InputAdornment>
-      )
-    }}
-  />
+      }
+    />
+  </StyledFormControl>
 ))
-
 InputSearch.propTypes = {
   placeholder: PropTypes.string.isRequired
 }

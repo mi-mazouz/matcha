@@ -8,15 +8,15 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Button from '../../../global/components/Button'
+import Form from '../../../global/components/Form'
 import Select from '../../../global/components/Select'
 import Paper from '../../../global/components/Paper'
 import Tag from '../../../global/components/Tag'
 import { Input } from '../../../global/components/Input'
 import { LANDING_PAGE_FORM_SUBMIT } from '../constants'
 
-const Form = styled.form`
+const StyledForm = styled(Form)`
   width: 435px;
-  margin: auto;
 `
 
 const PaperTag = styled(Paper)`
@@ -89,7 +89,7 @@ class LandingPageForm extends Component {
     const { t, submitting, theme } = this.props
 
     return (
-      <Form className="form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+      <StyledForm onSubmit={this.props.handleSubmit(this.handleSubmit)}>
         <Columns className="columns">
           <div className="column">
             <Field name="gender" component={this.renderSelect}>
@@ -191,7 +191,7 @@ class LandingPageForm extends Component {
         >
           Find!
         </Button>
-      </Form>
+      </StyledForm>
     )
   }
 }

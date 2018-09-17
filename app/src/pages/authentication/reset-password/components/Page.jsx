@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { translate } from 'react-i18next'
 
 import Logo from '../../../../global/components/Logo'
-import styledTitle from '../../../../global/components/Title'
+import StyledTitle from '../../../../global/components/Title'
 import Section from '../../../../global/components/Section'
 import Container from '../../../../global/components/Container'
 import Form from './Form'
 
-const Title = styled(styledTitle)`
+const Title = styled(StyledTitle)`
   color: #ffffff !important;
   margin-top: 20px;
 `
