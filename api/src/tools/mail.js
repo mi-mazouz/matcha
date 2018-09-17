@@ -11,7 +11,7 @@ const sendConfirmEmail = (userData, token) => {
     to: userData.email,
     from: 'staff@matcha.com',
     subject: 'Confirm your email',
-    templateId: config.EMAIL_TEMPLATES['EN'].CONFIRM_EMAIL_ID,
+    templateId: config.EMAIL_TEMPLATES[userData.language].CONFIRM_EMAIL_ID,
     dynamicTemplateData: {
       firstName: userData.firstName,
       confirmLink: `${config.APP_END_POINT}/confirm-email/${token}`
@@ -38,7 +38,7 @@ const sendForgotPasswordEmail = (userData, token) => {
     to: userData.email,
     from: 'staff@matcha.com',
     subject: 'Reset your password',
-    templateId: config.EMAIL_TEMPLATES['EN'].RESET_PASSWORD_EMAIL_ID,
+    templateId: config.EMAIL_TEMPLATES[userData.language].RESET_PASSWORD_EMAIL_ID,
     dynamicTemplateData: {
       firstName: userData.firstName,
       forgotPasswordLink: `${config.APP_END_POINT}/reset-password/${token}`

@@ -10,6 +10,7 @@ const logger = require('./config/logger')
 const httpErrorsHandling = require('./middlewares/errors-handling').httpErrorsHandling
 const graphqlErrorsHandling = require('./middlewares/errors-handling').graphqlErrorsHandling
 const requestInfos = require('./middlewares/request-infos').requestInfos
+const getLanguage = require('./middlewares/get-language')
 const getToken = require('./middlewares/token-handling').getToken
 const getSecretKey = require('./tools').getSecretKey
 const authenticationRouter = require('./authentication/routes')
@@ -27,7 +28,7 @@ const graphqlServer = new ApolloServer({
 
 app.use(
   cors({
-    allowedHeaders: ['Content-Type, Authorization'],
+    allowedHeaders: ['Content-Type, Authorization, Language'],
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'PATCH']
   }),
   bodyParser.json(),
@@ -37,9 +38,10 @@ app.use(
     getToken
   }).unless({
     path: ['/authentication/resend-confirm-email', '/authentication/resend-reset-password-email']
-  })
+  }),
+  requestInfos,
+  getLanguage
 )
-app.use(requestInfos)
 
 graphqlServer.applyMiddleware({ app, path: '/graphql' })
 

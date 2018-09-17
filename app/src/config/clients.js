@@ -6,6 +6,7 @@ import { onError } from 'apollo-link-error'
 import { getToken, setToken } from '../tools/token'
 import { config, i18n } from '../config'
 import { logout } from '../tools'
+import { getLanguage } from '../tools/languages'
 import { errors } from './errors'
 import { ADD_NOTIFICATION } from '../global/components/notification/constants'
 import store from '../store'
@@ -14,7 +15,9 @@ import getErrorTranslateKey from './errors'
 const authLink = new ApolloLink((operation, forward) => {
   return new Observable(observable => {
     const token = getToken()
+    const headers = {}
 
+    headers['language'] = getLanguage()
     if (token) {
       const decodedToken = jwt.decode(token)
 
@@ -24,7 +27,7 @@ const authLink = new ApolloLink((operation, forward) => {
           .then(response => {
             setToken(response.data.token)
             operation.setContext({
-              headers: { authorization: 'Bearer ' + response.data.token }
+              headers: { ...headers, authorization: 'Bearer ' + response.data.token }
             })
 
             return forward(operation)
@@ -47,11 +50,11 @@ const authLink = new ApolloLink((operation, forward) => {
               return observable.error(null)
             } else return observable.error({ result: { message: error.response.data.message } })
           })
-      } else {
-        operation.setContext({
-          headers: { authorization: 'Bearer ' + token }
-        })
       }
+
+      operation.setContext({
+        headers: { ...headers, authorization: 'Bearer ' + token }
+      })
     }
 
     return forward(operation)
@@ -81,6 +84,7 @@ const initInterceptorRequest = client => {
     if (token) {
       config.headers['authorization'] = 'Bearer ' + token
     }
+    config.headers['language'] = getLanguage()
 
     return config
   })
