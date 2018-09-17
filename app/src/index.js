@@ -5,7 +5,6 @@ import App from './App'
 
 import 'bulma/css/bulma.css'
 import './global/styles/main.css'
-import './global/styles/responsive.css'
 import './config/font-awesome'
 
 ReactDOM.render(<App />, document.getElementById('root'))

@@ -15,8 +15,14 @@ const sizes = {
 
 const medias = Object.keys(sizes)
   .reduce((medias, mediaName) => {
-    medias[mediaName] = (...args) => css`
+    medias[mediaName] = {}
+    medias[mediaName]['max'] = (...args) => css`
     @media (max-width: ${sizes[mediaName]}px) {
+      ${css(...args)};
+    }
+  `
+    medias[mediaName]['min'] = (...args) => css`
+    @media (min-width: ${sizes[mediaName]}px) {
       ${css(...args)};
     }
   `

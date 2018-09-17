@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 
 import Logo from '../../../global/components/Logo'
 import Container from '../../../global/components/Container'
-import styledTitle from '../../../global/components/Title'
+import StyledTitle from '../../../global/components/Title'
 import StyledSection from '../../../global/components/Section'
 import Form from './Form'
 
-const Title = styled(styledTitle)`
+const Title = styled(StyledTitle)`
   color: #ffffff !important;
   margin-top: 20px;
 `

@@ -21,7 +21,7 @@ const Page = styled(StyledPage)`
     props.location.pathname === '/'
       ? `url(${landingPageBackgroundImage})`
       : `url(${authenticationBackgroundImage})`};
-  ${medias.tabletSm`
+  ${medias.tabletSm.max`
     background-image: url(${mobileBackgroundImage});
   `};
 `

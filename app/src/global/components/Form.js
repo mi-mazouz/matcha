@@ -4,7 +4,7 @@ import medias from '../../config/medias'
 
 export default styled.form`
   margin: auto;
-  ${medias.tabletSm`
+  ${medias.tabletSm.max`
     width: 100% !important;
   `};
 `
