@@ -92,6 +92,15 @@ const MenuTitle = styled.span`
   `};
 `
 
+const StyledInputSearch = styled(InputSearch)`
+  margin-bottom: 6px !important;
+  margin-right: 30px !important;
+  ${medias.desktop`
+    margin-bottom: 0px !important;
+    padding: 0.5rem 0.75rem !important;
+  `};
+`
+
 class LogoutNavBar extends Component {
   state = {
     isActive: false
@@ -121,7 +130,7 @@ class LogoutNavBar extends Component {
         </div>
         <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
           <NavBarEnd className="navbar-end">
-            <InputSearch label="Search users" />
+            <StyledInputSearch placeholder="Search users" className="navbar-item" />
             <MenuLinkRouter
               isselected={location.pathname === '/dashboard/profile' ? 1 : 0}
               className="navbar-item"

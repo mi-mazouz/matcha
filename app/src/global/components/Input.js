@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
 import { withTheme } from '@material-ui/core/styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -13,6 +14,28 @@ const StyledInput = styled.input`
   }
   caret-color: black;
   opacity: 0.8;
+`
+
+const StyledTextField = styled(TextField)`
+  .MuiInput-underline-18:after {
+    border-bottom: 2px solid ${props => props.theme.palette.purple} !important;
+  }
+  .MuiInput-underline-18:before {
+    border-bottom: 1px solid ${props => props.theme.palette.grey} !important;
+  }
+  .MuiInput-underline-18:hover:not(.MuiInput-disabled-17):not(.MuiInput-focused-16):not(.MuiInput-error-19):before {
+    border-bottom: 2px solid ${props => props.theme.palette.purple} !important;
+  }
+  .MuiInput-input-22 {
+    &:focus {
+      cursor: text;
+    }
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: ${props => props.theme.palette.grey};
+    font-family: ${props => props.theme.fontFamily};
+  }
 `
 
 const ErrorText = styled.p`
@@ -58,19 +81,23 @@ InputWithIconsAndError.propTypes = {
   errorText: PropTypes.string
 }
 
-const InputSearch = withTheme()(({ label, theme }) => (
-  <div className="field">
-    <div className="control has-icons-left has-icons-right">
-      <TextField label={label} type="search" />
-      <span className="icon is-left">
-        <FontAwesomeIcon icon="search" color={theme.palette.grey} />
-      </span>
-    </div>
-  </div>
+const InputSearch = withTheme()(({ placeholder, theme, ...props }) => (
+  <StyledTextField
+    {...props}
+    theme={theme}
+    placeholder={placeholder}
+    InputProps={{
+      startAdornment: (
+        <InputAdornment position="start">
+          <FontAwesomeIcon icon="search" color={theme.palette.grey} />
+        </InputAdornment>
+      )
+    }}
+  />
 ))
 
 InputSearch.propTypes = {
-  label: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired
 }
 
 export { Input, InputWithIconsAndError, InputSearch }
