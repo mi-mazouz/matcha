@@ -7,6 +7,7 @@ import { withTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
 import { logout } from '../../tools'
+import { InputSearch } from '../../global/components/Input'
 import medias from '../../config/medias'
 import Logo from '../../global/components/Logo'
 import Badge from '../../global/components/Badge'
@@ -120,6 +121,7 @@ class LogoutNavBar extends Component {
         </div>
         <div className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
           <NavBarEnd className="navbar-end">
+            <InputSearch label="Search users" />
             <MenuLinkRouter
               isselected={location.pathname === '/dashboard/profile' ? 1 : 0}
               className="navbar-item"
@@ -147,15 +149,6 @@ class LogoutNavBar extends Component {
             >
               <MenuTitle isselected={location.pathname === '/dashboard/match' ? 1 : 0}>
                 Match
-              </MenuTitle>
-            </MenuLinkRouter>
-            <MenuLinkRouter
-              isselected={location.pathname === '/dashboard/browse' ? 1 : 0}
-              className="navbar-item"
-              to="/dashboard/browse"
-            >
-              <MenuTitle isselected={location.pathname === '/dashboard/Browse' ? 1 : 0}>
-                Browse
               </MenuTitle>
             </MenuLinkRouter>
             <div className="navbar-item has-dropdown is-hoverable">

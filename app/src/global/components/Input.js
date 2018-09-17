@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import TextField from '@material-ui/core/TextField'
 import { withTheme } from '@material-ui/core/styles'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -57,4 +58,19 @@ InputWithIconsAndError.propTypes = {
   errorText: PropTypes.string
 }
 
-export { Input, InputWithIconsAndError }
+const InputSearch = withTheme()(({ label, theme }) => (
+  <div className="field">
+    <div className="control has-icons-left has-icons-right">
+      <TextField label={label} type="search" />
+      <span className="icon is-left">
+        <FontAwesomeIcon icon="search" color={theme.palette.grey} />
+      </span>
+    </div>
+  </div>
+))
+
+InputSearch.propTypes = {
+  label: PropTypes.string.isRequired
+}
+
+export { Input, InputWithIconsAndError, InputSearch }

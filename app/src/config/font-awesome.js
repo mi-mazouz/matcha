@@ -10,6 +10,7 @@ import {
   faLock,
   faMapMarkerAlt,
   faMars,
+  faSearch,
   faTransgender,
   faUser,
   faVenus
@@ -26,6 +27,7 @@ library.add(
   faLock,
   faMapMarkerAlt,
   faMars,
+  faSearch,
   faTransgender,
   faUser,
   faVenus
