@@ -21,7 +21,7 @@ module.exports = {
         references: {
           model: 'User',
           key: 'id',
-          name: 'userIdReference'
+          name: 'pictureReferenceUserId'
         },
         onDelete: 'cascade',
         allowNull: false
