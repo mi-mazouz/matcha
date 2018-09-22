@@ -5,9 +5,10 @@
   "description": "Dating site",
   "main": "public/src/index.js",
   "scripts": {
-    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "build": "react-scripts build",
-    "start": "react-scripts start"
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "repository": {
     "type": "git",
@@ -51,10 +52,13 @@
     "url-search-params-polyfill": "4.0.1"
   },
   "devDependencies": {
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-graphql": "^2.1.1",
     "eslint-plugin-react": "^7.9.1",
-    "react-scripts": "^1.0.11"
+    "react-scripts": "^1.0.11",
+    "redux-mock-store": "^1.5.3"
   }
 }
