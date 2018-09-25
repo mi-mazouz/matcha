@@ -1,6 +1,6 @@
 # Matcha App
 
-[![Build Status](https://api.cirrus-ci.com/github/GoogleChrome/puppeteer.svg)](https://cirrus-ci.com/github/GoogleChrome/puppeteer)
+[![CircleCI](https://circleci.com/gh/mi-mazouz/Matcha-WIP/tree/master.svg?style=svg)](https://circleci.com/gh/mi-mazouz/Matcha-WIP/tree/master)
 
 # Requirements
 
