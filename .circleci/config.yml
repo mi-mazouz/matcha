@@ -4,5 +4,6 @@ jobs:
     docker:
       - image: circleci/node:8.10
     steps:
+      - checkout
       - run: cd app && yarn install
       - run: cd app && yarn test
