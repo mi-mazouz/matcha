@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.10
+  test_app:
     steps:
       - checkout
       - run: cd app && yarn install
