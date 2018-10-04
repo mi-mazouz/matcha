@@ -6,7 +6,6 @@ import { getToken } from '../../tools/token'
 export default WrappedComponent => {
   class IsLogged extends React.Component {
     render() {
-      console.log(1)
       const token = getToken()
 
       if (!token) return <Redirect to="/" />
