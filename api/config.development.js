@@ -1,0 +1,15 @@
+module.exports = {
+  EMAIL_TEMPLATES: {
+    EN: {
+      CONFIRM_EMAIL_ID: 'd-32f15236364141b9bb6cb17e87c3c0b6',
+      RESET_PASSWORD_EMAIL_ID: 'd-eb98605d590746f4ab6e53eebe75bbb0'
+    },
+    FR: {
+      CONFIRM_EMAIL_ID: 'd-78bb42aba47b49dca0c208f99c73406f',
+      RESET_PASSWORD_EMAIL_ID: 'd-6f5993bd63904b318105bd80ed91ce0e'
+    }
+  },
+  LANGUAGES: ['FR', 'EN'],
+  PORT: 8080,
+  SENDGRID_API_KEY: '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'
+}
