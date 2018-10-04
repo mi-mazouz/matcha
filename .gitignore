@@ -8,6 +8,4 @@ api/src/config/secret.key
 **/package-lock.json
 **/yarn.lock
 **/yarn-error.log
-**/config.development*
-**/config.production*
 **/__pycache__
