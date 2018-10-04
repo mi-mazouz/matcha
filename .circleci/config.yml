@@ -1,9 +1,14 @@
 version: 2
 jobs:
-  build:
+  test_app:
     docker:
       - image: circleci/node:8.10
     steps:
       - checkout
       - run: cd app && yarn install
       - run: cd app && yarn test
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test_app
