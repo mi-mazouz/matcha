@@ -4,6 +4,7 @@ node_modules
 .vscode/
 .mypy_cache/
 api/src/config/secret.key
+api/aws
 **/npm-debug.log
 **/package-lock.json
 **/yarn.lock
