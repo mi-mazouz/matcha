@@ -11,6 +11,4 @@ api/aws
 **/package-lock.json
 **/yarn.lock
 **/yarn-error.log
-**/config.development.js
-**/config.test.js
 **/__pycache__
