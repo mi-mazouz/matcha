@@ -11,6 +11,7 @@ module.exports = {
     }
   },
   LANGUAGES: ['XX', 'XX'],
+  TTO: 'OTO',
   PORT: 8080,
   SENDGRID_API_KEY: 'xxxx'
 }
