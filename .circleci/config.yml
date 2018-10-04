@@ -4,8 +4,15 @@ jobs:
     docker:
       - image: circleci/node:8.10
     steps:
-      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run: cd app && yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run: cd app && yarn test
 workflows:
   version: 2
