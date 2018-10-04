@@ -1,4 +1,9 @@
 version: 2
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test_app
 jobs:
   test_app:
     docker:
@@ -7,8 +12,3 @@ jobs:
       - checkout
       - run: cd app && yarn install
       - run: cd app && yarn test
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - test_app
