@@ -13,7 +13,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: cd app && yarn test
+      - run: cd app && cd .. && cd app && yarn test
 workflows:
   version: 2
   build_and_test:
