@@ -5,6 +5,7 @@ node_modules
 .mypy_cache/
 resources/
 api/src/config/secret.key
+api/database/config/index.json
 api/aws/
 **/build
 **/npm-debug.log

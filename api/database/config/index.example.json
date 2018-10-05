@@ -1,11 +1,4 @@
 {
-  "production": {
-    "username": "root",
-    "password": "root",
-    "database": "postgres",
-    "host": "localhost",
-    "dialect": "postgresql"
-  },
   "development": {
     "username": "root",
     "password": "root",
