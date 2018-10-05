@@ -4,6 +4,7 @@
   "private": true,
   "description": "Dating site",
   "main": "public/src/index.js",
+  "homepage": "http://matcha-app.s3-website.eu-west-3.amazonaws.com/",
   "scripts": {
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "build": "react-scripts build",
@@ -19,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/mi-mazouz/Matcha/issues"
   },
-  "homepage": "https://github.com/mi-mazouz/Matcha#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
