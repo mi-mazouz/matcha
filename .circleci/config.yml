@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       - run: cd app && yarn install
+      - run: cd app && cp config.test.example.js config.test.js
       - run: cd app && yarn test
 workflows:
   version: 2
