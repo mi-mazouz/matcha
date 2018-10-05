@@ -3,7 +3,6 @@ node_modules
 .vs/
 .vscode/
 .mypy_cache/
-aws/
 resources/
 api/src/config/secret.key
 **/build
@@ -12,3 +11,6 @@ api/src/config/secret.key
 **/yarn.lock
 **/yarn-error.log
 **/__pycache__
+**/config.development.js
+**/config.production.js
+**/config.test.js
