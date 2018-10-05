@@ -10,7 +10,7 @@
     "migrate:undo": "./node_modules/.bin/sequelize db:migrate:undo --config database/config --migrations-path database/migrations",
     "migration:create": "./node_modules/.bin/sequelize migration:create --config database/config --migrations-path database/migrations",
     "start": "yarn run migrate && yarn run server:watch",
-    "start:production": "NODE_ENV=production yarn run migrate && yarn run server:watch",
+    "start:production": "NODE_ENV=production yarn run migrate && NODE_ENV=production node ./src/index.js",
     "server:watch": "nodemon --config nodemon.json --inspect ./src"
   },
   "repository": {
