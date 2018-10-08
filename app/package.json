@@ -4,7 +4,7 @@
   "private": true,
   "description": "Dating site",
   "main": "public/src/index.js",
-  "homepage": "http://matcha-app.s3-website.eu-west-3.amazonaws.com/",
+  "homepage": "https://matcha.app.mi-mazouz.com/",
   "scripts": {
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "build": "react-scripts build",
