@@ -6,8 +6,9 @@
   "main": "public/src/index.js",
   "homepage": "https://matcha.app.mi-mazouz.com/",
   "scripts": {
-    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "build": "react-scripts build",
+    "deploy": "shipit production deploy",
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
@@ -59,6 +60,8 @@
     "eslint-plugin-graphql": "^2.1.1",
     "eslint-plugin-react": "^7.9.1",
     "react-scripts": "^1.0.11",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "shipit-aws": "github:KrashStudio/shipit-aws",
+    "shipit-cli": "^4.1.1"
   }
 }
