@@ -8,6 +8,4 @@
 
 # Installation
 
-- Create your config.[development, test].js files
-- Fill your config files based on the config.development.example.js and config.test.example.js files.
 - yarn && yarn start

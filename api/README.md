@@ -7,8 +7,7 @@
 
 - Docker-compose up --build
 - Create your secret.key fil in src/config
-- Create your config.[development].js file
-- Fill your config file based on the config.development.example.js file (I use sendGrid for mails)
-- Create your index.json database config file in api/database/config
-- Fill your index.json config file based on api/database/config/index.example.json
+- Run cp ./api/database/index.example.json ./api/database/index.json
+- Run cp ./api/config.devlopment.example.js ./api/config.development.js
+- Fill your sendgrid config in ./api/config.development.js
 - Run yarn && yarn start
