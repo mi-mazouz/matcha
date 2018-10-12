@@ -18,5 +18,4 @@ api/config.production.js
 api/database/config/index.json
 
 app/build
-app/aws/index.json
 app/config.production.js

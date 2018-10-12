@@ -17,10 +17,8 @@ jobs:
       - run:
           name: Deploy to S3 if tests pass and branch is master
           command: |
-            cd app
-
             if [ ${CIRCLE_BRANCH} == "master" ]; then
-              yarn deploy
+              sh ./.circleci/deploy.sh
             fi
 workflows:
   version: 2
