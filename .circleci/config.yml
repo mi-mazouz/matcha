@@ -1,28 +1,22 @@
 version: 2
 jobs:
-  test_app:
-    docker:
-      - image: circleci/node:8.10
-    steps:
-      - checkout
-      - run: cd app && yarn install
-      - run: cd app && yarn test
-  deploy_app:
+  deploy_and_test:
     docker:
       - image: node:latest
     steps:
       - checkout
       - run: cd app && yarn install
+      - run: cd app && yarn test
       - run: sh ./.circleci/decrypt-files.sh
       - run:
-          name: Deploy to S3 if tests pass and branch is master
+          name: Deploy app to S3 and api to EC2 if tests pass and branch is master
           command: |
             if [ ${CIRCLE_BRANCH} == "master" ]; then
-              sh ./.circleci/deploy.sh
+              sh ./.circleci/deploy-app.sh
+              sh ./.circleci/deploy-api.sh
             fi
 workflows:
   version: 2
   tests:
     jobs:
-      - test_app
-      - deploy_app
+      - deploy_and_test

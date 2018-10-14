@@ -10,6 +10,12 @@ resources/
 **/yarn-error.log
 **/__pycache__
 .gitsecret/keys/random_seed
+.circleci/deploy-api.sh
+.circleci/deploy-app.sh
+.circleci/ansible/templates/nginx-ssl.j2
+.circleci/ansible/templates/pm2.j2
+.circleci/ansible/host.yml
+.circleci/ansible/index.yml
 
 api/src/config/secret.key
 api/aws/matcha-api.pem

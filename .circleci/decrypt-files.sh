@@ -13,3 +13,4 @@ cd /root/project
 
 git secret tell ${GPG_UID}
 git secret reveal -p ${GPG_PASSPHRASE}
+rm **/*.secret
