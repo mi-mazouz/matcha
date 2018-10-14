@@ -7,22 +7,28 @@ jobs:
       - checkout
       - run: cd app && yarn install
       - run: cd app && yarn test
-  deploy_app:
+  deploy:
     docker:
       - image: node:latest
     steps:
       - checkout
-      - run: cd app && yarn install
-      - run: sh ./.circleci/decrypt-files.sh
       - run:
-          name: Deploy to S3 if tests pass and branch is master
+          name: Deploy app to S3 if tests pass and branch is master
           command: |
             if [ ${CIRCLE_BRANCH} == "master" ]; then
-              sh ./.circleci/deploy.sh
+              cd app && yarn install
+              sh ./.circleci/decrypt-files.sh
+              sh ./.circleci/deploy-app.sh
+            fi
+      - run:
+          name: Deploy api to EC2 is tests pass and branch is master
+          command: |
+            if [ ${CIRCLE_BRANCH} == "master" ]; then
+              sh ./.circleci/deploy-api.sh
             fi
 workflows:
   version: 2
   tests:
     jobs:
       - test_app
-      - deploy_app
+      - deploy
