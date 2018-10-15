@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Like', {
+    return queryInterface.createTable('User like', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -13,35 +13,31 @@ module.exports = {
         references: {
           model: 'User',
           key: 'id',
-          name: 'likeReferenceUserId'
+          name: 'userLikeReferenceUserId'
         },
-        onDelete: 'cascade',
-        allowNull: true
+        onDelete: 'cascade'
       },
-      pictureId: {
+      likeUserId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Picture',
+          model: 'User',
           key: 'id',
-          name: 'likeReferencePictureId'
+          name: 'userLikeReferenceLikedUserId'
         },
-        onDelete: 'cascade',
-        allowNull: true
+        onDelete: 'cascade'
       },
       createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
     })
   },
 
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
+  down: queryInterface => {
+    return queryInterface.dropTable('User like')
   }
 }
