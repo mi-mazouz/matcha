@@ -1,5 +1,20 @@
+const { ApolloError } = require('apollo-server-express')
 const { GraphQLScalarType } = require('graphql')
 const { Kind } = require('graphql/language')
+
+const errors = require('../../config/errors')
+const UserModel = require('../../../database/models').User
+
+const getUserObject = user => ({
+  id: user.id,
+  birthDate: user.birthDate,
+  email: user.email,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  username: user.username,
+  gender: user.gender,
+  sexualOrientation: user.sexualOrientation
+})
 
 const Birthdate = new GraphQLScalarType({
   name: 'Date',
@@ -19,17 +34,21 @@ const Birthdate = new GraphQLScalarType({
 })
 
 const Query = {
-  getUser: (_, { id }, { userAuthenticated }) => {
-    if (id) return null
-    return {
-      birthDate: userAuthenticated.birthDate,
-      email: userAuthenticated.email,
-      firstName: userAuthenticated.firstName,
-      lastName: userAuthenticated.lastName,
-      username: userAuthenticated.username,
-      gender: userAuthenticated.gender,
-      sexualOrientation: userAuthenticated.sexualOrientation
+  getUser: (_, { userId }, { userAuthenticated }) => {
+    if (userId) {
+      return UserModel.findById(userId)
+      .then(user => {
+        if (!user)
+          throw new ApolloError(errors.USER_NOT_FOUND, 401, {
+            path: '/graphql',
+            locations: 'getUser'
+          })
+
+        return getUserObject(user)
+      })
     }
+
+    return getUserObject(userAuthenticated)
   }
 }
 

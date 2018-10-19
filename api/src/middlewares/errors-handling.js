@@ -12,15 +12,18 @@ const httpErrorsHandling = (err, req, res, next) => {
 
   if (err.name === 'UnauthorizedError') {
     if (err.message === 'jwt expired' && req.path === '/authentication/refresh-token') {
-      res.status(err.status).json({ message: errors.USER_INACTIVE })
+      res.status(err.status)
+      .json({ message: errors.USER_INACTIVE })
       return
     }
     if (err.message === 'jwt expired') {
-      res.status(err.status).json({ message: errors.TOKEN_EXPIRED })
+      res.status(err.status)
+      .json({ message: errors.TOKEN_EXPIRED })
       return
     }
     if (err.message === 'invalid signature') {
-      res.status(err.status).json({ message: errors.BAD_TOKEN })
+      res.status(err.status)
+      .json({ message: errors.BAD_TOKEN })
       return
     }
   }
@@ -29,22 +32,20 @@ const httpErrorsHandling = (err, req, res, next) => {
     return next(err)
   }
 
-  res.status(err.statusCode).json({ message: err.message })
+  res.status(err.statusCode)
+  .json({ message: err.message })
 }
 
 const graphqlErrorsHandling = error => {
-  const errorMessage = error.message.split(':')[1].trim()
-
   logger.error(
     JSON.stringify({
-      route: error.path,
-      location: error.locations,
+      route: error.extensions.exception.path,
+      location: error.extensions.exception.locations,
       status: error.extensions.code,
-      message: errorMessage
+      message: error.message
     })
   )
 
-  error.message = errorMessage
   return error
 }
 

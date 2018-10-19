@@ -9,6 +9,7 @@
     "build": "react-scripts build",
     "deploy": "yarn build && aws s3 sync build/ s3://matcha.app.mi-mazouz.com --delete",
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "get-schama": "graphql get-schema",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },

@@ -14,7 +14,7 @@ export function* signInFormSubmit() {
       })
 
       yield call(setToken, data.token)
-      yield call(history.push, '/dashboard')
+      yield call(history.push, '/profile/self')
     } catch (error) {
       return yield put({ type: SIGNIN_FORM_ERROR, payload: { error: error.response.data.message } })
     }

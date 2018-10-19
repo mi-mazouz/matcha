@@ -1,8 +1,10 @@
 import gql from 'graphql-tag'
 
 const fetchUserProfile = gql`
-  query fetchUserProfile($id: ID) {
-    getUser(id: $id) {
+  query fetchUserProfile($userId: ID) {
+    getUser(userId: $userId) {
+      id
+      email
       firstName
       lastName
       username
@@ -10,7 +12,7 @@ const fetchUserProfile = gql`
       gender
       sexualOrientation
     }
-    getPictures(userId: $id) {
+    getPictures(userId: $userId) {
       pictures {
         path
       }

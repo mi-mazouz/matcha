@@ -62,14 +62,15 @@ const authLink = new ApolloLink((operation, forward) => {
   })
 })
 
-const afterLink = onError(({ networkError }) => {
+const afterLink = onError(({ networkError, graphQLErrors }) => {
   if (networkError && networkError.result) {
     if (networkError.result.errors && networkError.result.errors.length > 0) {
       networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
     } else if (networkError.result.message) {
       networkError.result.message = getErrorTranslateKey(networkError.result.message)
     }
-  }
+  } else if (graphQLErrors.length > 0)
+    graphQLErrors.push({ message: getErrorTranslateKey(graphQLErrors[0].message) })
 })
 
 export const graphqlClient = new ApolloClient({
