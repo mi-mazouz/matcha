@@ -69,7 +69,8 @@ const afterLink = onError(({ networkError, graphQLErrors }) => {
     } else if (networkError.result.message) {
       networkError.result.message = getErrorTranslateKey(networkError.result.message)
     }
-  } else if (graphQLErrors.length > 0)
+  }
+  if (graphQLErrors.length > 0)
     graphQLErrors.push({ message: getErrorTranslateKey(graphQLErrors[0].message) })
 })
 
