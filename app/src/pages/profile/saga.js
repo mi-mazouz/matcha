@@ -31,10 +31,8 @@ export function* fetchUser() {
         }
       })
 
-      if (error.graphQLErrors[0] === errors.CURRENT_USER_NOT_FOUND) {
-        logout()
-        return history.push('/login')
-      } else return history.push('/profile/self')
+      if (error.graphQLErrors[0] === errors.CURRENT_USER_NOT_FOUND) return yield logout()
+      else return yield history.push('/profile/self')
     }
   })
 }

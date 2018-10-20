@@ -37,6 +37,12 @@ const httpErrorsHandling = (err, req, res, next) => {
 }
 
 const graphqlErrorsHandling = error => {
+  const splitedErrorMessage = error.message.split(' ')
+  error.message =
+    splitedErrorMessage.length === 0
+      ? error.message
+      : splitedErrorMessage[splitedErrorMessage.length - 1]
+
   logger.error(
     JSON.stringify({
       route: error.extensions.exception.path,

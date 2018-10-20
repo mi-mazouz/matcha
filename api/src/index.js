@@ -31,6 +31,7 @@ app.use(
     allowedHeaders: ['Content-Type, Authorization, Language'],
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'PATCH']
   }),
+  bodyParser.urlencoded({ extended: true }),
   bodyParser.json(),
   expressJwt({
     secret: secretKey,
