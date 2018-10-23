@@ -9,6 +9,7 @@
     "build": "react-scripts build",
     "deploy": "yarn build && aws s3 sync build/ s3://matcha.app.mi-mazouz.com --delete",
     "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "get-schama": "graphql get-schema",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
@@ -26,8 +27,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "^0.1.0-11",
     "@material-ui/core": "^1.3.1",
-    "apollo-boost": "^0.1.14",
-    "apollo-link-error": "^1.1.0",
+    "apollo-boost": "^0.1.17",
+    "apollo-link-error": "^1.1.1",
     "axios": "^0.17.1",
     "bulma": "^0.7.1",
     "classnames": "^2.2.6",

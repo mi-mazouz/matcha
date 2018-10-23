@@ -22,7 +22,7 @@ class App extends Component {
             <Router history={history}>
               <Switch>
                 <Route exact path="/confirm-email/:token" component={ConfirmEmail} />
-                <Route path="/dashboard" component={IsLogged(LoggedLayout)} />
+                <Route path="/profile" component={IsLogged(LoggedLayout)} />
                 <Route path="/" component={IsLogout(LogoutLayout)} />
                 <Redirect to="/" />
               </Switch>

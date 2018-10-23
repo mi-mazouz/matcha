@@ -1,5 +1,5 @@
 import axios from 'axios'
-import jwt from 'jsonwebtoken'
+import { decode } from 'jsonwebtoken'
 import { ApolloClient, ApolloLink, Observable, HttpLink, InMemoryCache } from 'apollo-boost'
 import { onError } from 'apollo-link-error'
 
@@ -19,7 +19,7 @@ const authLink = new ApolloLink((operation, forward) => {
 
     headers['language'] = getLanguage()
     if (token) {
-      const decodedToken = jwt.decode(token)
+      const decodedToken = decode(token)
 
       if (Math.floor(Date.now() / 1000) + 60 * 60 - decodedToken.exp >= 2000) {
         return httpClient
@@ -62,7 +62,7 @@ const authLink = new ApolloLink((operation, forward) => {
   })
 })
 
-const afterLink = onError(({ networkError }) => {
+const afterLink = onError(({ networkError, graphQLErrors }) => {
   if (networkError && networkError.result) {
     if (networkError.result.errors && networkError.result.errors.length > 0) {
       networkError.result.message = getErrorTranslateKey(networkError.result.errors[0].message)
@@ -70,6 +70,8 @@ const afterLink = onError(({ networkError }) => {
       networkError.result.message = getErrorTranslateKey(networkError.result.message)
     }
   }
+  if (graphQLErrors.length > 0)
+    graphQLErrors.push({ message: getErrorTranslateKey(graphQLErrors[0].message) })
 })
 
 export const graphqlClient = new ApolloClient({

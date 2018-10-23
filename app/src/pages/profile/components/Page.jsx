@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { FETCH_USER_REQUEST } from '../constants'
@@ -18,9 +18,25 @@ const Columns = styled.div`
 
 class Profile extends Component {
   componentWillMount() {
+    const { userId } = this.props.match.params
+
     this.props.dispatch({
-      type: FETCH_USER_REQUEST
+      type: FETCH_USER_REQUEST,
+      payload: { userId }
     })
+  }
+
+  componentWillUpdate(nextProps) {
+    const regex = /^(\/profile\/.*?[0-9])$/
+
+    if (
+      regex.test(this.props.location.pathname) &&
+      this.props.location.pathname !== nextProps.location.pathname
+    ) {
+      this.props.dispatch({
+        type: FETCH_USER_REQUEST
+      })
+    }
   }
 
   render() {
@@ -43,6 +59,8 @@ class Profile extends Component {
 
 Profile.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   user: PropTypes.object
 }
 

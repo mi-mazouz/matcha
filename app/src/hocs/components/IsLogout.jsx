@@ -10,7 +10,7 @@ export default WrappedComponent => {
 
       if (!token) return <WrappedComponent {...this.props} />
 
-      return <Redirect to="/dashboard/profile" />
+      return <Redirect to="/profile/self" />
     }
   }
 

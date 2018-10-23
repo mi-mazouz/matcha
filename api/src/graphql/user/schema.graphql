@@ -1,10 +1,11 @@
 scalar Birthdate
 
 type Query {
-  getUser(id: ID): User
+  getUser(userId: ID): User
 }
 
 type User {
+  id: Int
   email: String
   firstName: String
   lastName: String

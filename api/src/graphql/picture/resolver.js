@@ -3,34 +3,21 @@ const PictureModel = require('../../../database/models').Picture
 const Query = {
   getPictures: (_, { userId }, { userAuthenticated }) => {
     return PictureModel.findAll({
-      where: { userId: userId || userAuthenticated.id, isProfile: false }
+      where: { userId: userId || userAuthenticated.id }
     })
     .then(pictures => {
-      if (!pictures) return null
+      if (pictures.length === 0) return { pictures: null, profilePicture: null }
 
       return {
-        pictures: pictures.map(picture => ({ path: picture.path }))
-      }
-    })
-  }
-}
-
-const Pictures = {
-  profilePicture: (_, { userId }, { userAuthenticated }) => {
-    return PictureModel.findOne({
-      where: { userId: userId || userAuthenticated.id, isProfile: true }
-    })
-    .then(profilePicture => {
-      if (!profilePicture) return null
-
-      return {
-        path: profilePicture.path
+        pictures: pictures
+        .filter(picture => !picture.isProfile)
+        .map(picture => ({ path: picture.path })),
+        profilePicture: { path: pictures.find(picture => picture.isProfile).path }
       }
     })
   }
 }
 
 exports.resolver = {
-  Query,
-  Pictures
+  Query
 }

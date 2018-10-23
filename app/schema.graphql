@@ -8,7 +8,7 @@ scalar Date
 
 type Query {
   getPictures(userId: ID): Pictures
-  getUser(id: ID): User
+  getUser(userId: ID): User
 }
 
 type Picture {
@@ -27,6 +27,7 @@ object containing `stream`, `filename`, `mimetype` and `encoding`.
 scalar Upload
 
 type User {
+  id: Int
   email: String
   firstName: String
   lastName: String

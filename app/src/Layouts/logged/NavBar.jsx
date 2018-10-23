@@ -170,7 +170,7 @@ class LogoutNavBar extends Component {
             <MenuLinkRouter
               selected={selectedItem === 'profile'}
               className="navbar-item"
-              to="/dashboard/profile"
+              to="/profile/self"
             >
               <MenuTitle selected={selectedItem === 'profile'}>
                 {t('nav_bars.logged.profile')}

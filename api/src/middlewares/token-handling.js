@@ -25,7 +25,8 @@ const verifyToken = (token, ignoreExpiration) => {
 const resendConfirmEmailToken = (req, _, next) => {
   const token = getToken(req)
 
-  return verifyToken(token, true).then(decodedToken => {
+  return verifyToken(token, true)
+  .then(decodedToken => {
     if (!decodedToken || !decodedToken.id || decodedToken.emailConfirming !== true) {
       return next(createError.Unauthorized(errors.BAD_TOKEN))
     }
@@ -38,7 +39,8 @@ const resendConfirmEmailToken = (req, _, next) => {
 const resendResetPasswordEmailToken = (req, _, next) => {
   const token = getToken(req)
 
-  return verifyToken(token, true).then(decodedToken => {
+  return verifyToken(token, true)
+  .then(decodedToken => {
     if (!decodedToken || !decodedToken.id || decodedToken.passwordReseting !== true) {
       return next(createError.Unauthorized(errors.BAD_TOKEN))
     }

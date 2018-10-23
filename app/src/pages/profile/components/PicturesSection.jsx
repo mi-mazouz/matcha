@@ -45,13 +45,14 @@ class PicturesSection extends Component {
             .toUpperCase()}</Title>
           <EditIcon icon="edit" color={theme.palette.grey} />
           <NestedColumns className="columns">
-            {pictures.map((picture, index) => (
-              <div key={index} className="column">
-                <Figure className="image is-128x128">
-                  <img src={picture.path} alt="" />
-                </Figure>
-              </div>
-            ))}
+            {pictures &&
+              pictures.map((picture, index) => (
+                <div key={index} className="column">
+                  <Figure className="image is-128x128">
+                    <img src={picture.path} alt="" />
+                  </Figure>
+                </div>
+              ))}
           </NestedColumns>
         </Paper>
       </div>
@@ -66,7 +67,11 @@ PicturesSection.propTypes = {
     PropTypes.shape({
       path: PropTypes.string.isRequired
     })
-  ).isRequired
+  )
+}
+
+PicturesSection.defaultProps = {
+  pictures: null
 }
 
 export default translate()(withTheme()(PicturesSection))

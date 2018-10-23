@@ -32,7 +32,7 @@ class ConfirmEmail extends React.Component {
           autoDismiss: 5
         }
       })
-      history.push('/dashboard/profile')
+      history.push('/profile/self')
     } catch (error) {
       await dispatch({
         type: ADD_NOTIFICATION,

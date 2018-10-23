@@ -10,8 +10,9 @@ const LoggedLayout = ({ location }) => (
   <Page>
     <NavBar location={location} />
     <Switch>
-      <Route exact path="/dashboard/profile" component={Profile} />
-      <Redirect to="/dashboard/profile" />
+      <Route exact path="/profile/self" component={Profile} />
+      <Route exact path="/profile/:userId" component={Profile} />
+      <Redirect to="/profile/self" />
     </Switch>
   </Page>
 )
