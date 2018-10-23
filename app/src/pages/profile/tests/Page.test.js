@@ -11,7 +11,7 @@ const store = mockStore({
 })
 
 describe('<Page />', () => {
-  const wrapper = mount(<Page store={store} />)
+  const wrapper = mount(<Page store={store} location={{}} match={{ params: {} }} />)
 
   it('renders one <Spinner > component when store.profile.user is null', () => {
     expect(wrapper.find(Spinner))
