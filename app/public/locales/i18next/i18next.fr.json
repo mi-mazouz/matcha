@@ -15,6 +15,7 @@
   "location": "Localisation",
   "looking_for": "Je recherche",
   "man": "Homme",
+  "manage_my_pictures": "Gérer mes photos",
   "match": "Rencontres",
   "my_interests": "Mes intérêts",
   "nav_bars": {
@@ -42,6 +43,8 @@
   "pictures": "Photos",
   "popularity_rating": "Score de popularité",
   "reset": "Réinitialiser",
+  "see_more": "Voir plus",
+  "see_less": "Voir moins",
   "send": "Envoyer",
   "send_again": "Envoyez à nouveau",
   "sexual_orientation": "Orientation sexuel",

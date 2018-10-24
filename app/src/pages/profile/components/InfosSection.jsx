@@ -43,22 +43,24 @@ class InfosSection extends Component {
           />
         </Figure>
         <Title className="is-6">
-          {`${user.firstName} ${user.lastName} ${getAge(user.birthDate)} ${t('years_old')}`}
+          {`${user.firstName} ${user.lastName}, ${getAge(user.birthDate)} ${t('years_old')}`}
           <Icon icon={getGenderIcon(user.gender)} color={theme.palette.grey} />
         </Title>
-        {t('popularity_rating') + ': 15'}
-        {t('location') + ': Paris'}
-        <span className="icon is-right">
-          <EditIcon icon="pen" color={theme.palette.grey} />
-        </span>
-        {t('interests')}
-        <span className="icon is-right">
-          <EditIcon icon="pen" color={theme.palette.grey} />
-        </span>
-        {`${t('sexual_orientation')} ${t(user.sexualOrientation.toLowerCase())}`}
-        <span className="icon is-right">
-          <EditIcon icon="pen" color={theme.palette.grey} />
-        </span>
+        <div>
+          <span>{t('popularity_rating') + ': 15'}</span>
+          <div>
+            <span>{t('location') + ': Paris'}</span>
+            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </div>
+          <div>
+            <span>{t('interests')}</span>
+            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </div>
+          <div>
+            <span>{`${t('sexual_orientation')} ${t(user.sexualOrientation.toLowerCase())}`}</span>
+            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </div>
+        </div>
       </div>
     )
   }

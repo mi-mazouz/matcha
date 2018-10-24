@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-const sizes = {
+export const windowSizes = {
   desktopLg: 1480,
   desktopMd: 1280,
   desktop: 1087,
@@ -13,16 +13,16 @@ const sizes = {
   mobileSm: 360
 }
 
-const medias = Object.keys(sizes)
+const medias = Object.keys(windowSizes)
   .reduce((medias, mediaName) => {
     medias[mediaName] = {}
     medias[mediaName]['max'] = (...args) => css`
-    @media (max-width: ${sizes[mediaName]}px) {
+    @media (max-width: ${windowSizes[mediaName]}px) {
       ${css(...args)};
     }
   `
     medias[mediaName]['min'] = (...args) => css`
-    @media (min-width: ${sizes[mediaName]}px) {
+    @media (min-width: ${windowSizes[mediaName]}px) {
       ${css(...args)};
     }
   `

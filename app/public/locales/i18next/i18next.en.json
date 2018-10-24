@@ -15,6 +15,7 @@
   "location": "Location",
   "looking_for": "Looking for",
   "man": "Man",
+  "manage_my_pictures": "Manage my pictures",
   "match": "Match",
   "my_interests": "My interests",
   "nav_bars": {
@@ -42,6 +43,8 @@
   "pictures": "Pictures",
   "popularity_rating": "Popularity rating",
   "reset": "Reset",
+  "see_more": "See more",
+  "see_less": "See less",
   "send": "Send",
   "send_again": "Send again",
   "sexual_orientation": "Sexual orientation",

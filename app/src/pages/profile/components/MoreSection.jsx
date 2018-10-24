@@ -62,9 +62,10 @@ class MoreSection extends Component {
                 .fill(null)
                 .map((_, index) => (
                   <AvatarWithInfos
+                    sex={index === 1 ? 'MAN' : 'WOMAN'}
                     key={index}
                     AvatarClassName="image is-64x64"
-                    src="https://bulma.io/images/placeholders/128x128.png"
+                    src="https://randomuser.me/api/portraits/women/65.jpg"
                   />
                 ))}
             </AvatarsWrapper>

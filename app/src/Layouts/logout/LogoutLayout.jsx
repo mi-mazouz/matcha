@@ -11,9 +11,9 @@ import ForgotPassword from '../../pages/authentication/forgot-password'
 import ResetPassword from '../../pages/authentication/reset-password'
 import StyledPage from '../../global/components/Page'
 
-import landingPageBackgroundImage from '../../pages/landing/assets/background.jpg'
-import authenticationBackgroundImage from '../../pages/authentication/assets/background.png'
-import mobileBackgroundImage from '../../pages/assets/mobile-background.jpg'
+import landingPageBackgroundImage from './assets/landing-background.jpg'
+import authenticationBackgroundImage from './assets/authentication-background.png'
+import mobileBackgroundImage from './assets/mobile-background.jpg'
 import medias from '../../config/medias'
 
 const Page = styled(StyledPage)`

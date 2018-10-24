@@ -8,8 +8,8 @@ import Notification from './global/components/notification'
 import LogoutLayout from './Layouts/logout'
 import LoggedLayout from './Layouts/logged'
 import ConfirmEmail from './pages/authentication/comfirm-email'
-import { history, muiTheme, i18n } from './config'
 import store from './store'
+import { history, muiTheme, i18n } from './config'
 import { IsLogout, IsLogged } from './hocs/components'
 
 class App extends Component {
