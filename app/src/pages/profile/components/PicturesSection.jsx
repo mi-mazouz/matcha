@@ -43,7 +43,7 @@ class PicturesSection extends Component {
         <Paper>
           <Title className="is-4">{t('pictures')
             .toUpperCase()}</Title>
-          <EditIcon icon="edit" color={theme.palette.grey} />
+          <EditIcon icon="pen" color={theme.palette.grey} />
           <NestedColumns className="columns">
             {pictures &&
               pictures.map((picture, index) => (

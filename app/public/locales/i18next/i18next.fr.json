@@ -57,6 +57,7 @@
   "to": "À",
   "token_expired": "Oups !! Une erreur s'est produite, essaye de te reconnecter",
   "user_inactive": "Désolé, Vous êtres resté trop longtemps inactif, essaye de te reconnecter",
+  "user_not_found": "Désolé, l'utilisateur que vous recherchez n'a pas été trouvé",
   "username": "Nom d'utilisateur",
   "viewed_profile_title": "Les dernières personnes qui ont consulté mon profil",
   "woman": "Femme",
