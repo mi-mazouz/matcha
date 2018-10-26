@@ -7,7 +7,7 @@ import { withTheme } from '@material-ui/core/styles'
 
 const AvatarContainer = styled.div`
   width: 64px !important;
-  height: 95px !important;
+  height: 80px !important;
   display: flex;
   cursor: pointer;
   flex-direction: column;
@@ -16,17 +16,21 @@ const AvatarContainer = styled.div`
   border-top-left-radius: 50%;
   border-bottom-right-radius: 10%;
   border-bottom-left-radius: 10%;
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
 `
 
 const Infos = styled.span`
   font-size: 10px;
   font-weight: bold;
+  color: white;
 `
 
-const AvatarWithInfos = ({ src, AvatarClassName, theme, ...props }) => (
-  <AvatarContainer color={theme.palette.blue} {...props}>
+const AvatarWithInfos = ({ src, AvatarClassName, sex, theme, ...props }) => (
+  <AvatarContainer color={sex === 'MAN' ? theme.palette.blue : theme.palette.pink} {...props}>
     <MuiAvatar className={classnames(AvatarClassName)} src={src} alt="" />
-    <Infos>Joris Carol, 28 Yo</Infos>
+    <Infos>Joris, 28 Yo</Infos>
   </AvatarContainer>
 )
 

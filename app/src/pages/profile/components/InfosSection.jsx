@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withTheme } from '@material-ui/core/styles'
 
 import StyledTitle from '../../../global/components/Title'
-import StyledPaper from '../../../global/components/Paper'
 import { getGenderIcon } from '../../../tools'
 import { getAge } from '../../../tools/dates'
 
@@ -27,18 +26,6 @@ const Title = styled(StyledTitle)`
   margin-top: 15px;
 `
 
-const Paper = styled(StyledPaper)`
-  & > span {
-    pointer-events: inherit !important;
-  }
-  &:not(:first-child) {
-    margin-top: 10px;
-  }
-  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.16) !important;
-  padding: 5px;
-  justify-content: center;
-`
-
 class InfosSection extends Component {
   render() {
     const { theme, t, user } = this.props
@@ -56,28 +43,24 @@ class InfosSection extends Component {
           />
         </Figure>
         <Title className="is-6">
-          {`${user.firstName} ${user.lastName} ${getAge(user.birthDate)} ${t('years_old')}`}
+          {`${user.firstName} ${user.lastName}, ${getAge(user.birthDate)} ${t('years_old')}`}
           <Icon icon={getGenderIcon(user.gender)} color={theme.palette.grey} />
         </Title>
-        <Paper>{t('popularity_rating') + ': 15'}</Paper>
-        <Paper className="control has-icons-right">
-          {t('location') + ': Paris'}
-          <span className="icon is-right">
-            <EditIcon icon="edit" color={theme.palette.grey} />
-          </span>
-        </Paper>
-        <Paper className="control has-icons-right">
-          {t('interests')}
-          <span className="icon is-right">
-            <EditIcon icon="edit" color={theme.palette.grey} />
-          </span>
-        </Paper>
-        <Paper className="control has-icons-right">
-          {`${t('sexual_orientation')} ${t(user.sexualOrientation.toLowerCase())}`}
-          <span className="icon is-right">
-            <EditIcon icon="edit" color={theme.palette.grey} />
-          </span>
-        </Paper>
+        <div>
+          <span>{t('popularity_rating') + ': 15'}</span>
+          <div>
+            <span>{t('location') + ': Paris'}</span>
+            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </div>
+          <div>
+            <span>{t('interests')}</span>
+            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </div>
+          <div>
+            <span>{`${t('sexual_orientation')} ${t(user.sexualOrientation.toLowerCase())}`}</span>
+            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </div>
+        </div>
       </div>
     )
   }

@@ -23,6 +23,8 @@ export default errorFromApi => {
       return 'bad_token'
     case errors.USER_INACTIVE:
       return 'user_inactive'
+    case errors.USER_NOT_FOUND:
+      return 'user_not_found'
     default:
       return 'an_error_occured'
   }
