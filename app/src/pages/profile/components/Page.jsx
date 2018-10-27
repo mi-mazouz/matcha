@@ -10,7 +10,7 @@ import PicturesSection from './PicturesSection'
 import InfosSection from './InfosSection'
 import MoreSection from './MoreSection'
 import { FETCH_USER_REQUEST } from '../constants'
-import { windowSizes } from '../../../config/medias'
+import { windowSizes } from '../../../config'
 
 const Columns = styled.div`
   width: 100%;
@@ -20,13 +20,14 @@ const Columns = styled.div`
 
 class Profile extends Component {
   state = {
-    windowWidth: window.innerWidth
+    windowWidth: window.innerWidth,
+    userId: this.props.match.params.userId,
+    isRefetching: false
   }
 
   componentWillMount() {
     window.addEventListener('resize', this.updateDimensions)
-
-    const { userId } = this.props.match.params
+    const { userId } = this.state
 
     this.props.dispatch({
       type: FETCH_USER_REQUEST,
@@ -39,36 +40,40 @@ class Profile extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    const regex = /^(\/profile\/.*?[0-9])$/
-
-    if (
-      regex.test(this.props.location.pathname) &&
-      this.props.location.pathname !== nextProps.location.pathname
-    ) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
       this.props.dispatch({
-        type: FETCH_USER_REQUEST
+        type: FETCH_USER_REQUEST,
+        payload: { isRefetching: this.isRefetching }
       })
     }
+    if (this.props.match.params.userId && !nextProps.match.params.userId)
+      this.setState({ userId: null })
   }
 
   updateDimensions = () => this.setState({ windowWidth: window.innerWidth })
 
+  isRefetching = () => this.setState({ isRefetching: !this.state.isRefetching })
+
   render() {
     const { user } = this.props
-    const { windowWidth } = this.state
-    if (!user) return <Spinner />
+    const { windowWidth, isRefetching } = this.state
+    if (!user || isRefetching) return <Spinner />
+
+    const PictureSectionComponent = (
+      <PicturesSection
+        isSelfProfile={!this.state.userId}
+        pictures={user.pictures}
+        windowWidth={windowWidth}
+      />
+    )
 
     return (
       <Section>
         <Container>
           <Columns className="columns">
-            {windowWidth > windowSizes.tabletLg && (
-              <PicturesSection pictures={user.pictures} windowWidth={windowWidth} />
-            )}
-            <InfosSection user={user} />
-            {windowWidth <= windowSizes.tabletLg && (
-              <PicturesSection pictures={user.pictures} windowWidth={windowWidth} />
-            )}
+            {windowWidth > windowSizes.tabletLg && PictureSectionComponent}
+            <InfosSection isSelfProfile={!this.state.userId} user={user} />
+            {windowWidth <= windowSizes.tabletLg && PictureSectionComponent}
             <MoreSection />
           </Columns>
         </Container>

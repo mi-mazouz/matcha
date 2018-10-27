@@ -14,10 +14,10 @@ const StyledButton = styled.button`
   font-weight: 600;
 `
 
-const Button = ({ children, isLoading, isDisabled, isSmall, ...props }) => (
+const Button = ({ children, isLoading, isDisabled, isSmall, className, ...props }) => (
   <StyledButton
     {...props}
-    className={classnames('button', { 'is-loading': isLoading, 'is-small': isSmall })}
+    className={classnames('button', className, { 'is-loading': isLoading, 'is-small': isSmall })}
     disabled={isDisabled}
   >
     {children}

@@ -35,6 +35,12 @@ const Birthdate = new GraphQLScalarType({
 
 const Query = {
   getUser: (_, { userId }, { userAuthenticated }) => {
+    if (userId && parseInt(userId, 10) === userAuthenticated.id)
+      throw new ApolloError(errors.FETCH_SAME_USER, 409, {
+        path: '/graphql',
+        locations: 'getUser'
+      })
+
     if (userId) {
       return UserModel.findById(userId)
       .then(user => {

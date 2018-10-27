@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withTheme } from '@material-ui/core/styles'
 
 import StyledTitle from '../../../global/components/Title'
+import StyledButton from '../../../global/components/Button'
 import { getGenderIcon } from '../../../tools'
 import { getAge } from '../../../tools/dates'
 
@@ -24,11 +25,18 @@ const EditIcon = styled(Icon)`
 
 const Title = styled(StyledTitle)`
   margin-top: 15px;
+  margin-bottom: 5px !important;
+`
+
+const Button = styled(StyledButton)`
+  margin-bottom: 15px;
+  padding-left: 1.75em !important;
+  padding-right: 1.75em !important;
 `
 
 class InfosSection extends Component {
   render() {
-    const { theme, t, user } = this.props
+    const { theme, t, user, isSelfProfile } = this.props
 
     return (
       <div className="column is-4">
@@ -46,6 +54,11 @@ class InfosSection extends Component {
           {`${user.firstName} ${user.lastName}, ${getAge(user.birthDate)} ${t('years_old')}`}
           <Icon icon={getGenderIcon(user.gender)} color={theme.palette.grey} />
         </Title>
+        {!isSelfProfile && (
+          <Button isSmall backgroundImage={theme.palette.mixGradient}>
+            {t('like')}
+          </Button>
+        )}
         <div>
           <span>{t('popularity_rating') + ': 15'}</span>
           <div>
@@ -67,6 +80,7 @@ class InfosSection extends Component {
 }
 
 InfosSection.propTypes = {
+  isSelfProfile: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   user: PropTypes.shape({

@@ -215,7 +215,6 @@ class LogoutNavBar extends Component {
 }
 
 LogoutNavBar.propTypes = {
-  location: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 }
 
