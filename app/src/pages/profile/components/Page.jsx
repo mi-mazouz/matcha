@@ -39,14 +39,12 @@ class Profile extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    const regex = /^(\/profile\/.*?[0-9])$/
+    const { userId } = nextProps.match.params
 
-    if (
-      regex.test(this.props.location.pathname) &&
-      this.props.location.pathname !== nextProps.location.pathname
-    ) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
       this.props.dispatch({
-        type: FETCH_USER_REQUEST
+        type: FETCH_USER_REQUEST,
+        payload: { userId }
       })
     }
   }

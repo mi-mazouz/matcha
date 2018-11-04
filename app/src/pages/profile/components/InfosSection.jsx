@@ -62,15 +62,15 @@ class InfosSection extends Component {
           <span>{t('popularity_rating') + ': 15'}</span>
           <div>
             <span>{t('location') + ': Paris'}</span>
-            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+            {isSelfProfile && <EditIcon icon="pen" size="xs" color={theme.palette.grey} />}
           </div>
           <div>
-            <span>{t('interests')}</span>
-            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+            <span>{t(`${isSelfProfile ? 'interests' : 'common_interests'}`)}</span>
+            {isSelfProfile && <EditIcon icon="pen" size="xs" color={theme.palette.grey} />}
           </div>
           <div>
-            <span>{`${t('sexual_orientation')} ${t(user.sexualOrientation.toLowerCase())}`}</span>
-            <EditIcon icon="pen" size="xs" color={theme.palette.grey} />
+            <span>{`${t('sexual_orientation')}: ${t(user.sexualOrientation.toLowerCase())}`}</span>
+            {isSelfProfile && <EditIcon icon="pen" size="xs" color={theme.palette.grey} />}
           </div>
         </div>
       </div>
