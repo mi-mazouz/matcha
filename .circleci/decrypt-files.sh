@@ -7,7 +7,7 @@ cd git-secret && make build && PREFIX="/usr/local" make install && cd /tmp
 
 echo ${GPG_PRIVATE_KEY} | base64 --decode > gpg_private.key
 
-gpg --allow-secret-key-import --import gpg_private.key
+gpg --batch --import gpg_private.key
 
 cd /root/project
 

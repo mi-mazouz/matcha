@@ -36,26 +36,4 @@ const httpErrorsHandling = (err, req, res, next) => {
   .json({ message: err.message })
 }
 
-const graphqlErrorsHandling = error => {
-  const splitedErrorMessage = error.message.split(' ')
-  error.message =
-    splitedErrorMessage.length === 0
-      ? error.message
-      : splitedErrorMessage[splitedErrorMessage.length - 1]
-
-  logger.error(
-    JSON.stringify({
-      route: error.extensions.exception.path,
-      location: error.extensions.exception.locations,
-      status: error.extensions.code,
-      message: error.message
-    })
-  )
-
-  return error
-}
-
-module.exports = {
-  httpErrorsHandling,
-  graphqlErrorsHandling
-}
+module.exports = httpErrorsHandling

@@ -70,7 +70,7 @@ InfosSection.propTypes = {
   t: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   user: PropTypes.shape({
-    birthDate: PropTypes.number.isRequired,
+    birthDate: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
