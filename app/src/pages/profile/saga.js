@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 
-import { httpClient, i18n } from '../../config'
+import { httpClient, i18n, history } from '../../config'
 import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS } from './constants'
 import { ADD_NOTIFICATION } from '../../global/components/notification/constants'
 
@@ -10,7 +10,7 @@ export function* fetchUser() {
       const { data } = yield call(httpClient, {
         method: 'GET',
         url: '/user/get-profile',
-        data: { userId: (payload && payload.userId) || null }
+        params: { userId: payload.userId }
       })
 
       return yield put({
@@ -28,6 +28,7 @@ export function* fetchUser() {
           autoDismiss: 5
         }
       })
+      return yield history.push('/profile/self')
     }
   })
 }

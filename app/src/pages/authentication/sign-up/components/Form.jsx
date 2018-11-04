@@ -75,7 +75,7 @@ class SignUpForm extends Component {
     })
 
   render() {
-    const { t } = this.props
+    const { t, submitting } = this.props
 
     return (
       <StyledForm onSubmit={this.props.handleSubmit(this.handleSubmit)}>
@@ -146,8 +146,8 @@ class SignUpForm extends Component {
         <Button
           backgroundImage={this.props.theme.palette.mixGradient}
           type="submit"
-          isLoading={this.props.submitting}
-          isDisabled={this.props.submitting}
+          isLoading={submitting}
+          isDisabled={submitting}
         >
           {t('sign_up')}
         </Button>

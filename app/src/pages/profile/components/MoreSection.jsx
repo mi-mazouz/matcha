@@ -49,16 +49,17 @@ const Text = styled.p`
 
 class MoreSection extends Component {
   render() {
-    const { theme, t } = this.props
+    const { theme, t, isSelfProfile } = this.props
 
     return (
       <div className="column is-4">
-        <Paper>
-          <Title className="is-6">{t('viewed_profile_title') + ':'}</Title>
-          <AvatarsListWrapper>
-            <ArrowLeftIcon icon="arrow-left" color={theme.palette.grey} />
-            <AvatarsWrapper>
-              {Array(3)
+        {isSelfProfile ? (
+          <Paper>
+            <Title className="is-6">{t('viewed_profile_title') + ':'}</Title>(
+            <AvatarsListWrapper>
+              <ArrowLeftIcon icon="arrow-left" color={theme.palette.grey} />
+              <AvatarsWrapper>
+                {Array(3)
                 .fill(null)
                 .map((_, index) => (
                   <AvatarWithInfos
@@ -68,10 +69,12 @@ class MoreSection extends Component {
                     src="https://randomuser.me/api/portraits/women/65.jpg"
                   />
                 ))}
-            </AvatarsWrapper>
-            <ArrowRightIcon icon="arrow-right" color={theme.palette.grey} />
-          </AvatarsListWrapper>
-        </Paper>
+              </AvatarsWrapper>
+              <ArrowRightIcon icon="arrow-right" color={theme.palette.grey} />
+            </AvatarsListWrapper>
+            )
+          </Paper>
+        ) : null}
         <Paper>
           <Title className="is-6">Few words about me:</Title>
           <Container>
@@ -89,6 +92,7 @@ class MoreSection extends Component {
 }
 
 MoreSection.propTypes = {
+  isSelfProfile: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired
 }

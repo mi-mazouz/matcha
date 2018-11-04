@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Container from '../../../global/components/Container'
 import Section from '../../../global/components/Section'
 import Spinner from '../../../global/components/Spinner'
-import PicturesSection from './PicturesSection'
+import PicturesSectionComponent from './PicturesSection'
 import InfosSection from './InfosSection'
 import MoreSection from './MoreSection'
 import { FETCH_USER_REQUEST } from '../constants'
@@ -39,14 +39,12 @@ class Profile extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    const regex = /^(\/profile\/.*?[0-9])$/
+    const { userId } = nextProps.match.params
 
-    if (
-      regex.test(this.props.location.pathname) &&
-      this.props.location.pathname !== nextProps.location.pathname
-    ) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
       this.props.dispatch({
-        type: FETCH_USER_REQUEST
+        type: FETCH_USER_REQUEST,
+        payload: { userId }
       })
     }
   }
@@ -54,22 +52,25 @@ class Profile extends Component {
   updateDimensions = () => this.setState({ windowWidth: window.innerWidth })
 
   render() {
-    const { user } = this.props
+    const { user, match } = this.props
     const { windowWidth } = this.state
     if (!user) return <Spinner />
 
+    const PicturesSection = (
+      <PicturesSectionComponent
+        isSelfProfile={!match.params.userId}
+        pictures={user.pictures}
+        windowWidth={windowWidth}
+      />
+    )
     return (
       <Section>
         <Container>
           <Columns className="columns">
-            {windowWidth > windowSizes.tabletLg && (
-              <PicturesSection pictures={user.pictures} windowWidth={windowWidth} />
-            )}
-            <InfosSection user={user} />
-            {windowWidth <= windowSizes.tabletLg && (
-              <PicturesSection pictures={user.pictures} windowWidth={windowWidth} />
-            )}
-            <MoreSection />
+            {windowWidth > windowSizes.tabletLg && PicturesSection}
+            <InfosSection isSelfProfile={!match.params.userId} user={user} />
+            {windowWidth <= windowSizes.tabletLg && PicturesSection}
+            <MoreSection isSelfProfile={!match.params.userId} />
           </Columns>
         </Container>
       </Section>
@@ -79,8 +80,8 @@ class Profile extends Component {
 
 Profile.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
   user: PropTypes.object
 }
 
