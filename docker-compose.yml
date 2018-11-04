@@ -4,7 +4,7 @@ services:
   database:
     image: postgres
     restart: always
-    container_name: database
+    container_name: matcha_database
     build:
       context: ./
       dockerfile: ./docker/postgres/Dockerfile

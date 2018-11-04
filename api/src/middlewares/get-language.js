@@ -1,4 +1,4 @@
-const LANGUAGES = require('../config').LANGUAGES
+const { LANGUAGES } = require('../config')
 
 module.exports = (req, _, next) => {
   if (!req.user) req.user = {}

@@ -8,11 +8,10 @@ const resendConfirmEmailController = require('./resend-confirm-email/controller'
 const resetPasswordController = require('./reset-password/controller')
 const forgotPasswordController = require('./forgot-password/controller')
 const resendResetPasswordEmailController = require('./resend-reset-password-email/controller')
-const confirmEmailToken = require('../middlewares/token-handling').confirmEmailToken
-const resendConfirmEmailToken = require('../middlewares/token-handling').resendConfirmEmailToken
-const resetPasswordToken = require('../middlewares/token-handling').resetPasswordToken
-const resendResetPasswordEmailToken = require('../middlewares/token-handling')
-.resendResetPasswordEmailToken
+const { confirmEmailToken } = require('../middlewares/token-handling')
+const { resendConfirmEmailToken } = require('../middlewares/token-handling')
+const { resetPasswordToken } = require('../middlewares/token-handling')
+const { resendResetPasswordEmailToken } = require('../middlewares/token-handling')
 
 const router = express.Router()
 

@@ -13,7 +13,7 @@ const getToken = req => {
   return null
 }
 
-const verifyToken = (token, ignoreExpiration) => {
+const verifyToken = (token, ignoreExpiration = false) => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, getSecretKey(), { ignoreExpiration }, (error, decoded) => {
       if (error) return reject(error)
