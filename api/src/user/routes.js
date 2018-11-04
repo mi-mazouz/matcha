@@ -1,9 +1,9 @@
 const express = require('express')
 
-// const { resetPasswordToken } = require('../middlewares/token-handling')
+const getProfileController = require('./profile/controller')
 
 const router = express.Router()
 
-router.get('/get-profile', () => console.log('***********************'))
+router.get('/get-profile', getProfileController)
 
 module.exports = router
