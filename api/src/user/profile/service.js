@@ -11,8 +11,6 @@ module.exports = userId => {
 
     return PictureModel.findAll({ where: { userId } })
     .then(pictures => {
-      if (pictures.length === 0) return { pictures: null, profilePicture: null }
-
       return {
         id: user.id,
         birthDate: user.birthDate,
@@ -22,8 +20,9 @@ module.exports = userId => {
         username: user.username,
         gender: user.gender,
         sexualOrientation: user.sexualOrientation,
-        pictures: pictures.filter(picture => !picture.isProfile),
-        profilePicture: { path: pictures.find(picture => picture.isProfile).path }
+        pictures: pictures.length === 0 ? null : pictures.filter(picture => !picture.isProfile),
+        profilePicture:
+          pictures.length === 0 ? null : { path: pictures.find(picture => picture.isProfile).path }
       }
     })
   })
