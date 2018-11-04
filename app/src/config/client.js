@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import getErrorTranslateKey from './errors'
+import getErrorTranslateKey, { errors } from './errors'
 import { getToken, setToken, isAlmostExpired } from '../tools/token'
-import { config } from '../config'
+import { config, history } from '../config'
 import { logout } from '../tools'
 import { getLanguage } from '../tools/languages'
 
@@ -38,6 +38,7 @@ const initInterceptorRequest = client => {
 
   client.interceptors.response.use(null, error => {
     if (error.response && error.response.data && error.response.data.message) {
+      if (error.response.data.message === errors.FETCH_SELF_USER) history.push('/profile/self')
       error.response.data.message = getErrorTranslateKey(error.response.data.message)
     }
 

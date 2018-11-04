@@ -80,7 +80,7 @@ class PicturesSection extends Component {
   state = {
     isCollapsed: true,
     isPicturesLiked: Array(4)
-      .fill(false)
+    .fill(false)
   }
 
   onCollapse = () => this.setState({ isCollapsed: !this.state.isCollapsed })
@@ -93,7 +93,7 @@ class PicturesSection extends Component {
   }
 
   render() {
-    const { pictures, theme, className, t, windowWidth } = this.props
+    const { pictures, theme, className, t, windowWidth, isSelfProfile } = this.props
 
     return (
       <div className={classnames('column', 'is-4', className)}>
@@ -120,10 +120,12 @@ class PicturesSection extends Component {
             </SeeMore>
           )}
         </Paper>
-        <ActionContainer>
-          <Title className="subtitle is-6">{t('manage_my_pictures')}</Title>
-          <FontAwesomeIcon icon="pen" size="xs" color={theme.palette.grey} />
-        </ActionContainer>
+        {isSelfProfile && (
+          <ActionContainer>
+            <Title className="subtitle is-6">{t('manage_my_pictures')}</Title>
+            <FontAwesomeIcon icon="pen" size="xs" color={theme.palette.grey} />
+          </ActionContainer>
+        )}
       </div>
     )
   }
@@ -131,6 +133,7 @@ class PicturesSection extends Component {
 
 PicturesSection.propTypes = {
   className: PropTypes.string,
+  isSelfProfile: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   theme: PropTypes.object.isRequired,
   windowWidth: PropTypes.number.isRequired,
