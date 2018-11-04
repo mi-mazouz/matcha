@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploy_and_test:
+  test_and_deploy:
     docker:
       - image: node:latest
     steps:
@@ -24,4 +24,4 @@ workflows:
   version: 2
   tests:
     jobs:
-      - deploy_and_test
+      - test_and_deploy
