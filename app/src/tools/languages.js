@@ -9,9 +9,9 @@ const getLanguage = () => {
     'en'
 
   return language
-    .split('-')[0]
-    .split('_')[0]
-    .toUpperCase()
+  .split('-')[0]
+  .split('_')[0]
+  .toUpperCase()
 }
 
 export { getLanguage }
