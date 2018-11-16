@@ -14,19 +14,19 @@ export const windowSizes = {
 }
 
 const medias = Object.keys(windowSizes)
-  .reduce((medias, mediaName) => {
-    medias[mediaName] = {}
-    medias[mediaName]['max'] = (...args) => css`
+.reduce((medias, mediaName) => {
+  medias[mediaName] = {}
+  medias[mediaName]['max'] = (...args) => css`
     @media (max-width: ${windowSizes[mediaName]}px) {
       ${css(...args)};
     }
   `
-    medias[mediaName]['min'] = (...args) => css`
+  medias[mediaName]['min'] = (...args) => css`
     @media (min-width: ${windowSizes[mediaName]}px) {
       ${css(...args)};
     }
   `
-    return medias
-  }, {})
+  return medias
+}, {})
 
 export default medias

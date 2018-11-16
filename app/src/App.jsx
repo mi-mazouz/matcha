@@ -5,12 +5,12 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import { I18nextProvider } from 'react-i18next'
 
 import Notification from './global/components/notification'
-import LogoutLayout from './Layouts/logout'
-import LoggedLayout from './Layouts/logged'
+import LogoutLayout from './layouts/logout'
+import LoggedLayout from './layouts/logged'
 import ConfirmEmail from './pages/authentication/comfirm-email'
 import store from './store'
 import { history, muiTheme, i18n } from './config'
-import { IsLogout, IsLogged } from './hooks/components'
+import { IsLogout, IsLogged } from './hocs'
 
 class App extends Component {
   render() {

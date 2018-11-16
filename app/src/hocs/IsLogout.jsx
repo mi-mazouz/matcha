@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { getToken } from '../../tools/token'
+import { getToken } from '../tools/token'
 
 export default WrappedComponent => {
   class IsLogout extends React.Component {
@@ -10,7 +10,7 @@ export default WrappedComponent => {
 
       if (!token) return <WrappedComponent {...this.props} />
 
-      return <Redirect to="/profile/self" />
+      return <Redirect to="/profile" />
     }
   }
 

@@ -6,7 +6,7 @@ const logout = () => {
 }
 
 const isName = name => {
-  const regex = /^([a-zA-Z]{2,50})$/
+  const regex = /^([a-zA-Z-]{2,50})$/
 
   return regex.test(name)
 }

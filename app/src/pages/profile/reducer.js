@@ -1,16 +1,9 @@
 import { FETCH_USER_SUCCESS } from './constants'
 
-const initialState = {
-  user: null
-}
-
-export default (state = initialState, { type, payload }) => {
+export default (state = null, { type, payload }) => {
   switch (type) {
     case FETCH_USER_SUCCESS:
-      return {
-        ...state,
-        user: payload
-      }
+      return payload
     default:
       return state
   }

@@ -7,6 +7,7 @@ import Page from '../components/Page'
 
 const mockStore = configureStore()
 const store = mockStore({
+  currentUser: { id: 4 },
   profile: { user: null }
 })
 
@@ -15,6 +16,6 @@ describe('<Page />', () => {
 
   it('renders one <Spinner > component when store.profile.user is null', () => {
     expect(wrapper.find(Spinner))
-      .toHaveLength(1)
+    .toHaveLength(1)
   })
 })
