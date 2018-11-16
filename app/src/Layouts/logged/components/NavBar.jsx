@@ -6,11 +6,11 @@ import { translate } from 'react-i18next'
 import { withTheme } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
-import { logout } from '../../tools'
-import { InputSearch } from '../../global/components/Input'
-import medias from '../../config/medias'
-import Logo from '../../global/components/Logo'
-import Badge from '../../global/components/Badge'
+import { logout } from '../../../tools'
+import { InputSearch } from '../../../global/components/Input'
+import medias from '../../../config/medias'
+import Logo from '../../../global/components/Logo'
+import Badge from '../../../global/components/Badge'
 
 const BurgerWrapper = styled.div`
   &:hover {
@@ -144,7 +144,7 @@ class LogoutNavBar extends Component {
   handleBurgerClick = () => this.setState({ isActive: !this.state.isActive })
 
   render() {
-    const { t } = this.props
+    const { t, currentUserId } = this.props
     const { selectedItem } = this.state
 
     return (
@@ -158,10 +158,10 @@ class LogoutNavBar extends Component {
             className={classnames('navbar-burger', { 'is-active': this.state.isActive })}
           >
             {Array(3)
-              .fill(null)
-              .map((_, index) => (
-                <Burger key={index} isActive={this.state.isActive} marginTop={index * 4} />
-              ))}
+            .fill(null)
+            .map((_, index) => (
+              <Burger key={index} isActive={this.state.isActive} marginTop={index * 4} />
+            ))}
           </BurgerWrapper>
         </div>
         <Menu className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
@@ -170,7 +170,7 @@ class LogoutNavBar extends Component {
             <MenuLinkRouter
               selected={selectedItem === 'profile'}
               className="navbar-item"
-              to="/profile/self"
+              to={`/profile/${currentUserId}`}
             >
               <MenuTitle selected={selectedItem === 'profile'}>
                 {t('nav_bars.logged.profile')}
@@ -216,7 +216,8 @@ class LogoutNavBar extends Component {
 
 LogoutNavBar.propTypes = {
   location: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  currentUserId: PropTypes.number.isRequired
 }
 
 export default translate()(LogoutNavBar)

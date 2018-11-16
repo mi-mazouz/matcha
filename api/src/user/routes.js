@@ -1,9 +1,11 @@
 const express = require('express')
 
-const getProfileController = require('./profile/controller')
+const meController = require('./me/controller')
+const infosController = require('./infos/controller')
 
 const router = express.Router()
 
-router.get('/get-profile', getProfileController)
+router.get('/me', meController)
+router.get('/infos', infosController)
 
 module.exports = router

@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt')
 
 const UserModel = require('../../../database/models').User
 const logger = require('../../config/logger')
-const buildToken = require('../../tools/token').buildToken
 const errors = require('../../config/errors')
+const { buildToken } = require('../../tools/token')
 
 module.exports = (email, password) => {
   logger.info(`A user tried to login with email: ${email}`)

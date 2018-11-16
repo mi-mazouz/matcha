@@ -19,10 +19,7 @@ module.exports = (Sequelize, DataTypes) => {
 
   Model.associate = models => {
     Model.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      },
-      as: 'userId'
+      foreignKey: 'userId'
     })
   }
 

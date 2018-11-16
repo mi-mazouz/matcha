@@ -46,5 +46,9 @@ module.exports = (Sequelize, DataTypes) => {
     }
   )
 
+  Model.associate = models => {
+    Model.hasMany(models.Picture, { as: 'pictures', foreignKey: 'userId' })
+  }
+
   return Model
 }
