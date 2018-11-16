@@ -38,7 +38,10 @@ const initInterceptorRequest = client => {
 
   client.interceptors.response.use(null, error => {
     if (error.response && error.response.data && error.response.data.message) {
-      if (error.response.data.message === errors.FETCH_SELF_USER) history.push('/profile/self')
+      if (error.response.data.message === errors.BAD_TOKEN) {
+        logout()
+        history.push('/')
+      }
       error.response.data.message = getErrorTranslateKey(error.response.data.message)
     }
 

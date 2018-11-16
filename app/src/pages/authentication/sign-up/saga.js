@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { history, httpClient } from '../../../config'
 import { setToken } from '../../../tools/token'
-import { SIGNUP_FORM_ERROR, SIGNUP_FORM_SUBMIT } from './constants'
+import { SIGNUP_FORM_ERROR, SIGNUP_FORM_SUBMIT, SIGNUP_FORM_SUCCESS } from './constants'
 
 export function* signUpFormSubmit() {
   return yield takeLatest([SIGNUP_FORM_SUBMIT], function*({ payload }) {
@@ -13,7 +13,8 @@ export function* signUpFormSubmit() {
       })
 
       yield call(setToken, data.token)
-      yield call(history.push, '/profile/self')
+      yield put({ type: SIGNUP_FORM_SUCCESS, payload: data.userId })
+      yield call(history.push, `/profile/${data.userId}`)
     } catch (error) {
       return yield put({ type: SIGNUP_FORM_ERROR, payload: { error: error.response.data.message } })
     }
