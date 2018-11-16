@@ -31,6 +31,6 @@ module.exports = (req, res, next) => {
       req.user.language
     )
   })
-  .then(token => res.send({ token }))
+  .then(signUpResponse => res.send(signUpResponse))
   .catch(next)
 }

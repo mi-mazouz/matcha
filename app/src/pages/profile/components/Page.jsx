@@ -38,27 +38,17 @@ class Profile extends Component {
     window.removeEventListener('resize', this.updateDimensions)
   }
 
-  componentWillUpdate(nextProps) {
-    const { userId } = nextProps.match.params
-
-    if (this.props.location.pathname !== nextProps.location.pathname) {
-      this.props.dispatch({
-        type: FETCH_USER_REQUEST,
-        payload: { userId }
-      })
-    }
-  }
-
   updateDimensions = () => this.setState({ windowWidth: window.innerWidth })
 
   render() {
-    const { user, match } = this.props
+    const { user, currentUserId } = this.props
     const { windowWidth } = this.state
     if (!user) return <Spinner />
 
+    const isSelfProfile = user.id === currentUserId
     const PicturesSection = (
       <PicturesSectionComponent
-        isSelfProfile={!match.params.userId}
+        isSelfProfile={isSelfProfile}
         pictures={user.pictures}
         windowWidth={windowWidth}
       />
@@ -68,9 +58,9 @@ class Profile extends Component {
         <Container>
           <Columns className="columns">
             {windowWidth > windowSizes.tabletLg && PicturesSection}
-            <InfosSection isSelfProfile={!match.params.userId} user={user} />
+            <InfosSection isSelfProfile={isSelfProfile} user={user} />
             {windowWidth <= windowSizes.tabletLg && PicturesSection}
-            <MoreSection isSelfProfile={!match.params.userId} />
+            <MoreSection isSelfProfile={isSelfProfile} />
           </Columns>
         </Container>
       </Section>
@@ -82,6 +72,7 @@ Profile.propTypes = {
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
+  currentUserId: PropTypes.number.isRequired,
   user: PropTypes.object
 }
 
@@ -90,5 +81,6 @@ Profile.defaultProps = {
 }
 
 export default connect(store => ({
+  currentUserId: store.currentUser.id,
   user: store.profile.user
 }))(Profile)

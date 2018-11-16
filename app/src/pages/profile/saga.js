@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, select, put, takeLatest } from 'redux-saga/effects'
 
 import { httpClient, i18n, history } from '../../config'
 import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS } from './constants'
@@ -18,6 +18,8 @@ export function* fetchUser() {
         payload: data
       })
     } catch (error) {
+      const currentUserId = yield select(store => store.currentUser.id)
+
       yield put({
         type: ADD_NOTIFICATION,
         payload: {
@@ -28,7 +30,7 @@ export function* fetchUser() {
           autoDismiss: 5
         }
       })
-      return yield history.push('/profile/self')
+      return yield history.push(`/profile/${currentUserId}`)
     }
   })
 }
