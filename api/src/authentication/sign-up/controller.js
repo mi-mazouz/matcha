@@ -31,6 +31,6 @@ module.exports = (req, res, next) => {
       req.user.language
     )
   })
-  .then(signUpResult => res.send(signUpResult))
+  .then(signUpResponse => res.send(signUpResponse))
   .catch(next)
 }

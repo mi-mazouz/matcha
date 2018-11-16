@@ -11,6 +11,6 @@ module.exports = (req, res, next) => {
     return next(createError.BadRequest(errors.PASSWORD_MISSING))
 
   return signInService(req.body.email, req.body.password)
-  .then(signInResult => res.send(signInResult))
+  .then(signInResponse => res.send(signInResponse))
   .catch(next)
 }
