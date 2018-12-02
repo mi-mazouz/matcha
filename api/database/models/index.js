@@ -16,4 +16,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 const modelFiles = ['user', 'picture']
 const models = _.keyBy(modelFiles.map(file => sequelize.import(path.join(__dirname, file))), 'name')
 
+_.forEach(models, model => {
+  if (_.isFunction(model.associate)) model.associate(models)
+})
+
 module.exports = models

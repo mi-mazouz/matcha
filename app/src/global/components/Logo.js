@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Protypes from 'prop-types'
 
 import logoImage from '../assets/logo.png'
-import logoNavbarImage from '../assets/logo-navbar.png'
+import logoNavbarImage from '../../layouts/logged/assets/logo-navbar.png'
 
 const StyledLogo = styled.img`
   width: ${props => (props.size ? `${props.size}` : '150')}px;

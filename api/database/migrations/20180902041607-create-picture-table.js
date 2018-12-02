@@ -20,8 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'User',
-          key: 'id',
-          name: 'pictureReferenceUserId'
+          key: 'id'
         },
         onDelete: 'cascade',
         allowNull: false

@@ -17,10 +17,7 @@ module.exports = (email, password) => {
     .then(passwordMatched => {
       if (!passwordMatched) throw createError.BadRequest(errors.INVALID_EMAIL_OR_PASSWORD)
 
-      return {
-        userId: user.id,
-        token: buildToken(user.id)
-      }
+      return buildToken(user.id)
     })
   })
 }

@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects'
 
 import { history, httpClient } from '../../../config'
 import { setToken } from '../../../tools/token'
-import { SIGNUP_FORM_ERROR, SIGNUP_FORM_SUCCESS } from './constants'
+import { SIGNUP_FORM_ERROR } from './constants'
 
 export function* signUpFormSubmit({ payload }) {
   try {
@@ -12,9 +12,8 @@ export function* signUpFormSubmit({ payload }) {
       data: { ...payload.values }
     })
 
-    yield call(setToken, data.token)
-    yield put({ type: SIGNUP_FORM_SUCCESS, payload: data.userId })
-    yield call(history.push, `/profile/${data.userId}`)
+    yield call(setToken, data)
+    yield call(history.push, '/profile')
   } catch (error) {
     return yield put({ type: SIGNUP_FORM_ERROR, payload: { error: error.response.data.message } })
   }

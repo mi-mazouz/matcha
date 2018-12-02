@@ -1,13 +1,13 @@
 const createError = require('http-errors')
 const { has } = require('lodash')
 
-const infosService = require('./service')
+const infosService = require('../infos/service')
 const errors = require('../../config/errors')
 
 module.exports = (req, res, next) => {
-  if (!has(req, 'query.userId')) return next(createError.BadRequest(errors.USER_ID_MISSING))
+  if (!has(req, 'user.id')) return next(createError.BadRequest(errors.BAD_TOKEN))
 
-  return infosService(req.query.userId)
+  return infosService(req.user.id)
   .then(userInfos => res.send(userInfos))
   .catch(next)
 }

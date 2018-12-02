@@ -25,10 +25,7 @@ module.exports = (firstName, lastName, username, birthDate, email, password, lan
         buildEmailConfirmToken(user.id)
       )
 
-      return {
-        userId: user.id,
-        token: buildToken(user.id)
-      }
+      return buildToken(user.id)
     })
   })
 }

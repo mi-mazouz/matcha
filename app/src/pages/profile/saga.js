@@ -9,7 +9,7 @@ export function* fetchUser() {
     try {
       const { data } = yield call(httpClient, {
         method: 'GET',
-        url: '/user/get-profile',
+        url: '/user/infos',
         params: { userId: payload.userId }
       })
 
