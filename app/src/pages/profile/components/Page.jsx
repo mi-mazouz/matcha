@@ -26,14 +26,14 @@ class Profile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { userId } = this.props.match.params
     const { userId: nextUserId } = nextProps.match.params
     const { currentUser } = this.props
 
-    if (!this.props.profile && nextProps.profile) {
-      this.setState({ isSelfProfile: false, profile: nextProps.profile })
-    } else if (parseInt(nextUserId, 10) === currentUser.id) {
+    if (currentUser.id === parseInt(nextUserId, 10)) {
       this.setState({ isSelfProfile: true, profile: currentUser })
-    }
+    } else if (nextUserId !== userId) this.fetchUser(nextUserId)
+    else this.setState({ isSelfProfile: false, profile: nextProps.profile })
   }
 
   componentWillMount() {
@@ -46,11 +46,14 @@ class Profile extends Component {
       return this.setState({ isSelfProfile: true, profile: currentUser })
     }
 
+    this.fetchUser(userId)
+  }
+
+  fetchUser = userId =>
     this.props.dispatch({
       type: FETCH_USER_REQUEST,
       payload: { userId }
     })
-  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions)

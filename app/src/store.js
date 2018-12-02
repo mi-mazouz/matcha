@@ -14,6 +14,8 @@ import { getCurrentUser } from './layouts/logged/saga'
 import { landingPageFormSubmit } from './pages/landing/saga'
 import { fetchUser } from './pages/profile/saga'
 
+import { LOGOUT } from './layouts/logged/constants'
+
 const initialState =
   (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || {}
 const sagaMiddleware = createSagaMiddleware()
@@ -22,17 +24,27 @@ const createStore = () => {
   const middlewares = [sagaMiddleware]
   const enhancers = []
 
+  const appReducer = combineReducers({
+    currentUser: currentUserReducer,
+    notification: notificationReducer,
+    profile: profileReducer,
+    form: formReducer.plugin({
+      signIn: signInReducer,
+      signUp: signUpReducer,
+      forgotPassword: forgotPasswordReducer
+    })
+  })
+
+  const rootReducer = (state, action) => {
+    if (action.type === LOGOUT) {
+      state = undefined
+    }
+
+    return appReducer(state, action)
+  }
+
   const store = createReduxStore(
-    combineReducers({
-      currentUser: currentUserReducer,
-      notification: notificationReducer,
-      profile: profileReducer,
-      form: formReducer.plugin({
-        signIn: signInReducer,
-        signUp: signUpReducer,
-        forgotPassword: forgotPasswordReducer
-      })
-    }),
+    rootReducer,
     initialState,
     compose(
       applyMiddleware(...middlewares),

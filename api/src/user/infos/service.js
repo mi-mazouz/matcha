@@ -17,10 +17,8 @@ module.exports = userId => {
     if (!user) throw createError.BadRequest(errors.USER_NOT_FOUND)
 
     return Object.assign(user.dataValues, {
-      pictures:
-        user.pictures.length === 0 ? null : user.pictures.filter(picture => !picture.isProfile),
-      profilePicture:
-        user.pictures.length === 0 ? null : user.pictures.find(picture => picture.isProfile)
+      pictures: user.pictures.filter(picture => !picture.isProfile),
+      profilePicture: user.pictures.find(picture => picture.isProfile)
     })
   })
 }

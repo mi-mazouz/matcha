@@ -9,6 +9,7 @@ import StyledTitle from '../../../global/components/Title'
 import StyledButton from '../../../global/components/Button'
 import { getGenderIcon } from '../../../tools'
 import { getAge } from '../../../tools/dates'
+import { history } from '../../../config'
 
 const Figure = styled.figure`
   margin: auto
@@ -41,6 +42,7 @@ class InfosSection extends Component {
       <div className="column is-4">
         <Figure className="image is-128x128">
           <img
+            onClick={() => history.push('/profile/1')}
             className="is-rounded"
             alt=""
             src={

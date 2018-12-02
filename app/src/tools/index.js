@@ -1,6 +1,9 @@
+import store from '../store'
 import { history } from '../config'
+import { LOGOUT } from '../layouts/logged/constants'
 
 const logout = () => {
+  store.dispatch({ type: LOGOUT })
   delete window.localStorage.token
   history.push('/')
 }

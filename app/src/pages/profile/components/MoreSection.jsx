@@ -9,6 +9,7 @@ import Title from '../../../global/components/Title'
 import StyledPaper from '../../../global/components/Paper'
 import AvatarWithInfos from '../../../global/components/Avatar'
 import Container from '../../../global/components/Container'
+import { history } from '../../../config'
 
 const Paper = styled(StyledPaper)`
   &:not(:first-child) {
@@ -63,6 +64,7 @@ class MoreSection extends Component {
                 .fill(null)
                 .map((_, index) => (
                   <AvatarWithInfos
+                    onClick={() => history.push('/profile/2')}
                     sex={index === 1 ? 'MAN' : 'WOMAN'}
                     key={index}
                     AvatarClassName="image is-64x64"
