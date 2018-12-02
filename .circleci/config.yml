@@ -3,11 +3,10 @@ jobs:
   test_and_deploy:
     docker:
       - image: node:latest
-    working_directory: ~/app
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn test
+      - run: cd app && yarn install
+      - run: cd app && yarn test
       - run:
           name: Decrypt files if branch is master
           command: |

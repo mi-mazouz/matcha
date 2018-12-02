@@ -1,8 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 
 import { httpClient, i18n } from '../../config'
-import { GET_CURRENT_USER_REQUEST, GET_CURRENT_USER_SUCCESS } from './constants'
 import { ADD_NOTIFICATION } from '../../global/components/notification/constants'
+import { GET_CURRENT_USER_REQUEST, GET_CURRENT_USER_SUCCESS } from './constants'
 
 export function* getCurrentUser() {
   return yield takeLatest([GET_CURRENT_USER_REQUEST], function*() {
