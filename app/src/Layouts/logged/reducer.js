@@ -1,4 +1,4 @@
-import { GET_CURRENT_USER_SUCCESS } from '../../layouts/logged/constants'
+import { GET_CURRENT_USER_SUCCESS } from './constants'
 
 const initialState = {
   id: null,
