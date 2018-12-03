@@ -1,1 +1,1 @@
-yarn run start:production
+yarn start:production

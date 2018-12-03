@@ -5,7 +5,7 @@ jobs:
       - image: node:latest
     steps:
       - checkout
-      - run: cd app && yarn install
+      - run: cd app && yarn
       - run: cd app && yarn test
       - run:
           name: Decrypt files if branch is master
