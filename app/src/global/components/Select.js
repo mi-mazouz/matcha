@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { withTheme } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+import { withTheme } from '@material-ui/core/styles'
 
 const SelectWrapper = withTheme()(styled.div`
   &:not(.is-multiple):not(.is-loading)::after {

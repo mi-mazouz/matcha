@@ -49,17 +49,17 @@ class Profile extends Component {
     this.fetchUser(userId)
   }
 
-  fetchUser = userId =>
-    this.props.dispatch({
-      type: FETCH_USER_REQUEST,
-      payload: { userId }
-    })
-
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateDimensions)
   }
 
   updateDimensions = () => this.setState({ windowWidth: window.innerWidth })
+
+  fetchUser = userId =>
+    this.props.dispatch({
+      type: FETCH_USER_REQUEST,
+      payload: { userId }
+    })
 
   render() {
     const { windowWidth, profile, isSelfProfile } = this.state

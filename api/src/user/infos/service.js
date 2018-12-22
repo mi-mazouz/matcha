@@ -16,9 +16,6 @@ module.exports = userId => {
   .then(user => {
     if (!user) throw createError.BadRequest(errors.USER_NOT_FOUND)
 
-    return Object.assign(user.dataValues, {
-      pictures: user.pictures.filter(picture => !picture.isProfile),
-      profilePicture: user.pictures.find(picture => picture.isProfile)
-    })
+    return user.infosFormat()
   })
 }

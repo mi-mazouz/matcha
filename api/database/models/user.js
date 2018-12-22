@@ -46,6 +46,14 @@ module.exports = (Sequelize, DataTypes) => {
     }
   )
 
+  Model.prototype.infosFormat = function() {
+    return {
+      ...this.dataValues,
+      pictures: this.pictures.filter(picture => !picture.isProfile),
+      profilePicture: this.pictures.find(picture => picture.isProfile)
+    }
+  }
+
   Model.associate = models => {
     Model.hasMany(models.Picture, { as: 'pictures', foreignKey: 'userId' })
   }
