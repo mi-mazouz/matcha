@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Page = styled.div`
-  height: 100%;
+  min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
 `
