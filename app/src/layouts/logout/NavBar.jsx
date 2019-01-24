@@ -79,10 +79,10 @@ class LogoutNavBar extends Component {
             className={classnames('navbar-burger', { 'is-active': this.state.isActive })}
           >
             {Array(3)
-              .fill(null)
-              .map((_, index) => (
-                <Burger key={index} isActive={this.state.isActive} marginTop={index * 4} />
-              ))}
+            .fill(null)
+            .map((_, index) => (
+              <Burger key={index} isActive={this.state.isActive} marginTop={index * 4} />
+            ))}
           </BurgerWrapper>
         </div>
         <Menu className={classnames('navbar-menu', { 'is-active': this.state.isActive })}>
