@@ -1,0 +1,12 @@
+{
+  "pluginsFile": "src/config/tests/e2e/cypress-plugins.js",
+  "fixturesFolder": false,
+  "integrationFolder": "src",
+  "supportFile": false,
+  "trashAssetsBeforeRuns": false,
+  "testFiles": "**/*.e2e.js",
+  "env": {
+    "NODE_ENV": "test"
+  },
+  "projectId": "3vnddh"
+}

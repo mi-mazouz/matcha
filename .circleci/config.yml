@@ -2,11 +2,11 @@ version: 2
 jobs:
   test_and_deploy:
     docker:
-      - image: node:latest
+      - image: cypress/browsers:chrome67
     steps:
       - checkout
       - run: cd app && yarn
-      - run: cd app && yarn test
+      - run: cd app && yarn test:all
       - run:
           name: Decrypt files if branch is master
           command: |
