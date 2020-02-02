@@ -21,3 +21,4 @@ api/database/config/index.json
 
 app/build
 app/config.production.js
+!*.secret
